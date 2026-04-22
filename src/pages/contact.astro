@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/ui/Breadcrumb.astro';
+import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema.astro';
+
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Contact', href: '/contact/' }
+];
+---
+<BaseLayout title="Contact" description="Get in touch with Template.how.">
+  <BreadcrumbSchema slot="head" crumbs={crumbs} />
+  <div class="container prose">
+    <Breadcrumb crumbs={crumbs} />
+    <h1>Contact</h1>
+    <p>Errors, suggestions, or partnership requests: <a href="mailto:hello@template.how">hello@template.how</a>.</p>
+  </div>
+</BaseLayout>
+
+<style>
+.prose { max-width: var(--content-max); padding: var(--sp-8) 0 var(--sp-16); }
+</style>

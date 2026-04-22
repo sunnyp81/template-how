@@ -1,0 +1,28 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/ui/Breadcrumb.astro';
+import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema.astro';
+import PersonSchema from '@/components/schema/PersonSchema.astro';
+
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about/' }
+];
+---
+<BaseLayout
+  title="About"
+  description="Template.how is edited by Sunny Patel, an SEO consultant. Every template is reviewed before publication and carries a stated source.">
+  <BreadcrumbSchema slot="head" crumbs={crumbs} />
+  <PersonSchema slot="head" />
+  <div class="container prose">
+    <Breadcrumb crumbs={crumbs} />
+    <h1>About Template.how</h1>
+    <p>Template.how is a working library of document templates for the United States and United Kingdom. It is edited by Sunny Patel, an SEO consultant based in England.</p>
+    <p>Every template has two things you won't find on most template sites: a named governing statute or rule (for legal and tax documents), and a last-verified date. If a template is wrong, the source is right there for you to check.</p>
+    <p>Nothing here is legal, tax, or financial advice.</p>
+  </div>
+</BaseLayout>
+
+<style>
+.prose { max-width: var(--content-max); padding: var(--sp-8) 0 var(--sp-16); }
+</style>

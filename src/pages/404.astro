@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { NODE_SLUGS, NODE_LABELS } from '@/lib/site';
+---
+<BaseLayout title="Not found" description="The page you asked for doesn't exist." noindex={true}>
+  <div class="container prose">
+    <h1>Nothing here.</h1>
+    <p>The page you asked for doesn't exist — or we haven't written it yet. Try one of the categories:</p>
+    <ul>
+      {NODE_SLUGS.map((slug) => (
+        <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+.prose { max-width: var(--content-max); padding: var(--sp-12) 0 var(--sp-16); }
+</style>
