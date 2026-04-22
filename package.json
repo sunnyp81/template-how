@@ -11,6 +11,7 @@
     "test:e2e": "playwright test",
     "lint": "eslint src scripts --ext .ts,.tsx,.astro",
     "typecheck": "astro check && tsc --noEmit",
+    "postbuild": "npm run validate:links",
     "validate:links": "tsx scripts/validate-link-graph.ts",
     "lighthouse": "lhci autorun"
   },

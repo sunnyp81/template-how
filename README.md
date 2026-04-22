@@ -9,6 +9,7 @@ US + UK template resource site. See `docs/superpowers/specs/2026-04-22-template-
 - `npm test` — run unit tests
 - `npm run test:e2e` — run Playwright smoke tests
 - `npm run validate:links` — run build-time link-graph orphan check
+- `SKIP_LINK_GRAPH=1 npm run build` — bypass link-graph validator (foundation phase only; never use after Plan 3).
 - `npm run lighthouse` — run Lighthouse CI against built output
 
 ## Deploy
