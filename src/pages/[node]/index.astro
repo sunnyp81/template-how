@@ -1,0 +1,31 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import NodeLayout from '@/layouts/NodeLayout.astro';
+import type { NodeSlug } from '@/lib/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('nodes');
+  return entries.map((entry: CollectionEntry<'nodes'>) => ({
+    params: { node: entry.slug },
+    props: { entry }
+  }));
+}
+
+interface Props { entry: CollectionEntry<'nodes'>; }
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+<NodeLayout
+  slug={entry.slug as NodeSlug}
+  headline={entry.data.headline}
+  lede={entry.data.lede}
+  seeds={entry.data.seeds}
+  updated={entry.data.updated}>
+  <div class="prose container">
+    <Content />
+  </div>
+</NodeLayout>
+
+<style>
+.prose { max-width: var(--content-max); padding: var(--sp-4) 0 var(--sp-12); }
+</style>

@@ -1,0 +1,69 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/ui/Breadcrumb.astro';
+import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema.astro';
+import { NODE_LABELS, site } from '@/lib/site';
+import type { NodeSlug } from '@/lib/site';
+
+interface Props {
+  slug: NodeSlug;
+  headline: string;
+  lede: string;
+  seeds: string[];
+  updated: Date;
+}
+
+const { slug, headline, lede, seeds, updated } = Astro.props;
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: NODE_LABELS[slug], href: `/${slug}/` }
+];
+---
+<BaseLayout
+  title={`${NODE_LABELS[slug]} templates`}
+  description={lede}
+  modifiedTime={updated}>
+  <BreadcrumbSchema slot="head" crumbs={crumbs} />
+  <div class="container">
+    <Breadcrumb crumbs={crumbs} />
+    <header class="node-hero">
+      <h1>{headline}</h1>
+      <p class="lede">{lede}</p>
+    </header>
+
+    <section class="seeds">
+      <h2>Templates in this category</h2>
+      <ul class="seed-list">
+        {seeds.map((s) => (
+          <li><a href={`/${s}/`}>{s.replace(/-/g, ' ')}</a></li>
+        ))}
+      </ul>
+      <p class="note">SEED pages land in Plan 3. Every page on this site must link to every other relevant page — no orphans.</p>
+    </section>
+
+    <aside class="siblings">
+      <h2>Other categories</h2>
+      <ul>
+        {Object.entries(NODE_LABELS)
+          .filter(([k]) => k !== slug)
+          .map(([k, v]) => (
+            <li><a href={`/${k}/`}>{v}</a></li>
+          ))}
+      </ul>
+    </aside>
+  </div>
+</BaseLayout>
+
+<style>
+.node-hero { padding: var(--sp-12) 0 var(--sp-8); max-width: var(--content-max); }
+.node-hero h1 { font-size: var(--fs-3xl); }
+.lede { font-size: var(--fs-lg); color: var(--fg-muted); }
+.seeds { padding: var(--sp-4) 0 var(--sp-12); }
+.seed-list { list-style: none; padding: 0; display: grid; gap: var(--sp-2); grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.seed-list a { display: block; padding: var(--sp-3) var(--sp-4); border: 1px solid var(--border); border-radius: var(--r-sm); text-decoration: none; color: var(--fg); text-transform: capitalize; }
+.seed-list a:hover { border-color: var(--accent); }
+.note { margin-top: var(--sp-6); font-size: var(--fs-sm); color: var(--fg-muted); }
+.siblings { padding: var(--sp-8) 0 var(--sp-12); border-top: 1px solid var(--border); }
+.siblings ul { list-style: none; padding: 0; display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+.siblings a { font-size: var(--fs-sm); }
+</style>
