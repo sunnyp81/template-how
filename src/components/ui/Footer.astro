@@ -9,7 +9,7 @@ import { NODE_SLUGS, NODE_LABELS, site, author } from '@/lib/site';
       <p class="credit">Edited by <a href={author.url}>{author.name}</a>.</p>
     </div>
     <nav aria-label="Categories">
-      <h4>Categories</h4>
+      <p class="foot-nav-label">Categories</p>
       <ul>
         {NODE_SLUGS.map((slug) => (
           <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
@@ -17,7 +17,7 @@ import { NODE_SLUGS, NODE_LABELS, site, author } from '@/lib/site';
       </ul>
     </nav>
     <nav aria-label="Site">
-      <h4>Site</h4>
+      <p class="foot-nav-label">Site</p>
       <ul>
         <li><a href="/about/">About</a></li>
         <li><a href="/contact/">Contact</a></li>
@@ -43,18 +43,21 @@ import { NODE_SLUGS, NODE_LABELS, site, author } from '@/lib/site';
   grid-template-columns: 2fr 1fr 1fr;
   gap: var(--sp-8);
 }
-.footer-grid h4 {
+.foot-nav-label {
   font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: 0.08em;
   font-family: var(--font-body); font-weight: 600;
-  color: var(--fg-muted); margin-bottom: var(--sp-3);
+  color: #4B463E; margin: 0 0 var(--sp-3);
 }
 .footer-grid ul { list-style: none; padding: 0; margin: 0; }
 .footer-grid li { margin-bottom: var(--sp-2); font-size: var(--fs-sm); }
-.wordmark-foot { font-family: var(--font-display); font-size: var(--fs-xl); margin: 0; }
-.wordmark-foot .dot { color: var(--accent); }
-.tagline { font-size: var(--fs-sm); color: var(--fg-muted); max-width: 40ch; }
-.credit { font-size: var(--fs-sm); color: var(--fg-muted); }
-.sub { margin-top: var(--sp-12); color: var(--fg-muted); font-size: var(--fs-xs); }
+.footer-grid a { color: #0F1B3D; }
+.footer-grid a:hover { color: #B45309; }
+.wordmark-foot { font-family: var(--font-display); font-size: var(--fs-xl); margin: 0; color: #1F1C17; }
+.wordmark-foot .dot { color: #B45309; }
+.tagline { font-size: var(--fs-sm); color: #4B463E; max-width: 40ch; }
+.credit { font-size: var(--fs-sm); color: #4B463E; }
+.sub { margin-top: var(--sp-12); color: #4B463E; font-size: var(--fs-xs); }
+.sub small { color: inherit; }
 @media (max-width: 720px) {
   .footer-grid { grid-template-columns: 1fr; }
 }
