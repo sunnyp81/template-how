@@ -1,0 +1,88 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { NODE_SLUGS, NODE_LABELS, site } from '@/lib/site';
+
+const featured = [
+  { slug: 'bill-of-sale', title: 'Bill of sale', node: 'legal-document-templates' },
+  { slug: 'resume', title: 'Resume', node: 'resume-templates' },
+  { slug: 'invoice', title: 'Invoice', node: 'business-templates' },
+  { slug: 'obituary', title: 'Obituary', node: 'life-event-templates' },
+  { slug: 'lesson-plan', title: 'Lesson plan', node: 'planning-templates' },
+  { slug: 'capcut', title: 'CapCut', node: 'design-templates' },
+  { slug: 'cornell-notes', title: 'Cornell notes', node: 'education-templates' },
+  { slug: 'to-do-list', title: 'To-do list', node: 'productivity-templates' }
+];
+---
+<BaseLayout
+  title="Templates, built to be used and cited"
+  description="A working library of US and UK templates — bills of sale, resumes, invoices, lesson plans, and more — with jurisdiction-specific variants and a stated governing source.">
+  <section class="hero">
+    <div class="container">
+      <h1>Templates you can actually use.</h1>
+      <p class="lede">Documents that cite their sources, name their jurisdiction, and stop pretending the United States and the United Kingdom are the same place.</p>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="container">
+      <h2>Popular templates</h2>
+      <ul class="tiles">
+        {featured.map((t) => (
+          <li>
+            <a href={`/${t.slug}/`}>
+              <span class="tile-title">{t.title}</span>
+              <span class="tile-node">{NODE_LABELS[t.node as keyof typeof NODE_LABELS]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="categories">
+    <div class="container">
+      <h2>Browse by category</h2>
+      <ul class="cats">
+        {NODE_SLUGS.map((slug) => (
+          <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero { padding: var(--sp-24) 0 var(--sp-16); }
+.hero h1 { max-width: 18ch; font-size: var(--fs-4xl); }
+.lede { font-size: var(--fs-lg); color: var(--fg-muted); max-width: 56ch; }
+
+.featured { padding: var(--sp-12) 0; }
+.tiles {
+  list-style: none; padding: 0; margin: var(--sp-6) 0 0;
+  display: grid; gap: var(--sp-4);
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+.tiles a {
+  display: block; padding: var(--sp-6);
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: var(--r-md); text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+.tiles a:hover { transform: translateY(-2px); border-color: var(--accent); }
+.tile-title { display: block; font-family: var(--font-display); font-size: var(--fs-xl); color: var(--fg); }
+.tile-node { display: block; margin-top: var(--sp-2); font-size: var(--fs-xs); color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.categories { padding: var(--sp-12) 0 var(--sp-16); }
+.cats {
+  list-style: none; padding: 0; margin: var(--sp-6) 0 0;
+  display: grid; gap: var(--sp-3);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.cats a {
+  display: block; padding: var(--sp-4) var(--sp-6);
+  border: 1px solid var(--border); border-radius: var(--r-md);
+  text-decoration: none; color: var(--fg);
+  font-family: var(--font-display); font-size: var(--fs-lg);
+}
+.cats a:hover { background: var(--paper-200); }
+</style>

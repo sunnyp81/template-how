@@ -1,0 +1,16 @@
+# Template.how
+
+US + UK template resource site. Every legal / tax / compliance template carries per-state United States and per-nation United Kingdom variants with a named governing statute and a last-verified date.
+
+## Categories
+- /legal-document-templates/ — Legal documents (bill of sale, NDA, lease, will, etc.)
+- /resume-templates/ — Resumes and careers
+- /business-templates/ — Business operations (invoice, P&L, meeting minutes)
+- /life-event-templates/ — Life events (obituary, family tree, birth plan)
+- /planning-templates/ — Planning (lesson plans, itineraries, budgets)
+- /design-templates/ — Design and creative (CapCut, Roblox, posters)
+- /education-templates/ — Education (Cornell notes, Venn diagram)
+- /productivity-templates/ — Productivity (to-do, checklist, planner)
+
+## Authorship
+Edited by Sunny Patel, SEO consultant. https://sunnypatel.co.uk
