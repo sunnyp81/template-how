@@ -1,0 +1,61 @@
+---
+import { NODE_SLUGS, NODE_LABELS, site, author } from '@/lib/site';
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="wordmark-foot"><strong>Template</strong><span class="dot">.</span>how</p>
+      <p class="tagline">{site.tagline}</p>
+      <p class="credit">Edited by <a href={author.url}>{author.name}</a>.</p>
+    </div>
+    <nav aria-label="Categories">
+      <h4>Categories</h4>
+      <ul>
+        {NODE_SLUGS.map((slug) => (
+          <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <nav aria-label="Site">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/terms/">Terms</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container sub">
+    <small>&copy; {new Date().getFullYear()} Template.how. Nothing on this site is legal, tax, or financial advice.</small>
+  </div>
+</footer>
+
+<style>
+.site-footer {
+  margin-top: var(--sp-24);
+  padding: var(--sp-16) 0 var(--sp-8);
+  background: var(--paper-200);
+  border-top: 1px solid var(--border);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--sp-8);
+}
+.footer-grid h4 {
+  font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: 0.08em;
+  font-family: var(--font-body); font-weight: 600;
+  color: var(--fg-muted); margin-bottom: var(--sp-3);
+}
+.footer-grid ul { list-style: none; padding: 0; margin: 0; }
+.footer-grid li { margin-bottom: var(--sp-2); font-size: var(--fs-sm); }
+.wordmark-foot { font-family: var(--font-display); font-size: var(--fs-xl); margin: 0; }
+.wordmark-foot .dot { color: var(--accent); }
+.tagline { font-size: var(--fs-sm); color: var(--fg-muted); max-width: 40ch; }
+.credit { font-size: var(--fs-sm); color: var(--fg-muted); }
+.sub { margin-top: var(--sp-12); color: var(--fg-muted); font-size: var(--fs-xs); }
+@media (max-width: 720px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>

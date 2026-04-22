@@ -1,0 +1,11 @@
+---
+import { author } from '@/lib/site';
+---
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: author.name,
+  jobTitle: author.jobTitle,
+  url: author.url,
+  sameAs: author.sameAs
+})} />
