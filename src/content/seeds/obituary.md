@@ -13,6 +13,7 @@ related:
   - funeral-programme
   - sympathy-card
   - family-tree
+  - funeral-program
 crossCluster:
   - bill-of-sale
   - lesson-plan

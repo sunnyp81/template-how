@@ -13,6 +13,7 @@ related:
   - resignation-letter
   - letter-of-recommendation
   - cover-letter-google-docs
+  - ats-friendly-resume
 crossCluster:
   - bill-of-sale
   - lesson-plan

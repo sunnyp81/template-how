@@ -12,6 +12,7 @@ related:
   - graphic-organizer
   - jeopardy
   - all-about-me
+  - avery-label
 crossCluster:
   - lesson-plan
 audience: [us, uk]

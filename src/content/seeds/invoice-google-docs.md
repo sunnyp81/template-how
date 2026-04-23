@@ -12,6 +12,7 @@ related:
   - meeting-minutes
   - letterhead
   - balance-sheet
+  - one-pager
 crossCluster:
   - bill-of-sale
 audience: [us, uk]

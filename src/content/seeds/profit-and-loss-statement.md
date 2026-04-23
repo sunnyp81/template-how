@@ -13,6 +13,7 @@ related:
   - meeting-minutes
   - executive-summary
   - letterhead
+  - one-pager
 crossCluster:
   - bill-of-sale
   - to-do-list

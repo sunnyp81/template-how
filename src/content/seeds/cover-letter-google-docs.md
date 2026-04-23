@@ -13,6 +13,7 @@ related:
   - ats-resume
   - google-docs-resume
   - two-weeks-notice
+  - ats-friendly-resume
 crossCluster:
   - letter-of-recommendation
 audience: [us, uk]

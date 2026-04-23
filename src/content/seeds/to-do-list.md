@@ -15,6 +15,7 @@ related:
   - grocery-list
   - roblox-shirt
   - travel-itinerary
+  - one-pager
 crossCluster:
   - lesson-plan
   - capcut

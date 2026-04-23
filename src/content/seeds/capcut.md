@@ -12,6 +12,7 @@ related:
   - storyboard
   - tier-list
   - discord-bio
+  - wanted-poster
 crossCluster:
   - lesson-plan
   - to-do-list

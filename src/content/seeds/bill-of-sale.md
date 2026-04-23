@@ -15,6 +15,7 @@ related:
   - last-will
   - cover-letter-google-docs
   - invoice-google-docs
+  - doctors-note
 crossCluster:
   - obituary
   - profit-and-loss-statement

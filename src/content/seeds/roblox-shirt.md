@@ -12,6 +12,7 @@ related:
   - roblox
   - storyboard
   - tier-list
+  - wanted-poster
 crossCluster:
   - to-do-list
 audience: [us, uk]

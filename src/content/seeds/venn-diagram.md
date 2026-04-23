@@ -12,6 +12,7 @@ related:
   - graphic-organizer
   - all-about-me
   - avery-5160
+  - avery-label
 crossCluster:
   - lesson-plan
   - to-do-list

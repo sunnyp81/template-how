@@ -15,6 +15,9 @@ related:
   - travel-itinerary
   - cornell-notes
   - family-tree
+  - itinerary
+  - wanted-poster
+  - avery-label
 crossCluster:
   - venn-diagram
   - harvard-resume

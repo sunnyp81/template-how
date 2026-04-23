@@ -12,6 +12,7 @@ related:
   - checklist
   - chore-chart
   - daily-planner
+  - one-pager
 crossCluster:
   - travel-itinerary
 audience: [us, uk]

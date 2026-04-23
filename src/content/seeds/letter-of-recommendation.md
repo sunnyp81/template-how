@@ -13,6 +13,7 @@ related:
   - offer-letter
   - nda
   - last-will
+  - doctors-note
 crossCluster:
   - harvard-resume
 audience: [us, uk]

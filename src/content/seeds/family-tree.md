@@ -12,6 +12,7 @@ related:
   - funeral-program
   - baby-announcement
   - graduation-invitation
+  - wanted-poster
 crossCluster:
   - lesson-plan
 audience: [us, uk]
