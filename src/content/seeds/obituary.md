@@ -14,6 +14,7 @@ related:
   - sympathy-card
   - family-tree
   - funeral-program
+  - last-will
 crossCluster:
   - bill-of-sale
   - lesson-plan

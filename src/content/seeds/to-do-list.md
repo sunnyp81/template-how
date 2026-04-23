@@ -16,6 +16,7 @@ related:
   - roblox-shirt
   - travel-itinerary
   - one-pager
+  - vision-board
 crossCluster:
   - lesson-plan
   - capcut

@@ -13,6 +13,7 @@ related:
   - letterhead
   - balance-sheet
   - one-pager
+  - eviction-notice
 crossCluster:
   - bill-of-sale
 audience: [us, uk]

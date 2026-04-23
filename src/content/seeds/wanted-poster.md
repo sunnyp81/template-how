@@ -12,6 +12,7 @@ related:
   - roblox-shirt
   - flyer
   - banner
+  - tier-list
 crossCluster:
   - funeral-program
   - family-tree

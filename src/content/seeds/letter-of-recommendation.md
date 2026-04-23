@@ -12,6 +12,7 @@ related:
   - resignation-letter
   - offer-letter
   - nda
+  - lease-agreement
   - last-will
   - doctors-note
 crossCluster:

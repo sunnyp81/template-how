@@ -12,6 +12,7 @@ related:
   - lesson-plan
   - meeting-minutes
   - project-proposal
+  - weekly-schedule
 crossCluster:
   - one-pager
   - grocery-list

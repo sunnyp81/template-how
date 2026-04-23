@@ -12,6 +12,7 @@ related:
   - grocery-list
   - project-proposal
   - executive-summary
+  - vision-board
 crossCluster:
   - ats-friendly-resume
   - itinerary

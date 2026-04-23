@@ -12,6 +12,7 @@ related:
   - invoice-google-docs
   - project-proposal
   - agenda
+  - balance-sheet
 crossCluster:
   - doctors-note
   - ats-friendly-resume

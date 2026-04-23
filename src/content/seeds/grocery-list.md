@@ -13,6 +13,7 @@ related:
   - chore-chart
   - daily-planner
   - one-pager
+  - vision-board
 crossCluster:
   - travel-itinerary
 audience: [us, uk]

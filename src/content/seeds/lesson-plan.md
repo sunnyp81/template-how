@@ -18,6 +18,7 @@ related:
   - itinerary
   - wanted-poster
   - avery-label
+  - weekly-schedule
 crossCluster:
   - venn-diagram
   - harvard-resume

@@ -13,6 +13,7 @@ related:
   - baby-announcement
   - graduation-invitation
   - wanted-poster
+  - last-will
 crossCluster:
   - lesson-plan
 audience: [us, uk]
