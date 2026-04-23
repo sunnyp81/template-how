@@ -1,0 +1,48 @@
+---
+import rules from '@/data/legal/bill-of-sale-state-rules.json';
+import { ALL_JURISDICTIONS } from '@/data/jurisdictions';
+
+interface Rule {
+  notary_required: boolean | null;
+  witness_required: boolean | null;
+  governing_statute: string | null;
+  statute_url: string | null;
+  last_verified: string;
+}
+
+const rows = ALL_JURISDICTIONS.map((j) => ({
+  region: j.region,
+  country: j.country.toUpperCase(),
+  rule: rules[j.code as keyof typeof rules] as Rule | undefined
+}));
+---
+<table class="jt">
+  <caption class="sr-only">Bill of sale requirements by US state and UK nation</caption>
+  <thead>
+    <tr>
+      <th scope="col">Jurisdiction</th>
+      <th scope="col">Notary</th>
+      <th scope="col">Witnesses</th>
+      <th scope="col">Governing law</th>
+      <th scope="col">Verified</th>
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map((r) => (
+      <tr>
+        <th scope="row">{r.region} ({r.country})</th>
+        <td>{r.rule?.notary_required === true ? 'Required' : r.rule?.notary_required === false ? 'Not required' : '—'}</td>
+        <td>{r.rule?.witness_required === true ? 'Required' : r.rule?.witness_required === false ? 'Not required' : '—'}</td>
+        <td>{r.rule?.statute_url ? <a href={r.rule.statute_url} rel="noopener">{r.rule.governing_statute}</a> : (r.rule?.governing_statute ?? '—')}</td>
+        <td><time datetime={r.rule?.last_verified ?? ''}>{r.rule?.last_verified ?? '—'}</time></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+.jt { border-collapse: collapse; width: 100%; font-size: var(--fs-sm); margin: var(--sp-6) 0; }
+.jt th, .jt td { padding: var(--sp-2) var(--sp-3); border-bottom: 1px solid var(--border); text-align: left; }
+.jt thead th { background: var(--paper-200); font-weight: 600; }
+.jt tbody th { font-weight: 500; color: var(--fg); }
+</style>

@@ -38,7 +38,15 @@ const seeds = defineCollection({
       url: z.string().url(),
       accessed: z.string()
     })).min(1),
-    updated: z.string().transform((s) => new Date(s))
+    updated: z.string().transform((s) => new Date(s)),
+    // builderSchema is z.any() because BuilderSchema lives in a separate TS file;
+    // Astro evaluates config.ts early. Real validation happens at use site.
+    builderSchema: z.any().optional(),
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).min(8).max(15),
+    howTo: z.object({
+      name: z.string(),
+      steps: z.array(z.object({ name: z.string(), text: z.string() })).min(3)
+    })
   })
 });
 

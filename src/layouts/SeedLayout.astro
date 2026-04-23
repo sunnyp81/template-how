@@ -1,0 +1,96 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/ui/Breadcrumb.astro';
+import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema.astro';
+import HowToSchema from '@/components/schema/HowToSchema.astro';
+import FAQPageSchema from '@/components/schema/FAQPageSchema.astro';
+import SoftwareApplicationSchema from '@/components/schema/SoftwareApplicationSchema.astro';
+import DefinitionalLede from '@/components/content/DefinitionalLede.astro';
+import DownloadBlock from '@/components/content/DownloadBlock.astro';
+import AuthorBox from '@/components/content/AuthorBox.astro';
+import SourceList from '@/components/content/SourceList.astro';
+import JurisdictionTable from '@/components/content/JurisdictionTable.astro';
+import { TemplateBuilder } from '@/components/builders/TemplateBuilder';
+import { NODE_LABELS } from '@/lib/site';
+import '@/styles/builder.css';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props { entry: CollectionEntry<'seeds'>; }
+const { entry } = Astro.props;
+// builderSchema is z.any() in the collection schema — typed loosely here intentionally.
+// Real structural validation happens inside TemplateBuilder at runtime.
+const data = entry.data as any;
+
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: NODE_LABELS[data.node as keyof typeof NODE_LABELS], href: `/${data.node}/` },
+  { name: data.h1, href: `/${entry.slug}/` }
+];
+
+const { Content } = await entry.render();
+---
+<BaseLayout
+  title={data.title}
+  description={data.definitionalLede}
+  modifiedTime={data.updated}>
+  <BreadcrumbSchema slot="head" crumbs={crumbs} />
+  <HowToSchema slot="head" name={data.howTo.name} steps={data.howTo.steps} />
+  <FAQPageSchema slot="head" faq={data.faq} />
+  <SoftwareApplicationSchema slot="head" name={data.title} />
+
+  <div class="container">
+    <Breadcrumb crumbs={crumbs} />
+    <header class="seed-hero">
+      <h1>{data.h1}</h1>
+      <DefinitionalLede lede={data.definitionalLede} />
+    </header>
+
+    <section class="builder-section">
+      <h2>Build your {data.h1.toLowerCase()}</h2>
+      <TemplateBuilder client:visible schema={data.builderSchema} filenameStem={entry.slug} />
+    </section>
+
+    <DownloadBlock title={data.h1} pdfUrl={`/downloads/${entry.slug}.pdf`} docxUrl={`/downloads/${entry.slug}.docx`} />
+
+    <article class="prose">
+      <Content />
+      <h2>Requirements by jurisdiction</h2>
+      <JurisdictionTable />
+    </article>
+
+    <section class="faq" aria-label="Frequently asked questions">
+      <h2>Frequently asked questions</h2>
+      {data.faq.map((qa: { q: string; a: string }) => (
+        <details class="faq-item">
+          <summary>{qa.q}</summary>
+          <p>{qa.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <SourceList sources={data.sources} />
+    <AuthorBox />
+  </div>
+</BaseLayout>
+
+<style>
+.seed-hero { padding: var(--sp-8) 0 var(--sp-4); }
+.seed-hero h1 { font-size: var(--fs-3xl); margin: 0 0 var(--sp-3); }
+.builder-section { margin: var(--sp-8) 0; }
+.builder-section h2 { font-size: var(--fs-xl); }
+.prose { max-width: var(--content-max); padding: var(--sp-8) 0; font-size: var(--fs-base); }
+.prose :global(h2) { font-size: var(--fs-2xl); margin-top: var(--sp-12); }
+.prose :global(h3) { font-size: var(--fs-xl); margin-top: var(--sp-8); }
+.prose :global(p), .prose :global(li) { font-size: var(--fs-base); }
+.faq { margin: var(--sp-12) 0; }
+.faq h2 { font-size: var(--fs-2xl); }
+.faq-item {
+  padding: var(--sp-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+.faq-item summary {
+  cursor: pointer; font-weight: 600;
+  font-family: var(--font-display); font-size: var(--fs-lg);
+}
+.faq-item p { margin-top: var(--sp-2); color: var(--fg-muted); }
+</style>

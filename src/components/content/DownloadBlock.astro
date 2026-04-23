@@ -1,0 +1,35 @@
+---
+interface Props {
+  pdfUrl?: string;
+  docxUrl?: string;
+  gdocUrl?: string;
+  title: string;
+}
+const { pdfUrl, docxUrl, gdocUrl, title } = Astro.props;
+---
+<aside class="dl-block" aria-label="Pre-made download">
+  <p class="dl-label">In a hurry? Pre-made template:</p>
+  <div class="dl-row">
+    {pdfUrl ? <a href={pdfUrl} class="dl-btn" download>{title} (PDF)</a> : null}
+    {docxUrl ? <a href={docxUrl} class="dl-btn" download>{title} (DOCX)</a> : null}
+    {gdocUrl ? <a href={gdocUrl} class="dl-btn" rel="noopener" target="_blank">Open in Google Docs</a> : null}
+  </div>
+</aside>
+
+<style>
+.dl-block {
+  background: var(--paper-200);
+  border-left: 4px solid var(--accent);
+  padding: var(--sp-4) var(--sp-6);
+  margin: var(--sp-6) 0;
+  border-radius: var(--r-sm);
+}
+.dl-label { font-size: var(--fs-sm); color: var(--fg-muted); margin: 0 0 var(--sp-2); }
+.dl-row { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+.dl-btn {
+  background: var(--navy-700); color: var(--paper-50);
+  padding: var(--sp-2) var(--sp-4); border-radius: var(--r-sm);
+  text-decoration: none; font-size: var(--fs-sm);
+}
+.dl-btn:hover { background: var(--navy-500); color: var(--paper-50); }
+</style>

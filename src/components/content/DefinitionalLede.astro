@@ -1,0 +1,16 @@
+---
+interface Props { lede: string; }
+const { lede } = Astro.props;
+---
+<p class="seed-lede" itemprop="abstract">{lede}</p>
+
+<style>
+.seed-lede {
+  font-size: var(--fs-lg);
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-style: italic;
+  max-width: var(--content-max);
+  margin-bottom: var(--sp-6);
+}
+</style>

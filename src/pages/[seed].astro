@@ -1,0 +1,16 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import SeedLayout from '@/layouts/SeedLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('seeds');
+  return entries.map((entry: CollectionEntry<'seeds'>) => ({
+    params: { seed: entry.slug },
+    props: { entry }
+  }));
+}
+
+interface Props { entry: CollectionEntry<'seeds'>; }
+const { entry } = Astro.props;
+---
+<SeedLayout entry={entry as unknown as CollectionEntry<'seeds'>} />

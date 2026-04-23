@@ -1,0 +1,25 @@
+---
+import PersonSchema from '@/components/schema/PersonSchema.astro';
+import { author } from '@/lib/site';
+---
+<aside class="author-box" aria-label="About the author">
+  <PersonSchema />
+  <h3 class="ab-name">Reviewed by {author.name}</h3>
+  <p class="ab-bio">SEO consultant and template editor. Every template on this site is reviewed against primary sources before publication.</p>
+  <ul class="ab-links">
+    {author.sameAs.map((href) => (
+      <li><a href={href} rel="noopener me">{new URL(href).hostname}</a></li>
+    ))}
+  </ul>
+</aside>
+
+<style>
+.author-box {
+  border-top: 1px solid var(--border);
+  padding-top: var(--sp-6); margin-top: var(--sp-12);
+  display: grid; gap: var(--sp-2);
+}
+.ab-name { font-size: var(--fs-lg); margin: 0; }
+.ab-bio { font-size: var(--fs-sm); color: var(--fg-muted); margin: 0; }
+.ab-links { list-style: none; padding: 0; margin: 0; display: flex; gap: var(--sp-3); flex-wrap: wrap; font-size: var(--fs-xs); }
+</style>

@@ -1,0 +1,16 @@
+---
+interface Step { name: string; text: string; }
+interface Props { name: string; steps: Step[]; }
+const { name, steps } = Astro.props;
+---
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name,
+  step: steps.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: s.name,
+    text: s.text
+  }))
+})} />
