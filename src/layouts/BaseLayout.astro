@@ -16,11 +16,15 @@ interface Props {
   modifiedTime?: Date;
 }
 
+// Derive per-page OG image path from pathname slug; falls back to /og/default.png
+const _slug = Astro.url.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '_') || 'index';
+const _defaultOg = `/og/${_slug}.png`;
+
 const {
   title,
   description,
   canonical = new URL(Astro.url.pathname, site.url).toString(),
-  ogImage = site.defaultOgImage,
+  ogImage = _defaultOg,
   noindex = false,
   publishedTime,
   modifiedTime
