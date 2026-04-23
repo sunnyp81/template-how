@@ -45,17 +45,23 @@ const { Content } = await entry.render();
       <DefinitionalLede lede={data.definitionalLede} />
     </header>
 
-    <section class="builder-section">
-      <h2>Build your {data.h1.toLowerCase()}</h2>
-      <TemplateBuilder client:visible schema={data.builderSchema} filenameStem={entry.slug} />
-    </section>
+    {data.renderer !== 'static-only' && data.builderSchema ? (
+      <section class="builder-section">
+        <h2>Build your {data.h1.toLowerCase()}</h2>
+        <TemplateBuilder client:visible schema={data.builderSchema} filenameStem={entry.slug} />
+      </section>
+    ) : null}
 
     <DownloadBlock title={data.h1} pdfUrl={`/downloads/${entry.slug}.pdf`} docxUrl={`/downloads/${entry.slug}.docx`} />
 
     <article class="prose">
       <Content />
-      <h2>Requirements by jurisdiction</h2>
-      <JurisdictionTable />
+      {entry.slug === 'bill-of-sale' ? (
+        <>
+          <h2>Requirements by jurisdiction</h2>
+          <JurisdictionTable />
+        </>
+      ) : null}
     </article>
 
     <section class="faq" aria-label="Frequently asked questions">
