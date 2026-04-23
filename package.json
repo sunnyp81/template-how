@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "lint": "eslint src scripts --ext .ts,.tsx,.astro",
+    "lint": "eslint src scripts",
     "typecheck": "astro check && tsc --noEmit",
     "postbuild": "npm run validate:links",
     "validate:links": "tsx scripts/validate-link-graph.ts",
@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
+    "@eslint/js": "^9.39.4",
     "@lhci/cli": "^0.14.0",
     "@playwright/test": "^1.47.0",
     "@types/node": "^22.0.0",
