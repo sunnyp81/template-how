@@ -14,8 +14,8 @@ related:
   - lease-agreement
   - last-will
 crossCluster:
-  - resume
-  - invoice
+  - obituary
+  - profit-and-loss-statement
 audience: [us, uk]
 wordCountFloor: 1800
 sources:
