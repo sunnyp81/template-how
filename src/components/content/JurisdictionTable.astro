@@ -13,6 +13,7 @@ interface Rule {
 const rows = ALL_JURISDICTIONS.map((j) => ({
   region: j.region,
   country: j.country.toUpperCase(),
+  slug: j.slug,
   rule: rules[j.code as keyof typeof rules] as Rule | undefined
 }));
 ---
@@ -30,7 +31,7 @@ const rows = ALL_JURISDICTIONS.map((j) => ({
   <tbody>
     {rows.map((r) => (
       <tr>
-        <th scope="row">{r.region} ({r.country})</th>
+        <th scope="row"><a href={`/bill-of-sale/${r.slug}/`}>{r.region}</a> ({r.country})</th>
         <td>{r.rule?.notary_required === true ? 'Required' : r.rule?.notary_required === false ? 'Not required' : '—'}</td>
         <td>{r.rule?.witness_required === true ? 'Required' : r.rule?.witness_required === false ? 'Not required' : '—'}</td>
         <td>{r.rule?.statute_url ? <a href={r.rule.statute_url} rel="noopener">{r.rule.governing_statute}</a> : (r.rule?.governing_statute ?? '—')}</td>

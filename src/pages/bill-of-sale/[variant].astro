@@ -1,0 +1,258 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/ui/Breadcrumb.astro';
+import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema.astro';
+import HowToSchema from '@/components/schema/HowToSchema.astro';
+import FAQPageSchema from '@/components/schema/FAQPageSchema.astro';
+import AuthorBox from '@/components/content/AuthorBox.astro';
+import SourceList from '@/components/content/SourceList.astro';
+import { ALL_JURISDICTIONS, US_STATES, UK_NATIONS, type Jurisdiction } from '@/data/jurisdictions';
+import rules from '@/data/legal/bill-of-sale-state-rules.json';
+
+interface Rule {
+  code: string;
+  notary_required: boolean | null;
+  witness_required: boolean | null;
+  required_fields: string[];
+  vehicle_extra_fields: string[];
+  governing_statute: string | null;
+  statute_url: string | null;
+  vehicle_dmv_form: string | null;
+  vehicle_dmv_url: string | null;
+  notes: string;
+  last_verified: string;
+}
+
+export async function getStaticPaths() {
+  return ALL_JURISDICTIONS.map((j) => ({
+    params: { variant: j.slug },
+    props: { jurisdiction: j }
+  }));
+}
+
+interface Props { jurisdiction: Jurisdiction; }
+const { jurisdiction } = Astro.props;
+const rule = rules[jurisdiction.code as keyof typeof rules] as Rule;
+
+const isUS = jurisdiction.country === 'us';
+const cur = isUS ? '$' : '£';
+const peer = isUS ? US_STATES : UK_NATIONS;
+
+// Rotating-window siblings: 5 before + 5 after (wrapping), so every US state appears
+// in exactly 10 other US state pages — guarantees ≥3 incoming for all variants.
+// UK nations only have 3 peers — just show all of them.
+const peerIdx = peer.findIndex((j) => j.code === jurisdiction.code);
+const siblings: typeof peer = [];
+if (peer.length <= 5) {
+  // Small pool (UK nations): show every peer except self
+  siblings.push(...peer.filter((j) => j.code !== jurisdiction.code));
+} else {
+  const windowSize = 5;
+  const seen = new Set<string>();
+  for (let offset = 1; offset <= windowSize; offset++) {
+    const before = peer[(peerIdx - offset + peer.length) % peer.length];
+    const after = peer[(peerIdx + offset) % peer.length];
+    if (!seen.has(before.code) && before.code !== jurisdiction.code) {
+      siblings.push(before);
+      seen.add(before.code);
+    }
+    if (!seen.has(after.code) && after.code !== jurisdiction.code) {
+      siblings.push(after);
+      seen.add(after.code);
+    }
+  }
+}
+
+const title = `Bill of Sale Template — ${jurisdiction.region} (${jurisdiction.abbreviation})`;
+const h1 = `${jurisdiction.region} Bill of Sale Template`;
+const lede = `A bill of sale for personal property in ${jurisdiction.region} records the transfer of ownership from seller to buyer. ${jurisdiction.region}'s rules differ from neighbouring jurisdictions in specific, sometimes consequential ways.`;
+const updated = new Date(rule.last_verified);
+
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Legal documents', href: '/legal-document-templates/' },
+  { name: 'Bill of Sale', href: '/bill-of-sale/' },
+  { name: jurisdiction.region, href: `/bill-of-sale/${jurisdiction.slug}/` }
+];
+
+const sources = [
+  rule.statute_url ? { title: rule.governing_statute ?? 'Governing statute', url: rule.statute_url, accessed: rule.last_verified } : null,
+  rule.vehicle_dmv_url ? { title: rule.vehicle_dmv_form ?? 'Vehicle transfer form', url: rule.vehicle_dmv_url, accessed: rule.last_verified } : null
+].filter(Boolean) as Array<{ title: string; url: string; accessed: string }>;
+
+const howTo = {
+  name: `How to fill out a ${jurisdiction.region} bill of sale`,
+  steps: [
+    { name: 'Identify the parties', text: `Write the full legal names and addresses of both seller and buyer in ${jurisdiction.region}.` },
+    { name: 'Describe the item', text: `For a vehicle, include ${rule.vehicle_extra_fields.join(', ')}. For other personal property, describe it precisely enough that no other identical item could be substituted.` },
+    { name: 'State the price and payment method', text: `Record the agreed price in ${cur} and how it was paid (cash, bank transfer, cashier's cheque).` },
+    rule.notary_required === true
+      ? { name: 'Notarise the document', text: `${jurisdiction.region} requires the bill of sale to be notarised before it is legally effective for vehicle transfers.` }
+      : { name: 'Sign and date', text: `Both parties sign and date. ${jurisdiction.region} does not require a notary for personal property bills of sale.` },
+    rule.witness_required === true
+      ? { name: 'Sign in front of witnesses', text: `${jurisdiction.region} requires the bill of sale to be signed in the presence of at least two witnesses for vehicle transfers.` }
+      : null
+  ].filter(Boolean) as Array<{ name: string; text: string }>
+};
+
+const faq = [
+  {
+    q: `Is a notary required for a ${jurisdiction.region} bill of sale?`,
+    a: rule.notary_required === true
+      ? `Yes. ${jurisdiction.region} requires bills of sale for vehicle transfers to be notarised. Find a notary at a bank, library, UPS Store, or law office.`
+      : rule.notary_required === false
+        ? `No. ${jurisdiction.region} does not require a notary for a bill of sale, although having one notarised does not hurt and may speed up dispute resolution.`
+        : `${jurisdiction.region}'s requirements vary by item type. For vehicles, check the local ${isUS ? 'DMV' : 'DVLA / DVA'} guidance.`
+  },
+  {
+    q: `What form does ${jurisdiction.region} use for vehicle transfer?`,
+    a: rule.vehicle_dmv_form
+      ? `${jurisdiction.region} ${isUS ? 'uses' : 'accepts'} ${rule.vehicle_dmv_form}${rule.vehicle_dmv_url ? ` (available from the official ${isUS ? 'DMV' : 'DVLA'} site)` : ''}.`
+      : `${jurisdiction.region} does not specify a single official form for private vehicle transfer; the bill of sale plus the title or registration document is usually sufficient.`
+  },
+  {
+    q: `Can I use a generic bill of sale in ${jurisdiction.region}?`,
+    a: `A generic bill of sale is valid in ${jurisdiction.region} as long as it includes the parties, the item, the price, the date, and signatures. ${rule.notary_required === true ? 'It must also be notarised for vehicle transfers.' : ''} Using the official ${jurisdiction.region}-specific form removes any ambiguity.`
+  },
+  {
+    q: `What is the governing law in ${jurisdiction.region}?`,
+    a: rule.governing_statute
+      ? `${rule.governing_statute} governs the form and effect of bills of sale in ${jurisdiction.region}.`
+      : isUS
+        ? `Article 2 of the Uniform Commercial Code, as adopted by ${jurisdiction.region}, applies to most personal property sales.`
+        : `The Sale of Goods Act 1979 (as amended) applies UK-wide, including ${jurisdiction.region}.`
+  },
+  {
+    q: `What if the buyer or seller lives in another ${isUS ? 'state' : 'nation'}?`,
+    a: `For vehicle transfers, the bill of sale should follow the law of the state ${isUS ? 'where the vehicle will be registered' : 'where the buyer will register the vehicle'}. The buyer registers in their home ${isUS ? 'state' : 'nation'}.`
+  },
+  {
+    q: `Do I need a witness for a ${jurisdiction.region} bill of sale?`,
+    a: rule.witness_required === true
+      ? `Yes — ${jurisdiction.region} requires the bill of sale to be signed in the presence of at least two witnesses for vehicle transfers.`
+      : `No. Witnesses are not required by ${jurisdiction.region} law for a private bill of sale, although either party can choose to have one for evidentiary value.`
+  },
+  {
+    q: `How long should I keep the bill of sale?`,
+    a: `Both parties should retain a signed original. In ${jurisdiction.region}, the practical retention period is at least the statutory limitation period for breach of contract (${isUS ? 'typically 4-6 years for written contracts' : '6 years under the UK Limitation Act 1980'}), plus the period during which any tax liability arising from the sale could be re-assessed.`
+  },
+  {
+    q: `What if there is a dispute later?`,
+    a: `A signed bill of sale is the primary evidence of a private sale in ${jurisdiction.region}. If a dispute arises, the small claims court (${isUS ? `${jurisdiction.region}'s civil court` : 'County Court / Sheriff Court'}) is usually the first venue. Photographs of the item at handover and the original bill of sale are the most useful evidence.`
+  }
+];
+---
+<BaseLayout
+  title={title}
+  description={lede}
+  modifiedTime={updated}>
+  <BreadcrumbSchema slot="head" crumbs={crumbs} />
+  <HowToSchema slot="head" name={howTo.name} steps={howTo.steps} />
+  <FAQPageSchema slot="head" faq={faq} />
+
+  <div class="container">
+    <Breadcrumb crumbs={crumbs} />
+    <header class="seed-hero">
+      <h1>{h1}</h1>
+      <p class="lede">{lede}</p>
+    </header>
+
+    <section class="rule-card" aria-label={`${jurisdiction.region} requirements`}>
+      <h2>{jurisdiction.region} requirements at a glance</h2>
+      <dl>
+        <dt>Notary required</dt>
+        <dd>{rule.notary_required === true ? 'Yes' : rule.notary_required === false ? 'No' : 'Varies'}</dd>
+        <dt>Witnesses required</dt>
+        <dd>{rule.witness_required === true ? 'Yes' : rule.witness_required === false ? 'No' : 'Varies'}</dd>
+        <dt>Governing statute</dt>
+        <dd>{rule.statute_url ? <a href={rule.statute_url} rel="noopener">{rule.governing_statute}</a> : (rule.governing_statute ?? '—')}</dd>
+        <dt>Vehicle transfer form</dt>
+        <dd>{rule.vehicle_dmv_url ? <a href={rule.vehicle_dmv_url} rel="noopener">{rule.vehicle_dmv_form}</a> : (rule.vehicle_dmv_form ?? '—')}</dd>
+        <dt>Last verified</dt>
+        <dd><time datetime={rule.last_verified}>{rule.last_verified}</time></dd>
+      </dl>
+      {rule.notes ? <p class="notes">{rule.notes}</p> : null}
+    </section>
+
+    <section class="article">
+      <h2>What a bill of sale does in {jurisdiction.region}</h2>
+      <p>A bill of sale records the transfer of ownership of personal property — a car, a boat, a piece of equipment, livestock, sometimes a firearm — from one private party to another. In {jurisdiction.region}, the document acts as both a receipt for the buyer and a release of liability for the seller. Once signed, ownership has changed; the seller is no longer the legal owner and is no longer liable for what the buyer subsequently does with the item.</p>
+
+      <p>{jurisdiction.region}'s position is that {rule.governing_statute ? `${rule.governing_statute} governs the form and effect of these transfers.` : `general principles of contract law govern these transfers.`} The bill of sale itself does not transfer title to a vehicle on its own — that requires the {isUS ? `${jurisdiction.region} DMV` : 'DVLA (or DVA in Northern Ireland)'} to record the change of ownership using the {rule.vehicle_dmv_form ? rule.vehicle_dmv_form : 'appropriate transfer form'}.</p>
+
+      <h2>What to include</h2>
+      <ul>
+        {rule.required_fields.map((f) => <li>{f.replace(/_/g, ' ')}</li>)}
+      </ul>
+      <p>For a vehicle, also include: {rule.vehicle_extra_fields.map((f) => f.replace(/_/g, ' ')).join(', ')}.</p>
+
+      <h2>How {jurisdiction.region} differs</h2>
+      <p>{rule.notes}{rule.notary_required === true ? ` That makes ${jurisdiction.region} stricter than the majority of US states, where notarisation is not required for a private vehicle sale.` : ''}{rule.witness_required === true ? ` ${jurisdiction.region} also requires witnesses, which is unusual.` : ''} For comparison, {isUS ? 'most US states do not require notarisation' : 'other UK nations follow Sale of Goods Act 1979 with no notarisation requirement'}, although having a notary or witness adds evidentiary weight if a dispute later arises.</p>
+
+      <aside class="tip">
+        <h3>Expert tip</h3>
+        <p>Take a photograph of the item, the keys, and both parties at the moment of handover. {jurisdiction.region}'s small claims courts give significant weight to contemporaneous photographic evidence in dispute over the condition of the item at sale. The bill of sale records the transaction; the photograph records the state of the goods.</p>
+      </aside>
+    </section>
+
+    <section class="siblings" aria-label={`Other ${isUS ? 'US states' : 'UK nations'}`}>
+      <h2>Bills of sale in other {isUS ? 'US states' : 'UK nations'}</h2>
+      <ul class="siblings-grid">
+        {siblings.map((s) => (
+          <li><a href={`/bill-of-sale/${s.slug}/`}>{s.region}</a></li>
+        ))}
+        <li><a href="/bill-of-sale/" class="back">Back to all bill-of-sale jurisdictions</a></li>
+      </ul>
+    </section>
+
+    {sources.length > 0 ? <SourceList sources={sources} /> : null}
+    <AuthorBox />
+  </div>
+</BaseLayout>
+
+<style>
+.seed-hero { padding: var(--sp-8) 0 var(--sp-4); }
+.seed-hero h1 { font-size: var(--fs-3xl); margin: 0 0 var(--sp-3); }
+.lede { font-size: var(--fs-lg); color: var(--fg-muted); max-width: var(--content-max); }
+
+.rule-card {
+  background: var(--paper-200); border-left: 4px solid var(--accent);
+  padding: var(--sp-6); border-radius: var(--r-sm);
+  margin: var(--sp-8) 0;
+}
+.rule-card h2 { margin-top: 0; font-size: var(--fs-xl); }
+.rule-card dl {
+  display: grid; grid-template-columns: max-content 1fr;
+  gap: var(--sp-2) var(--sp-6);
+  font-size: var(--fs-sm); margin: 0;
+}
+.rule-card dt { font-weight: 600; color: var(--fg-muted); }
+.rule-card dd { margin: 0; }
+.rule-card .notes { margin: var(--sp-4) 0 0; font-size: var(--fs-sm); font-style: italic; color: var(--fg-muted); }
+
+.article { max-width: var(--content-max); padding: var(--sp-8) 0; }
+.article h2 { margin-top: var(--sp-8); }
+.article ul { padding-left: var(--sp-6); }
+.article aside.tip {
+  background: var(--bg-elev); border-left: 4px solid var(--navy-700);
+  padding: var(--sp-4) var(--sp-6); border-radius: var(--r-sm);
+  margin: var(--sp-6) 0;
+}
+.article aside.tip h3 { margin-top: 0; font-size: var(--fs-lg); }
+
+.siblings { margin: var(--sp-12) 0; padding-top: var(--sp-4); border-top: 1px solid var(--border); }
+.siblings h2 { font-size: var(--fs-xl); }
+.siblings-grid {
+  list-style: none; padding: 0; margin: var(--sp-4) 0 0;
+  display: grid; gap: var(--sp-3);
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+.siblings-grid a {
+  display: block; padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--border); border-radius: var(--r-sm);
+  text-decoration: none; color: var(--fg);
+  font-size: var(--fs-sm);
+}
+.siblings-grid a:hover { border-color: var(--accent); }
+.siblings-grid a.back { border-color: var(--navy-700); color: var(--navy-700); font-weight: 600; }
+</style>
