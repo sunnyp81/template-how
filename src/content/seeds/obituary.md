@@ -12,6 +12,7 @@ related:
   - death-notice
   - funeral-programme
   - sympathy-card
+  - family-tree
 crossCluster:
   - bill-of-sale
   - lesson-plan

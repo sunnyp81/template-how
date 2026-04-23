@@ -12,6 +12,7 @@ related:
   - balance-sheet
   - meeting-minutes
   - executive-summary
+  - letterhead
 crossCluster:
   - bill-of-sale
   - to-do-list

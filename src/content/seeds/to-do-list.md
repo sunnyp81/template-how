@@ -12,6 +12,9 @@ related:
   - meeting-minutes
   - marketing-plan
   - executive-summary
+  - grocery-list
+  - roblox-shirt
+  - travel-itinerary
 crossCluster:
   - lesson-plan
   - capcut

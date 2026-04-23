@@ -12,6 +12,9 @@ related:
   - marketing-plan
   - meeting-minutes
   - executive-summary
+  - travel-itinerary
+  - cornell-notes
+  - family-tree
 crossCluster:
   - venn-diagram
   - harvard-resume

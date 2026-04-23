@@ -12,6 +12,7 @@ related:
   - reference-list
   - resignation-letter
   - letter-of-recommendation
+  - cover-letter-google-docs
 crossCluster:
   - bill-of-sale
   - lesson-plan

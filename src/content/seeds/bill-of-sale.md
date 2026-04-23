@@ -13,6 +13,8 @@ related:
   - nda
   - lease-agreement
   - last-will
+  - cover-letter-google-docs
+  - invoice-google-docs
 crossCluster:
   - obituary
   - profit-and-loss-statement
