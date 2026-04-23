@@ -7,11 +7,19 @@ export default [
   js.configs.recommended,
   {
     files: ['**/*.ts', '**/*.tsx'],
+    plugins: { '@typescript-eslint': ts },
     languageOptions: {
       parser: tsParser,
-      parserOptions: { ecmaVersion: 2022, sourceType: 'module' }
+      parserOptions: { ecmaVersion: 2022, sourceType: 'module' },
+      globals: {
+        window: 'readonly',
+        document: 'readonly',
+        navigator: 'readonly',
+        URL: 'readonly',
+        Blob: 'readonly',
+        localStorage: 'readonly'
+      }
     },
-    plugins: { '@typescript-eslint': ts },
     rules: {
       ...ts.configs.recommended.rules,
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }]
