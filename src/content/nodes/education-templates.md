@@ -6,12 +6,7 @@ lede: Study and classroom templates grounded in learning science, covering note-
 seeds:
   - cornell-notes
   - venn-diagram
-  - graphic-organizer
-  - jeopardy
-  - avery-5160
   - avery-label
-  - soap-note
-  - all-about-me
   - rubric
   - permission-slip
   - certificate-of-achievement

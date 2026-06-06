@@ -9,11 +9,9 @@ difficulty: 1
 renderer: letter
 related:
   - harvard-resume
-  - cover-letter-google-docs
-  - ats-resume
+  - ats-friendly-resume
   - google-docs-resume
   - two-weeks-notice
-  - ats-friendly-resume
 crossCluster:
   - letter-of-recommendation
 audience: [us, uk]

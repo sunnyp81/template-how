@@ -7,11 +7,8 @@ seeds:
   - lesson-plan
   - travel-itinerary
   - itinerary
-  - birth-plan
   - weekly-schedule
-  - daily-schedule
-  - weekly-calendar
-  - weekly-planner
+  - daily-planner
   - meal-planner
   - road-trip-itinerary
   - packing-list

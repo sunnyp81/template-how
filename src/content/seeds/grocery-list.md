@@ -10,7 +10,6 @@ renderer: list-plan
 related:
   - to-do-list
   - checklist
-  - chore-chart
   - daily-planner
   - one-pager
   - vision-board

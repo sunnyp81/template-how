@@ -9,36 +9,19 @@
  *    as the web font — the LCP heading does not reflow when the web font swaps in.
  *
  * The real woff2 files are NOT committed. Drop them into public/fonts/ using the
- * filenames below to activate self-hosting. If they are absent, these @font-face
- * `src` rules simply fail to load and every element falls through the stack to
- * the metric-matched fallback faces — the page still renders correctly and
- * without layout shift. (Preload hints for these files are gated on file
- * existence in BaseLayout.astro so we never request a 404.)
+ * filenames in src/lib/fonts.ts to activate self-hosting.
+ *
+ * IMPORTANT: the self-hosted @font-face `src` rules are intentionally NOT declared
+ * in this always-bundled stylesheet. If they were, the browser would attempt to
+ * fetch `/fonts/*.woff2` (and 404) whenever the files are absent, because the
+ * 'Inter'/'Fraunces' families are first in the token font stacks. Instead those
+ * rules are injected inline from BaseLayout.astro, gated on file existence
+ * (selfHostedFontsAvailable / SELF_HOSTED_FONT_FACE_CSS in src/lib/fonts.ts).
+ * When the files are absent, no @font-face for them exists, so the browser never
+ * requests them and every element falls through to the metric-matched fallback
+ * faces below — correct and layout-shift-free. The preload hints are gated the
+ * same way, so neither a preload nor a font fetch 404 is ever emitted.
  */
-
-/* ---- Self-hosted web fonts (active only when the woff2 files are present) ---- */
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter-roman.var.woff2') format('woff2-variations');
-  font-weight: 400 600;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+2000-206F, U+2122, U+2212;
-}
-@font-face {
-  font-family: 'Fraunces';
-  src: url('/fonts/Fraunces.var.woff2') format('woff2-variations');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Fraunces';
-  src: url('/fonts/Fraunces-Italic.var.woff2') format('woff2-variations');
-  font-weight: 400 500;
-  font-style: italic;
-  font-display: swap;
-}
 
 /* ---- Metric-matched fallback faces (no external files; always available) ----
    Override values are starting points generated to match the web-font metrics;

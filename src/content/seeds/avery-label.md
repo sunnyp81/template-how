@@ -10,8 +10,8 @@ renderer: static-only
 related:
   - venn-diagram
   - cornell-notes
-  - flashcards
-  - worksheet
+  - lesson-plan
+  - rubric
 crossCluster:
   - meeting-minutes
   - lesson-plan

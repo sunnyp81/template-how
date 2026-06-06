@@ -8,11 +8,9 @@ searchVolume: 17000
 difficulty: 5
 renderer: resume
 related:
-  - cover-letter
-  - reference-list
+  - cover-letter-google-docs
   - resignation-letter
   - letter-of-recommendation
-  - cover-letter-google-docs
   - ats-friendly-resume
 crossCluster:
   - bill-of-sale

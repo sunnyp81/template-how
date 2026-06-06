@@ -10,8 +10,7 @@ renderer: static-only
 related:
   - capcut
   - roblox-shirt
-  - flyer
-  - banner
+  - twitch-banner-size
   - tier-list
 crossCluster:
   - funeral-program

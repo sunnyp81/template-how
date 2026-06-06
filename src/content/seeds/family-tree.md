@@ -11,7 +11,6 @@ related:
   - obituary
   - funeral-program
   - birth-announcement
-  - graduation-invitation
   - wanted-poster
   - last-will
 crossCluster:

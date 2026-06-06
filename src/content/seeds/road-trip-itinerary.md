@@ -9,11 +9,12 @@ difficulty: 9
 renderer: list-plan
 related:
   - packing-list
+  - travel-itinerary
   - household-budget
   - meal-planner
   - monthly-calendar
 crossCluster:
-  - travel-itinerary
+  - checklist
 audience: [us, uk]
 wordCountFloor: 1800
 sources:

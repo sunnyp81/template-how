@@ -34,6 +34,18 @@ export const FONT_FILES = [
   'Inter-roman.var.woff2'
 ] as const;
 
+/**
+ * The self-hosted @font-face `src` rules. These are injected inline into <head>
+ * by BaseLayout.astro ONLY when selfHostedFontsAvailable is true, so the browser
+ * never attempts to fetch the woff2 files (and 404) when they are absent. The
+ * metric-matched fallback faces live (always) in src/styles/fonts.css.
+ */
+export const SELF_HOSTED_FONT_FACE_CSS = `
+@font-face{font-family:'Inter';src:url('/fonts/Inter-roman.var.woff2') format('woff2-variations');font-weight:400 600;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+2000-206F,U+2122,U+2212}
+@font-face{font-family:'Fraunces';src:url('/fonts/Fraunces.var.woff2') format('woff2-variations');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Fraunces';src:url('/fonts/Fraunces-Italic.var.woff2') format('woff2-variations');font-weight:400 500;font-style:italic;font-display:swap}
+`.trim();
+
 const publicFontUrl = (name: string) => new URL(`../../public/fonts/${name}`, import.meta.url);
 
 /**

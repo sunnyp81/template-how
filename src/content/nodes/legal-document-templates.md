@@ -9,7 +9,6 @@ seeds:
   - resignation-letter
   - doctors-note
   - offer-letter
-  - recommendation-letter
   - lease-agreement
   - eviction-notice
   - nda

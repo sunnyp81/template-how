@@ -9,10 +9,9 @@ difficulty: 5
 renderer: static-only
 related:
   - cornell-notes
-  - graphic-organizer
-  - all-about-me
-  - avery-5160
   - avery-label
+  - lesson-plan
+  - rubric
 crossCluster:
   - lesson-plan
   - to-do-list

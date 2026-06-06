@@ -5,16 +5,11 @@ headline: Resume and CV templates that make it past the algorithm and into a hum
 lede: Career document templates for job seekers in the US and UK, covering resumes, CVs, cover letters, and employment transitions — built around how modern hiring actually works.
 seeds:
   - harvard-resume
-  - resume
-  - cv
-  - cover-letter
   - ats-friendly-resume
-  - google-docs-resume
   - cover-letter-google-docs
+  - google-docs-resume
   - chronological-resume
   - simple-resume
-  - federal-resume
-  - canva-resume
   - reference-letter
   - character-reference-letter
   - two-weeks-notice

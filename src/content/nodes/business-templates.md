@@ -7,18 +7,11 @@ seeds:
   - profit-and-loss-statement
   - invoice-google-docs
   - meeting-minutes
-  - meeting-notes
-  - letterhead
-  - memo
   - balance-sheet
   - press-release
   - purchase-order
   - estimate
   - expense-report
-  - marketing-plan
-  - seo-report
-  - executive-summary
-  - project-proposal
 updated: '2026-04-23'
 ---
 

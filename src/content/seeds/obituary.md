@@ -9,11 +9,10 @@ difficulty: 4
 renderer: legal-document
 related:
   - eulogy
-  - death-notice
-  - funeral-programme
+  - death-announcement
+  - funeral-program
   - sympathy-card
   - family-tree
-  - funeral-program
   - last-will
 crossCluster:
   - bill-of-sale

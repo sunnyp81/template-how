@@ -10,8 +10,8 @@ renderer: resume
 related:
   - harvard-resume
   - cover-letter-google-docs
-  - linkedin-summary
   - resignation-letter
+  - chronological-resume
 crossCluster:
   - one-pager
   - meeting-minutes

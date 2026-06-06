@@ -25,7 +25,7 @@ sources:
     url: 'https://www.acas.org.uk/resignation-and-dismissals'
     accessed: '2026-06-06'
   - title: 'SHRM — How to Write a Resignation Letter'
-    url: 'https://www.shrm.org/topics-tools/news/employee-relations/how-to-write-resignation-letter'
+    url: 'https://www.shrm.org/topics-tools/employment-law-compliance/next-steps-employee-gives-notice-quitting'
     accessed: '2026-06-06'
 updated: '2026-06-06'
 howTo:
@@ -209,7 +209,7 @@ The authorities that govern resignation and notice in the two markets:
 
 - **Acas — Notice periods when resigning** — [acas.org.uk/notice-periods/notice-when-resigning](https://www.acas.org.uk/notice-periods/notice-when-resigning) — the UK's workplace advisory body sets out the statutory minimum (one week after one month's service) and the rule that contractual notice, where longer, prevails.
 - **Acas — Resignation, retirement and dismissals** — [acas.org.uk/resignation-and-dismissals](https://www.acas.org.uk/resignation-and-dismissals) — covers garden leave, retraction, and constructive dismissal considerations.
-- **SHRM — How to write a resignation letter** — [shrm.org](https://www.shrm.org/topics-tools/news/employee-relations/how-to-write-resignation-letter) — the US HR profession's guidance on the customary two-week notice and the elements of a professional letter.
+- **SHRM — How to write a resignation letter** — [shrm.org](https://www.shrm.org/topics-tools/employment-law-compliance/next-steps-employee-gives-notice-quitting) — the US HR profession's guidance on the customary two-week notice and the elements of a professional letter.
 
 Underlying the UK position is the Employment Rights Act 1996, which sets the statutory minimum notice an employee must give. In the US, the at-will employment doctrine — recognised in every state except Montana for established employees — means there is no statutory notice requirement at all.
 

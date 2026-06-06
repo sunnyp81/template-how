@@ -25,7 +25,7 @@ sources:
     url: 'https://www.gov.uk/employment-contracts-and-conditions'
     accessed: '2026-06-06'
   - title: 'SHRM — Offer letters'
-    url: 'https://www.shrm.org/topics-tools/tools/hr-forms/offer-letter'
+    url: 'https://www.shrm.org/topics-tools/news/talent-acquisition/14-things-job-offer-letter-must-to-effective'
     accessed: '2026-06-06'
 updated: '2026-06-06'
 howTo:
@@ -213,7 +213,7 @@ Notice how this letter does the UK-specific work: it is explicit that acceptance
 
 - **Acas — Job offers** — [acas.org.uk/job-offers](https://www.acas.org.uk/job-offers) — the UK advisory body's guidance on conditional vs unconditional offers and when an offer becomes binding.
 - **gov.uk — Employment contracts and conditions** — [gov.uk/employment-contracts-and-conditions](https://www.gov.uk/employment-contracts-and-conditions) — sets out the written statement of particulars required under the Employment Rights Act 1996.
-- **SHRM — Offer letters** — [shrm.org](https://www.shrm.org/topics-tools/tools/hr-forms/offer-letter) — US HR guidance on at-will language and offer-letter structure.
+- **SHRM — Offer letters** — [shrm.org](https://www.shrm.org/topics-tools/news/talent-acquisition/14-things-job-offer-letter-must-to-effective) — US HR guidance on at-will language and offer-letter structure.
 
 The UK position rests on the Employment Rights Act 1996 (written statement of particulars) and on contract law generally, since an accepted offer forms a contract. The US position rests on the at-will employment doctrine, recognised in every state except Montana for established employees.
 

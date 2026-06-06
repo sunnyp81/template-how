@@ -12,10 +12,6 @@ seeds:
   - birth-announcement
   - death-announcement
   - funeral-order-of-service
-  - graduation-invitation
-  - thank-you-card
-  - christmas-card
-  - birthday-invite
 updated: '2026-06-06'
 ---
 

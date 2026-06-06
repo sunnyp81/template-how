@@ -10,9 +10,8 @@ renderer: static-only
 related:
   - to-do-list
   - grocery-list
-  - project-proposal
-  - executive-summary
   - vision-board
+  - checklist
 crossCluster:
   - ats-friendly-resume
   - itinerary

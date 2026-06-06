@@ -8,10 +8,7 @@ searchVolume: 14000
 difficulty: 11
 renderer: list-plan
 related:
-  - project-proposal
   - meeting-minutes
-  - marketing-plan
-  - executive-summary
   - grocery-list
   - roblox-shirt
   - travel-itinerary

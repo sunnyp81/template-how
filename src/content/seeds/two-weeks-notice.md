@@ -22,7 +22,7 @@ sources:
     url: 'https://www.careeronestop.org/JobSearch/Network/leaving-a-job.aspx'
     accessed: '2026-06-06'
   - title: 'SHRM — How to Resign Professionally'
-    url: 'https://www.shrm.org/topics-tools/news/employee-relations/how-to-resign-professionally'
+    url: 'https://www.shrm.org/topics-tools/news/organizational-employee-development/ask-hr-how-can-rescind-resignation'
     accessed: '2026-06-06'
   - title: 'Indeed Career Guide — Two Weeks Notice Letter'
     url: 'https://www.indeed.com/career-advice/career-development/two-weeks-notice'

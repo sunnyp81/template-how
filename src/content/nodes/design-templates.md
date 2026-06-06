@@ -6,9 +6,7 @@ lede: Creative document and visual templates for CapCut, Roblox, social media, a
 seeds:
   - capcut
   - roblox-shirt
-  - roblox
   - wanted-poster
-  - newspaper
   - storyboard
   - discord-bio
   - tier-list

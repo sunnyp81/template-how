@@ -5,7 +5,7 @@ import Nav from '@/components/ui/Nav.astro';
 import Footer from '@/components/ui/Footer.astro';
 import OrganizationSchema from '@/components/schema/OrganizationSchema.astro';
 import { site } from '@/lib/site';
-import { PRELOAD_FONTS, selfHostedFontsAvailable } from '@/lib/fonts';
+import { PRELOAD_FONTS, selfHostedFontsAvailable, SELF_HOSTED_FONT_FACE_CSS } from '@/lib/fonts';
 
 interface Props {
   title: string;
@@ -58,6 +58,7 @@ const {
   {selfHostedFontsAvailable && PRELOAD_FONTS.map((f) => (
     <link rel="preload" href={f.href} as="font" type={f.type} crossorigin />
   ))}
+  {selfHostedFontsAvailable && <style is:inline set:html={SELF_HOSTED_FONT_FACE_CSS} />}
   <OrganizationSchema />
   <slot name="head" />
   <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-DJ4YSHJZ0J"></script>

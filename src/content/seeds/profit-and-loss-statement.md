@@ -11,8 +11,6 @@ related:
   - invoice-google-docs
   - balance-sheet
   - meeting-minutes
-  - executive-summary
-  - letterhead
   - one-pager
 crossCluster:
   - bill-of-sale

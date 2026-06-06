@@ -9,10 +9,9 @@ difficulty: 10
 renderer: static-only
 related:
   - venn-diagram
-  - graphic-organizer
-  - jeopardy
-  - all-about-me
   - avery-label
+  - lesson-plan
+  - rubric
 crossCluster:
   - lesson-plan
 audience: [us, uk]

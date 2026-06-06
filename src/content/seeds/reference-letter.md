@@ -25,7 +25,7 @@ sources:
     url: 'https://www.acas.org.uk/providing-a-job-reference/what-employers-can-say-in-a-reference'
     accessed: '2026-06-06'
   - title: 'SHRM — How to Write a Letter of Reference for Employment'
-    url: 'https://www.shrm.org/topics-tools/tools/hr-answers/how-to-write-letter-reference-employment'
+    url: 'https://www.shrm.org/topics-tools/news/organizational-employee-development/ask-hr-how-to-write-letter-of-recommendation'
     accessed: '2026-06-06'
 updated: '2026-06-06'
 howTo:

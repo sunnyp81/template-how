@@ -52,16 +52,15 @@ export const TemplateBuilder = ({ schema, filenameStem }: Props) => {
         </label>
       </div>
 
-      <div
-        className="b-pane b-pane-form"
-        aria-hidden={view === 'preview' ? true : undefined}
-      >
+      {/* Do NOT set aria-hidden by view state: on desktop (≥960px) both panes are
+          visually shown (CSS overrides the mobile display:none), so an aria-hidden
+          tied to `view` would hide visible content from assistive tech (WCAG 4.1.2).
+          On mobile the inactive pane is display:none, which already removes it from
+          the accessibility tree — no aria-hidden needed. */}
+      <div className="b-pane b-pane-form">
         <BuilderForm schema={schema} state={state} onChange={set} />
       </div>
-      <div
-        className="b-pane b-pane-preview"
-        aria-hidden={view === 'edit' ? true : undefined}
-      >
+      <div className="b-pane b-pane-preview">
         <BuilderPreview tree={tree} />
       </div>
 

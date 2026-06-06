@@ -8,10 +8,7 @@ searchVolume: 18000
 difficulty: 4
 renderer: list-plan
 related:
-  - project-proposal
-  - marketing-plan
   - meeting-minutes
-  - executive-summary
   - travel-itinerary
   - cornell-notes
   - family-tree

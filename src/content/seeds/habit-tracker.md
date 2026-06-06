@@ -13,8 +13,8 @@ related:
   - google-sheets-calendar
   - meeting-agenda
   - to-do-list
-crossCluster:
   - vision-board
+crossCluster:
   - capcut
 audience: [us, uk]
 wordCountFloor: 1800

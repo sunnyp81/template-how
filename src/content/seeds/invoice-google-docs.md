@@ -10,7 +10,6 @@ renderer: invoice
 related:
   - profit-and-loss-statement
   - meeting-minutes
-  - letterhead
   - balance-sheet
   - one-pager
   - eviction-notice

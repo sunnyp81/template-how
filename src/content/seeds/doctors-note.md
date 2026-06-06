@@ -11,7 +11,7 @@ related:
   - bill-of-sale
   - letter-of-recommendation
   - nda
-  - leave-of-absence
+  - lease-agreement
 crossCluster:
   - meeting-minutes
   - lesson-plan

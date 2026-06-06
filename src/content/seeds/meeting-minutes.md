@@ -10,8 +10,7 @@ renderer: list-plan
 related:
   - profit-and-loss-statement
   - invoice-google-docs
-  - project-proposal
-  - agenda
+  - meeting-agenda
   - balance-sheet
 crossCluster:
   - doctors-note

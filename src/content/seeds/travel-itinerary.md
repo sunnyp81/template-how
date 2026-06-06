@@ -11,7 +11,7 @@ related:
   - lesson-plan
   - itinerary
   - weekly-schedule
-  - birth-plan
+  - monthly-calendar
 crossCluster:
   - grocery-list
 audience: [us, uk]
