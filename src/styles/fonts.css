@@ -1,0 +1,61 @@
+/*
+ * Self-hosted fonts + metric-matched fallbacks.
+ *
+ * Strategy (web.dev font best practices):
+ *  - Self-host subsetted woff2 for Fraunces (display) + Inter (body).
+ *  - font-display: swap so text is visible immediately.
+ *  - Fallback @font-face with ascent/descent/line-gap/size-adjust overrides so
+ *    Georgia (for Fraunces) and the system sans (for Inter) occupy the SAME box
+ *    as the web font — the LCP heading does not reflow when the web font swaps in.
+ *
+ * The real woff2 files are NOT committed. Drop them into public/fonts/ using the
+ * filenames below to activate self-hosting. If they are absent, these @font-face
+ * `src` rules simply fail to load and every element falls through the stack to
+ * the metric-matched fallback faces — the page still renders correctly and
+ * without layout shift. (Preload hints for these files are gated on file
+ * existence in BaseLayout.astro so we never request a 404.)
+ */
+
+/* ---- Self-hosted web fonts (active only when the woff2 files are present) ---- */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-roman.var.woff2') format('woff2-variations');
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+2000-206F, U+2122, U+2212;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/fonts/Fraunces.var.woff2') format('woff2-variations');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/fonts/Fraunces-Italic.var.woff2') format('woff2-variations');
+  font-weight: 400 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---- Metric-matched fallback faces (no external files; always available) ----
+   Override values are starting points generated to match the web-font metrics;
+   they keep the fallback box ~equal to the web font so swap is shift-free. */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Segoe UI'), local('Roboto'), local('Helvetica Neue'), local('Arial');
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 107%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia'), local('Times New Roman');
+  ascent-override: 92%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+  size-adjust: 112%;
+}

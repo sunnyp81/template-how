@@ -42,16 +42,23 @@ a {
 }
 a:hover { color: var(--link-hover); }
 a:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-bold);
   outline-offset: 3px;
   border-radius: var(--r-sm);
 }
+
+/* Dense UI gets a tighter line-height than prose body (--lh-body). */
+.site-nav, .b-form, .b-exports, .b-toggle, .jt, .crumb { line-height: var(--lh-snug); }
 
 img, svg { max-width: 100%; height: auto; display: block; }
 
 .container {
   width: min(100% - var(--sp-8), var(--page-max));
   margin-inline: auto;
+}
+/* Reclaim width on small phones with a narrower gutter. */
+@media (max-width: 479px) {
+  .container { width: min(100% - var(--sp-6), var(--page-max)); }
 }
 
 .sr-only {
@@ -60,4 +67,14 @@ img, svg { max-width: 100%; height: auto; display: block; }
   padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0);
   white-space: nowrap; border: 0;
+}
+
+/* Skip link — visually hidden until focused, then revealed for keyboard users. */
+.skip-link { position: absolute; left: -9999px; top: 0; }
+.skip-link:focus {
+  left: var(--sp-4); top: var(--sp-2); z-index: 50;
+  width: auto; height: auto; clip: auto;
+  background: var(--bg-elev); color: var(--fg);
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--border); border-radius: var(--r-sm);
 }

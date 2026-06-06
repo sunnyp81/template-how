@@ -1,3 +1,13 @@
+@import './fonts.css';
+
+/* Breakpoints (mobile-first, min-width only — documented; CSS custom media
+   needs a build step so we use raw min-width queries throughout):
+     sm  >= 480px   large phones / small tablets portrait
+     md  >= 768px   tablet portrait      -> 2-col grids, inline nav
+     lg  >= 960px   tablet landscape     -> builder goes side-by-side
+     xl  >= 1200px  desktop, page max-width reached
+*/
+
 :root {
   /* Neutrals (paper-warm) */
   --paper-50: #FEFDFB;
@@ -24,28 +34,40 @@
   --fg: var(--navy-900);
   --fg-muted: var(--paper-700);
   --border: var(--paper-300);
-  --accent: var(--amber-500);
+  /* --accent is amber-600 (#B45309 ~4.9:1 on paper) so accent TEXT passes WCAG AA.
+     --accent-bold is bright amber-500, reserved for borders / focus rings / large
+     decorative accents only (it is ~3:1 on paper — fails AA for small text). */
+  --accent: var(--amber-600);
+  --accent-bold: var(--amber-500);
   --accent-fg: #FFFFFF;
   --link: var(--navy-700);
-  --link-hover: var(--amber-500);
+  --link-hover: var(--amber-600);
 
   /* Typography */
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
 
-  /* Type scale */
-  --fs-xs: 0.8125rem;
-  --fs-sm: 0.9375rem;
-  --fs-base: 1.0625rem;
-  --fs-lg: 1.25rem;
-  --fs-xl: 1.5rem;
-  --fs-2xl: 2rem;
-  --fs-3xl: 2.75rem;
-  --fs-4xl: 3.75rem;
+  /* Type scale — fluid at the top (clamp), fixed for UI text.
+     min values keep the homepage h1 (--fs-4xl) at 36px on a 360px phone (no
+     overflow) and the seed h1 (--fs-3xl) at ~31px; all reach today's desktop
+     sizes by ~1200px. */
+  --fs-xs: 0.8125rem;     /* 13px */
+  --fs-sm: 0.9375rem;     /* 15px */
+  --fs-base: 1.0625rem;   /* 17px — reading body */
+  --fs-lg:  clamp(1.125rem, 1.05rem + 0.4vw, 1.25rem);    /* 18 -> 20 */
+  --fs-xl:  clamp(1.3rem,  1.15rem + 0.8vw, 1.5rem);      /* ~21 -> 24 */
+  --fs-2xl: clamp(1.6rem,  1.35rem + 1.3vw, 2rem);        /* ~26 -> 32 */
+  --fs-3xl: clamp(1.95rem, 1.5rem + 2.2vw, 2.75rem);      /* ~31 -> 44 */
+  --fs-4xl: clamp(2.25rem, 1.6rem + 3.2vw, 3.75rem);      /* 36 -> 60 */
 
-  --lh-tight: 1.2;
-  --lh-body: 1.65;
+  --lh-tight: 1.15;
+  --lh-snug:  1.3;        /* dense UI: nav, builder form, table, crumbs */
+  --lh-body:  1.65;
+
+  /* Sticky nav height — consumed by nav, builder toggle, sticky preview so they
+     stay in sync. Raised at lg in the media query below. */
+  --nav-h: 56px;
 
   /* Spacing (4px base) */
   --sp-1: 0.25rem;
@@ -74,15 +96,23 @@
   --page-max: 1200px;
 }
 
+/* Raise the nav height (and everything pinned to it) at lg where the nav has
+   inline links and more vertical padding. */
+@media (min-width: 960px) {
+  :root { --nav-h: 64px; }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: var(--navy-900);
     --bg-elev: var(--navy-700);
     --fg: var(--paper-100);
     --fg-muted: var(--paper-300);
-    --border: var(--navy-500);
+    --border: #2A3A6B;            /* lighter than navy-500 → visible 1px borders on navy-900 */
     --link: var(--amber-400);
     --link-hover: var(--amber-500);
+    --accent: var(--amber-400);   /* amber-400 on navy passes AA */
+    --accent-bold: var(--amber-400);
   }
 }
 
@@ -91,4 +121,5 @@
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+  html { scroll-behavior: auto; }
 }
