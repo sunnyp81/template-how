@@ -15,6 +15,8 @@ seeds:
   - nda
   - rental-agreement
   - operating-agreement
+  - promissory-note
+  - power-of-attorney
   - last-will
 updated: '2026-04-23'
 ---

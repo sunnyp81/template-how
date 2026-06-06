@@ -8,15 +8,17 @@ seeds:
   - resume
   - cv
   - cover-letter
-  - ats-resume
   - ats-friendly-resume
   - google-docs-resume
   - cover-letter-google-docs
+  - chronological-resume
   - simple-resume
   - federal-resume
   - canva-resume
+  - reference-letter
+  - character-reference-letter
   - two-weeks-notice
-  - two-week-notice
+  - thank-you-letter-after-interview
 updated: '2026-04-23'
 ---
 

@@ -9,14 +9,16 @@ seeds:
   - checklist
   - one-pager
   - timesheet
-  - time-sheet
   - daily-planner
   - project-planner
   - vision-board
   - chore-chart
   - sign-up-sheet
   - sign-in-sheet
-updated: '2026-04-23'
+  - google-sheets-calendar
+  - habit-tracker
+  - meeting-agenda
+updated: '2026-06-06'
 ---
 
 Productivity templates are the most democratic category on this site. You do not need a legal reason to use a to-do list or a chore chart. You do not need professional credentials to fill in a timesheet. The barrier to entry is zero; the upside is immediate. That makes this cluster both the highest-volume and the most prone to a specific failure mode: the beautiful, useless planner. The one that gets filled in perfectly for three days, then abandoned, then replaced by another slightly better-looking planner that gets filled in for four days, then abandoned.

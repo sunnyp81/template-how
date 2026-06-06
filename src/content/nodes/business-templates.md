@@ -12,6 +12,9 @@ seeds:
   - memo
   - balance-sheet
   - press-release
+  - purchase-order
+  - estimate
+  - expense-report
   - marketing-plan
   - seo-report
   - executive-summary

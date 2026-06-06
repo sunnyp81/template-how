@@ -12,9 +12,12 @@ seeds:
   - daily-schedule
   - weekly-calendar
   - weekly-planner
-  - meal-plan
-  - meal-planning
-updated: '2026-04-23'
+  - meal-planner
+  - road-trip-itinerary
+  - packing-list
+  - household-budget
+  - monthly-calendar
+updated: '2026-06-06'
 ---
 
 A plan that stays in your head is not a plan — it is an intention. The difference between the two is that a written plan creates accountability, enables collaboration, and survives the moment when you forget what you decided. Planning templates in this category turn intentions into structured documents that can be shared, followed, and revised.

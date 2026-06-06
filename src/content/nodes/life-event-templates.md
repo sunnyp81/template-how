@@ -7,12 +7,16 @@ seeds:
   - obituary
   - family-tree
   - funeral-program
-  - baby-announcement
+  - eulogy
+  - sympathy-card
+  - birth-announcement
+  - death-announcement
+  - funeral-order-of-service
   - graduation-invitation
   - thank-you-card
   - christmas-card
   - birthday-invite
-updated: '2026-04-23'
+updated: '2026-06-06'
 ---
 
 Templates help when words are the hardest part. That sentence deserves to sit at the top of this category because the documents here are unlike any others on this site. A P&L statement is consequential but emotionally neutral. An obituary is not. A funeral programme is not. Even a baby announcement — a joyful occasion — arrives at a moment when new parents are exhausted and overwhelmed, and a template that does the structural thinking for them is a genuine relief.

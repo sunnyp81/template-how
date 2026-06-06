@@ -10,7 +10,7 @@ renderer: static-only
 related:
   - obituary
   - funeral-program
-  - baby-announcement
+  - birth-announcement
   - graduation-invitation
   - wanted-poster
   - last-will

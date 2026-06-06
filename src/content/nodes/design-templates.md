@@ -12,7 +12,10 @@ seeds:
   - storyboard
   - discord-bio
   - tier-list
-updated: '2026-04-23'
+  - email-signature
+  - twitch-banner-size
+  - youtube-banner-size
+updated: '2026-06-06'
 ---
 
 Design templates occupy a different role from the other document categories on this site. A legal template reduces legal risk. A resume template increases hiring success. A design template does something different: it provides a starting creative structure that the user then populates with content that is uniquely theirs. The template is the scaffold; the creative work is what fills it.
