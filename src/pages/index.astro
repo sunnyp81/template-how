@@ -52,9 +52,10 @@ const featured = [
 </BaseLayout>
 
 <style>
-.hero { padding: var(--sp-24) 0 var(--sp-16); }
+.hero { padding: var(--sp-12) 0 var(--sp-8); }
 .hero h1 { max-width: 18ch; font-size: var(--fs-4xl); }
 .lede { font-size: var(--fs-lg); color: var(--fg-muted); max-width: 56ch; }
+@media (min-width: 768px) { .hero { padding: var(--sp-24) 0 var(--sp-16); } }
 
 .featured { padding: var(--sp-12) 0; }
 .tiles {
@@ -79,7 +80,8 @@ const featured = [
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 .cats a {
-  display: block; padding: var(--sp-4) var(--sp-6);
+  display: flex; align-items: center; min-height: 48px;
+  padding: var(--sp-4) var(--sp-6);
   border: 1px solid var(--border); border-radius: var(--r-md);
   text-decoration: none; color: var(--fg);
   font-family: var(--font-display); font-size: var(--fs-lg);

@@ -7,7 +7,7 @@ interface Props {
 
 type SatoriNode = {
   type: string;
-  props: { style?: Record<string, unknown>; children?: SatoriNode | SatoriNode[] | string | null };
+  props: { style?: Record<string, unknown>; children?: SatoriNode | (SatoriNode | string)[] | string | null };
 };
 
 const div = (style: Record<string, unknown>, children: (SatoriNode | string | null)[]): SatoriNode => ({

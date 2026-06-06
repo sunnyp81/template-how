@@ -92,10 +92,12 @@ const { Content } = await entry.render();
 </BaseLayout>
 
 <style>
-.seed-hero { padding: var(--sp-8) 0 var(--sp-4); }
+.seed-hero { padding: var(--sp-6) 0 var(--sp-4); }
 .seed-hero h1 { font-size: var(--fs-3xl); margin: 0 0 var(--sp-3); }
-.builder-section { margin: var(--sp-8) 0; }
+.builder-section { margin: var(--sp-8) 0; padding-bottom: 88px; }
 .builder-section h2 { font-size: var(--fs-xl); }
+@media (min-width: 768px) { .seed-hero { padding: var(--sp-8) 0 var(--sp-4); } }
+@media (min-width: 960px) { .builder-section { padding-bottom: 0; } }
 .prose { max-width: var(--content-max); padding: var(--sp-8) 0; font-size: var(--fs-base); }
 .prose :global(h2) { font-size: var(--fs-2xl); margin-top: var(--sp-12); }
 .prose :global(h3) { font-size: var(--fs-xl); margin-top: var(--sp-8); }
@@ -119,7 +121,8 @@ const { Content } = await entry.render();
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 .related-grid a {
-  display: block; padding: var(--sp-3) var(--sp-4);
+  display: flex; align-items: center; min-height: 48px;
+  padding: var(--sp-3) var(--sp-4);
   border: 1px solid var(--border); border-radius: var(--r-sm);
   text-decoration: none; color: var(--fg);
   text-transform: capitalize; font-size: var(--fs-sm);

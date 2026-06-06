@@ -4,7 +4,8 @@
       "staticDistDir": "./dist",
       "url": [
         "http://localhost/index.html",
-        "http://localhost/legal-document-templates/index.html"
+        "http://localhost/legal-document-templates/index.html",
+        "http://localhost/bill-of-sale/index.html"
       ],
       "numberOfRuns": 3
     },

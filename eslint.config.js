@@ -27,8 +27,10 @@ export default [
   },
   ...astro.configs['flat/recommended'],
   {
-    files: ['scripts/**/*.ts'],
-    languageOptions: { globals: { process: 'readonly', console: 'readonly' } }
+    files: ['scripts/**/*.ts', 'src/integrations/**/*.ts'],
+    languageOptions: {
+      globals: { process: 'readonly', console: 'readonly', fetch: 'readonly', Buffer: 'readonly' }
+    }
   },
   { ignores: ['dist/', '.astro/', 'node_modules/', 'test-results/', 'playwright-report/', '.lighthouseci/'] }
 ];
