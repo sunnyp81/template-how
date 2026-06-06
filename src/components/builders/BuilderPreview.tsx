@@ -3,7 +3,7 @@ import type { DocumentTree } from '@/lib/builder/render';
 interface Props { tree: DocumentTree; }
 
 export const BuilderPreview = ({ tree }: Props) => (
-  <div className="b-preview" aria-live="polite">
+  <div className="b-preview">
     <article className="b-doc">
       <h1 className="b-doc-title">{tree.title}</h1>
       {tree.sections.map((s) => (

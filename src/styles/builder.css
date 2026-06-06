@@ -1,18 +1,56 @@
 @import './tokens.css';
 
+/* --- Mobile-first: single column, Edit/Preview toggle visible --- */
 .b-shell {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sp-6);
-  margin: var(--sp-8) 0;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+  margin: var(--sp-6) 0;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
-  padding: var(--sp-6);
+  padding: var(--sp-4);
+  /* reserve space so client:visible hydration doesn't shift layout (CLS) */
+  min-height: 60svh;
 }
-@media (max-width: 900px) {
-  .b-shell { grid-template-columns: 1fr; }
+
+/* Segmented Edit / Preview control (native radios styled as a segmented control). */
+.b-toggle {
+  position: sticky;
+  top: var(--nav-h, 56px);            /* sit under the sticky nav */
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  padding: 4px;
+  background: var(--paper-200);
+  border-radius: var(--r-md);
+  margin-bottom: var(--sp-2);
 }
+.b-toggle-btn {
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  cursor: pointer;
+  min-height: 44px; font: inherit; font-weight: 600;
+  border-radius: calc(var(--r-md) - 2px);
+  background: transparent; color: var(--fg-muted);
+}
+.b-toggle-btn[data-active="true"] {
+  background: var(--bg-elev); color: var(--fg);
+  box-shadow: var(--shadow-sm);
+}
+/* Visually hide the native radio but keep it operable + focusable. */
+.b-toggle-input {
+  position: absolute; inset: 0; margin: 0;
+  opacity: 0; cursor: pointer;
+}
+.b-toggle-btn:has(.b-toggle-input:focus-visible) {
+  outline: 2px solid var(--accent-bold); outline-offset: 2px;
+}
+
+/* toggle controls which pane shows on mobile */
+.b-shell[data-view="edit"]    .b-pane-preview { display: none; }
+.b-shell[data-view="preview"] .b-pane-form    { display: none; }
 
 .b-form { display: flex; flex-direction: column; gap: var(--sp-6); }
 .b-section { border: 0; padding: 0; margin: 0; }
@@ -34,35 +72,48 @@
 .b-help { font-size: var(--fs-xs); color: var(--fg-muted); margin-top: var(--sp-1); }
 
 .b-input {
-  width: 100%;
-  padding: var(--sp-2) var(--sp-3);
+  width: 100%; min-height: 44px;
+  padding: var(--sp-3);
   border: 1px solid var(--border);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-md);
   background: var(--bg);
   color: var(--fg);
-  font: inherit;
-  font-size: var(--fs-base);
+  font-family: inherit;
+  font-size: max(16px, var(--fs-sm));   /* never below 16px → no iOS zoom on focus */
 }
-.b-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+@media (min-width: 768px) { .b-input { font-size: var(--fs-base); } }
+.b-input:focus-visible { outline: 2px solid var(--accent-bold); outline-offset: 1px; }
 .b-textarea { resize: vertical; min-height: 96px; }
 .b-select { background: var(--bg); }
 
 .b-currency { display: flex; align-items: stretch; gap: var(--sp-1); }
 .b-currency-sym {
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 0 var(--sp-3); background: var(--paper-200);
-  border-radius: var(--r-sm); font-family: var(--font-mono);
+  padding: 0 var(--sp-3);
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  color: var(--fg-muted);
+  border-radius: var(--r-md); font-family: var(--font-mono);
 }
 
-.b-checkbox { width: 18px; height: 18px; }
+/* Checkbox: whole row is the tap target, control is 24px (>= touch min). */
+.b-checkbox-row {
+  display: flex; align-items: center; gap: var(--sp-3);
+  min-height: 44px; cursor: pointer;
+}
+.b-checkbox {
+  width: 24px; height: 24px; flex: none;
+  accent-color: var(--accent-bold);
+}
+.b-checkbox-row .b-checkbox-label { font-size: var(--fs-base); }
+.b-checkbox:focus-visible { outline: 2px solid var(--accent-bold); outline-offset: 2px; }
 
 .b-preview {
   background: var(--paper-50);
   border: 1px solid var(--border);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-md);
   padding: var(--sp-6);
-  overflow: auto;
-  max-height: 600px;
+  box-shadow: var(--shadow-md);   /* reads as an intentional white sheet on dark pages */
+  max-height: none; overflow: visible;   /* let the page scroll on mobile */
 }
 .b-doc { font-family: var(--font-display); color: #111; line-height: 1.55; }
 .b-doc-title { font-size: var(--fs-2xl); margin: 0 0 var(--sp-6); text-align: center; }
@@ -71,20 +122,49 @@
 .b-doc-row { margin: 0 0 var(--sp-1); font-family: var(--font-body); font-size: var(--fs-sm); }
 .b-doc-empty { color: var(--paper-500); }
 
+/* --- Export bar: pinned to viewport bottom on mobile, thumb-reachable --- */
 .b-exports {
-  display: flex; gap: var(--sp-3);
-  margin-top: var(--sp-4); flex-wrap: wrap;
-  position: sticky; bottom: 0;
-  background: var(--bg-elev);
-  padding: var(--sp-3) 0;
+  display: flex; gap: var(--sp-2); flex-wrap: nowrap;
+  overflow-x: auto;                      /* horizontal scroll if buttons overflow */
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 8;
+  padding: var(--sp-3) var(--sp-4);
+  padding-bottom: calc(var(--sp-3) + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--bg-elev) 94%, transparent);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--border);
 }
 .b-btn {
   appearance: none;
   border: 1px solid var(--border); background: var(--bg);
-  color: var(--fg); padding: var(--sp-3) var(--sp-4);
-  border-radius: var(--r-sm); font: inherit; cursor: pointer;
+  color: var(--fg);
+  min-height: 48px; padding: 0 var(--sp-4); white-space: nowrap;
+  border-radius: var(--r-md); font: inherit; cursor: pointer;
   transition: background 120ms ease;
 }
 .b-btn:hover { background: var(--paper-200); }
-.b-btn-primary { background: var(--navy-700); color: var(--paper-50); border-color: var(--navy-700); }
+.b-btn:disabled { opacity: 0.6; cursor: progress; }
+.b-btn-primary { background: var(--navy-700); color: var(--paper-50); border-color: var(--navy-700); flex: 1 0 auto; }
 .b-btn-primary:hover { background: var(--navy-500); }
+
+/* --- lg: real two-column, no toggle, in-pane export bar --- */
+@media (min-width: 960px) {
+  .b-shell {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-6);
+    padding: var(--sp-6);
+    min-height: 0;
+    align-items: start;
+  }
+  .b-toggle { display: none; }
+  .b-shell[data-view] .b-pane-form,
+  .b-shell[data-view] .b-pane-preview { display: block; }  /* override mobile hiding */
+  .b-pane-preview { position: sticky; top: calc(var(--nav-h, 64px) + var(--sp-4)); }
+  .b-preview { max-height: 70vh; overflow: auto; }
+
+  /* span both columns so the export bar sits below both panes */
+  .b-exports {
+    grid-column: 1 / -1;
+    position: static; backdrop-filter: none; border-top: 0;
+    padding: var(--sp-3) 0; margin-top: var(--sp-4); flex-wrap: wrap;
+  }
+}

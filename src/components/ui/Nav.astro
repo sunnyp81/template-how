@@ -6,13 +6,38 @@ import { NODE_SLUGS, NODE_LABELS } from '@/lib/site';
     <a href="/" class="wordmark" aria-label="Template.how home">
       <strong>Template</strong><span class="dot">.</span><span class="tld">how</span>
     </a>
-    <ul class="nav-links">
-      {NODE_SLUGS.map((slug) => (
-        <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
-      ))}
-    </ul>
+    <details class="nav-disclosure">
+      <summary class="nav-toggle">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </summary>
+      <ul class="nav-links">
+        {NODE_SLUGS.map((slug) => (
+          <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
+        ))}
+      </ul>
+    </details>
   </div>
 </nav>
+
+<script is:inline>
+  // Progressive enhancement: close the mobile drawer on Escape or outside-click.
+  // Zero-JS works (native <details>); this just polishes the UX.
+  (function () {
+    var d = document.querySelector('.nav-disclosure');
+    if (!d) return;
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && d.open) {
+        d.open = false;
+        var s = d.querySelector('summary');
+        if (s) s.focus();
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (d.open && !d.contains(e.target)) d.open = false;
+    });
+  })();
+</script>
 
 <style>
 .site-nav {
@@ -23,7 +48,9 @@ import { NODE_SLUGS, NODE_LABELS } from '@/lib/site';
 }
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between;
-  padding: var(--sp-4) 0;
+  min-height: var(--nav-h);
+  padding: var(--sp-2) 0;
+  position: relative;
 }
 .wordmark {
   font-family: var(--font-display);
@@ -34,17 +61,52 @@ import { NODE_SLUGS, NODE_LABELS } from '@/lib/site';
 }
 .wordmark .dot { color: var(--accent); }
 .wordmark .tld { color: var(--fg-muted); font-weight: 400; }
+
+/* --- Mobile: <details> hamburger drawer --- */
+.nav-disclosure { position: static; }
+.nav-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; cursor: pointer; list-style: none;
+  border-radius: var(--r-sm);
+}
+.nav-toggle::-webkit-details-marker { display: none; }
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--accent-bold); outline-offset: 2px;
+}
+.nav-toggle-bars, .nav-toggle-bars::before, .nav-toggle-bars::after {
+  content: ""; display: block; width: 22px; height: 2px;
+  background: var(--fg); position: relative;
+}
+.nav-toggle-bars::before { position: absolute; top: -7px; }
+.nav-toggle-bars::after  { position: absolute; top:  7px; }
+
 .nav-links {
   display: flex; gap: var(--sp-6); list-style: none; margin: 0; padding: 0;
-  flex-wrap: wrap;
+}
+.nav-disclosure[open] .nav-links {
+  position: absolute; left: 0; right: 0; top: 100%;
+  flex-direction: column; gap: 0;
+  background: var(--bg-elev); border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-md); padding: var(--sp-2) 0; z-index: 11;
 }
 .nav-links a {
-  font-size: var(--fs-sm);
+  display: block; padding: var(--sp-4) var(--sp-6); min-height: 48px;
+  font-size: var(--fs-base);
   color: var(--fg-muted);
   text-decoration: none;
 }
 .nav-links a:hover { color: var(--accent); }
-@media (max-width: 860px) {
-  .nav-links { display: none; }
+
+/* --- Desktop (md+): inline links, no toggle --- */
+@media (min-width: 768px) {
+  .nav-inner { padding: var(--sp-4) 0; }
+  .nav-toggle { display: none; }
+  .nav-disclosure { position: static; }
+  .nav-links {
+    display: flex !important; position: static !important;
+    flex-direction: row; gap: var(--sp-6); flex-wrap: wrap;
+    background: none; box-shadow: none; border: 0; padding: 0;
+  }
+  .nav-links a { padding: 0; min-height: 0; font-size: var(--fs-sm); }
 }
 </style>

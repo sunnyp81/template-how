@@ -27,7 +27,7 @@ const renderField = (f: BuilderField, state: BuilderState, onChange: Props['onCh
     case 'currency': return <CurrencyField {...common} currency={f.currency} value={String(value ?? '')} onChange={(v) => onChange(f.id, v)} />;
     case 'date': return <DateField {...common} value={String(value ?? '')} onChange={(v) => onChange(f.id, v)} />;
     case 'checkbox': return <CheckboxField {...common} value={Boolean(value)} onChange={(v) => onChange(f.id, v)} />;
-    case 'number': return <TextField {...common} value={String(value ?? '')} onChange={(v) => onChange(f.id, v)} />;
+    case 'number': return <TextField {...common} type="number" inputMode="numeric" autoComplete="off" value={String(value ?? '')} onChange={(v) => onChange(f.id, v)} />;
   }
 };
 
