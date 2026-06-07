@@ -10,3 +10,6 @@ dist/
 .lighthouseci/
 test-results/
 playwright-report/
+
+# Claude Code agent worktrees / local state
+.claude/
