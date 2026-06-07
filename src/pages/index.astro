@@ -11,6 +11,7 @@ import Grid from '@/components/ui/Grid.astro';
 import Eyebrow from '@/components/ui/Eyebrow.astro';
 import HubCard from '@/components/home/HubCard.astro';
 import StepCard from '@/components/home/StepCard.astro';
+import WebSiteSchema from '@/components/schema/WebSiteSchema.astro';
 
 // --- Data ---------------------------------------------------------------
 const nodes = await getCollection('nodes');
@@ -61,6 +62,7 @@ const featured = [
 <BaseLayout
   title="Free US + UK templates you can fill in and export"
   description="A working library of free US and UK templates — bills of sale, resumes, invoices, lesson plans, and more. Fill them in your browser, then export to PDF or DOCX. Source-verified, jurisdiction-aware, no sign-up.">
+  <WebSiteSchema slot="head" />
 
   <!-- HERO -->
   <Section as="header" tone="default" space="sm" container="page" class="hero" aria-labelledby="hero-h">

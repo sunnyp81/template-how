@@ -62,11 +62,12 @@ const tocItems = [
 <BaseLayout
   title={data.title}
   description={data.definitionalLede}
-  modifiedTime={data.updated}>
+  modifiedTime={data.updated}
+  article={{ headline: data.h1, description: data.definitionalLede }}>
   <BreadcrumbSchema slot="head" crumbs={crumbs} />
   <HowToSchema slot="head" name={data.howTo.name} steps={data.howTo.steps} />
   <FAQPageSchema slot="head" faq={data.faq} />
-  <SoftwareApplicationSchema slot="head" name={data.title} />
+  {hasBuilder && <SoftwareApplicationSchema slot="head" name={data.title} />}
 
   {/* ---- Page head ---- */}
   <header class="seed-head">

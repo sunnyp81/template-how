@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="template.how">
+  <rect width="512" height="512" rx="96" fill="#1C2E5F"/>
+  <!-- Document sheet -->
+  <rect x="150" y="120" width="212" height="272" rx="16" fill="#FAF7F2"/>
+  <!-- Amber header band -->
+  <rect x="150" y="120" width="212" height="40" rx="16" fill="#D97706"/>
+  <rect x="150" y="140" width="212" height="20" fill="#D97706"/>
+  <!-- Serif "T" brandmark -->
+  <text x="256" y="312" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="180" font-weight="600" fill="#1C2E5F">T</text>
+  <!-- Text lines -->
+  <rect x="186" y="336" width="140" height="14" rx="7" fill="#D8D2C4"/>
+  <rect x="186" y="360" width="96" height="14" rx="7" fill="#D8D2C4"/>
+  <!-- Amber accent dot -->
+  <circle cx="338" cy="367" r="11" fill="#D97706"/>
+</svg>

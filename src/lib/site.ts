@@ -3,7 +3,12 @@ export const site = {
   tagline: 'US + UK templates — built to be read, used, and cited.',
   url: 'https://template.how',
   locale: 'en',
-  defaultOgImage: '/og/default.png'
+  defaultOgImage: '/og/default.png',
+  logo: '/logo.svg',
+  // Public profiles for the publishing organisation (used as Organization.sameAs).
+  sameAs: [
+    'https://twitter.com/2012infinite'
+  ]
 } as const;
 
 export const author = {
@@ -16,6 +21,22 @@ export const author = {
     'https://clutch.co/profile/sunny-patel'
   ]
 } as const;
+
+/**
+ * Stable JSON-LD node identifiers. Every schema block references these `@id`s
+ * so Organization, Person, the logo image and the website resolve to ONE entity
+ * each across the whole site (and across multiple <script> blocks on a page),
+ * instead of duplicated, unlinked islands.
+ */
+export const schemaId = {
+  organization: `${site.url}/#organization`,
+  person: `${site.url}/#person`,
+  logo: `${site.url}/#logo`,
+  website: `${site.url}/#website`
+} as const;
+
+/** Absolute URL for the brand logo image (matches public/logo.svg). */
+export const logoUrl = `${site.url}${site.logo}`;
 
 export const NODE_SLUGS = [
   'legal-document-templates',

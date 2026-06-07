@@ -1,16 +1,45 @@
 ---
-import { site, author } from '@/lib/site';
+/**
+ * Base entity graph emitted on every page (from BaseLayout):
+ *   Organization  → publisher / founder
+ *   Person        → Sunny Patel (founder + the site's author)
+ *   ImageObject   → the brand logo
+ *
+ * All three carry stable `@id`s (see src/lib/site.ts) so that Article,
+ * WebSite and the author-card Person (AuthorBox) reference them by `@id`
+ * and resolve to ONE entity each — no duplicated islands.
+ */
+import { site, author, schemaId, logoUrl } from '@/lib/site';
+
+const graph = [
+  {
+    '@type': 'Organization',
+    '@id': schemaId.organization,
+    name: site.name,
+    url: site.url,
+    logo: { '@id': schemaId.logo },
+    image: { '@id': schemaId.logo },
+    ...(site.sameAs.length ? { sameAs: [...site.sameAs] } : {}),
+    founder: { '@id': schemaId.person }
+  },
+  {
+    '@type': 'ImageObject',
+    '@id': schemaId.logo,
+    url: logoUrl,
+    contentUrl: logoUrl,
+    caption: site.name
+  },
+  {
+    '@type': 'Person',
+    '@id': schemaId.person,
+    name: author.name,
+    jobTitle: author.jobTitle,
+    url: author.url,
+    sameAs: [...author.sameAs]
+  }
+];
 ---
 <script is:inline type="application/ld+json" set:html={JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: site.name,
-  url: site.url,
-  logo: `${site.url}/logo.svg`,
-  founder: {
-    '@type': 'Person',
-    name: author.name,
-    url: author.url,
-    sameAs: author.sameAs
-  }
+  '@graph': graph
 })} />

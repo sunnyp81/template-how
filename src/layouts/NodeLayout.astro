@@ -69,7 +69,8 @@ const updatedLabel = updated.toLocaleDateString('en-GB', {
 <BaseLayout
   title={`${NODE_LABELS[slug]} templates`}
   description={lede}
-  modifiedTime={updated}>
+  modifiedTime={updated}
+  article={{ headline, description: lede }}>
   <BreadcrumbSchema slot="head" crumbs={crumbs} />
 
   <Container size="page">

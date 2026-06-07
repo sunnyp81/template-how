@@ -1,0 +1,27 @@
+---
+/**
+ * WebSite JSON-LD for the homepage.
+ *
+ * Carries the stable website `@id` and links its publisher to the canonical
+ * Organization by `@id` (materialised by OrganizationSchema in BaseLayout),
+ * so no Organization is duplicated.
+ *
+ * NOTE: no `potentialAction`/SearchAction is emitted — the site has no
+ * search-results endpoint. A sitelinks SearchBox must point at a real query
+ * URL template, so omitting it is correct until a search page exists.
+ */
+import { site, schemaId } from '@/lib/site';
+
+const website = {
+  '@type': 'WebSite',
+  '@id': schemaId.website,
+  name: site.name,
+  url: site.url,
+  inLanguage: 'en',
+  publisher: { '@id': schemaId.organization }
+};
+---
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [website]
+})} />

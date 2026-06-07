@@ -4,6 +4,7 @@ import '@/styles/print.css';
 import Nav from '@/components/ui/Nav.astro';
 import Footer from '@/components/ui/Footer.astro';
 import OrganizationSchema from '@/components/schema/OrganizationSchema.astro';
+import ArticleSchema from '@/components/schema/ArticleSchema.astro';
 import { site } from '@/lib/site';
 import { PRELOAD_FONTS, selfHostedFontsAvailable, SELF_HOSTED_FONT_FACE_CSS } from '@/lib/fonts';
 
@@ -15,6 +16,14 @@ interface Props {
   noindex?: boolean;
   publishedTime?: Date;
   modifiedTime?: Date;
+  /**
+   * When set, emit a linked Article JSON-LD node for this content page.
+   * `headline`/`description` default to the page title/description.
+   */
+  article?: {
+    headline?: string;
+    description?: string;
+  };
 }
 
 // Derive per-page OG image path from pathname slug; falls back to /og/default.png
@@ -28,8 +37,25 @@ const {
   ogImage = _defaultOg,
   noindex = false,
   publishedTime,
-  modifiedTime
+  modifiedTime,
+  article
 } = Astro.props;
+
+// Resolve the absolute OG image once — reused by the og:image meta and, when
+// this is a content page, the Article schema's `image`.
+const ogImageAbs = new URL(ogImage, site.url).toString();
+
+// Article schema is emitted only for content pages (those that pass `article`).
+// datePublished falls back to dateModified when no explicit publish date exists.
+const articleSchema = article
+  ? {
+      headline: article.headline ?? title,
+      description: article.description ?? description,
+      image: ogImageAbs,
+      datePublished: (publishedTime ?? modifiedTime ?? new Date()).toISOString(),
+      dateModified: (modifiedTime ?? publishedTime ?? new Date()).toISOString()
+    }
+  : null;
 ---
 <!doctype html>
 <html lang={site.locale}>
@@ -44,7 +70,7 @@ const {
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:image" content={new URL(ogImage, site.url).toString()} />
+  <meta property="og:image" content={ogImageAbs} />
   <meta name="twitter:card" content="summary_large_image" />
   {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
   {modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
@@ -60,6 +86,16 @@ const {
   ))}
   {selfHostedFontsAvailable && <style is:inline set:html={SELF_HOSTED_FONT_FACE_CSS} />}
   <OrganizationSchema />
+  {articleSchema && (
+    <ArticleSchema
+      url={canonical}
+      headline={articleSchema.headline}
+      description={articleSchema.description}
+      image={articleSchema.image}
+      datePublished={articleSchema.datePublished}
+      dateModified={articleSchema.dateModified}
+    />
+  )}
   <slot name="head" />
   <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-DJ4YSHJZ0J"></script>
   <script is:inline>window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-DJ4YSHJZ0J');</script>

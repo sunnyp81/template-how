@@ -154,7 +154,8 @@ const faq = [
 <BaseLayout
   title={title}
   description={lede}
-  modifiedTime={updated}>
+  modifiedTime={updated}
+  article={{ headline: h1, description: lede }}>
   <BreadcrumbSchema slot="head" crumbs={crumbs} />
   <HowToSchema slot="head" name={howTo.name} steps={howTo.steps} />
   <FAQPageSchema slot="head" faq={faq} />

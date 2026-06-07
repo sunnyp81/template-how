@@ -1,0 +1,49 @@
+---
+/**
+ * Article JSON-LD for content pages (seeds, hubs, variants).
+ *
+ * Emits a single-node `@graph` whose Article references the canonical
+ * Organization, Person and logo entities by `@id` (defined in
+ * src/lib/site.ts and materialised once per page by OrganizationSchema).
+ * Nothing is duplicated — author → Person, publisher → Organization,
+ * image → the OG image — so the whole page resolves to ONE coherent graph.
+ *
+ * All inputs are pre-resolved to absolute https values by the caller
+ * (BaseLayout), so this component does no URL math of its own.
+ */
+import { schemaId } from '@/lib/site';
+
+interface Props {
+  /** Absolute canonical URL of the page (mainEntityOfPage + @id base). */
+  url: string;
+  headline: string;
+  description: string;
+  /** Absolute URL of the page's OG image. */
+  image: string;
+  /** ISO 8601 publish date. */
+  datePublished: string;
+  /** ISO 8601 last-modified date. */
+  dateModified: string;
+}
+
+const { url, headline, description, image, datePublished, dateModified } = Astro.props;
+
+const article = {
+  '@type': 'Article',
+  '@id': `${url}#article`,
+  headline,
+  description,
+  inLanguage: 'en',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  url,
+  image,
+  datePublished,
+  dateModified,
+  author: { '@id': schemaId.person },
+  publisher: { '@id': schemaId.organization }
+};
+---
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [article]
+})} />
