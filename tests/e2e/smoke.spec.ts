@@ -4,7 +4,7 @@ test('homepage renders brand and tiles', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('h1')).toContainText('Templates you can actually fill in and use.');
   await expect(page.locator('.wordmark')).toBeVisible();
-  await expect(page.locator('.tiles li')).toHaveCount(8);
+  await expect(page.locator('.hub-grid li')).toHaveCount(8);
 });
 
 test('legal NODE page renders and links back home', async ({ page }) => {

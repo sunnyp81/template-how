@@ -3,15 +3,18 @@ import { test, expect, type Page } from '@playwright/test';
 // The builder mounts with `client:visible`, so the React island only hydrates
 // once scrolled into view — and hydration completes asynchronously. Interacting
 // with the still-SSR markup (fill/selectOption) before hydration lands gets
-// discarded when React takes over, which made these tests racy in CI. This
-// helper scrolls the island into view and retries the interaction until it
-// "sticks", which is the deterministic signal that hydration has completed.
+// discarded when React takes over, which made these tests racy in CI. Scroll the
+// island into view to trigger hydration, then wait for the `data-hydrated`
+// marker the component sets on mount — a deterministic signal that the form's
+// handlers are attached — before any interaction.
 const builderRegion = (page: Page) =>
   page.locator('[role="region"][aria-label*="builder"]');
 
-async function whenHydrated(page: Page, interact: () => Promise<void>) {
-  await builderRegion(page).scrollIntoViewIfNeeded();
-  await expect(interact).toPass({ timeout: 15_000 });
+async function waitForBuilder(page: Page) {
+  const region = builderRegion(page);
+  await region.scrollIntoViewIfNeeded();
+  await expect(region).toHaveAttribute('data-hydrated', 'true', { timeout: 15_000 });
+  return region;
 }
 
 test('bill-of-sale page renders with builder', async ({ page }) => {
@@ -22,30 +25,26 @@ test('bill-of-sale page renders with builder', async ({ page }) => {
 
 test('builder reflects form input in preview', async ({ page }) => {
   await page.goto('/bill-of-sale/');
-  await whenHydrated(page, async () => {
-    await page.locator('input#seller_name').fill('Sunny Patel');
-    await page.locator('input#buyer_name').fill('Alex Test');
-    await expect(page.locator('.b-doc')).toContainText('Sunny Patel', { timeout: 2_000 });
-    await expect(page.locator('.b-doc')).toContainText('Alex Test', { timeout: 2_000 });
-  });
+  await waitForBuilder(page);
+  await page.locator('input#seller_name').fill('Sunny Patel');
+  await page.locator('input#buyer_name').fill('Alex Test');
+  await expect(page.locator('.b-doc')).toContainText('Sunny Patel');
+  await expect(page.locator('.b-doc')).toContainText('Alex Test');
 });
 
 test('vehicle conditional fields appear when item_type is vehicle', async ({ page }) => {
   await page.goto('/bill-of-sale/');
-  await builderRegion(page).scrollIntoViewIfNeeded();
   await expect(page.locator('input#vin')).toHaveCount(0);
-  await whenHydrated(page, async () => {
-    await page.locator('select#item_type').selectOption('vehicle');
-    await expect(page.locator('input#vin')).toBeVisible({ timeout: 2_000 });
-  });
+  await waitForBuilder(page);
+  await page.locator('select#item_type').selectOption('vehicle');
+  await expect(page.locator('input#vin')).toBeVisible();
 });
 
 test('PDF download triggers a file download', async ({ page }) => {
   await page.goto('/bill-of-sale/');
-  await whenHydrated(page, async () => {
-    await page.locator('input#seller_name').fill('Sunny');
-    await expect(page.locator('.b-doc')).toContainText('Sunny', { timeout: 2_000 });
-  });
+  await waitForBuilder(page);
+  await page.locator('input#seller_name').fill('Sunny');
+  await expect(page.locator('.b-doc')).toContainText('Sunny');
   const downloadPromise = page.waitForEvent('download');
   await page.click('button:has-text("Download PDF")');
   const download = await downloadPromise;

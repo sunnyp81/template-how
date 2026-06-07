@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import type { BuilderSchema } from '@/lib/builder/schema';
 import { useBuilderState } from '@/lib/builder/state';
 import { buildDocumentTree } from '@/lib/builder/render';
@@ -20,6 +20,12 @@ export const TemplateBuilder = ({ schema, filenameStem }: Props) => {
   const progress = useBuilderProgress(schema, state);
   const [view, setView] = useState<View>('edit');
   const [showErrors, setShowErrors] = useState(false);
+  // Flips true only after client-side mount, so the shell carries a precise
+  // "the island is interactive" signal (the form's onChange handlers are now
+  // attached). Used by e2e tests to wait out client:visible hydration instead
+  // of racing it; harmless/no-op for real users.
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
   const groupName = useId();
   const progressId = useId();
 
@@ -39,6 +45,7 @@ export const TemplateBuilder = ({ schema, filenameStem }: Props) => {
     <div
       className="b-shell"
       data-view={view}
+      data-hydrated={hydrated || undefined}
       role="region"
       aria-label={`${schema.title} builder`}
     >
