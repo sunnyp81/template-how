@@ -1,11 +1,18 @@
 ---
-import { author } from '@/lib/site';
+/**
+ * Author Person node. Carries the same `@id` as the founder Person in the base
+ * Organization graph, so when AuthorBox (or the about page) renders this, search
+ * engines merge it into the single canonical Person entity rather than creating
+ * a duplicate island.
+ */
+import { author, schemaId } from '@/lib/site';
 ---
 <script is:inline type="application/ld+json" set:html={JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': schemaId.person,
   name: author.name,
   jobTitle: author.jobTitle,
   url: author.url,
-  sameAs: author.sameAs
+  sameAs: [...author.sameAs]
 })} />
