@@ -9,7 +9,7 @@ import HowToSchema from '@/components/schema/HowToSchema.astro';
 import FAQPageSchema from '@/components/schema/FAQPageSchema.astro';
 import SoftwareApplicationSchema from '@/components/schema/SoftwareApplicationSchema.astro';
 import DefinitionalLede from '@/components/content/DefinitionalLede.astro';
-import DownloadBlock from '@/components/content/DownloadBlock.astro';
+import PrintAction from '@/components/content/PrintAction.astro';
 import AuthorBox from '@/components/content/AuthorBox.astro';
 import SourceList from '@/components/content/SourceList.astro';
 import JurisdictionTable from '@/components/content/JurisdictionTable.astro';
@@ -87,11 +87,7 @@ const tocItems = [
     {hasBuilder ? (
       <BuilderCTA noun={nounLower} target="#builder" audience={data.audience} />
     ) : (
-      <DownloadBlock
-        title={data.h1}
-        pdfUrl={`/downloads/${entry.slug}.pdf`}
-        docxUrl={`/downloads/${entry.slug}.docx`}
-        standalone />
+      <PrintAction title={data.h1} />
     )}
   </Container>
 
@@ -130,12 +126,6 @@ const tocItems = [
         <h2 id="builder-h" class="builder-h">Build your {nounLower}</h2>
         <p class="builder-sub">Fill in the fields below and export a finished PDF or DOCX. Nothing is stored or sent.</p>
         <TemplateBuilder client:visible schema={data.builderSchema} filenameStem={entry.slug} />
-        <div class="builder-alt">
-          <DownloadBlock
-            title={data.h1}
-            pdfUrl={`/downloads/${entry.slug}.pdf`}
-            docxUrl={`/downloads/${entry.slug}.docx`} />
-        </div>
       </Container>
     </section>
   ) : null}

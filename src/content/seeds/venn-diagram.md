@@ -95,15 +95,15 @@ The Venn diagram's power is in the forced categorisation it requires. Placing an
 
 ## Variants and formats
 
-**2-set Venn diagram.** Two overlapping circles. The standard format for most educational and business uses. Three distinct regions: left only, right only, intersection. Downloads: [PDF](/downloads/venn-diagram-2set.pdf) | [DOCX](/downloads/venn-diagram-2set.docx) | [PPTX](/downloads/venn-diagram-2set.pptx).
+**2-set Venn diagram.** Two overlapping circles. The standard format for most educational and business uses. Three distinct regions: left only, right only, intersection.
 
-**3-set Venn diagram.** Three overlapping circles in a triangular arrangement. Seven distinct regions: three single-set areas, three two-set intersections, and one central three-set intersection. The central intersection contains only what is true of all three subjects simultaneously. Downloads: [PDF](/downloads/venn-diagram-3set.pdf) | [DOCX](/downloads/venn-diagram-3set.docx) | [PPTX](/downloads/venn-diagram-3set.pptx).
+**3-set Venn diagram.** Three overlapping circles in a triangular arrangement. Seven distinct regions: three single-set areas, three two-set intersections, and one central three-set intersection. The central intersection contains only what is true of all three subjects simultaneously.
 
-**4-set Venn diagram (ellipse format).** Four overlapping ellipses, rotated to produce 15 distinct intersection regions. Complex but occasionally necessary for mathematics, logic, and scientific comparison. Downloads: [PDF](/downloads/venn-diagram-4set.pdf) | [PPTX](/downloads/venn-diagram-4set.pptx).
+**4-set Venn diagram (ellipse format).** Four overlapping ellipses, rotated to produce 15 distinct intersection regions. Complex but occasionally necessary for mathematics, logic, and scientific comparison.
 
 **Large-format classroom Venn diagram.** A2-sized version (UK) or 11 × 17 tabloid (US) for group activity use — printed large enough for students to write in shared classroom displays. Download the PDF and print at A2 or tabloid scale.
 
-**Blank Venn diagram (no labels).** For teachers who want to provide the structure and have students generate the labels themselves as part of the learning activity. Download: [PDF](/downloads/venn-diagram-blank.pdf).
+**Blank Venn diagram (no labels).** For teachers who want to provide the structure and have students generate the labels themselves as part of the learning activity.
 
 ## Step-by-step: using the template
 

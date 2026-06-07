@@ -1,0 +1,52 @@
+---
+/**
+ * PrintAction — a working "Save as PDF / Print" deliverable for static-only
+ * pages (guides/specs/galleries that have no fillable builder and no pre-made
+ * file). Triggers the browser print dialog, which every browser can render to a
+ * real PDF; the print.css stylesheet already strips chrome for a clean output.
+ * Replaces the previous DownloadBlock that linked to non-existent
+ * /downloads/<slug>.pdf|docx files (404).
+ */
+import Button from '@/components/ui/Button.astro';
+import Eyebrow from '@/components/ui/Eyebrow.astro';
+
+interface Props {
+  title: string;
+  class?: string;
+}
+const { title, class: className = '' } = Astro.props;
+---
+<aside class:list={['dl-block', className]} aria-label="Save or print the template">
+  <div class="dl-head">
+    <Eyebrow tone="accent">Printable</Eyebrow>
+    <p class="dl-label">Open your print dialog and choose “Save as PDF” to download a clean copy of {title}.</p>
+  </div>
+  <div class="dl-row">
+    <Button variant="secondary" class="dl-print-btn" data-print-action>
+      <svg slot="icon" class="dl-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3v10m0 0 4-4m-4 4-4-4M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Save as PDF / Print
+    </Button>
+  </div>
+</aside>
+
+<script>
+  document.querySelectorAll('[data-print-action]').forEach((btn) =>
+    btn.addEventListener('click', () => window.print())
+  );
+</script>
+
+<style>
+.dl-block {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-bold);
+  padding: var(--sp-5) var(--sp-6);
+  border-radius: var(--r-lg);
+}
+.dl-head { margin-bottom: var(--sp-4); }
+.dl-label { font-size: var(--fs-sm); color: var(--fg-muted); margin: 0; text-wrap: pretty; }
+.dl-row { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+.dl-ico { flex: none; }
+</style>
