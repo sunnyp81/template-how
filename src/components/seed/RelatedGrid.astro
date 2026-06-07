@@ -6,6 +6,7 @@
  * trailing arrow affordance. crossCluster items get a subtle "related topic"
  * eyebrow but remain ordinary links in the same grid.
  */
+import { getCollection, type CollectionEntry } from 'astro:content';
 import Card from '@/components/ui/Card.astro';
 import Grid from '@/components/ui/Grid.astro';
 
@@ -18,8 +19,19 @@ interface Props {
 const { related = [], crossCluster = [], id = 'related', class: className = '' } = Astro.props;
 const headingId = `${id}-h`;
 
+// Fallback for slugs with no matching seed entry: humanise the slug rather than
+// emitting a wrong-cased label. Real labels come from the linked page's h1/title.
 const humanise = (slug: string) =>
   slug.replace(/-/g, ' ').replace(/^\w/, (c) => c.toUpperCase());
+
+// Resolve each related/crossCluster slug to the linked page's real h1 (or title),
+// so the anchor text reads "ATS-Friendly Resume Template" rather than the
+// title-cased slug "Ats friendly resume".
+const allSeeds = await getCollection('seeds');
+const labelBySlug = new Map<string, string>(
+  allSeeds.map((s: CollectionEntry<'seeds'>) => [s.slug, s.data.h1 || s.data.title])
+);
+const labelFor = (slug: string) => labelBySlug.get(slug) ?? humanise(slug);
 
 const items = [
   ...related.map((slug) => ({ slug, kind: 'related' as const })),
@@ -34,7 +46,7 @@ const items = [
         <Card href={`/${it.slug}/`} variant="default" padding="md" class="related-card">
           <span class="related-text">
             {it.kind === 'cross' ? <span class="related-kicker">Related topic</span> : null}
-            <span class="related-title">{humanise(it.slug)}</span>
+            <span class="related-title">{labelFor(it.slug)}</span>
           </span>
           <svg class="related-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </Card>
@@ -73,7 +85,6 @@ const items = [
   font-weight: var(--fw-medium);
   color: var(--fg);
   line-height: var(--lh-snug);
-  text-transform: capitalize;
 }
 .related-arrow {
   margin-left: auto;

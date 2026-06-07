@@ -11,7 +11,7 @@ import { NODE_SLUGS, NODE_LABELS, site, author } from '@/lib/site';
       <p class="credit">Edited by <a href={author.url}>{author.name}</a>.</p>
     </div>
     <nav aria-label="Categories" class="footer-col">
-      <h2 class="foot-nav-label">Categories</h2>
+      <p class="foot-nav-label">Categories</p>
       <ul>
         {NODE_SLUGS.map((slug) => (
           <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
@@ -19,7 +19,7 @@ import { NODE_SLUGS, NODE_LABELS, site, author } from '@/lib/site';
       </ul>
     </nav>
     <nav aria-label="Site" class="footer-col">
-      <h2 class="foot-nav-label">Site</h2>
+      <p class="foot-nav-label">Site</p>
       <ul>
         <li><a href="/about/">About</a></li>
         <li><a href="/contact/">Contact</a></li>
