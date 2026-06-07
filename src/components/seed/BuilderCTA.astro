@@ -1,0 +1,92 @@
+---
+/**
+ * BuilderCTA — the above-the-fold conversion band that points readers straight
+ * into the builder (the product). Sits between the page head and the long-form
+ * body. A primary, full-width-on-mobile button jumps to the #builder island;
+ * a Stat strip ("Free", "No sign-up", jurisdictions) builds trust at the fold.
+ * For static-only pages the layout uses DownloadBlock instead of this.
+ */
+import Button from '@/components/ui/Button.astro';
+import Eyebrow from '@/components/ui/Eyebrow.astro';
+import Stat from '@/components/ui/Stat.astro';
+
+interface Props {
+  /** Lower-cased document noun, e.g. "bill of sale". */
+  noun: string;
+  /** Anchor target of the builder island. */
+  target?: string;
+  audience?: string[];
+  class?: string;
+}
+const { noun, target = '#builder', audience = [], class: className = '' } = Astro.props;
+const jurisdictions =
+  audience.length === 0 ? null
+  : audience.map((a) => a.toUpperCase()).join(' + ');
+---
+<div class:list={['builder-cta', className]}>
+  <div class="bc-copy">
+    <Eyebrow tone="accent">Free builder</Eyebrow>
+    <p class="bc-headline">Fill it in, download a clean PDF or DOCX in minutes.</p>
+    <p class="bc-sub">Answer a few fields and export a finished {noun} — nothing to install, no account.</p>
+    <Button href={target} variant="primary" size="lg" block class="bc-btn">
+      Build your {noun}
+      <svg slot="icon-end" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </Button>
+  </div>
+  <ul class="bc-stats">
+    <li><Stat value="Free" label="always" align="start" tone="accent" /></li>
+    <li><Stat value="0" label="sign-up" align="start" /></li>
+    {jurisdictions ? <li><Stat value={jurisdictions} label="jurisdictions" align="start" tone="brand" /></li> : null}
+  </ul>
+</div>
+
+<style>
+.builder-cta {
+  display: grid;
+  gap: var(--sp-6);
+  padding: var(--sp-6);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  background:
+    radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--accent-tint) 70%, transparent), transparent 55%),
+    var(--bg-elev);
+  box-shadow: var(--shadow-sm);
+}
+.bc-copy { display: grid; gap: var(--sp-2); }
+.bc-headline {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-xl);
+  line-height: var(--lh-snug);
+  margin: 0;
+  text-wrap: balance;
+}
+.bc-sub { font-size: var(--fs-sm); color: var(--fg-muted); margin: 0; text-wrap: pretty; }
+.bc-btn { margin-top: var(--sp-3); }
+
+.bc-stats {
+  list-style: none;
+  margin: 0;
+  padding: var(--sp-5) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-6) var(--sp-8);
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 768px) {
+  .builder-cta {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--sp-8);
+    padding: var(--sp-8);
+  }
+  .bc-stats {
+    flex-direction: column;
+    padding: 0 0 0 var(--sp-8);
+    border-top: 0;
+    border-left: 1px solid var(--border);
+    gap: var(--sp-5);
+  }
+}
+</style>

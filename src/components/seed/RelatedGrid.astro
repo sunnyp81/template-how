@@ -1,0 +1,85 @@
+---
+/**
+ * RelatedGrid — the internal-link grid that closes the page and feeds the link
+ * graph (every related + crossCluster href is preserved; validate:links depends
+ * on these). Renders each slug as a Card link with a humanised label and a
+ * trailing arrow affordance. crossCluster items get a subtle "related topic"
+ * eyebrow but remain ordinary links in the same grid.
+ */
+import Card from '@/components/ui/Card.astro';
+import Grid from '@/components/ui/Grid.astro';
+
+interface Props {
+  related?: string[];
+  crossCluster?: string[];
+  id?: string;
+  class?: string;
+}
+const { related = [], crossCluster = [], id = 'related', class: className = '' } = Astro.props;
+const headingId = `${id}-h`;
+
+const humanise = (slug: string) =>
+  slug.replace(/-/g, ' ').replace(/^\w/, (c) => c.toUpperCase());
+
+const items = [
+  ...related.map((slug) => ({ slug, kind: 'related' as const })),
+  ...crossCluster.map((slug) => ({ slug, kind: 'cross' as const }))
+];
+---
+<section class:list={['related', className]} id={id} aria-labelledby={headingId}>
+  <h2 id={headingId} class="related-h">Related templates</h2>
+  <Grid as="ul" min="220px" gap="md" class="related-grid">
+    {items.map((it) => (
+      <li>
+        <Card href={`/${it.slug}/`} variant="default" padding="md" class="related-card">
+          <span class="related-text">
+            {it.kind === 'cross' ? <span class="related-kicker">Related topic</span> : null}
+            <span class="related-title">{humanise(it.slug)}</span>
+          </span>
+          <svg class="related-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </Card>
+      </li>
+    ))}
+  </Grid>
+</section>
+
+<style>
+.related-h {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-2xl);
+  margin: 0 0 var(--sp-6);
+}
+.related-grid { margin: 0; }
+.related-card {
+  flex-direction: row;
+  align-items: center;
+}
+.related-card :global(.u-card__body) {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+}
+.related-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.related-kicker {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent-strong);
+}
+.related-title {
+  font-weight: var(--fw-medium);
+  color: var(--fg);
+  line-height: var(--lh-snug);
+  text-transform: capitalize;
+}
+.related-arrow {
+  margin-left: auto;
+  flex: none;
+  color: var(--fg-subtle);
+  transition: var(--transition-transform), var(--transition-colors);
+}
+.related-card:hover .related-arrow { color: var(--accent-strong); transform: translateX(2px); }
+</style>

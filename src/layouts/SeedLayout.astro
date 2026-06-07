@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumb from '@/components/ui/Breadcrumb.astro';
+import Container from '@/components/ui/Container.astro';
+import Eyebrow from '@/components/ui/Eyebrow.astro';
+import Prose from '@/components/ui/Prose.astro';
 import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema.astro';
 import HowToSchema from '@/components/schema/HowToSchema.astro';
 import FAQPageSchema from '@/components/schema/FAQPageSchema.astro';
@@ -10,6 +13,12 @@ import DownloadBlock from '@/components/content/DownloadBlock.astro';
 import AuthorBox from '@/components/content/AuthorBox.astro';
 import SourceList from '@/components/content/SourceList.astro';
 import JurisdictionTable from '@/components/content/JurisdictionTable.astro';
+import SeedMeta from '@/components/seed/SeedMeta.astro';
+import TableOfContents from '@/components/seed/TableOfContents.astro';
+import BuilderCTA from '@/components/seed/BuilderCTA.astro';
+import HowToSteps from '@/components/seed/HowToSteps.astro';
+import FaqList from '@/components/seed/FaqList.astro';
+import RelatedGrid from '@/components/seed/RelatedGrid.astro';
 import { TemplateBuilder } from '@/components/builders/TemplateBuilder';
 import { NODE_LABELS } from '@/lib/site';
 import '@/styles/builder.css';
@@ -21,13 +30,34 @@ const { entry } = Astro.props;
 // Real structural validation happens inside TemplateBuilder at runtime.
 const data = entry.data as any;
 
+const nodeLabel = NODE_LABELS[data.node as keyof typeof NODE_LABELS];
 const crumbs = [
   { name: 'Home', href: '/' },
-  { name: NODE_LABELS[data.node as keyof typeof NODE_LABELS], href: `/${data.node}/` },
+  { name: nodeLabel, href: `/${data.node}/` },
   { name: data.h1, href: `/${entry.slug}/` }
 ];
 
-const { Content } = await entry.render();
+const { Content, headings } = await entry.render();
+const nounLower = data.h1.toLowerCase();
+const hasBuilder = data.renderer !== 'static-only' && !!data.builderSchema;
+const isBillOfSale = entry.slug === 'bill-of-sale';
+
+// Approximate reading time from the source body word count.
+const wordCount = (entry.body ?? '').split(/\s+/).filter(Boolean).length;
+const readingMinutes = Math.max(1, Math.round(wordCount / 220));
+
+// On-page table of contents: depth-2 body headings (each already carries a
+// rehype-slug id) + the structural sections this layout renders below them.
+const bodyTocItems = (headings ?? [])
+  .filter((h: { depth: number }) => h.depth === 2)
+  .map((h: { slug: string; text: string }) => ({ slug: h.slug, text: h.text }));
+const tocItems = [
+  ...bodyTocItems,
+  ...(isBillOfSale ? [{ slug: 'requirements-by-jurisdiction', text: 'Requirements by jurisdiction' }] : []),
+  { slug: 'how-to', text: data.howTo.name },
+  { slug: 'faq', text: 'FAQ' },
+  ...(hasBuilder ? [{ slug: 'builder', text: 'Build it now' }] : [])
+];
 ---
 <BaseLayout
   title={data.title}
@@ -38,94 +68,156 @@ const { Content } = await entry.render();
   <FAQPageSchema slot="head" faq={data.faq} />
   <SoftwareApplicationSchema slot="head" name={data.title} />
 
-  <div class="container">
-    <Breadcrumb crumbs={crumbs} />
-    <header class="seed-hero">
-      <h1>{data.h1}</h1>
+  {/* ---- Page head ---- */}
+  <header class="seed-head">
+    <Container size="wide">
+      <Breadcrumb crumbs={crumbs} />
+      <Eyebrow tone="accent" as="p" class="seed-kicker">
+        <a href={`/${data.node}/`}>{nodeLabel}</a>
+      </Eyebrow>
+      <h1 class="seed-h1">{data.h1}</h1>
       <DefinitionalLede lede={data.definitionalLede} />
-    </header>
+      <SeedMeta audience={data.audience} updated={data.updated} readingMinutes={readingMinutes} />
+    </Container>
+  </header>
 
-    {data.renderer !== 'static-only' && data.builderSchema ? (
-      <section class="builder-section">
-        <h2>Build your {data.h1.toLowerCase()}</h2>
+  {/* ---- Conversion / deliverable band ---- */}
+  <Container size="wide" class="seed-band">
+    {hasBuilder ? (
+      <BuilderCTA noun={nounLower} target="#builder" audience={data.audience} />
+    ) : (
+      <DownloadBlock
+        title={data.h1}
+        pdfUrl={`/downloads/${entry.slug}.pdf`}
+        docxUrl={`/downloads/${entry.slug}.docx`}
+        standalone />
+    )}
+  </Container>
+
+  {/* ---- Reading column (with TOC rail on wide screens) ---- */}
+  <Container size="wide" class="seed-main">
+    <div class="seed-grid">
+      <aside class="seed-rail">
+        <div class="seed-rail-inner">
+          <TableOfContents items={tocItems} />
+        </div>
+      </aside>
+
+      <div class="seed-col">
+        <Prose measure="content" as="article" class="seed-article">
+          <Content />
+          {isBillOfSale ? (
+            <>
+              <h2 id="requirements-by-jurisdiction">Requirements by jurisdiction</h2>
+              <JurisdictionTable />
+            </>
+          ) : null}
+        </Prose>
+
+        <HowToSteps name={data.howTo.name} steps={data.howTo.steps} id="how-to" class="seed-section" />
+
+        <FaqList faq={data.faq} id="faq" class="seed-section" />
+      </div>
+    </div>
+  </Container>
+
+  {/* ---- Builder island (the product) ---- */}
+  {hasBuilder ? (
+    <section class="builder-section" id="builder" aria-labelledby="builder-h">
+      <Container size="wide">
+        <Eyebrow tone="accent">Free builder · no sign-up</Eyebrow>
+        <h2 id="builder-h" class="builder-h">Build your {nounLower}</h2>
+        <p class="builder-sub">Fill in the fields below and export a finished PDF or DOCX. Nothing is stored or sent.</p>
         <TemplateBuilder client:visible schema={data.builderSchema} filenameStem={entry.slug} />
-      </section>
-    ) : null}
-
-    <DownloadBlock title={data.h1} pdfUrl={`/downloads/${entry.slug}.pdf`} docxUrl={`/downloads/${entry.slug}.docx`} />
-
-    <article class="prose">
-      <Content />
-      {entry.slug === 'bill-of-sale' ? (
-        <>
-          <h2>Requirements by jurisdiction</h2>
-          <JurisdictionTable />
-        </>
-      ) : null}
-    </article>
-
-    <section class="faq" aria-label="Frequently asked questions">
-      <h2>Frequently asked questions</h2>
-      {data.faq.map((qa: { q: string; a: string }) => (
-        <details class="faq-item">
-          <summary>{qa.q}</summary>
-          <p>{qa.a}</p>
-        </details>
-      ))}
+        <div class="builder-alt">
+          <DownloadBlock
+            title={data.h1}
+            pdfUrl={`/downloads/${entry.slug}.pdf`}
+            docxUrl={`/downloads/${entry.slug}.docx`} />
+        </div>
+      </Container>
     </section>
+  ) : null}
 
-    <section class="related" aria-label="Related templates">
-      <h2>Related templates</h2>
-      <ul class="related-grid">
-        {(data.related ?? []).map((slug: string) => (
-          <li><a href={`/${slug}/`}>{slug.replace(/-/g, ' ')}</a></li>
-        ))}
-        {(data.crossCluster ?? []).map((slug: string) => (
-          <li><a href={`/${slug}/`}>{slug.replace(/-/g, ' ')}</a></li>
-        ))}
-      </ul>
-    </section>
-
+  {/* ---- Related + trust footer ---- */}
+  <Container size="wide" class="seed-footer">
+    <RelatedGrid related={data.related} crossCluster={data.crossCluster} id="related" class="seed-section" />
     <SourceList sources={data.sources} />
     <AuthorBox />
-  </div>
+  </Container>
 </BaseLayout>
 
 <style>
-.seed-hero { padding: var(--sp-6) 0 var(--sp-4); }
-.seed-hero h1 { font-size: var(--fs-3xl); margin: 0 0 var(--sp-3); }
-.builder-section { margin: var(--sp-8) 0; padding-bottom: 88px; }
-.builder-section h2 { font-size: var(--fs-xl); }
-@media (min-width: 768px) { .seed-hero { padding: var(--sp-8) 0 var(--sp-4); } }
-@media (min-width: 960px) { .builder-section { padding-bottom: 0; } }
-.prose { max-width: var(--content-max); padding: var(--sp-8) 0; font-size: var(--fs-base); }
-.prose :global(h2) { font-size: var(--fs-2xl); margin-top: var(--sp-12); }
-.prose :global(h3) { font-size: var(--fs-xl); margin-top: var(--sp-8); }
-.prose :global(p), .prose :global(li) { font-size: var(--fs-base); }
-.faq { margin: var(--sp-12) 0; }
-.faq h2 { font-size: var(--fs-2xl); }
-.faq-item {
-  padding: var(--sp-3) 0;
+/* ---- Page head ---- */
+.seed-head { padding-top: var(--sp-4); padding-bottom: var(--space-section-sm); }
+.seed-kicker { margin-top: var(--sp-2); }
+.seed-kicker :global(a) { color: inherit; text-decoration: none; }
+.seed-kicker :global(a:hover) { text-decoration: underline; }
+.seed-h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-4xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--sp-3);
+  text-wrap: balance;
+}
+
+/* ---- Conversion band ---- */
+.seed-band { padding-bottom: var(--space-section-sm); }
+
+/* ---- Reading column + rail ---- */
+.seed-main { padding-bottom: var(--space-section); }
+.seed-grid { display: block; }
+.seed-rail { display: none; }
+.seed-col { min-width: 0; }
+.seed-section { margin-top: var(--space-section-sm); }
+.seed-article :global(h2) { scroll-margin-top: calc(var(--nav-h, 56px) + var(--sp-4)); }
+
+@media (min-width: 960px) {
+  .seed-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 16rem;
+    gap: var(--sp-10);
+    align-items: start;
+  }
+  .seed-col { grid-column: 1; grid-row: 1; }
+  .seed-rail { display: block; grid-column: 2; grid-row: 1; }
+  .seed-rail-inner {
+    position: sticky;
+    top: calc(var(--nav-h, 64px) + var(--sp-4));
+    max-height: calc(100vh - var(--nav-h, 64px) - var(--sp-8));
+    overflow-y: auto;
+  }
+}
+
+/* Anchored sections clear the sticky nav when jumped to. */
+:global(#how-to), :global(#faq), :global(#builder), :global(#related) {
+  scroll-margin-top: calc(var(--nav-h, 56px) + var(--sp-4));
+}
+
+/* ---- Builder island ---- */
+.builder-section {
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  padding-block: var(--space-section);
+  /* extra bottom space so the mobile sticky export bar never overlaps content */
+  padding-bottom: calc(var(--space-section) + 64px);
 }
-.faq-item summary {
-  cursor: pointer; font-weight: 600;
-  font-family: var(--font-display); font-size: var(--fs-lg);
+.builder-h {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-2xl);
+  margin: 0 0 var(--sp-2);
 }
-.faq-item p { margin-top: var(--sp-2); color: var(--fg-muted); }
-.related { margin: var(--sp-12) 0; padding-top: var(--sp-4); border-top: 1px solid var(--border); }
-.related h2 { font-size: var(--fs-xl); }
-.related-grid {
-  list-style: none; padding: 0; margin: var(--sp-4) 0 0;
-  display: grid; gap: var(--sp-3);
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+.builder-sub { color: var(--fg-muted); margin: 0 0 var(--sp-2); max-width: var(--content-max); }
+.builder-alt { margin-top: var(--sp-6); max-width: var(--content-max); }
+
+@media (min-width: 960px) {
+  .builder-section { padding-bottom: var(--space-section); }
 }
-.related-grid a {
-  display: flex; align-items: center; min-height: 48px;
-  padding: var(--sp-3) var(--sp-4);
-  border: 1px solid var(--border); border-radius: var(--r-sm);
-  text-decoration: none; color: var(--fg);
-  text-transform: capitalize; font-size: var(--fs-sm);
-}
-.related-grid a:hover { border-color: var(--accent); }
+
+/* ---- Footer ---- */
+.seed-footer { padding-bottom: var(--space-section); }
 </style>

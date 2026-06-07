@@ -1,14 +1,22 @@
 ---
+/**
+ * SourceList — the cited primary-source list that closes a seed page and earns
+ * trust. Numbered <ol> of <cite> links with the access date. Semantic tokens
+ * only; every source href is preserved.
+ */
+import Eyebrow from '@/components/ui/Eyebrow.astro';
+
 interface Source { title: string; url: string; accessed: string; }
-interface Props { sources: Source[]; }
-const { sources } = Astro.props;
+interface Props { sources: Source[]; class?: string; }
+const { sources, class: className = '' } = Astro.props;
 ---
-<aside class="sources" aria-label="Sources">
-  <h3 class="sl-h">Sources</h3>
+<aside class:list={['sources', className]} aria-labelledby="sources-h">
+  <Eyebrow tone="muted">References</Eyebrow>
+  <h2 id="sources-h" class="sl-h">Sources</h2>
   <ol class="sl-list">
     {sources.map((s) => (
-      <li>
-        <cite><a href={s.url} rel="noopener">{s.title}</a></cite>
+      <li class="sl-item">
+        <cite class="sl-cite"><a href={s.url} rel="noopener">{s.title}</a></cite>
         <span class="sl-accessed">accessed <time datetime={s.accessed}>{s.accessed}</time></span>
       </li>
     ))}
@@ -16,9 +24,34 @@ const { sources } = Astro.props;
 </aside>
 
 <style>
-.sources { margin-top: var(--sp-8); padding-top: var(--sp-4); border-top: 1px solid var(--border); }
-.sl-h { font-size: var(--fs-lg); margin: 0 0 var(--sp-2); }
-.sl-list { font-size: var(--fs-sm); color: var(--fg-muted); padding-left: var(--sp-6); }
-.sl-list li { margin-bottom: var(--sp-2); }
-.sl-accessed { display: inline; margin-left: var(--sp-2); font-style: italic; color: var(--paper-500); }
+.sources {
+  margin-top: var(--space-section-sm);
+  padding-top: var(--sp-6);
+  border-top: 1px solid var(--border);
+  max-width: var(--measure-wide);
+}
+.sl-h {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-xl);
+  margin: 0 0 var(--sp-4);
+}
+.sl-list {
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+  list-style: decimal;
+  padding-left: var(--sp-6);
+  margin: 0;
+}
+.sl-item { margin-bottom: var(--sp-3); }
+.sl-item::marker { color: var(--fg-subtle); font-variant-numeric: tabular-nums; }
+.sl-cite { font-style: normal; }
+.sl-cite a { color: var(--link); font-weight: var(--fw-medium); }
+.sl-cite a:hover { color: var(--link-hover); }
+.sl-accessed {
+  display: inline;
+  margin-left: var(--sp-2);
+  font-style: italic;
+  color: var(--fg-subtle);
+}
 </style>

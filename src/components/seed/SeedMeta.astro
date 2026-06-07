@@ -1,0 +1,66 @@
+---
+/**
+ * SeedMeta — the trust/context strip directly under the H1 + lede. Surfaces the
+ * signals a reader scans before committing: which jurisdictions the template
+ * covers, when it was last verified, and the approximate reading time. Pure
+ * presentation; all values are derived in the layout.
+ */
+import Badge from '@/components/ui/Badge.astro';
+
+interface Props {
+  audience?: string[];
+  updated: Date;
+  readingMinutes?: number;
+  class?: string;
+}
+const { audience = [], updated, readingMinutes, class: className = '' } = Astro.props;
+
+const AUDIENCE_LABELS: Record<string, string> = { us: 'US', uk: 'UK' };
+const iso = updated.toISOString().slice(0, 10);
+const human = updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+<div class:list={['seed-meta', className]}>
+  {audience.length > 0 ? (
+    <div class="sm-group" aria-label="Jurisdictions covered">
+      <span class="sm-icon" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21c-2.5-2.5-3.8-5.8-3.8-9S9.5 5.5 12 3Z" stroke="currentColor" stroke-width="2"/></svg>
+      </span>
+      <ul class="sm-tags">
+        {audience.map((a) => (
+          <li><Badge tone="brand" variant="soft" size="sm">{AUDIENCE_LABELS[a] ?? a.toUpperCase()}</Badge></li>
+        ))}
+      </ul>
+    </div>
+  ) : null}
+
+  <div class="sm-group">
+    <span class="sm-icon" aria-hidden="true">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+    </span>
+    <span class="sm-text">Verified <time datetime={iso}>{human}</time></span>
+  </div>
+
+  {readingMinutes ? (
+    <div class="sm-group">
+      <span class="sm-icon" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="sm-text">{readingMinutes} min read</span>
+    </div>
+  ) : null}
+</div>
+
+<style>
+.seed-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3) var(--sp-5);
+  margin-top: var(--sp-5);
+}
+.sm-group { display: inline-flex; align-items: center; gap: var(--sp-2); }
+.sm-icon { display: inline-flex; color: var(--accent-strong); }
+.sm-text { font-size: var(--fs-sm); color: var(--fg-muted); }
+.sm-text time { font-variant-numeric: tabular-nums; }
+.sm-tags { display: inline-flex; gap: var(--sp-2); list-style: none; margin: 0; padding: 0; }
+</style>
