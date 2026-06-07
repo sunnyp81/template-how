@@ -6,16 +6,29 @@ import { NODE_SLUGS, NODE_LABELS } from '@/lib/site';
     <a href="/" class="wordmark" aria-label="Template.how home">
       <strong>Template</strong><span class="dot">.</span><span class="tld">how</span>
     </a>
+
+    <!-- Desktop inline links (md+) -->
+    <ul class="nav-desktop" aria-label="Categories">
+      {NODE_SLUGS.map((slug) => (
+        <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
+      ))}
+    </ul>
+
+    <!-- Mobile disclosure drawer (zero-JS core; JS only polishes Esc/outside-click) -->
     <details class="nav-disclosure">
-      <summary class="nav-toggle">
+      <summary class="nav-toggle" aria-label="Menu">
         <span class="nav-toggle-bars" aria-hidden="true"></span>
-        <span class="sr-only">Menu</span>
+        <span class="nav-toggle-label">Menu</span>
       </summary>
-      <ul class="nav-links">
-        {NODE_SLUGS.map((slug) => (
-          <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
-        ))}
-      </ul>
+      <div class="nav-drawer">
+        <p class="nav-drawer-label" id="nav-cat-label">Browse by category</p>
+        <ul class="nav-links" aria-labelledby="nav-cat-label">
+          {NODE_SLUGS.map((slug) => (
+            <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
+          ))}
+        </ul>
+        <a href="/#hubs" class="nav-browse">Browse all templates <span aria-hidden="true">→</span></a>
+      </div>
     </details>
   </div>
 </nav>
@@ -41,13 +54,14 @@ import { NODE_SLUGS, NODE_LABELS } from '@/lib/site';
 
 <style>
 .site-nav {
-  position: sticky; top: 0; z-index: 10;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  position: sticky; top: 0; z-index: var(--z-nav);
+  background: color-mix(in srgb, var(--bg-elev) 88%, transparent);
   backdrop-filter: saturate(180%) blur(8px);
   border-bottom: 1px solid var(--border);
 }
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between;
+  gap: var(--sp-4);
   min-height: var(--nav-h);
   padding: var(--sp-2) 0;
   position: relative;
@@ -58,55 +72,93 @@ import { NODE_SLUGS, NODE_LABELS } from '@/lib/site';
   color: var(--fg);
   text-decoration: none;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
+.wordmark:focus-visible { outline: var(--ring); outline-offset: 4px; border-radius: var(--r-xs); }
 .wordmark .dot { color: var(--accent); }
 .wordmark .tld { color: var(--fg-muted); font-weight: 400; }
+
+/* Desktop links hidden on mobile */
+.nav-desktop { display: none; }
 
 /* --- Mobile: <details> hamburger drawer --- */
 .nav-disclosure { position: static; }
 .nav-toggle {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 48px; height: 48px; cursor: pointer; list-style: none;
-  border-radius: var(--r-sm);
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  min-height: 44px; min-width: 44px;
+  padding-inline: var(--sp-3);
+  cursor: pointer; list-style: none;
+  border: 1px solid var(--border); border-radius: var(--r-md);
+  background: var(--bg-elev);
+  font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--fg);
+  transition: var(--transition-colors);
 }
+.nav-toggle:hover { border-color: var(--accent-bold); }
 .nav-toggle::-webkit-details-marker { display: none; }
-.nav-toggle:focus-visible {
-  outline: 2px solid var(--accent-bold); outline-offset: 2px;
-}
+.nav-toggle:focus-visible { outline: var(--ring); outline-offset: 2px; }
+.nav-toggle-label { line-height: 1; }
 .nav-toggle-bars, .nav-toggle-bars::before, .nav-toggle-bars::after {
-  content: ""; display: block; width: 22px; height: 2px;
-  background: var(--fg); position: relative;
+  content: ""; display: block; width: 18px; height: 2px;
+  background: var(--fg); position: relative; border-radius: 2px;
 }
-.nav-toggle-bars::before { position: absolute; top: -7px; }
-.nav-toggle-bars::after  { position: absolute; top:  7px; }
+.nav-toggle-bars::before { position: absolute; top: -6px; }
+.nav-toggle-bars::after  { position: absolute; top:  6px; }
 
-.nav-links {
-  display: flex; gap: var(--sp-6); list-style: none; margin: 0; padding: 0;
-}
-.nav-disclosure[open] .nav-links {
+.nav-drawer {
   position: absolute; left: 0; right: 0; top: 100%;
-  flex-direction: column; gap: 0;
-  background: var(--bg-elev); border-bottom: 1px solid var(--border);
-  box-shadow: var(--shadow-md); padding: var(--sp-2) 0; z-index: 11;
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  padding: var(--sp-4) 0 var(--sp-3);
+  z-index: var(--z-overlay);
 }
+.nav-drawer-label {
+  margin: 0 var(--sp-6) var(--sp-1);
+  font-size: var(--fs-xs); font-weight: var(--fw-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wide);
+  color: var(--fg-subtle);
+}
+.nav-links { display: flex; flex-direction: column; gap: 0; list-style: none; margin: 0; padding: 0; }
 .nav-links a {
-  display: block; padding: var(--sp-4) var(--sp-6); min-height: 48px;
-  font-size: var(--fs-base);
-  color: var(--fg-muted);
+  display: flex; align-items: center; min-height: 44px;
+  padding: var(--sp-3) var(--sp-6);
+  font-size: var(--fs-base); color: var(--fg);
   text-decoration: none;
+  transition: var(--transition-colors);
 }
-.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover { color: var(--accent); background: var(--surface-2); }
+.nav-links a:focus-visible { outline: var(--ring); outline-offset: -2px; }
+
+.nav-browse {
+  display: flex; align-items: center; gap: var(--sp-2);
+  min-height: 44px;
+  margin: var(--sp-3) var(--sp-6) 0;
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--r-md);
+  background: var(--brand); color: var(--brand-fg);
+  font-size: var(--fs-sm); font-weight: var(--fw-semibold);
+  text-decoration: none;
+  transition: var(--transition-colors);
+}
+.nav-browse:hover { background: var(--brand-hover); color: var(--brand-fg); }
+.nav-browse:focus-visible { outline: var(--ring); outline-offset: 2px; }
 
 /* --- Desktop (md+): inline links, no toggle --- */
 @media (min-width: 768px) {
-  .nav-inner { padding: var(--sp-4) 0; }
-  .nav-toggle { display: none; }
-  .nav-disclosure { position: static; }
-  .nav-links {
-    display: flex !important; position: static !important;
-    flex-direction: row; gap: var(--sp-6); flex-wrap: wrap;
-    background: none; box-shadow: none; border: 0; padding: 0;
+  .nav-inner { padding: var(--sp-3) 0; }
+  .nav-disclosure { display: none; }
+  .nav-desktop {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: var(--sp-5);
+    list-style: none; margin: 0; padding: 0;
   }
-  .nav-links a { padding: 0; min-height: 0; font-size: var(--fs-sm); }
+  .nav-desktop a {
+    font-size: var(--fs-sm); color: var(--fg-muted);
+    text-decoration: none; white-space: nowrap;
+    padding-block: var(--sp-1);
+    transition: var(--transition-colors);
+  }
+  .nav-desktop a:hover { color: var(--accent); }
+  .nav-desktop a:focus-visible { outline: var(--ring); outline-offset: 3px; border-radius: var(--r-xs); }
 }
 </style>
