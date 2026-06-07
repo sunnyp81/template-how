@@ -96,11 +96,11 @@ builderSchema:
 
 ## What a weekly schedule template is
 
-A weekly schedule is a map of your time for the next seven days. It is not a to-do list — it does not just record what you need to do, it assigns those things specific slots in the week. The difference between having a task on a list and having it in the schedule is the difference between an intention and a commitment.
+A weekly schedule is a map of your time for the next seven days. It is not a [to-do list](/to-do-list/) — it does not just record what you need to do, it assigns those things specific slots in the week. The difference between having a task on a list and having it in the schedule is the difference between an intention and a commitment.
 
 Most people underestimate how their week is actually structured. ONS data on UK time use shows that paid work accounts for about 4 hours and 23 minutes per day on average for working adults, with another 1 hour 40 minutes on domestic activity and around 3.5 hours on leisure and personal care. The remaining time — commuting, travel, childcare, unstructured downtime — fills the gaps. When you map this out on a weekly template, the picture of where your time actually goes becomes clear, often uncomfortably so.
 
-The weekly schedule template works as the overarching framework for a week: the strategic level. The daily to-do list or task manager works at the tactical level. Both have a role.
+The weekly schedule template works as the overarching framework for a week: the strategic level. The [daily planner](/daily-planner/) or task manager works at the tactical level. Both have a role.
 
 ## When to use one
 
@@ -110,7 +110,7 @@ The weekly schedule template works as the overarching framework for a week: the 
 
 **Accountability and goal pursuit.** If you have a specific goal — run a half marathon, complete a qualification, build a business — the weekly schedule is where you operationalise it. "I will train three times a week" becomes meaningless without "Monday 6am, Wednesday 6am, Saturday 8am" in the schedule.
 
-**Students and school planning.** Mapping lecture slots, self-study blocks, seminar prep, and assignment windows around the fixed timetable is the difference between students who manage their workload and those who miss deadlines.
+**Students and school planning.** Mapping lecture slots, self-study blocks, seminar prep, and assignment windows around the fixed timetable is the difference between students who manage their workload and those who miss deadlines — and teachers can build the teaching side of that timetable from a [lesson plan](/lesson-plan/).
 
 ## What it should include
 

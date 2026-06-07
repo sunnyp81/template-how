@@ -112,7 +112,7 @@ builderSchema:
 
 ## What a daily planner is
 
-A daily planner is a one-day plan that does something a to-do list cannot: it assigns your work to specific times. It combines three things on a single page — a **time-blocked schedule** (the hours of the day in slots), a short **top-priority task list**, and a **notes area** — so that instead of a vague list of things you might get to, you have a deliberate shape for the day.
+A daily planner is a one-day plan that does something a [to-do list](/to-do-list/) cannot: it assigns your work to specific times. It combines three things on a single page — a **time-blocked schedule** (the hours of the day in slots), a short **top-priority task list**, and a **notes area** — so that instead of a vague list of things you might get to, you have a deliberate shape for the day.
 
 The core of it is time-blocking. A to-do list lets you defer anything difficult, because nothing on it has a fixed home; you drift toward whatever feels easiest. A time-blocked day has a slot for deep work, a slot for admin, a slot for calls — so the default becomes "work the plan" rather than "pick the path of least resistance". That shift is the entire value of a daily planner, and it is well-supported: Cal Newport's work on deep work identifies the deliberate scheduling of focused time — not aspirational intent — as a defining habit of highly productive knowledge workers.
 
@@ -182,9 +182,9 @@ The next morning he starts at 9:00 already executing — no time lost deciding. 
 
 A daily planner works best as the bottom layer of a small hierarchy of planning, not as a standalone document. The layers operate at different time horizons and feed into each other:
 
-- **Weekly schedule / weekly plan** — the strategic layer. Once a week, you decide the few outcomes the week is for and map your fixed commitments. This sets the context.
+- **[Weekly schedule](/weekly-schedule/) / weekly plan** — the strategic layer. Once a week, you decide the few outcomes the week is for and map your fixed commitments. This sets the context.
 - **Daily planner** — the tactical layer. Each evening, you pull from the weekly plan into a specific, time-blocked day with a top three. This is where the work actually gets executed.
-- **To-do list** — the backlog. Everything you might do lives here; the daily planner draws from it rather than competing with it.
+- **[To-do list](/to-do-list/)** — the backlog. Everything you might do lives here; the daily planner draws from it rather than competing with it.
 
 The mistake people make is trying to run their whole life from one of these layers. A weekly plan alone is too coarse to execute against — "finish the report this week" does not tell you to sit down at 9am Tuesday. A to-do list alone has no time dimension, so the hard tasks drift. The daily planner is the layer that converts intention into a scheduled commitment, but it relies on the weekly plan for direction and the to-do list for completeness. Used together, the three give you both the big picture and the focused day.
 
@@ -200,7 +200,7 @@ Not everyone's day has the same shape, and the planner should bend to yours rath
 
 **Caregivers and people with fragmented days** benefit from planning around fixed anchors (school runs, naps, appointments) and being realistic about how much focused time genuinely exists between them — often far less than a standard eight-hour assumption. For these, the buffer is not optional; the unexpected is the norm.
 
-The common thread: the techniques — evening planning, top three, time-blocking, energy-matching, buffer, review — are universal, but the grid granularity and block sizes should reflect the real grain of your day, not an idealised office one.
+The common thread: the techniques — evening planning, top three, time-blocking, energy-matching, buffer, review — are universal, but the grid granularity and block sizes should reflect the real grain of your day, not an idealised office one. For the recurring routines you want to repeat day after day rather than schedule afresh, pair the planner with a [habit tracker](/habit-tracker/).
 
 ## UK and US notes
 

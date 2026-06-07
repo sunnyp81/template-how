@@ -5,7 +5,6 @@ headline: Legal document templates, built to stand up
 lede: A working library of legal document templates with per-state United States and per-nation United Kingdom variants. Every template carries its governing statute and a last-verified date. Nothing here is legal advice.
 seeds:
   - bill-of-sale
-  - letter-of-recommendation
   - resignation-letter
   - doctors-note
   - offer-letter

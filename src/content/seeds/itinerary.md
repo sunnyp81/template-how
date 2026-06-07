@@ -1,8 +1,8 @@
 ---
 node: planning-templates
-title: 'Itinerary Template — Free (Business Trip, Conference, Wedding, Relocation)'
+title: 'Itinerary Template — Free Day-by-Day Planner (US + UK)'
 h1: 'Itinerary Template'
-definitionalLede: 'An itinerary template is a time-blocked schedule document that organises the logistics of any multi-day event or trip — covering transport, accommodation, meetings, activities, and contacts — so every participant knows exactly where to be and when.'
+definitionalLede: 'An itinerary template is a time-blocked schedule document that organises the logistics of any multi-day event or trip — a business trip, conference, wedding weekend, or relocation — covering transport, accommodation, meetings, activities, and contacts so every participant knows exactly where to be and when.'
 primaryKeyword: 'itinerary template'
 searchVolume: 16000
 difficulty: 8
@@ -98,11 +98,11 @@ The word "itinerary" is used loosely. A travel itinerary for a family holiday in
 
 This template covers the broader category — any structured, multi-day, time-blocked plan where multiple parties need to know where to be and when. That includes business trips, conference schedules, wedding weekend timelines, relocation plans, sporting tournament programmes, and group travel for corporate away days.
 
-What an itinerary is not: a packing list, a booking confirmation, or a wish list. It is an operational document. The distinction matters because an operational document must be precise about times, places, costs, and contacts. Ambiguity in an itinerary is not charming or flexible — it causes missed trains, wrong hotel lobbies, and conference talks attended by half the intended audience.
+What an itinerary is not: a [packing list](/packing-list/), a booking confirmation, or a wish list. It is an operational document. The distinction matters because an operational document must be precise about times, places, costs, and contacts. Ambiguity in an itinerary is not charming or flexible — it causes missed trains, wrong hotel lobbies, and conference talks attended by half the intended audience.
 
 ## How this template differs from a travel itinerary
 
-The travel itinerary template on this site focuses on holiday and leisure travel: outbound flights, accommodation check-ins, day-by-day tourist activities, restaurant bookings, airport transfers. It is a personal planning tool, usually used by the traveller alone.
+The [travel itinerary](/travel-itinerary/) template on this site focuses on holiday and leisure travel: outbound flights, accommodation check-ins, day-by-day tourist activities, restaurant bookings, airport transfers. It is a personal planning tool, usually used by the traveller alone.
 
 This itinerary template is designed for the broader category:
 
@@ -138,7 +138,7 @@ The structure is the same for all of these. The content is specific to the use c
 
 **Wedding weekend itinerary.** Include a wedding party contact list with roles (MOH, best man, wedding coordinator). Include dress code for each event. Include transportation logistics for each group (bridal party, immediate family, guests). Include the photographer's timeline as a separate embedded section.
 
-**Relocation itinerary.** Include service provider names and reference numbers (removal company, energy suppliers, council tax office). Build in contingency days for delays. Include a checklist of administrative tasks by date (DVLA address update: within 28 days of moving; electoral roll: as soon as possible; GP registration: first week).
+**Relocation itinerary.** Include service provider names and reference numbers (removal company, energy suppliers, council tax office). Build in contingency days for delays. Include a [checklist](/checklist/) of administrative tasks by date (DVLA address update: within 28 days of moving; electoral roll: as soon as possible; GP registration: first week).
 
 ## Step-by-step: building the itinerary
 

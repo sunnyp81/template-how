@@ -1,22 +1,21 @@
 ---
-node: legal-document-templates
+node: resume-templates
 title: 'Letter of Recommendation Template — Free PDF & DOCX'
 h1: 'Letter of Recommendation Template'
-definitionalLede: 'A letter of recommendation is a formal written endorsement from someone who can speak to a candidate''s abilities, character, or professional conduct — submitted to support an application for a university place, a job, an award, or immigration status.'
+definitionalLede: 'A letter of recommendation is the broad, persuasive endorsement that builds a case for a candidate — written by a teacher, manager, or mentor to support an application for a university place, a job, an award, or immigration status, going further than a short factual reference.'
 primaryKeyword: 'letter of recommendation template'
 searchVolume: 34000
 difficulty: 8
 renderer: letter
 related:
-  - bill-of-sale
-  - resignation-letter
-  - offer-letter
-  - nda
-  - lease-agreement
-  - last-will
-  - doctors-note
-crossCluster:
+  - reference-letter
+  - character-reference-letter
+  - cover-letter-google-docs
+  - two-weeks-notice
+  - thank-you-letter-after-interview
   - harvard-resume
+crossCluster:
+  - offer-letter
 audience: [us, uk]
 wordCountFloor: 1800
 sources:
@@ -105,7 +104,7 @@ builderSchema:
 
 ## What a letter of recommendation actually does
 
-A letter of recommendation is not a character reference and it is not a performance review. It occupies a specific niche: a third-party account of a candidate's capabilities, written by someone who has observed those capabilities in context. The reader — an admissions committee, a hiring manager, an immigration officer — is trying to answer a question that the candidate cannot answer for themselves: "Is this person as good as they claim?"
+A letter of recommendation is the broad, persuasive end of the endorsement spectrum. It is not a short factual [reference letter](/reference-letter/), which simply verifies dates and conduct, and it is not a [character reference letter](/character-reference-letter/), which vouches for someone's personal qualities in a court, rental, or immigration context. It occupies a specific niche: a third-party account of a candidate's capabilities, written by someone who has observed those capabilities in context, that builds a case rather than merely confirming facts. The reader — an admissions committee, a hiring manager, an immigration officer — is trying to answer a question that the candidate cannot answer for themselves: "Is this person as good as they claim?"
 
 The structural problem with applications is that candidates, by necessity, present themselves in the most favourable possible light. A personal statement or CV is the candidate's own narrative. A letter of recommendation is the check on that narrative. If the candidate says they are "an exceptional analytical thinker," the recommendation letter either provides evidence of that or it does not. When it does not, the gap between the candidate's self-assessment and their referee's evidence is itself informative.
 
@@ -143,7 +142,7 @@ A letter that leaves out any of these elements is measurably weaker:
 
 **Professional letter (manager to employer).** Shorter and more outcome-focused than an academic letter. Emphasises measurable achievements, reliability, and conduct. Avoids effusive language; employers are experienced at discounting it. A concise, factual, specific letter from a credible source is more effective than three paragraphs of superlatives.
 
-**Character reference.** Required in some immigration cases and in some court proceedings. Attests to the person's character, trustworthiness, and standing in their community. The writer does not need to be an employer or academic — a community leader, religious figure, or longstanding family friend can write a character reference. The structure is the same: who you are, how you know them, specific observations, conclusion.
+**Character reference.** Required in some immigration cases and in some court proceedings. Attests to the person's character, trustworthiness, and standing in their community. The writer does not need to be an employer or academic — a community leader, religious figure, or longstanding family friend can write a character reference. It is a distinct document with its own conventions, covered in full on the [character reference letter](/character-reference-letter/) page, but the structure is the same: who you are, how you know them, specific observations, conclusion.
 
 **Immigration letter (field expert).** For Global Talent, EB-1A, or EB-2 NIW applications, the letter must demonstrate that the applicant is exceptional or of national interest. These letters are highly specific: they cite publications, patents, invited presentations, prizes, and the applicant's standing relative to others in the field. They are often three to four pages. Immigration lawyers typically help applicants select and brief their referees for these letters.
 

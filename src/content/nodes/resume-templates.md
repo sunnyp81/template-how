@@ -10,6 +10,7 @@ seeds:
   - google-docs-resume
   - chronological-resume
   - simple-resume
+  - letter-of-recommendation
   - reference-letter
   - character-reference-letter
   - two-weeks-notice

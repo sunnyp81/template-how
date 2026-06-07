@@ -123,7 +123,7 @@ builderSchema:
 
 A checklist is a structured, reusable list of items to be done or confirmed, each with a tick box, in an order that matters. It exists for one reason: human memory is unreliable under pressure, fatigue, and routine, and a checklist moves the burden of "did I do every step?" off your memory and onto paper. You design it once for a recurring process and run it every time that process happens.
 
-That reusability is what separates a checklist from a to-do list. A to-do list is a collection of one-off tasks for today, in any order, discarded when done. A checklist is the same every time — every flight, every shift handover, every new hire, every trip — because the process is the same every time. "What do I need to do today?" is a to-do list. "What are the exact steps to do this correctly, every time?" is a checklist.
+That reusability is what separates a checklist from a [to-do list](/to-do-list/). A to-do list is a collection of one-off tasks for today, in any order, discarded when done. A checklist is the same every time — every flight, every shift handover, every new hire, every trip — because the process is the same every time. "What do I need to do today?" is a to-do list. "What are the exact steps to do this correctly, every time?" is a checklist.
 
 This is a list-plan page with a builder: define your items, set who is responsible if it is a shared list, and print or save it as a reusable template.
 
@@ -149,7 +149,7 @@ Read-do instructs; do-confirm verifies. Using a tedious read-do list with experi
 Every item must be a single, concrete, **verifiable** action — something you can look at and say "done" or "not done" without argument.
 
 - Bad: "Make sure everything is ready." (Vague, unverifiable, gets skipped.)
-- Good: "Confirm passports are in the bag." / "Send the agenda to attendees." / "Back up the database before deploy."
+- Good: "Confirm passports are in the bag." / "Send the [agenda](/meeting-agenda/) to attendees." / "Back up the database before deploy."
 
 If you cannot immediately judge an item done-or-not, break it into smaller, clearer items. "Tidy the kitchen" becomes "wipe counters", "empty bin", "run dishwasher" — three checkable items instead of one fuzzy one.
 
@@ -161,7 +161,7 @@ If a process genuinely needs many steps, **split it into several focused checkli
 
 ## Order, responsibility, and sign-off
 
-**Order** matters only where it matters. Some checklists are sequence-critical (safety steps that must precede others: "isolate power before opening the panel"). There, enforce the order. Others are just collections to confirm (a packing list), where any order is fine — group those logically (by room, by category) for ease rather than forcing a false sequence.
+**Order** matters only where it matters. Some checklists are sequence-critical (safety steps that must precede others: "isolate power before opening the panel"). There, enforce the order. Others are just collections to confirm (a [packing list](/packing-list/)), where any order is fine — group those logically (by room, by category) for ease rather than forcing a false sequence.
 
 **Responsibility and sign-off** matter for shared checklists. Adding a "responsible person" field per item removes the gap that lets steps fall between people ("I thought you had it"). For handovers, onboarding, and event setup, naming who owns each step — and a completion tick or sign-off — turns a checklist into an accountability tool. For solo checklists, skip it.
 

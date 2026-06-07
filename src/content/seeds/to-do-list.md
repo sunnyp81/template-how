@@ -171,13 +171,13 @@ Both daily and weekly formats are supported. The structural logic is the same; t
 
 **Daily work management.** The most common use. A daily to do list created at the start or end of each working day provides a clear execution plan. Research on goal-setting (Gollwitzer, 1999; Locke and Latham, 2002) consistently shows that implementation intentions — knowing specifically what you will do, when, and in what context — significantly increase the probability of task completion. Writing a to do list is one of the simplest forms of implementation intention.
 
-**Weekly planning.** A weekly to do list takes a broader view: all tasks that need to happen during the five working days, without specifying which day. Combined with a daily list that pulls the day's tasks from the weekly plan, this creates a two-level system that balances flexibility with focus.
+**Weekly planning.** A weekly to do list takes a broader view: all tasks that need to happen during the five working days, without specifying which day. Combined with a [daily planner](/daily-planner/) that pulls the day's tasks from the [weekly schedule](/weekly-schedule/), this creates a two-level system that balances flexibility with focus.
 
 **Freelancer workload management.** A freelance designer, writer, developer, or consultant typically manages multiple clients and projects simultaneously without a manager dictating priorities. A weekly to do list is the external structure that substitutes for the prioritisation a manager would otherwise provide.
 
 **Student assignment tracking.** A weekly academic to do list — covering all assignments, readings, revision tasks, and submission deadlines for the week — prevents the common student pattern of spending the week on the least important or most enjoyable work while the most deadline-critical work sits undone.
 
-**Home and personal tasks.** A to do list is not just for work. Grocery shopping, flat repairs, medical appointments, financial admin — household tasks accumulate and generate the same background anxiety as work tasks if they are not written down and assigned a completion horizon.
+**Home and personal tasks.** A to do list is not just for work. [Grocery shopping](/grocery-list/), flat repairs, medical appointments, financial admin — household tasks accumulate and generate the same background anxiety as work tasks if they are not written down and assigned a completion horizon.
 
 ## What it must include
 
@@ -199,7 +199,7 @@ Both daily and weekly formats are supported. The structural logic is the same; t
 
 **Brain dump list.** An unstructured, uncategorised list created by writing every task, concern, and open loop in one sitting without filtering. Used as a capture exercise at the start of a new week or after a period of high workload to clear working memory. After the brain dump, items are transferred to structured daily or weekly lists.
 
-**Habit tracker.** A to do list for recurring daily tasks — exercise, writing, meditation, study — checked off each day. The template here is for one-off tasks; recurring tasks are better tracked in a habit tracker with a visual chain ("don't break the chain") to motivate consistency.
+**Habit tracker.** A to do list for recurring daily tasks — exercise, writing, meditation, study — checked off each day. The template here is for one-off tasks; recurring tasks are better tracked in a [habit tracker](/habit-tracker/) with a visual chain ("don't break the chain") to motivate consistency.
 
 ## Step-by-step: creating your weekly to do list
 

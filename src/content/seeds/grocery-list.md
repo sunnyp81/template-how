@@ -101,7 +101,7 @@ The second structural difference is quantities. A list that says "milk" leaves a
 
 The most common cause of food waste is not bad intentions — it is buying without a plan for specific use. Items purchased without an attached meal use float in the fridge and cupboard until they expire. WRAP (the UK waste charity) estimates food waste costs the average UK household around £800 per year, roughly £15 per week. In the US, the USDA estimates that American households waste 30–40% of the food they purchase.
 
-The fix is not to be more careful in the kitchen — it is to build the grocery list from a meal plan rather than from habit and estimation. When you decide on Monday's pasta bake, Wednesday's stir-fry, and Friday's salmon before you go shopping, your grocery list becomes a precise set of ingredients for those meals rather than a vague approximation of what you usually buy.
+The fix is not to be more careful in the kitchen — it is to build the grocery list from a [meal plan](/meal-planner/) rather than from habit and estimation. When you decide on Monday's pasta bake, Wednesday's stir-fry, and Friday's salmon before you go shopping, your grocery list becomes a precise set of ingredients for those meals rather than a vague approximation of what you usually buy.
 
 The meal-plan-first approach also reduces the daily "what's for dinner?" decision. If that decision has already been made on Sunday evening when you wrote the list, you do not need to make it again on a tired Tuesday night.
 
