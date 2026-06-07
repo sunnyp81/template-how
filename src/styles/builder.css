@@ -1,6 +1,13 @@
 @import './tokens.css';
 
-/* --- Mobile-first: single column, Edit/Preview toggle visible --- */
+/* ============================================================================
+   template.how — Builder (fill-in form + live preview + export)
+   Mobile-first. Consumes the semantic token layer only (no raw hex), so dark
+   mode, motion, and re-tints come for free. The preview SHEET is deliberately
+   "paper" (a printed-document mockup) and stays light in dark mode by design.
+   ============================================================================ */
+
+/* --- Shell: single column on mobile, two-up at >=960px --- */
 .b-shell {
   display: grid;
   grid-template-columns: 1fr;
@@ -8,163 +15,455 @@
   margin: var(--sp-6) 0;
   background: var(--bg-elev);
   border: 1px solid var(--border);
-  border-radius: var(--r-lg);
+  border-radius: var(--r-xl);
   padding: var(--sp-4);
+  box-shadow: var(--shadow-sm);
   /* reserve space so client:visible hydration doesn't shift layout (CLS) */
   min-height: 60svh;
 }
 
-/* Segmented Edit / Preview control (native radios styled as a segmented control). */
+/* ----------------------------------------------------------------------------
+   Header: title + progress + start-over
+   ---------------------------------------------------------------------------- */
+.b-head { display: flex; flex-direction: column; gap: var(--sp-3); }
+.b-head-row {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: var(--sp-3);
+}
+.b-eyebrow {
+  margin: 0;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.b-title {
+  margin: var(--sp-1) 0 0;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}
+
+.b-reset {
+  display: inline-flex; align-items: center; gap: var(--sp-1);
+  flex: none;
+  min-height: 40px; padding: 0 var(--sp-3);
+  appearance: none; cursor: pointer;
+  background: transparent; color: var(--fg-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  font: inherit; font-size: var(--fs-sm); font-weight: var(--fw-medium);
+  transition: var(--transition-colors);
+}
+.b-reset:hover:not(:disabled) { background: var(--surface-2); color: var(--fg); border-color: var(--border-strong); }
+.b-reset:disabled { opacity: 0.45; cursor: not-allowed; }
+.b-reset-icon { flex: none; }
+
+/* Progress bar — colour is reinforced by the text label below it (not colour alone). */
+.b-progress { width: 100%; }
+.b-progress-track {
+  height: 8px; width: 100%;
+  background: var(--surface-2);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+.b-progress-fill {
+  height: 100%;
+  background: var(--accent-bold);
+  border-radius: var(--r-full);
+  transition: width var(--dur-slow) var(--ease-out);
+}
+.b-progress-fill[data-complete] { background: var(--success); }
+.b-progress-label {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+  line-height: var(--lh-snug);
+}
+
+/* ----------------------------------------------------------------------------
+   Segmented Edit / Preview control (native radios → keyboard + state for free)
+   ---------------------------------------------------------------------------- */
 .b-toggle {
   position: sticky;
-  top: var(--nav-h, 56px);            /* sit under the sticky nav */
+  top: var(--nav-h, 56px);
   z-index: 5;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  padding: 4px;
-  background: var(--paper-200);
-  border-radius: var(--r-md);
-  margin-bottom: var(--sp-2);
+  gap: 3px;
+  padding: 3px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
 }
 .b-toggle-btn {
   display: flex; align-items: center; justify-content: center;
   position: relative;
   cursor: pointer;
-  min-height: 44px; font: inherit; font-weight: 600;
-  border-radius: calc(var(--r-md) - 2px);
+  min-height: 44px;
+  font: inherit; font-weight: var(--fw-semibold); font-size: var(--fs-sm);
+  border-radius: calc(var(--r-lg) - 3px);
   background: transparent; color: var(--fg-muted);
+  transition: var(--transition-colors);
 }
-.b-toggle-btn[data-active="true"] {
-  background: var(--bg-elev); color: var(--fg);
+.b-toggle-btn[data-active='true'] {
+  background: var(--surface-raised); color: var(--fg);
   box-shadow: var(--shadow-sm);
 }
+.b-toggle-text { pointer-events: none; }
 /* Visually hide the native radio but keep it operable + focusable. */
-.b-toggle-input {
-  position: absolute; inset: 0; margin: 0;
-  opacity: 0; cursor: pointer;
-}
+.b-toggle-input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
 .b-toggle-btn:has(.b-toggle-input:focus-visible) {
-  outline: 2px solid var(--accent-bold); outline-offset: 2px;
+  outline: var(--ring, 2px solid var(--focus-ring));
+  outline-offset: 2px;
 }
 
 /* toggle controls which pane shows on mobile */
-.b-shell[data-view="edit"]    .b-pane-preview { display: none; }
-.b-shell[data-view="preview"] .b-pane-form    { display: none; }
+.b-shell[data-view='edit'] .b-pane-preview { display: none; }
+.b-shell[data-view='preview'] .b-pane-form { display: none; }
 
-.b-form { display: flex; flex-direction: column; gap: var(--sp-6); }
-.b-section { border: 0; padding: 0; margin: 0; }
+/* ----------------------------------------------------------------------------
+   Form
+   ---------------------------------------------------------------------------- */
+.b-form { display: flex; flex-direction: column; gap: var(--sp-5); line-height: var(--lh-snug); }
+.b-section { border: 0; padding: 0; margin: 0; min-inline-size: 0; }
 .b-legend {
-  font-family: var(--font-display);
-  font-size: var(--fs-lg);
+  display: flex; align-items: center; gap: var(--sp-2);
+  width: 100%;
+  padding-bottom: var(--sp-2);
   margin-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--border);
 }
+.b-legend-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  flex: none;
+  width: 26px; height: 26px;
+  border-radius: var(--r-full);
+  background: var(--surface-2); color: var(--fg-muted);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs); font-weight: var(--fw-bold);
+}
+.b-section[data-complete] .b-legend-num { background: var(--success); color: var(--accent-fg); }
+.b-legend-text {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-lg);
+  color: var(--fg);
+}
+.b-legend-count {
+  margin-left: auto;
+  flex: none;
+  font-family: var(--font-body);
+  font-size: var(--fs-xs); font-weight: var(--fw-semibold);
+  color: var(--fg-subtle);
+  background: var(--surface-2);
+  padding: 2px var(--sp-2);
+  border-radius: var(--r-full);
+}
+.b-legend-count[data-complete] { color: var(--success); background: var(--success-bg); }
 
-.b-field { margin-bottom: var(--sp-4); }
+.b-section-fields { display: flex; flex-direction: column; gap: var(--sp-4); }
+.b-field-wrap { min-inline-size: 0; }
+
+/* Field shell */
+.b-field { margin: 0; }
 .b-label {
-  display: block;
+  display: flex; align-items: baseline; gap: var(--sp-2);
   font-size: var(--fs-sm);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   margin-bottom: var(--sp-1);
   color: var(--fg);
 }
-.b-req { color: var(--accent); margin-left: 2px; }
-.b-help { font-size: var(--fs-xs); color: var(--fg-muted); margin-top: var(--sp-1); }
+.b-label-text { line-height: var(--lh-snug); }
+.b-req { color: var(--accent); }
+.b-optional {
+  margin-left: auto;
+  font-size: var(--fs-xs); font-weight: var(--fw-normal);
+  color: var(--fg-subtle);
+  text-transform: none; letter-spacing: 0;
+}
+.b-help { font-size: var(--fs-xs); color: var(--fg-muted); margin: var(--sp-1) 0 0; line-height: var(--lh-snug); }
 
+.b-error {
+  display: flex; align-items: center; gap: var(--sp-1);
+  font-size: var(--fs-xs); font-weight: var(--fw-medium);
+  color: var(--danger);
+  margin: var(--sp-1) 0 0;
+}
+.b-error-icon { flex: none; }
+
+/* Inputs — 44px tall, >=16px font (no iOS zoom) */
 .b-input {
   width: 100%; min-height: 44px;
-  padding: var(--sp-3);
-  border: 1px solid var(--border);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--border-strong);
   border-radius: var(--r-md);
-  background: var(--bg);
+  background: var(--surface-raised);
   color: var(--fg);
   font-family: inherit;
-  font-size: max(16px, var(--fs-sm));   /* never below 16px → no iOS zoom on focus */
+  font-size: max(16px, var(--fs-sm));
+  line-height: var(--lh-snug);
+  transition: border-color var(--dur-fast) var(--ease-standard), box-shadow var(--dur-fast) var(--ease-standard);
 }
 @media (min-width: 768px) { .b-input { font-size: var(--fs-base); } }
-.b-input:focus-visible { outline: 2px solid var(--accent-bold); outline-offset: 1px; }
-.b-textarea { resize: vertical; min-height: 96px; }
-.b-select { background: var(--bg); }
+.b-input::placeholder { color: var(--fg-subtle); }
+.b-input:hover { border-color: var(--fg-subtle); }
+.b-input:focus-visible {
+  outline: none;
+  border-color: var(--accent-bold);
+  box-shadow: 0 0 0 3px var(--accent-tint);
+}
+.b-field[data-invalid='true'] .b-input,
+.b-currency[data-invalid='true'] .b-input {
+  border-color: var(--danger);
+}
+.b-field[data-invalid='true'] .b-input:focus-visible {
+  box-shadow: 0 0 0 3px var(--danger-bg);
+}
+.b-textarea { resize: vertical; min-height: 104px; padding: var(--sp-3); }
 
-.b-currency { display: flex; align-items: stretch; gap: var(--sp-1); }
+/* Select with custom caret */
+.b-select-wrap { position: relative; }
+.b-select {
+  appearance: none; -webkit-appearance: none;
+  padding-right: var(--sp-8);
+  background: var(--surface-raised);
+  cursor: pointer;
+}
+.b-select-caret {
+  position: absolute; right: var(--sp-3); top: 50%;
+  transform: translateY(-50%);
+  color: var(--fg-muted);
+  pointer-events: none;
+}
+
+/* Currency: symbol chip + input */
+.b-currency { display: flex; align-items: stretch; }
 .b-currency-sym {
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 0 var(--sp-3);
-  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  min-width: 44px; padding: 0 var(--sp-3);
+  background: var(--surface-2);
   color: var(--fg-muted);
-  border-radius: var(--r-md); font-family: var(--font-mono);
+  border: 1px solid var(--border-strong);
+  border-right: 0;
+  border-radius: var(--r-md) 0 0 var(--r-md);
+  font-family: var(--font-mono); font-size: var(--fs-base);
 }
+.b-currency-input { border-radius: 0 var(--r-md) var(--r-md) 0; }
 
-/* Checkbox: whole row is the tap target, control is 24px (>= touch min). */
+/* Checkbox: the whole >=44px row is the tap target */
 .b-checkbox-row {
   display: flex; align-items: center; gap: var(--sp-3);
-  min-height: 44px; cursor: pointer;
-}
-.b-checkbox {
-  width: 24px; height: 24px; flex: none;
-  accent-color: var(--accent-bold);
-}
-.b-checkbox-row .b-checkbox-label { font-size: var(--fs-base); }
-.b-checkbox:focus-visible { outline: 2px solid var(--accent-bold); outline-offset: 2px; }
-
-.b-preview {
-  background: var(--paper-50);
-  border: 1px solid var(--border);
+  min-height: 44px; padding: var(--sp-1) var(--sp-2);
+  margin-left: calc(-1 * var(--sp-2));
   border-radius: var(--r-md);
-  padding: var(--sp-6);
-  box-shadow: var(--shadow-md);   /* reads as an intentional white sheet on dark pages */
-  max-height: none; overflow: visible;   /* let the page scroll on mobile */
+  cursor: pointer;
+  transition: var(--transition-colors);
 }
-.b-doc { font-family: var(--font-display); color: #111; line-height: 1.55; }
-.b-doc-title { font-size: var(--fs-2xl); margin: 0 0 var(--sp-6); text-align: center; }
-.b-doc-section { margin-bottom: var(--sp-4); }
-.b-doc-h2 { font-size: var(--fs-lg); margin: 0 0 var(--sp-2); }
-.b-doc-row { margin: 0 0 var(--sp-1); font-family: var(--font-body); font-size: var(--fs-sm); }
-.b-doc-empty { color: var(--paper-500); }
+.b-checkbox-row:hover { background: var(--surface-2); }
+.b-checkbox {
+  width: 22px; height: 22px; flex: none;
+  accent-color: var(--accent-bold);
+  cursor: pointer;
+}
+.b-checkbox-label { font-size: var(--fs-base); color: var(--fg); }
+.b-checkbox:focus-visible { outline: var(--ring, 2px solid var(--focus-ring)); outline-offset: 2px; }
 
-/* --- Export bar: pinned to viewport bottom on mobile, thumb-reachable --- */
+/* ----------------------------------------------------------------------------
+   Live preview — a document-like artifact on a "paper" sheet
+   ---------------------------------------------------------------------------- */
+.b-preview {
+  display: flex; flex-direction: column;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.b-preview-bar {
+  display: flex; align-items: center; gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev);
+}
+.b-preview-dot {
+  width: 9px; height: 9px; border-radius: var(--r-full);
+  background: var(--border-strong);
+}
+.b-preview-bar-label {
+  font-size: var(--fs-xs); font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  color: var(--fg-subtle);
+  margin-left: var(--sp-1);
+}
+.b-preview-ready {
+  margin-left: auto;
+  display: inline-flex; align-items: center;
+  font-size: var(--fs-xs); font-weight: var(--fw-semibold);
+  color: var(--success);
+  background: var(--success-bg);
+  padding: 2px var(--sp-2);
+  border-radius: var(--r-full);
+}
+.b-preview-sheet {
+  padding: var(--sp-4);
+  overflow: visible;   /* let the page scroll on mobile */
+}
+
+/* The sheet itself: explicitly paper (intentionally light in dark mode). */
+.b-doc {
+  background: #ffffff;
+  color: #15130f;
+  font-family: var(--font-display);
+  line-height: 1.6;
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-md);
+  padding: clamp(var(--sp-5), 5vw, var(--sp-8));
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.b-doc-title {
+  font-size: var(--fs-2xl); font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--sp-5); text-align: center;
+  color: #15130f;
+}
+.b-doc-hint {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: #6b6459;
+  text-align: center;
+  background: #faf7f2;
+  border: 1px dashed #d8cfc2;
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+  margin: 0 0 var(--sp-5);
+}
+.b-doc-section { margin-bottom: var(--sp-5); }
+.b-doc-section:last-child { margin-bottom: 0; }
+.b-doc-h2 {
+  font-size: var(--fs-base); font-weight: var(--fw-semibold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wide);
+  color: #8a7f6d;
+  margin: 0 0 var(--sp-2);
+  padding-bottom: var(--sp-1);
+  border-bottom: 1px solid #ece5da;
+}
+.b-doc-row {
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-body); font-size: var(--fs-sm);
+  color: #2a261f;
+  line-height: 1.55;
+}
+.b-doc-label { font-weight: var(--fw-semibold); color: #15130f; }
+.b-doc-value { color: #2a261f; }
+.b-doc-empty {
+  color: #b3a994;
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+/* ----------------------------------------------------------------------------
+   Export bar — pinned to the viewport bottom on mobile, thumb-reachable
+   ---------------------------------------------------------------------------- */
+.b-exports-wrap {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 8;
+  background: color-mix(in srgb, var(--bg-elev) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  padding: var(--sp-2) var(--sp-4);
+  padding-bottom: calc(var(--sp-2) + env(safe-area-inset-bottom));
+}
+.b-exports-note {
+  display: flex; align-items: center; gap: var(--sp-1);
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-xs); color: var(--fg-muted);
+  line-height: var(--lh-snug);
+}
+.b-exports-note-icon { flex: none; color: var(--accent-strong); }
+.b-exports-note-link {
+  appearance: none; border: 0; background: none; padding: 0;
+  font: inherit; font-weight: var(--fw-semibold);
+  color: var(--link); text-decoration: underline;
+  cursor: pointer;
+}
+.b-exports-note-link:hover { color: var(--link-hover); }
+
 .b-exports {
   display: flex; gap: var(--sp-2); flex-wrap: nowrap;
-  overflow-x: auto;                      /* horizontal scroll if buttons overflow */
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 8;
-  padding: var(--sp-3) var(--sp-4);
-  padding-bottom: calc(var(--sp-3) + env(safe-area-inset-bottom));
-  background: color-mix(in srgb, var(--bg-elev) 94%, transparent);
-  backdrop-filter: blur(6px);
-  border-top: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.b-exports::-webkit-scrollbar { display: none; }
+
 .b-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2);
   appearance: none;
-  border: 1px solid var(--border); background: var(--bg);
+  border: 1px solid var(--border-strong); background: var(--surface-raised);
   color: var(--fg);
   min-height: 48px; padding: 0 var(--sp-4); white-space: nowrap;
-  border-radius: var(--r-md); font: inherit; cursor: pointer;
-  transition: background 120ms ease;
+  border-radius: var(--r-md); font: inherit; font-weight: var(--fw-semibold); font-size: var(--fs-sm);
+  cursor: pointer;
+  transition: var(--transition-colors), box-shadow var(--dur-fast) var(--ease-standard);
 }
-.b-btn:hover { background: var(--paper-200); }
-.b-btn:disabled { opacity: 0.6; cursor: progress; }
-.b-btn-primary { background: var(--navy-700); color: var(--paper-50); border-color: var(--navy-700); flex: 1 0 auto; }
-.b-btn-primary:hover { background: var(--navy-500); }
+.b-btn:hover:not(:disabled) { background: var(--surface-2); border-color: var(--fg-subtle); }
+.b-btn:disabled { opacity: 0.55; cursor: progress; }
+.b-btn-icon { display: inline-flex; flex: none; }
+.b-btn-primary {
+  background: var(--brand); color: var(--brand-fg); border-color: var(--brand);
+  flex: 1 0 auto;
+  box-shadow: var(--shadow-sm);
+}
+.b-btn-primary:hover:not(:disabled) { background: var(--brand-hover); border-color: var(--brand-hover); }
 
-/* --- lg: real two-column, no toggle, in-pane export bar --- */
+.b-spinner {
+  width: 15px; height: 15px;
+  border: 2px solid currentColor; border-top-color: transparent;
+  border-radius: var(--r-full);
+  animation: b-spin 0.7s linear infinite;
+}
+@keyframes b-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .b-spinner { animation-duration: 1.4s; }
+  .b-progress-fill { transition: none; }
+}
+
+/* ----------------------------------------------------------------------------
+   lg (>=960px): real two-column, no toggle, in-flow export bar
+   ---------------------------------------------------------------------------- */
 @media (min-width: 960px) {
   .b-shell {
     grid-template-columns: 1fr 1fr;
-    gap: var(--sp-6);
+    column-gap: var(--sp-6);
+    row-gap: var(--sp-5);
     padding: var(--sp-6);
     min-height: 0;
     align-items: start;
   }
+  /* Header + toggle span both columns. */
+  .b-head { grid-column: 1 / -1; }
   .b-toggle { display: none; }
   .b-shell[data-view] .b-pane-form,
-  .b-shell[data-view] .b-pane-preview { display: block; }  /* override mobile hiding */
-  .b-pane-preview { position: sticky; top: calc(var(--nav-h, 64px) + var(--sp-4)); }
-  .b-preview { max-height: 70vh; overflow: auto; }
+  .b-shell[data-view] .b-pane-preview { display: block; }   /* override mobile hiding */
 
-  /* span both columns so the export bar sits below both panes */
-  .b-exports {
+  .b-pane-preview { position: sticky; top: calc(var(--nav-h, 64px) + var(--sp-4)); }
+  .b-preview-sheet { max-height: 70vh; overflow: auto; }
+
+  /* Export bar returns to normal flow, spanning both columns. */
+  .b-exports-wrap {
     grid-column: 1 / -1;
-    position: static; backdrop-filter: none; border-top: 0;
-    padding: var(--sp-3) 0; margin-top: var(--sp-4); flex-wrap: wrap;
+    position: static;
+    backdrop-filter: none;
+    box-shadow: none;
+    background: transparent;
+    border-top: 1px solid var(--border);
+    padding: var(--sp-4) 0 0;
+    margin-top: var(--sp-2);
   }
+  .b-exports { flex-wrap: wrap; overflow: visible; }
+  .b-btn-primary { flex: 0 0 auto; }
 }

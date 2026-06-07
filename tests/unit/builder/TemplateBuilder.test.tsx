@@ -25,7 +25,8 @@ describe('TemplateBuilder', () => {
     render(<TemplateBuilder schema={schema} />);
     // 'Section 1' renders in both the form legend and the preview h2
     expect(screen.getAllByText('Section 1').length).toBeGreaterThanOrEqual(1);
-    expect(screen.getByText('Demo Doc')).toBeInTheDocument();
+    // The doc title shows in both the builder header and the preview sheet.
+    expect(screen.getAllByText('Demo Doc').length).toBeGreaterThanOrEqual(1);
     expect(screen.getByRole('button', { name: /Download PDF/i })).toBeInTheDocument();
   });
 
