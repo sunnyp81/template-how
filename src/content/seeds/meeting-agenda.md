@@ -142,7 +142,7 @@ Writing the agenda is also the test of whether the meeting should happen at all.
 
 **A review of previous actions at the top.** For recurring meetings, open by reviewing the action items from last time. This single habit stops the same decisions being remade and the same tasks being silently dropped between sessions.
 
-**A controlled AOB and a close.** A short "any other business" slot at the end is a useful pressure valve for genuinely minor points — but substantive topics deserve their own item, not a rushed mention. Close by confirming new actions (who, what, by when) and the next meeting.
+**A controlled AOB and a close.** A short "any other business" slot at the end is a useful pressure valve for genuinely minor points — but substantive topics deserve their own item, not a rushed mention. Close by confirming new actions (who, what, by when) — which then flow onto each owner's [to-do list](/to-do-list/) — and the next meeting.
 
 ## Time discipline in the room
 
@@ -188,7 +188,7 @@ The structure adapts to most meetings, but a few common types have a natural sha
 
 **Weekly team meeting.** Open with a review of last week's action items, then two to four discussion questions specific to this week, a quick round of blockers, and a close confirming new actions. Keep it tight — a recurring meeting that runs long every week trains people to dread it. The standing structure makes it predictable; the variable questions keep it relevant.
 
-**One-to-one (manager and report).** Less rigid, but an agenda still helps: a shared running document where both parties add items beforehand — progress, blockers, feedback, career topics. The agenda here is collaborative rather than chair-driven, and the value is making sure the important-but-not-urgent topics (development, concerns) get raised rather than being crowded out by status.
+**One-to-one (manager and report).** Less rigid, but an agenda still helps: a shared running document — often a [Google Sheets](/google-sheets-calendar/) tab both can edit — where both parties add items beforehand: progress, blockers, feedback, career topics. The agenda here is collaborative rather than chair-driven, and the value is making sure the important-but-not-urgent topics (development, concerns) get raised rather than being crowded out by status.
 
 **Project kick-off.** Heavier on context-setting: the project's purpose and scope, roles and responsibilities, the timeline and milestones, risks, and how the team will communicate. The outcome is shared understanding and clear ownership, so the agenda allocates real time to alignment rather than rushing to tasks.
 
