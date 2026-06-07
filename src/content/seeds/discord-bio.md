@@ -166,7 +166,7 @@ The About Me field supports Discord's **basic Markdown**: `**bold**`, `*italic*`
 
 For links, you have two options:
 - **In-bio URL** — clickable, but a full link can swallow most of your budget.
-- **Connections** — User Settings → Connections lets you attach YouTube, Twitch, Spotify, Steam, and more as icons on your profile, costing **zero** bio characters. This is almost always the better choice; reserve in-bio text for a single short handle.
+- **Connections** — User Settings → Connections lets you attach YouTube, [Twitch](/twitch-banner-size/), Spotify, Steam, and more as icons on your profile, costing **zero** bio characters. This is almost always the better choice; reserve in-bio text for a single short handle.
 
 ## Bio vs status vs pronouns: three different fields
 

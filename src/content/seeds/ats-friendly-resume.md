@@ -139,7 +139,7 @@ The most expensive resume design in the world will not pass an ATS if it uses a 
 
 **High-volume hiring.** Graduate schemes, entry-level tech roles, and any position that generates hundreds of applications will almost certainly be screened by ATS first.
 
-**When NOT to prioritise ATS formatting.** If you are handing your resume directly to a hiring manager, presenting at a networking event, or applying to a small business that does not use HR software, a visually designed resume is fine. ATS optimisation is for digital portals, not in-person handoffs.
+**When NOT to prioritise ATS formatting.** If you are handing your resume directly to a hiring manager, presenting at a networking event, or applying to a small business that does not use HR software, a visually designed resume is fine. ATS optimisation is for digital portals, not in-person handoffs — for those, the conservative single-column [Harvard resume](/harvard-resume/) format is a safe default.
 
 ## What your ATS resume must include
 
@@ -157,13 +157,13 @@ The most expensive resume design in the world will not pass an ATS if it uses a 
 
 ## Variants you will encounter
 
-**Chronological ATS resume.** The standard format. Work history in reverse order, skills section, education. Suits most professionals with a consistent employment history.
+**Chronological ATS resume.** The standard format — a [chronological resume](/chronological-resume/) with work history in reverse order, skills section, education. Suits most professionals with a consistent employment history.
 
 **Hybrid ATS resume.** Leads with a prominent skills section before the work history. Useful for career changers or people returning from a career break, where leading with skills emphasises competencies over chronology. Still single-column.
 
 **Technical ATS resume.** Extended skills and certifications sections, often with technology stacks listed by category. Common in software engineering, data, and DevOps roles. The skills section may be longer than a single line.
 
-**UK CV format with ATS optimisation.** UK CVs traditionally include a personal statement at the top, and UK employers do not typically expect or want a US-style objective statement. The ATS optimisation principles are identical; the content conventions differ slightly (UK CVs often include 2 referees at the end; US resumes do not).
+**UK CV format with ATS optimisation.** UK CVs traditionally include a personal statement at the top, and UK employers do not typically expect or want a US-style objective statement. The ATS optimisation principles are identical; the content conventions differ slightly (UK CVs often include 2 referees at the end, who will later be asked for a [reference letter](/reference-letter/); US resumes do not).
 
 ## Step-by-step: building the template
 
@@ -215,7 +215,7 @@ The most expensive resume design in the world will not pass an ATS if it uses a 
 - Led migration from on-prem Postgres to Snowflake for 1.2TB analytics warehouse, zero downtime
 - Mentored 3 mid-level engineers through internal promotion process; all promoted within 12 months
 
-Maya is applying through Workday for a role at a fintech. The job description uses "Airflow," "dbt," "Snowflake," and "Terraform" — all present verbatim in Maya's resume. No tables. No columns. Single-column .docx. The Workday parser will extract her data cleanly, and she will appear in the recruiter's shortlist.
+Maya is applying through Workday for a role at a fintech. The job description uses "Airflow," "dbt," "Snowflake," and "Terraform" — all present verbatim in Maya's resume. No tables. No columns. Single-column .docx. The Workday parser will extract her data cleanly, and she will appear in the recruiter's shortlist — where a tailored [cover letter](/cover-letter-google-docs/) then makes the human case for an interview.
 
 ## UK versus US resume conventions
 

@@ -68,7 +68,7 @@ The reason this works is that it builds retrieval practice directly into the not
 
 Walter Pauk (1916–2012) was a professor in the reading programme at Cornell University. He developed the Cornell method in the 1950s in response to a specific observation: most students took notes during lectures in a way that was fine for copying information but poor for reviewing it. Pages of linear notes with no structure for self-testing led to revision sessions that consisted primarily of re-reading — which Pauk recognised, and the subsequent research confirmed, as an inefficient learning strategy.
 
-He published the method in "How to Study in College" (1962), which became one of the most widely adopted college study-skills texts in the US. The book is now in its tenth edition (co-authored with Ross J. Q. Owens after Pauk's death). The Cornell method itself has been adopted at secondary schools across the US and, increasingly, in UK schools, particularly in preparation for GCSE and A-level examinations.
+He published the method in "How to Study in College" (1962), which became one of the most widely adopted college study-skills texts in the US. The book is now in its tenth edition (co-authored with Ross J. Q. Owens after Pauk's death). The Cornell method itself has been adopted at secondary schools across the US and, increasingly, in UK schools, particularly in preparation for GCSE and A-level examinations — where teachers often build it into a [lesson plan](/lesson-plan/) as a structured note-taking task.
 
 The specific measurements Pauk specified — 2.5 inches for the recall column, 6 inches for the notes column, 2 inches for the summary — are not arbitrary. They emerged from practical testing of what proportions best enforced the method: a recall column narrow enough to discourage extensive note-taking in it, and a summary box deep enough to require a genuine synthesis statement rather than a single word.
 
@@ -94,11 +94,11 @@ The learning science that underpins Cornell notes is well established. Three key
 
 **Medical Cornell notes.** Used by medical students for clinical content. The recall column contains symptom or presentation prompts ("patient presents with X"); the notes column contains the differential diagnosis, investigation pathway, and management plan. The summary box contains the core clinical decision algorithm in condensed form.
 
-**Software engineering Cornell notes.** For technical documentation and system design. The recall column contains function signatures or system component names; the notes column contains implementation details and edge cases. The summary box contains the key design decision or the "why" behind the approach. Particularly useful when learning a new codebase or documenting architectural decisions.
+**Software engineering Cornell notes.** For technical documentation and system design. The recall column contains function signatures or system component names; the notes column contains implementation details and edge cases. The summary box contains the key design decision or the "why" behind the approach. Particularly useful when learning a new codebase or documenting architectural decisions. For content where the relationships between ideas matter more than their sequence, a [venn diagram](/venn-diagram/) often captures the structure better than linear notes.
 
 **Language learning Cornell notes.** The recall column contains vocabulary words or grammatical forms in the target language; the notes column contains definitions, example sentences, and usage notes in the learner's first language. The summary box contains a brief paragraph using the session's vocabulary.
 
-**Revision version.** Some students keep a separate Cornell-format revision sheet in which the recall column is filled first (from memory), then checked against the original notes. This is the inverse of the standard method and useful for active recall revision in the days before an exam.
+**Revision version.** Some students keep a separate Cornell-format revision sheet in which the recall column is filled first (from memory), then checked against the original notes. This is the inverse of the standard method and useful for active recall revision in the days before an exam — particularly when the notes are being built towards an assessment whose [rubric](/rubric/) sets out exactly what the examiner is looking for.
 
 ## Practical notes on paper and digital use
 

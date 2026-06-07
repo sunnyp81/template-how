@@ -140,13 +140,13 @@ A Google Docs resume follows the same essential sections as any reverse-chronolo
 
 ## Variants you will encounter
 
-**Single-column (ATS-safe).** A clean, one-column layout with standard headings. This is the safe default and the one to use for any application that goes through an ATS portal. It exports predictably to PDF and DOCX and never scrambles in a parser. For the full set of parsing rules, see the ATS-friendly resume template.
+**Single-column (ATS-safe).** A clean, one-column layout with standard headings. This is the safe default and the one to use for any application that goes through an ATS portal. It exports predictably to PDF and DOCX and never scrambles in a parser. For the full set of parsing rules, see the [ATS-friendly resume](/ats-friendly-resume/) template.
 
 **Two-column / sidebar (Google gallery style).** Several of Google's built-in gallery templates put contact details and skills in a coloured left sidebar. These look polished but can confuse ATS parsers, which may read across the columns and jumble the content. Reserve these for applications you know a human will read directly — direct emails, referrals, smaller companies, creative roles.
 
-**Harvard / formal.** The conservative, single-page format favoured in finance, law, consulting, and graduate recruitment. Build it in Google Docs using a clean single-column template; the Harvard resume template covers the format conventions in detail.
+**Harvard / formal.** The conservative, single-page format favoured in finance, law, consulting, and graduate recruitment. Build it in Google Docs using a clean single-column template; the [Harvard resume](/harvard-resume/) template covers the format conventions in detail.
 
-**Simple / minimalist.** A stripped-back layout with no design flourishes — ideal for conservative sectors and guaranteed ATS compatibility. See the simple resume template.
+**Simple / minimalist.** A stripped-back layout with no design flourishes — ideal for conservative sectors and guaranteed ATS compatibility. See the [simple resume](/simple-resume/) template.
 
 ## Step-by-step: building it in Google Docs
 
@@ -196,4 +196,4 @@ Google Docs inverts every one of those trade-offs. It is free, with no download 
 
 This template follows US DOL CareerOneStop resume guidance, Purdue OWL's résumé workshop, and Google's own documentation on templates (linked in Sources below).
 
-For format-specific guidance, see the **chronological resume**, **simple resume**, **harvard resume**, and **ATS-friendly resume** templates. To pair your resume with a matching cover letter built the same way, use the **cover letter in Google Docs** template.
+For format-specific guidance, see the [chronological resume](/chronological-resume/), **simple resume**, **harvard resume**, and **ATS-friendly resume** templates. To pair your resume with a matching cover letter built the same way, use the [cover letter in Google Docs](/cover-letter-google-docs/) template.

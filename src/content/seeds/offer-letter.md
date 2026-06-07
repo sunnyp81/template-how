@@ -111,6 +111,8 @@ builderSchema:
         - { id: acceptance_deadline, label: 'Acceptance deadline', type: date, required: true }
 ---
 
+> **Not legal advice.** This is general information, not legal advice. Employment law and when an offer becomes binding vary by jurisdiction and change over time — verify the current rules for your situation and consult a qualified professional before relying on this document.
+
 ## What a job offer letter actually does
 
 A job offer letter is the hinge between recruitment and employment. Up to the moment it is sent, the relationship is informal — interviews, conversations, maybe a verbal "we'd love to have you." The offer letter converts that into something concrete: a named role, a specific salary, a start date, and an invitation to commit. For the candidate it is the document they take away, re-read, and rely on when deciding whether to resign from their current job. For the employer it is the record of exactly what was promised.

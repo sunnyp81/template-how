@@ -108,6 +108,8 @@ builderSchema:
         - { id: approval_date, label: 'Approval date', type: date, required: false }
 ---
 
+> **Not financial or tax advice.** This is general information, not financial or tax advice. Expense, mileage, and tax rules vary by jurisdiction and change over time — verify the current rules for your situation and consult a qualified accountant or tax adviser before relying on this document.
+
 ## What an expense report actually is
 
 An expense report is the bridge between money an individual spent and money a business owes back. When an employee pays for a train ticket, a client lunch, or a box of supplies out of their own pocket, the business needs a structured way to pay them back and to record the cost properly. The expense report is that structure: a dated, itemised list of business costs, each tied to a receipt, that does two jobs at once — it gets the individual reimbursed, and it gives the business the documentation it needs for its accounts and its tax.

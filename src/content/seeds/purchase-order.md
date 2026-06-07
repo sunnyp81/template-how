@@ -108,6 +108,8 @@ builderSchema:
         - { id: notes, label: 'Notes', type: textarea, required: false }
 ---
 
+> **Not legal or tax advice.** This is general information, not legal or tax advice. Contract formation, tax, and record-keeping rules vary by jurisdiction and change over time — verify the current rules for your situation and consult a qualified professional before relying on this document.
+
 ## What a purchase order actually is
 
 A purchase order is the document that turns "we'd like to buy some of those" into a formal, numbered, trackable order. It is issued by the buyer, sent to the seller, and it lists precisely what is being ordered, how much of it, at what price, and on what terms. The moment the seller accepts it, the PO becomes a binding contract for that specific order — which is why it carries far more weight than an email or a phone call.

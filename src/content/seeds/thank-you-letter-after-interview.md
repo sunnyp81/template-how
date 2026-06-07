@@ -190,4 +190,4 @@ There is also the question of what to do when you have heard nothing after the t
 
 This template follows US DOL CareerOneStop guidance on what to do after an interview, Purdue OWL's job-search follow-up correspondence guidance, and Indeed's post-interview thank-you guidance (linked in Sources below).
 
-When an offer follows, the references you supply will be requested via a **reference letter** or **letter of recommendation**, and when you accept, the **two weeks notice** and **resignation letter** templates cover leaving your current role cleanly. For personal references in other applications, see the **character reference letter**.
+When an offer follows, the references you supply will be requested via a [reference letter](/reference-letter/) or [letter of recommendation](/letter-of-recommendation/), and when you accept, the [two weeks notice](/two-weeks-notice/) and [resignation letter](/resignation-letter/) templates cover leaving your current role cleanly. For personal references in other applications, see the [character reference letter](/character-reference-letter/).

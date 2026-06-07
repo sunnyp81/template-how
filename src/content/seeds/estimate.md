@@ -114,6 +114,8 @@ builderSchema:
         - { id: acceptance, label: 'How to accept', type: text, required: false }
 ---
 
+> **Not legal advice.** This is general information, not legal advice. Whether a price is binding and how consumer law applies vary by jurisdiction and change over time — verify the current rules for your situation and consult a qualified professional before relying on this document.
+
 ## What an estimate actually is
 
 An estimate is the number you give a customer before the work begins — the document that says "here is what this is likely to cost." It is the pivot between a conversation and a job: the customer is deciding whether to go ahead, and the estimate is what they decide on. Get it right and you win the work at a price that pays you fairly; get it wrong and you either lose the job or win it at a price that loses you money.

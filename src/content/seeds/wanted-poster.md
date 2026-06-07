@@ -69,7 +69,7 @@ Today, that visual language carries no law enforcement weight whatsoever. It is 
 
 ## When to use a wanted poster template
 
-**History and humanities education.** The wanted poster format is an effective student project vehicle for topics where primary source document creation deepens engagement. Roman history (design a poster for a rogue emperor or a gladiator who escaped), medieval history (outlaws, bandits, tax evaders fleeing the crown), the American Old West (the obvious application), piracy in the golden age of sail, the English Civil War, or 19th-century social reform (poster wanted criminals or posters about social injustice). The format requires students to research, synthesise, and communicate — and the creative constraint of the template makes it accessible to students who find open-ended writing daunting.
+**History and humanities education.** The wanted poster format is an effective student project vehicle for topics where primary source document creation deepens engagement — much like a [family tree](/family-tree/) project, it asks students to research and present historical lives. Roman history (design a poster for a rogue emperor or a gladiator who escaped), medieval history (outlaws, bandits, tax evaders fleeing the crown), the American Old West (the obvious application), piracy in the golden age of sail, the English Civil War, or 19th-century social reform (poster wanted criminals or posters about social injustice). The format requires students to research, synthesise, and communicate — and the creative constraint of the template makes it accessible to students who find open-ended writing daunting.
 
 **Escape rooms and immersive experiences.** Wanted posters serve as character introductions, plot devices, and environmental dressing. A well-designed poster that looks period-authentic adds significantly to immersion. Include at least one detail that functions as a puzzle element.
 
@@ -77,7 +77,7 @@ Today, that visual language carries no law enforcement weight whatsoever. It is 
 
 **Murder mystery games.** Characters introduced as fugitives or persons of interest benefit from a wanted poster format. The visual weight of "WANTED" immediately communicates the character's role in the narrative.
 
-**Novelty and humorous gifts.** "Wanted for excessive helpfulness," "Wanted for the murder of the office snack budget" — workplace humour and personal gifts made with a wanted poster template are popular on Etsy and similar platforms.
+**Novelty and humorous gifts.** "Wanted for excessive helpfulness," "Wanted for the murder of the office snack budget" — workplace humour and personal gifts made with a wanted poster template are popular on Etsy and similar platforms, and the same novelty-ranking instinct drives the [tier list](/tier-list/) format.
 
 ## Typography conventions
 

@@ -108,6 +108,8 @@ builderSchema:
         - { id: sign_date, label: 'Date signed', type: date, required: true }
 ---
 
+> **Not legal advice.** This is general information, not legal advice. Confidentiality and trade-secret law varies by jurisdiction and changes over time — verify the current rules for your state or nation and consult a qualified solicitor or attorney before relying on this document.
+
 ## What an NDA actually is
 
 A non-disclosure agreement is a contract with one purpose: keeping information shared in confidence, confidential. It does not protect the underlying idea — patents and design rights do that — it protects the information itself from being passed to people who should not have it.
@@ -176,7 +178,7 @@ Strip an NDA to its essentials and you have five components:
 
 **Wrong NDA type.** Sending a unilateral NDA where both parties are sharing sensitive information will immediately signal you have not thought carefully about the agreement. It also leaves your counterparty's information unprotected, which they will notice.
 
-**Perpetual term on routine information.** A 25-year NDA on a press release embargo looks absurd and may be unenforceable as disproportionate. Match the term to the nature of the information.
+**Perpetual term on routine information.** A 25-year NDA on a [press release](/press-release/) embargo looks absurd and may be unenforceable as disproportionate. Match the term to the nature of the information.
 
 **Forgetting the return-of-information clause.** Without it, the receiving party has no obligation to return or destroy your documents at the end of the engagement. Include it.
 
@@ -211,3 +213,7 @@ In the UK, confidentiality law has both contractual and equitable foundations. E
 In the US, trade secret protection is governed at federal level by the Defend Trade Secrets Act 2016 and at state level by versions of the Uniform Trade Secrets Act (adopted in 48 states). The DTSA creates a federal civil cause of action for trade secret misappropriation, meaning you can sue in federal court. The whistleblower immunity in the DTSA is mandatory — any NDA must include a notice of this immunity, and failure to do so loses you access to exemplary damages and attorney fees in a subsequent misappropriation case.
 
 The US state-law landscape on NDAs in employment has shifted significantly since 2017. California, New York, Illinois, Washington, and others have passed laws limiting or prohibiting NDAs that cover sexual harassment and discrimination claims. If you are drafting employment NDAs for a multi-state US business, get jurisdiction-specific legal advice.
+
+## Related categories
+
+An NDA frequently sits alongside other documents in a business relationship. When a confidential discussion leads to a hire, the [offer letter](/offer-letter/) is the document that follows, and the [operating agreement](/operating-agreement/) governs the LLC sharing the information. An NDA often accompanies a private deal recorded by a [promissory note](/promissory-note/) or a [bill of sale](/bill-of-sale/), and on the financial side a business issuing confidential figures still bills through the [invoice](/invoice-google-docs/) template.

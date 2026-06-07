@@ -281,7 +281,7 @@ The core method is the same, but the emphasis shifts depending on what you are m
 
 **YouTube videos.** For long-form YouTube, you rarely board every shot — instead you board the structurally important moments: the hook (first 15 seconds, where retention is won or lost), any complex sequence, and the transitions between sections. The duration field matters here for pacing the whole video against your target length and planning where mid-roll moments fall.
 
-**Short-form (TikTok, Reels, Shorts).** Board in 9:16 and treat the first shot as the entire battle — vertical short-form lives or dies on the opening second. A six-to-nine panel board for a 30-second piece forces you to design that hook deliberately rather than hoping the edit saves it. Timing is tight, so per-shot durations of one to four seconds are typical.
+**Short-form (TikTok, Reels, Shorts).** Board in 9:16 and treat the first shot as the entire battle — vertical short-form lives or dies on the opening second. A six-to-nine panel board for a 30-second piece forces you to design that hook deliberately rather than hoping the edit saves it. Timing is tight, so per-shot durations of one to four seconds are typical. Once the board is set, a mobile editor such as [CapCut](/capcut/) turns those planned shots into the finished cut.
 
 **Adverts and brand content.** These are boarded in full for client approval — the storyboard *is* the contract. Every shot is planned, annotated with product moments and brand beats, and approved before the expensive shoot. The board here doubles as a communication and sign-off document, so clarity for a non-filmmaker viewer matters as much as technical completeness.
 

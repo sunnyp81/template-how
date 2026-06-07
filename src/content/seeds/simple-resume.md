@@ -47,7 +47,7 @@ faq:
   - q: 'When should I use a simple resume?'
     a: 'Use a simple resume when you want guaranteed ATS compatibility, when you are applying to conservative sectors (accounting, law, finance, government, civil service), or when you simply want a clean, professional document without spending time on design. It is an excellent default for almost any application. The only time to choose a designed resume instead is for creative roles where demonstrating visual design skill is genuinely part of the job.'
   - q: 'Is a simple resume ATS-friendly?'
-    a: 'Yes — a simple, single-column resume is the most ATS-friendly format there is. Applicant tracking systems parse plain, structured text most reliably, and a simple resume has no tables, text boxes, columns, or graphics to confuse the parser. If your priority is making sure the system reads every section correctly, a simple resume is the right choice. See the ATS-friendly resume template for the detailed parsing rules.'
+    a: 'Yes — a simple, single-column resume is the most ATS-friendly format there is. Applicant tracking systems parse plain, structured text most reliably, and a simple resume has no tables, text boxes, columns, or graphics to confuse the parser. If your priority is making sure the system reads every section correctly, a simple resume is the right choice. See the [ATS-friendly resume](/ats-friendly-resume/) template for the detailed parsing rules.'
   - q: 'What is the difference between a simple resume and a basic resume?'
     a: 'They are the same thing — "simple," "basic," and "minimalist" all describe a clean, no-frills, single-column layout. The terms are used interchangeably. What matters is the shared principle: standard fonts, standard headings, no decorative elements, and content that speaks for itself. Whichever term a job board or template gallery uses, they mean this format.'
   - q: 'Does a simple resume look unprofessional or lazy?'
@@ -63,7 +63,7 @@ faq:
   - q: 'Is a simple resume the same as a CV in the UK?'
     a: 'The simple, single-column format works identically as a UK CV — it is just called a CV rather than a resume. UK conventions add a personal profile at the top, place education below experience once you have work history, and may note referees at the end. The clean, minimal styling and standard headings are exactly the same. A simple CV is the safe default for most UK applications, especially in conservative sectors.'
   - q: 'Can I build a simple resume in Google Docs or Word?'
-    a: 'Yes — a simple resume is the easiest format to build in either tool, precisely because it uses no complex formatting. Use a single column, standard headings, and a standard font, and it will export cleanly to PDF and DOCX from either Google Docs or Word. The google docs resume template covers the Google Docs workflow specifically, including copying a template to your own Drive.'
+    a: 'Yes — a simple resume is the easiest format to build in either tool, precisely because it uses no complex formatting. Use a single column, standard headings, and a standard font, and it will export cleanly to PDF and DOCX from either Google Docs or Word. The [google docs resume](/google-docs-resume/) template covers the Google Docs workflow specifically, including copying a template to your own Drive.'
   - q: 'What sections does a simple resume need?'
     a: 'The essentials: contact details, a short summary or personal profile, work experience (reverse-chronological), education, and skills. Optional additions are certifications, languages, or volunteer experience if relevant. Use standard, recognisable headings for each — "Work Experience," not "My Journey" — so both a recruiter and an ATS know immediately what they are looking at.'
 builderSchema:
@@ -201,4 +201,4 @@ The second reason is the human reader. Recruiters are not assessing your visual 
 
 This template follows US DOL CareerOneStop resume guidance, Purdue OWL's résumé workshop, and the UK National Careers Service CV guidance (linked in Sources below).
 
-For related formats and tools, see the **chronological resume**, **ATS-friendly resume**, **harvard resume**, and **google docs resume** templates. When an employer requests references, the **reference letter** template covers what they will ask your former managers to provide.
+For related formats and tools, see the [chronological resume](/chronological-resume/), **ATS-friendly resume**, [harvard resume](/harvard-resume/), and **google docs resume** templates. When an employer requests references, the [reference letter](/reference-letter/) template covers what they will ask your former managers to provide.

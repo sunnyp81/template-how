@@ -190,4 +190,4 @@ There is a wider principle here that applies well beyond the classroom. Any time
 
 This template follows guidance from the Carnegie Mellon Eberly Center and the Cornell Center for Teaching Innovation on creating and using rubrics, and UK QAA assessment guidance (linked in Sources below).
 
-For the teacher's planning document the rubric assesses against, see the **lesson plan** template. For classroom admin and recognition, see the **permission slip** and **certificate of achievement** templates. For study tools students use to meet a rubric's standards, see the **cornell notes** and **venn diagram** templates.
+For the teacher's planning document the rubric assesses against, see the [lesson plan](/lesson-plan/) template. For classroom admin and recognition, see the [permission slip](/permission-slip/) and [certificate of achievement](/certificate-of-achievement/) templates. For study tools students use to meet a rubric's standards, see the [cornell notes](/cornell-notes/) and [venn diagram](/venn-diagram/) templates.

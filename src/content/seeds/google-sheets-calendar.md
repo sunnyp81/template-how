@@ -124,7 +124,7 @@ Both are Google products; they solve different problems.
 - total or count things with formulas (how many posts this month? how many shifts each person?);
 - print a clean month grid for the wall or desk.
 
-The mental model: **Calendar for time-based reminders, Sheets for a customisable, printable, formula-driven planning grid.** Many people run both — Calendar for appointments, a Sheet for the bigger planning picture.
+The mental model: **Calendar for time-based reminders, Sheets for a customisable, printable, formula-driven planning grid.** Many people run both — Calendar for appointments, a Sheet for the bigger planning picture. The same grid logic adapts into other planning tools too: a [habit tracker](/habit-tracker/) with one column per habit, or a meeting schedule you circulate before each [meeting agenda](/meeting-agenda/).
 
 ## Building it from scratch
 
@@ -199,7 +199,7 @@ The month grid is the default, but a spreadsheet calendar's flexibility means se
 
 **The year-at-a-glance.** Twelve mini month-grids on a single sheet, useful for high-level annual planning — holidays, term dates, quarterly milestones — where you do not need room to write events into each day, just to see the shape of the year. Google's built-in Annual calendar template provides this.
 
-**The weekly / fortnightly layout.** A single week (or two) with tall day columns and hourly rows, closer to a planner than a calendar. Useful for detailed scheduling where a month grid does not give enough room per day. This overlaps with a weekly schedule, and for time-blocked weeks a dedicated weekly schedule layout is often the better fit.
+**The weekly / fortnightly layout.** A single week (or two) with tall day columns and hourly rows, closer to a planner than a calendar. Useful for detailed scheduling where a month grid does not give enough room per day. This overlaps with a [weekly schedule](/weekly-schedule/), and for time-blocked weeks a dedicated weekly schedule layout is often the better fit.
 
 **The recurring-tab workbook.** One sheet (tab) per month, all in one workbook, so the whole year lives in a single file you navigate by tab. Combined with formula-driven dates, this is how many people run a personal or team calendar for an entire year without ever rebuilding it.
 

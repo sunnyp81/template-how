@@ -74,7 +74,7 @@ Vision boards are strongly associated with Rhonda Byrne's *The Secret* (2006) an
 
 Edwin Locke and Gary Latham's goal-setting theory, developed across decades of research (summarised in their 1990 book *A Theory of Goal Setting and Task Performance*), is one of the most replicated findings in organisational psychology. Its central finding is that specific, challenging goals lead to better performance than vague or no goals — and that goals which are visible and regularly reviewed produce better outcomes than goals that are set and forgotten.
 
-A vision board that contains specific, emotionally resonant representations of your goals and is placed where you see it daily is a practical application of goal salience. It keeps your goals in your working memory and influences how you interpret opportunities and trade-offs. See a training opportunity that connects to a goal on the board — you are more likely to take it than if that goal lived only in a notebook you check quarterly.
+A vision board that contains specific, emotionally resonant representations of your goals and is placed where you see it daily is a practical application of goal salience. It keeps your goals in your working memory and influences how you interpret opportunities and trade-offs. See a training opportunity that connects to a goal on the board — you are more likely to take it than if that goal lived only in a notebook you check quarterly. The board sets the direction; a [to-do list](/to-do-list/) and the day-to-day tools carry out the work it points toward.
 
 This mechanism is cognitive, not supernatural. It is also genuinely useful.
 
@@ -86,11 +86,11 @@ This mechanism is cognitive, not supernatural. It is also genuinely useful.
 
 **When goals feel abstract or distant.** A financial goal of "save £20,000 for a house deposit" is real but abstract. A vision board with a photo of a specific neighbourhood you want to live in, images of a kitchen that matches your style, and a note of the target amount makes the same goal visceral and present.
 
-**For long-term personal projects.** Training for a race, writing a book, building a business, qualifying in a new field — any project where the daily work is unglamorous and the destination feels far away benefits from a daily visual reminder of why you are doing it.
+**For long-term personal projects.** Training for a race, writing a book, building a business, qualifying in a new field — any project where the daily work is unglamorous and the destination feels far away benefits from a daily visual reminder of why you are doing it. Pairing the board with a [habit tracker](/habit-tracker/) connects the distant goal to the small daily actions that reach it.
 
 ## What to put on it
 
-**Personal goals with specific images.** Not a generic beach photo representing "relaxation" — a photo of a specific beach you want to visit, or a screenshot of the marathon route you are training for. Specificity is what makes the emotional connection real.
+**Personal goals with specific images.** Not a generic beach photo representing "relaxation" — a photo of a specific beach you want to visit (the kind of trip you might later map out in a [travel itinerary](/travel-itinerary/)), or a screenshot of the marathon route you are training for. Specificity is what makes the emotional connection real.
 
 **Words and phrases.** A headline goal, a mantra, a specific phrase that means something to you. These work best when they are short — a single phrase you can absorb in a glance.
 

@@ -110,7 +110,7 @@ A two weeks notice is the short letter or email you give your employer to say yo
 
 The crucial thing to understand up front is that, in the US, two weeks notice is a courtesy, not a legal requirement. The default rule in almost every US state is at-will employment: either you or your employer can end the relationship at any time, with or without notice, for almost any lawful reason. You give two weeks because the professional world expects it and because burning the bridge costs you references, rehire eligibility, and reputation in your industry — not because the law compels it. The exceptions are an employment contract, a collective bargaining agreement, or a written company policy that specifies a longer or different period, all of which override the two-week default.
 
-This is also where the US and UK diverge sharply. In the UK, there is no two-week convention — your notice period is whatever your employment contract says, commonly one month and often longer for senior roles, with a statutory minimum of one week once you have been employed for a month. UK readers should follow their contract and use the resignation letter template rather than the US two-week courtesy described here.
+This is also where the US and UK diverge sharply. In the UK, there is no two-week convention — your notice period is whatever your employment contract says, commonly one month and often longer for senior roles, with a statutory minimum of one week once you have been employed for a month. UK readers should follow their contract and use the [resignation letter](/resignation-letter/) template rather than the US two-week courtesy described here.
 
 ## When you need one
 
@@ -198,4 +198,4 @@ The handover itself deserves real attention, because it is where the goodwill is
 
 This template follows US DOL CareerOneStop guidance on leaving a job, SHRM guidance on resigning professionally, and Indeed's two weeks notice guidance (linked in Sources below).
 
-For longer or contractual notice periods — and for all UK resignations — use the **resignation letter** template. After you leave, your former manager may be asked for a **reference letter** or **letter of recommendation**, and you may need a **character reference letter** for other applications. The **thank you letter after interview** covers the follow-up that often precedes the offer you are resigning to take.
+For longer or contractual notice periods — and for all UK resignations — use the **resignation letter** template. After you leave, your former manager may be asked for a [reference letter](/reference-letter/) or [letter of recommendation](/letter-of-recommendation/), and you may need a [character reference letter](/character-reference-letter/) for other applications. The [thank you letter after interview](/thank-you-letter-after-interview/) covers the follow-up that often precedes the offer you are resigning to take.

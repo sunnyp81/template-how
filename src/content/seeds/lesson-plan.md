@@ -136,7 +136,7 @@ Both UK and US teachers use lesson plan templates, but the reference frameworks 
 
 **Observed lessons.** Any lesson that a department head, Ofsted inspector, or line manager will observe warrants a written plan. The plan is a professional document that demonstrates the thinking behind the lesson — it contextualises what an observer sees and provides a framework for post-observation discussion.
 
-**Teaching an unfamiliar group or subject.** When covering a class you do not normally teach, or teaching a topic you have not taught before, a written lesson plan removes the cognitive load of holding the structure in working memory while also managing the classroom. The template provides the scaffold; you fill it with the content.
+**Teaching an unfamiliar group or subject.** When covering a class you do not normally teach, or teaching a topic you have not taught before, a written lesson plan removes the cognitive load of holding the structure in working memory while also managing the classroom. The template provides the scaffold; you fill it with the content. Mapping the week's lessons onto a [weekly schedule](/weekly-schedule/) first helps you see how each session fits the wider sequence.
 
 **IB MYP and GCSE revision sessions.** For structured examination preparation sessions, a lesson plan helps sequence the revision — prioritising high-frequency examination topics, including formative assessment to identify gaps, and ensuring the session has a clear outcome rather than being an open-ended "go through your notes" activity.
 
@@ -156,7 +156,7 @@ A lesson plan that omits critical sections leads to under-prepared lessons that 
 
 **Lesson procedure with time allocations.** Each stage of the lesson (hook, direct instruction, guided practice, independent practice, review) with a time budget. The total should match the lesson duration. The procedure should describe what students are doing at each stage, not just the teacher — learning is not passive, and "teacher explains fractions" is not a lesson plan, it is a script note.
 
-**Differentiation and assessment.** Support strategies for lower-attaining students and those with SEND or IEPs. Extension tasks for higher-attaining students. The formative assessment method — exit ticket, mini-whiteboard check, targeted questioning, observation checklist — that tells you whether the objectives were met.
+**Differentiation and assessment.** Support strategies for lower-attaining students and those with SEND or IEPs. Extension tasks for higher-attaining students. The formative assessment method — exit ticket, mini-whiteboard check, targeted questioning, observation checklist — that tells you whether the objectives were met. For graded work, a [rubric](/rubric/) makes the success criteria explicit and keeps marking consistent.
 
 ## Variants you will encounter
 
@@ -164,7 +164,7 @@ A lesson plan that omits critical sections leads to under-prepared lessons that 
 
 **Three-part lesson (UK primary tradition).** A starter (10 minutes), a main activity (30–40 minutes), and a plenary (10 minutes). This is the structure that dominated UK primary and secondary lesson planning from the late 1990s through the 2010s — it remains common but has been criticised for prioritising structural completion over learning depth.
 
-**Inquiry-based lesson plan.** Used in IB contexts and progressive secondary teaching, an inquiry-based plan foregrounds student-generated questions and investigation rather than direct instruction. The objectives are still present, but the procedure reverses the conventional order — students begin by exploring and questioning, and direct instruction follows to consolidate understanding.
+**Inquiry-based lesson plan.** Used in IB contexts and progressive secondary teaching, an inquiry-based plan foregrounds student-generated questions and investigation rather than direct instruction. The objectives are still present, but the procedure reverses the conventional order — students begin by exploring and questioning, and direct instruction follows to consolidate understanding. A comparison task built around a [venn diagram](/venn-diagram/) is a common way to structure that early exploration.
 
 **Cover lesson plan.** A simplified version for supply teachers covering a lesson on short notice, typically without subject expertise. The materials need to be entirely self-contained, the instructions to students must be clear enough for a non-specialist to deliver, and the tasks must be manageable without teacher facilitation.
 
@@ -204,7 +204,7 @@ Year 4 maths lesson, St Michael's CE Primary School, Oxford. Teacher: Miss Adesa
 
 **Hook (10 minutes):** Miss Adesanya brings in a real chocolate bar (a standard eight-piece Cadbury Dairy Milk bar). She breaks it in half and asks: "I have one half. How many pieces is that?" (Answer: four.) "If I break the same bar into four equal pieces, how many pieces would half be?" (Answer: two.) "So is one-half the same as two-fourths?" Students discuss on mini-whiteboards. This activates prior knowledge of halves and quarters while establishing the concept of equivalence through a physical object.
 
-**Direct instruction (15 minutes):** Miss Adesanya uses fraction bar diagrams on the interactive whiteboard to show 1/2 = 2/4 = 4/8. She demonstrates the multiplication method: multiply both numerator and denominator by the same number. Students copy two examples into their books. Key vocabulary is displayed: equivalent, numerator, denominator.
+**Direct instruction (15 minutes):** Miss Adesanya uses fraction bar diagrams on the interactive whiteboard to show 1/2 = 2/4 = 4/8. She demonstrates the multiplication method: multiply both numerator and denominator by the same number. Students copy two examples into their books, capturing the key steps using [Cornell notes](/cornell-notes/) so they can self-test later. Key vocabulary is displayed: equivalent, numerator, denominator.
 
 **Paired practice (20 minutes):** Pairs use printed fraction bar cards to match equivalent pairs. Extension: a set of five "prove it" questions requiring both the diagram method and the multiplication method for the same fraction. Support: students working below ARE use pre-drawn fraction bars and only the diagram method.
 

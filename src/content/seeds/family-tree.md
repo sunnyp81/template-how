@@ -59,7 +59,7 @@ faq:
 
 ## What a family tree template is — and what it is not
 
-A family tree template is a visual or tabular framework for recording genealogical relationships. What it is not is a genealogical record in itself. The template organises the information; the research behind it — certificates, census entries, parish registers, photographs — is the evidence that makes it reliable.
+A family tree template is a visual or tabular framework for recording genealogical relationships. What it is not is a genealogical record in itself. The template organises the information; the research behind it — certificates, census entries, parish registers, photographs, and published [obituaries](/obituary/) — is the evidence that makes it reliable.
 
 This distinction matters because family trees are unusually susceptible to the propagation of errors. If someone fills in a great-grandmother's birth year as 1892 instead of 1902, and that tree is copied to a genealogy website, and other researchers copy from that website, the error gets embedded in dozens of trees within a few years. The genealogical standard is "cite everything." Every date, every place, every name should have a source attached to it.
 
@@ -81,7 +81,9 @@ That said, a family tree template is still enormously useful even before you hav
 
 **UK census records (1841–1921).** England and Wales have census records from 1841 onwards. The 1921 census was released in January 2022 — a 100-year closure rule applies. The 1939 Register (a snap survey taken at the outbreak of World War II) is also available. Scotland has its own census records through ScotlandsPeople. Northern Ireland's records are held at PRONI. Census records show household members, their relationships, ages, birthplaces, and occupations.
 
-**UK civil registration (from 1837).** Birth, marriage, and death records have been civil-registered in England and Wales since 1837, in Scotland since 1855, and in Ireland (and Northern Ireland) since 1864. The General Register Office (GRO) holds the England and Wales indexes; FreeBMD has transcribed much of the pre-1984 index for free searching. Certificates can be ordered from the GRO or through local register offices.
+**UK civil registration (from 1837).** Birth, marriage, and death records — the formal counterparts of a [birth announcement](/birth-announcement/) at one end of life and a [death announcement](/death-announcement/) at the other — have been civil-registered in England and Wales since 1837, in Scotland since 1855, and in Ireland (and Northern Ireland) since 1864. The General Register Office (GRO) holds the England and Wales indexes; FreeBMD has transcribed much of the pre-1984 index for free searching. Certificates can be ordered from the GRO or through local register offices.
+
+Estate documents are another rich source: a historical [last will](/last-will/) names heirs, relationships, and bequests that can confirm a family link the censuses leave ambiguous.
 
 **UK parish registers (pre-1837).** Before civil registration, baptisms, marriages, and burials were recorded in Church of England parish registers, typically from about 1538. Coverage is patchy — registers were damaged, lost, or never started in many parishes. The best access point is Findmypast or Ancestry for transcribed records, or the original registers on microfilm at county archives. The Bishop's Transcripts (annual copies sent to the diocese) can sometimes fill gaps where the original register is missing.
 

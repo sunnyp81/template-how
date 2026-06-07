@@ -172,7 +172,7 @@ Getting the dimensions right is the floor, not the ceiling. A technically perfec
 
 **One typeface, two weights, maximum.** A banner with three fonts looks amateur. Pick one typeface, use a bold weight for the channel name and a regular weight for the tagline, and stop there. Consistency reads as professionalism.
 
-**Echo your thumbnails.** The strongest channels use the same colours and typeface across their banner, profile picture, and video thumbnails, so a viewer's eye connects them instantly. The banner is the anchor of that visual system; design it first, then carry its palette into your thumbnail style.
+**Echo your thumbnails.** The strongest channels use the same colours and typeface across their banner, profile picture, and video thumbnails, so a viewer's eye connects them instantly. The banner is the anchor of that visual system; design it first, then carry its palette into your thumbnail style — and into your other channels, such as your [Twitch banner](/twitch-banner-size/), so the brand reads as one across platforms.
 
 **Mind the profile picture overlap.** On the channel page, your circular profile picture and channel name sit near or over part of the banner on some layouts. Avoid placing critical banner content where the avatar or channel title will overlap it — preview the live channel page after uploading to catch any collision.
 

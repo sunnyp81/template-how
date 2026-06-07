@@ -116,7 +116,7 @@ This is why weak letters of recommendation — the ones that say "I am happy to 
 
 **Competitive undergraduate programmes.** UK UCAS applications include one reference from a teacher or school counsellor — not optional, not supplementary, but a structural part of the application. US undergraduate applications to selective colleges typically require one teacher recommendation plus one counsellor recommendation, and sometimes allow a third recommendation from an additional teacher.
 
-**Employment — senior and competitive roles.** For graduate-level and professional roles in the UK and US, formal reference letters (as distinct from informal telephone references) are common in academic, public sector, and some professional services contexts. Law firms, investment banks, and consulting firms frequently ask for references before or alongside an offer.
+**Employment — senior and competitive roles.** For graduate-level and professional roles in the UK and US, formal reference letters (as distinct from informal telephone references) are common in academic, public sector, and some professional services contexts. Law firms, investment banks, and consulting firms frequently ask for references before or alongside an offer — typically after the candidate has already submitted a résumé and a [cover letter](/cover-letter-google-docs/) and reached the final stages.
 
 **Scholarships and awards.** Chevening, Rhodes, Gates Cambridge, Fulbright — all require formal letters. The quality of the recommendation letter is often the deciding factor between two otherwise comparable candidates.
 

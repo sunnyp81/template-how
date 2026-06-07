@@ -203,4 +203,4 @@ These three features also explain the format's failure modes. A vague certificat
 
 This template reflects general guidance on certifications and qualifications from US DOL CareerOneStop and GOV.UK, and design principles from Purdue OWL (linked in Sources below). A certificate of achievement is a recognition document, not a regulated qualification.
 
-For classroom assessment and admin documents, see the **rubric** and **permission slip** templates. For the teacher's planning document, see the **lesson plan**, and for study tools see **cornell notes** and **venn diagram**. For another printable display document, see the **wanted poster** template.
+For classroom assessment and admin documents, see the [rubric](/rubric/) and [permission slip](/permission-slip/) templates. For the teacher's planning document, see the [lesson plan](/lesson-plan/), and for study tools see [cornell notes](/cornell-notes/) and [venn diagram](/venn-diagram/). For another printable display document, see the [wanted poster](/wanted-poster/) template.

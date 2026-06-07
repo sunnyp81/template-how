@@ -109,6 +109,8 @@ builderSchema:
         - { id: notes, label: 'Notes (optional)', type: textarea }
 ---
 
+> **Not legal advice.** This is general information, not legal advice. Rules vary by jurisdiction and change over time — verify the current requirements for your state or nation and consult a qualified solicitor or attorney before relying on this document.
+
 ## What a bill of sale actually is
 
 At its core, a bill of sale is a receipt with teeth. It proves that ownership of something — a car, a boat, a firearm, a piece of machinery, a horse — passed from one person to another on a specific date, for a specific price. That sounds simple, but the practical implications are significant.
@@ -222,3 +224,7 @@ One detail the UK government website does not always emphasise: the buyer should
 The general rule in the US is seven years for most financial documents, which aligns with the IRS audit window. For vehicle bills of sale specifically, keep it until the title transfer is confirmed and then for at least two additional years. The UK follows a similar informal standard — six years is the Limitation Act 1980 window for most contract claims.
 
 Store the original somewhere it will not get lost: a home filing system, a locked drawer, or a digital scan stored alongside your other vehicle documents. If you ever need it, you will need it urgently — not in two weeks after a thorough search.
+
+## Related categories
+
+A bill of sale records a transfer of ownership; the other legal documents that often sit around it are in the same hub. A buyer paying over time signs a [promissory note](/promissory-note/) alongside the bill of sale, and a private sale of contents with a let property pairs with a [lease agreement](/lease-agreement/) or [rental agreement](/rental-agreement/). When you settle your affairs, the [last will](/last-will/) template directs what happens to property you still own, and a confidential business sale often travels with an [NDA](/nda/). For billing on the business side, the [invoice](/invoice-google-docs/) template in the business hub handles payment requests.

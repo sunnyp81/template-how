@@ -108,6 +108,8 @@ builderSchema:
         - { id: signoff, label: 'Sign-off', type: text, required: true }
 ---
 
+> **Not legal advice.** This is general information, not legal advice. Notice periods and employment rules vary by jurisdiction and change over time — verify the current rules for your situation and consult a qualified professional before relying on this document, especially if your departure involves a dispute or settlement.
+
 ## What a resignation letter actually does
 
 A resignation letter is one of the shortest documents you will ever write at work, and one of the few that lands in a permanent file. Its job is narrow: to put on record, in writing, that you are leaving, when your employment ends, and — by implication — that you gave proper notice. Everything else in the letter is optional courtesy.

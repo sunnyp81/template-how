@@ -98,6 +98,8 @@ builderSchema:
         - { id: next_location, label: 'Location / platform', type: text }
 ---
 
+> **Not legal advice.** This is general information, not legal advice. Company-law and record-keeping requirements vary by jurisdiction and change over time — verify the current rules for your state or nation and consult a qualified professional before relying on this document.
+
 ## What meeting minutes actually are — and what they are not
 
 Meeting minutes are the official written record of a meeting's proceedings. They are not a transcript. They are not a summary of opinions. They are a concise, factual account of: who was present, what was discussed (in brief), what was decided, and who is doing what by when.
@@ -221,3 +223,7 @@ Under Companies Act 2006, a UK limited company must:
 Failure to maintain minutes is a criminal offence for company officers and can result in a fine.
 
 For US corporations, equivalent requirements exist under state corporate law (Delaware General Corporation Law §142 is widely referenced), though specifics vary. Bylaws typically specify retention periods; seven years is a common minimum in practice.
+
+## Related categories
+
+Minutes are the official record of decisions, and the decisions they capture often concern the documents elsewhere in these hubs. A board reviewing the accounts is approving the [balance sheet](/balance-sheet/) and [profit and loss statement](/profit-and-loss-statement/); an LLC's members record their resolutions alongside the company's [operating agreement](/operating-agreement/); and where an attorney or board approves spending, the [invoice](/invoice-google-docs/) and [purchase order](/purchase-order/) templates produce the underlying paperwork.

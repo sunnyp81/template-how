@@ -114,6 +114,8 @@ builderSchema:
         - { id: notes, label: 'Additional notes', type: textarea, required: false }
 ---
 
+> **Not legal or tax advice.** This is general information, not legal or tax advice. VAT, sales-tax, and invoicing rules vary by jurisdiction and change over time — verify the current rules for your situation and consult a qualified accountant or tax adviser before relying on this document.
+
 ## What makes an invoice a legal document
 
 An invoice is more than a payment request. In the UK, a VAT invoice is a statutory document. Issuing an incorrect or incomplete VAT invoice is an offence under the Value Added Tax Act 1994. The recipient cannot reclaim VAT they have been charged unless they hold a valid VAT invoice showing the correct information. This is why invoice format matters: it is not a design preference, it is a compliance requirement.
@@ -217,3 +219,7 @@ The invoice includes Kent & Vine's VAT registration number (GB 312 457 890), the
 Tall Pines' accounts team receives the invoice, reclaims the £107.20 VAT on their next VAT return, and pays the net amount of £536.00 (they handle VAT themselves). Payment arrives 10 days later.
 
 This is a straightforward, compliant VAT invoice. Every HMRC mandatory field is present. The due date is explicit. The description identifies the supply precisely enough to cross-reference with the event booking.
+
+## Related categories
+
+An invoice is the seller's request for payment, and it sits at the end of a chain of related documents. The buyer's earlier order is a [purchase order](/purchase-order/), which the invoice is matched against, and the price quoted before the work is an [estimate](/estimate/). The income recorded on your invoices flows into the [profit and loss statement](/profit-and-loss-statement/) and shows as trade debtors on the [balance sheet](/balance-sheet/), while costs you reclaim go on an [expense report](/expense-report/).

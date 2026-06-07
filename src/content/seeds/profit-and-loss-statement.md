@@ -108,6 +108,8 @@ builderSchema:
         - { id: other_expense_amount, label: 'Other expense — amount', type: currency, required: false }
 ---
 
+> **Not financial or tax advice.** This is general information, not financial, accounting, or tax advice. Reporting standards and tax rules vary by jurisdiction and change over time — verify the current rules for your situation and consult a qualified accountant or tax adviser before relying on this document.
+
 ## What a profit and loss statement is
 
 A profit and loss statement — also called a P&L, an income statement, or a statement of profit and loss — is the financial document that tells you whether your business is making or losing money over a defined period. It answers one question: does revenue exceed costs, and by how much?
@@ -211,3 +213,7 @@ The owner, reading this P&L for the first time compared to Q4 2025, notes that w
 ## UK vs. US practical differences
 
 The conceptual structure of a P&L is the same in both markets. The practical differences are in how the figures connect to tax filings. In the UK, a sole trader's P&L feeds directly into SA103 on the self-assessment return; a Ltd company's P&L feeds into the corporation tax computation (CT600) filed with HMRC. In the US, a sole proprietorship's P&L feeds into Schedule C on the federal return; a corporation files Form 1120, and an S-corp files Form 1120-S. The template is structured to work with both, with the SA103 and Schedule C category mappings documented in the instructions.
+
+## Related categories
+
+The P&L is one of the two core financial statements; the [balance sheet](/balance-sheet/) is the other, and the net profit calculated here flows into its equity section. The revenue on a P&L is the money collected through your [invoices](/invoice-google-docs/), and a one-off asset sale recorded in "other income" is usually backed by a [bill of sale](/bill-of-sale/). When the figures are presented to investors, a [one pager](/one-pager/) distils them, and decisions taken on the back of the numbers are logged in [meeting minutes](/meeting-minutes/).

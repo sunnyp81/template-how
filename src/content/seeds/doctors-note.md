@@ -100,6 +100,8 @@ builderSchema:
         - { id: signature_date, label: 'Date signed', type: date, required: true }
 ---
 
+> **Not legal or medical advice.** This is general information, not legal or medical advice. Employment, sick-pay, and data-protection rules vary by jurisdiction and change over time — verify the current rules for your state or nation and consult a qualified professional before relying on this document.
+
 ## What a doctor's note actually does
 
 A doctor's note is not bureaucratic padding. It is the link between a clinical assessment and the administrative world — employers, schools, insurers, courts, and benefits agencies. Done correctly, it protects the patient's confidentiality while giving the recipient exactly the information they need to act.
@@ -228,3 +230,7 @@ Alex works in retail management. The note gives the employer exactly what they n
 ## How long to keep a doctor's note
 
 UK employees should retain copies of all fit notes for at least three years — they may be relevant to any future ESA or PIP claims, and they establish a timeline if a dispute about sick pay or dismissal arises. Employers must keep sickness records for at least three years under HMRC's record-keeping requirements. In the US, FMLA records must be maintained by employers for at least three years.
+
+## Related categories
+
+A doctor's note is one of several documents that pass between an employee and an employer. Where an extended illness ends an employment relationship, the [resignation letter](/resignation-letter/) is the document that formally closes it. A new hire returning to work after a medical absence will have started with an [offer letter](/offer-letter/), and the wider set of employment and personal-record templates sits in the [legal document templates](/legal-document-templates/) hub.

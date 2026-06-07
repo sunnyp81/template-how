@@ -124,6 +124,8 @@ builderSchema:
         - { id: signature_date, label: 'Date signed', type: date, required: true }
 ---
 
+> **Not legal advice.** This is general information, not legal advice. Power-of-attorney law, execution, and registration vary by jurisdiction and change over time — verify the current rules for your state or nation and consult a qualified solicitor or attorney before relying on this document.
+
 ## What a power of attorney actually is
 
 A power of attorney answers a question most people would rather not think about: if you could not manage your own affairs — because of an accident, an illness, or simply because you are abroad when a document must be signed — who would act for you, and with what authority? The POA is the document that gives that person their authority, in advance, on your terms, while you are still able to choose.

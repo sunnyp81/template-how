@@ -215,7 +215,7 @@ The two reliable layouts — stacked and side-by-side — suit different needs, 
 
 **Minimal text-only.** No logo, no table — just two or three lines of styled text. Increasingly popular precisely because it sidesteps every rendering and image-blocking problem, loads instantly, and never breaks. For consultants, developers, and anyone whose brand is personal rather than corporate, a clean text signature can look more confident than a heavy graphic one.
 
-**With a banner or call-to-action.** Some businesses add a promotional banner or a "Book a call" button below the signature. These work but carry the most risk: an oversized banner forces mobile scrolling, an image-heavy signature raises spam suspicion, and a button built with modern CSS may not render. If you use one, keep the banner under ~600 px wide and ~50 KB, and build any button as a styled table cell with an inline-styled link, not a CSS button.
+**With a banner or call-to-action.** Some businesses add a promotional banner or a "Book a call" button below the signature. These work but carry the most risk: an oversized banner forces mobile scrolling, an image-heavy signature raises spam suspicion, and a button built with modern CSS may not render. If you use one, keep the banner under ~600 px wide and ~50 KB, and build any button as a styled table cell with an inline-styled link, not a CSS button. A signature banner is a different beast from a social-channel header such as a [YouTube banner](/youtube-banner-size/) — far smaller, and built in HTML rather than exported as a flat image.
 
 ## Maintaining signatures across a team
 

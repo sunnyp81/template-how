@@ -172,7 +172,7 @@ If your group is a board, committee, association, or council running on **Robert
 
 ## Agenda and minutes: the natural pair
 
-Because this template lives alongside a **meeting minutes** template on this site, it is worth being explicit about how they connect. The agenda lists each item with its intended outcome; during the meeting, the minute-taker records, under each item, the decision reached and any action assigned (owner, task, deadline). The structure carries straight across — the agenda is, in effect, the skeleton of the minutes. Teams that run the two together get cleaner records with less effort, and a continuous thread from "what we planned to decide" to "what we decided" to "what we did about it" at the next meeting's action review. If you use this agenda template, pair it with the minutes template for the full loop.
+Because this template lives alongside a [meeting minutes](/meeting-minutes/) template on this site, it is worth being explicit about how they connect. The agenda lists each item with its intended outcome; during the meeting, the minute-taker records, under each item, the decision reached and any action assigned (owner, task, deadline). The structure carries straight across — the agenda is, in effect, the skeleton of the minutes. Teams that run the two together get cleaner records with less effort, and a continuous thread from "what we planned to decide" to "what we decided" to "what we did about it" at the next meeting's action review. If you use this agenda template, pair it with the minutes template for the full loop.
 
 ## Common worked example
 

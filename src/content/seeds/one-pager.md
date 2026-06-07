@@ -166,3 +166,7 @@ Nova Labs builds carbon accounting software that auto-imports Scope 1–3 emissi
 ---
 
 Format: A4 portrait. Satoshi font (free). Two-column layout for Problem/Solution/Market/Traction sections. Body text 11pt. Bold section headers 12pt. Three accent data points in 18pt bold: £18,400 MRR / 47 pilots / £800k ask. One accent colour (dark teal). 280 words. Fits cleanly on a single A4 page at 1.5cm margins.
+
+## Related categories
+
+A one pager opens the conversation, but the documents behind it carry the detail. The financial claims a fundraising one pager makes are backed by a [profit and loss statement](/profit-and-loss-statement/) and a [balance sheet](/balance-sheet/), which investors ask for next. For planning the work behind the pitch, the [to-do list](/to-do-list/) and [checklist](/checklist/) templates keep the follow-up actions on track.

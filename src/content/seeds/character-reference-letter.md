@@ -118,7 +118,7 @@ That question comes up in some of the highest-stakes moments in a person's life.
 
 The credibility of a character reference rests on two things: who the writer is, and how well they actually know the subject. A respected community member who has known the person for ten years carries more weight than a prominent stranger who met them once. The writer's standing and the depth of their acquaintance are not background detail — they are the foundation of the letter's value, which is why a good character reference establishes both in its opening lines.
 
-Character references are distinct from the persuasive letter of recommendation (which advocates for admission or hiring) and from the factual employment reference (which verifies work history). They are their own document, with their own conventions — and in formal contexts like court, those conventions matter.
+Character references are distinct from the persuasive [letter of recommendation](/letter-of-recommendation/) (which advocates for admission or hiring) and from the factual employment [reference letter](/reference-letter/) (which verifies work history). They are their own document, with their own conventions — and in formal contexts like court, those conventions matter.
 
 ## When you need one
 
@@ -148,7 +148,7 @@ Character references are distinct from the persuasive letter of recommendation (
 
 **Court / good character reference.** The most formal and most rule-bound variant. Addressed to the court, it states that you are aware of the charges or reason for the hearing, how you know the defendant, and the positive character you have observed with examples. Crucially, it does not tell the court what sentence to impose. Always follow the specific guidance the solicitor or court provides — requirements differ by jurisdiction, and a reference that ignores them can be disregarded.
 
-**Rental / tenant character reference.** Addressed to a landlord or letting agent, it speaks to reliability, responsibility, cleanliness, and financial trustworthiness. The reader is assessing risk before handing over a property, so specifics about how the applicant manages obligations are valuable. Pairs with the lease agreement that follows a successful application.
+**Rental / tenant character reference.** Addressed to a landlord or letting agent, it speaks to reliability, responsibility, cleanliness, and financial trustworthiness. The reader is assessing risk before handing over a property, so specifics about how the applicant manages obligations are valuable. Pairs with the [lease agreement](/lease-agreement/) that follows a successful application.
 
 **Immigration / support letter.** Attests to good character, integrity, and ties to the community for a visa, citizenship, or sponsorship application. Highly dependent on the specific application's instructions, which should be followed exactly.
 
@@ -206,4 +206,4 @@ How you ask matters too, because you want the referee both willing and equipped 
 
 This template follows GOV.UK guidance on references, Citizens Advice guidance on references, and Indeed's character reference guidance (linked in Sources below).
 
-For the factual, verification-focused cousin of this document, see the **reference letter** template; for the persuasive, case-building version used in academic and professional applications, see the **letter of recommendation**. If a successful rental application follows, the **lease agreement** template covers the tenancy itself, and the **resignation letter** and **two weeks notice** templates cover the career documents in this hub.
+For the factual, verification-focused cousin of this document, see the **reference letter** template; for the persuasive, case-building version used in academic and professional applications, see the **letter of recommendation**. If a successful rental application follows, the **lease agreement** template covers the tenancy itself, and the [resignation letter](/resignation-letter/) and [two weeks notice](/two-weeks-notice/) templates cover the career documents in this hub.

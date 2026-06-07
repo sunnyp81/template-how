@@ -108,6 +108,8 @@ builderSchema:
         - { id: jurisdiction, label: 'Jurisdiction', type: select, required: true, options: 'us-states+uk-nations' }
 ---
 
+> **Not legal advice.** This is general information, not legal advice. Eviction law varies by jurisdiction and changes over time — verify the current rules for your state or nation and consult a qualified solicitor or attorney before serving any notice.
+
 ## What an eviction notice is
 
 An eviction notice is not the same as an eviction. It is a formal written notice — the first step in a legal process — that tells a tenant the landlord intends to seek possession of the property. If the tenant leaves by the required date, the matter is resolved. If they do not, the landlord must then go to court to obtain a possession order. The notice itself has no power to remove anyone.
@@ -222,3 +224,7 @@ In England, the eviction process is centralised through the county court with a 
 In the US, eviction (called unlawful detainer in many states) is governed by state law and varies considerably in speed and complexity. California evictions can take 3–6 months with a contested hearing. Texas evictions can be completed in 3–4 weeks. Most states require the landlord to file in a local court (Justice of the Peace court in Texas, Housing Court in New York, Magistrate's Court in many other states) after the notice period expires. Sheriffs or marshals, not bailiffs, execute US possession orders.
 
 COVID-era eviction moratoria have now expired in both the UK and US, though some local jurisdictions extended protections longer than the federal or national baseline. Check current local rules if evicting in an area that had extended protection.
+
+## Related categories
+
+An eviction notice ends the tenancy that began with a [lease agreement](/lease-agreement/) or a month-to-month [rental agreement](/rental-agreement/) — the preconditions for a valid notice depend on the terms agreed there. Where a tenant has fallen into arrears, a [promissory note](/promissory-note/) can document a repayment plan that avoids eviction altogether. A landlord operating through a company holds the property under an [operating agreement](/operating-agreement/).

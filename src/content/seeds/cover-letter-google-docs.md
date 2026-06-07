@@ -98,7 +98,7 @@ A cover letter has one function: to explain why you, specifically, are the right
 
 The most important word in that sentence is "argument." Not "summary." Not "introduction." An argument takes a position and supports it. The position your cover letter takes is: "I am the right hire." The evidence is specific, verifiable examples from your career. The conclusion is a request for an interview.
 
-Most cover letters fail because they make no argument at all. They describe what the candidate has done without ever connecting it to what the employer needs. Reading the job description and matching your experience to it, point by point, is the minimum. The best cover letters go further: they demonstrate that the candidate understands the company's situation, not just the job's requirements.
+Most cover letters fail because they make no argument at all. They describe what the candidate has done without ever connecting it to what the employer needs. Reading the job description and matching your experience to it, point by point, is the minimum. The best cover letters go further: they demonstrate that the candidate understands the company's situation, not just the job's requirements. The [resume](/harvard-resume/) lists the facts; the cover letter argues from them.
 
 ## Why Google Docs works well for cover letters
 
@@ -106,7 +106,7 @@ Google Docs is the right tool for cover letters for several practical reasons. I
 
 The practical workflow: write and edit in Google Docs, export as PDF when ready to submit. File → Download → PDF Document. The PDF preserves your formatting exactly, regardless of what device or operating system the recipient uses. A DOCX file can shift formatting when opened in a different version of Word or on a different operating system. A PDF does not.
 
-One technical note: Google Docs uses Roboto or Google Fonts variants by default in newer documents. If you want fonts that match standard professional documents — Calibri, Georgia, Times New Roman — you will need to select them manually. For cover letters, Georgia (serif, professional) and Calibri (sans-serif, clean) are both appropriate. Avoid decorative fonts entirely.
+One technical note: Google Docs uses Roboto or Google Fonts variants by default in newer documents. If you want fonts that match standard professional documents — Calibri, Georgia, Times New Roman — you will need to select them manually. For cover letters, Georgia (serif, professional) and Calibri (sans-serif, clean) are both appropriate. Avoid decorative fonts entirely. The same applies if you are building a matching [Google Docs resume](/google-docs-resume/) to send alongside it.
 
 ## When you need one
 
@@ -138,7 +138,7 @@ One technical note: Google Docs uses Roboto or Google Fonts variants by default 
 
 **Cold application cover letter.** Written when there is no open position advertised. Opens by explaining why you are writing speculatively, demonstrates knowledge of the company, identifies the gap you could fill, and asks for a conversation rather than an interview. Harder to write, but occasionally more effective than responding to an advertised role because you have less competition.
 
-**Internal application letter.** For roles within your current employer. Shorter, less explanatory about context the reader already knows, and more directly focused on why the specific role is the right next step.
+**Internal application letter.** For roles within your current employer. Shorter, less explanatory about context the reader already knows, and more directly focused on why the specific role is the right next step. Once the application succeeds and you accept an offer, a [two weeks notice](/two-weeks-notice/) closes out your current role; if the new employer asks for references, a [letter of recommendation](/letter-of-recommendation/) from a former manager carries the case further than the cover letter can.
 
 ## Step-by-step: filling in the Google Docs template
 
@@ -146,7 +146,7 @@ One technical note: Google Docs uses Roboto or Google Fonts variants by default 
 
 **Step 2 — Write the opening line first, not the header.** The most common block when writing cover letters is staring at the blank body paragraph. Skip the formalities and write the opening sentence first. Something like: "Stripe's 2024 engineering blog post on API latency optimisation is the reason this application exists" — if that is true. If you have a genuine reason for applying, start with it.
 
-**Step 3 — Copy the job description into a separate tab or document.** Underline or highlight the key requirements. These become the skeleton of your body paragraphs. Each key requirement gets a paragraph that acknowledges it and provides your evidence.
+**Step 3 — Copy the job description into a separate tab or document.** Underline or highlight the key requirements. These become the skeleton of your body paragraphs. Each key requirement gets a paragraph that acknowledges it and provides your evidence. If the role goes through an online portal, make sure the CV you attach is an [ATS-friendly resume](/ats-friendly-resume/) so it parses cleanly alongside the letter.
 
 **Step 4 — Write each body paragraph as a mini-argument.** Structure: state the skill or quality → provide the specific example → quantify the outcome where possible. "At Barclays, I reduced the time-to-deploy for our core analytics pipeline from 14 days to 3, cutting rollback incidents by 60%" is a mini-argument. It names the company, describes the action, and quantifies the result.
 

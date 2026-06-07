@@ -109,6 +109,8 @@ builderSchema:
         - { id: retained_earnings, label: 'Retained earnings', type: currency, required: true }
 ---
 
+> **Not financial or tax advice.** This is general information, not financial, accounting, or tax advice. Reporting standards and tax rules vary by jurisdiction and change over time — verify the current rules for your situation and consult a qualified accountant or tax adviser before relying on this document.
+
 ## What a balance sheet actually is
 
 The balance sheet answers a single question: at this moment in time, what is the financial position of the business?
@@ -228,3 +230,7 @@ Working capital: current assets (£29,400) minus current liabilities (£6,200) =
 In the UK, the balance sheet format follows either UK GAAP (FRS 102 or FRS 105 for micro-entities) or IFRS. The vertical format — assets at the top, liabilities and equity below — is standard. For Companies House filing, small companies can file an abbreviated balance sheet without a P&L; micro-entities can file even less.
 
 In the US, the horizontal format (assets on the left, liabilities and equity on the right) is traditional in textbooks, though the vertical format is widely used in practice. US GAAP differs from UK GAAP on several specifics: LIFO inventory valuation is permitted under US GAAP but prohibited under IFRS and UK GAAP; goodwill amortisation is required under UK GAAP but not US GAAP; and some financial instrument classifications differ. For a small UK business, none of this matters — but if you are preparing accounts for a US investor or a company that may list on a US exchange, the differences are worth knowing.
+
+## Related categories
+
+The balance sheet is one half of a business's core accounts; the [profit and loss statement](/profit-and-loss-statement/) is the other, and the two are read together (the period's profit flows into retained earnings here). The trade debtors on the balance sheet are the unpaid [invoices](/invoice-google-docs/) you have issued, while long-term debt may be documented by a [promissory note](/promissory-note/) and assets acquired or sold are recorded on a [bill of sale](/bill-of-sale/). Where the directors review the accounts, the decision belongs in the [meeting minutes](/meeting-minutes/).

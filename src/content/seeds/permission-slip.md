@@ -204,4 +204,4 @@ The photography question sits inside this same framework. A child's image is per
 
 This template reflects DfE guidance on health and safety on educational visits, HSE guidance on school trips, and US FERPA guidance on protecting student information (linked in Sources below). It is a consent and information record, not legal advice; schools should follow their own safeguarding and educational-visits policies.
 
-For classroom assessment and recognition documents, see the **rubric** and **certificate of achievement** templates. For the teacher's planning document behind the activity, see the **lesson plan** template, and for study tools see **cornell notes** and **venn diagram**.
+For classroom assessment and recognition documents, see the [rubric](/rubric/) and [certificate of achievement](/certificate-of-achievement/) templates. For the teacher's planning document behind the activity, see the [lesson plan](/lesson-plan/) template, and for study tools see [cornell notes](/cornell-notes/) and [venn diagram](/venn-diagram/).

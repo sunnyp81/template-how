@@ -123,6 +123,8 @@ builderSchema:
         - { id: signature_date, label: 'Date signed', type: date, required: true }
 ---
 
+> **Not legal advice.** This is general information, not legal advice. Tenancy law varies by jurisdiction and changes over time — verify the current rules for your state or nation and consult a qualified solicitor or attorney before relying on this document.
+
 ## What a rental agreement actually is
 
 A rental agreement is the document that governs the most common kind of tenancy: short-term, flexible, and rolling. Where a lease locks both landlord and tenant into a fixed term — a year is typical — a rental agreement usually runs month to month, renewing automatically until one side decides to end it. That single structural difference, fixed term versus rolling period, is what separates the two, and it shapes everything about how the agreement works.

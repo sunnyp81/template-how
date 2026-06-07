@@ -68,7 +68,7 @@ faq:
   - q: 'Can I export a Twitch banner from this site''s builder?'
     a: 'Not yet as a finished PNG. The current builder on template.how exports PDF, DOCX, and print — it does not yet render a pixel-exact PNG canvas at 1200 × 480. For now, use the exact dimensions and safe-zone guidance on this page to set up your canvas in Canva, Photoshop, GIMP, Photopea, or Figma, and export the PNG from there. PNG/canvas export is a known gap we are working on; the value of this page is the correct, current numbers.'
   - q: 'Should I use the same banner across Twitch, YouTube, and other platforms?'
-    a: 'You can reuse the visual style — colours, logo, typography — for brand consistency, but the dimensions are different and you must re-export at each platform''s size. Twitch is 1200 × 480 (banner) and 1920 × 1080 (offline); YouTube channel art is 2560 × 1440 with a 1546 × 423 safe area. A single 2560 × 1440 file does not fit the Twitch banner. Build a master design and crop or re-frame it per platform rather than uploading one file everywhere.'
+    a: 'You can reuse the visual style — colours, logo, typography — for brand consistency, but the dimensions are different and you must re-export at each platform''s size. Twitch is 1200 × 480 (banner) and 1920 × 1080 (offline); [YouTube channel art](/youtube-banner-size/) is 2560 × 1440 with a 1546 × 423 safe area. A single 2560 × 1440 file does not fit the Twitch banner. Build a master design and crop or re-frame it per platform rather than uploading one file everywhere.'
 ---
 
 ## What the "Twitch banner size" actually refers to
@@ -108,7 +108,7 @@ This is the asset most streamers neglect, and it is the highest-leverage one. Wh
 Because it occupies the player, the 16:9 ratio is non-negotiable. A 1200 × 480 profile banner dropped here will not fill the frame. Design the offline banner as a working billboard, not just decoration:
 
 - **Your schedule** — which days and times you stream, with a timezone (this is the single most valuable thing to include).
-- **Your other socials** — YouTube, TikTok, Discord, X handles, so a visitor can follow you somewhere even when you are not live.
+- **Your other socials** — YouTube, TikTok, [Discord](/discord-bio/), X handles, so a visitor can follow you somewhere even when you are not live.
 - **A short status line** — "Currently offline — back Thursday 7pm GMT".
 - **Branding** — logo, colours, the same visual identity as your profile banner.
 

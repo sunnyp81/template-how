@@ -59,11 +59,11 @@ faq:
 
 ## What a funeral program is
 
-A funeral program — also called an order of service, service sheet, or memorial bulletin — is the printed document distributed to mourners at a funeral or memorial service. It serves two purposes simultaneously: a practical guide through the service, and a physical keepsake that many families treasure for years.
+A funeral program — also called an [order of service](/funeral-order-of-service/), service sheet, or memorial bulletin — is the printed document distributed to mourners at a funeral or memorial service. It serves two purposes simultaneously: a practical guide through the service, and a physical keepsake that many families treasure for years.
 
-The practical function is clear: it tells mourners when to stand, when to sit, which hymn to turn to and what words to sing, when the eulogy will be given, and how the service will conclude. A well-prepared program means mourners are oriented rather than anxious, following the service rather than looking around for cues.
+The practical function is clear: it tells mourners when to stand, when to sit, which hymn to turn to and what words to sing, when the [eulogy](/eulogy/) will be given, and how the service will conclude. A well-prepared program means mourners are oriented rather than anxious, following the service rather than looking around for cues.
 
-The keepsake function is equally important, though less often discussed. Unlike a death notice or obituary published in a newspaper, the funeral program is a physical object that attendees take home. For many families, it is the first tangible memorial artefact — the beginning of a collection that might grow to include a photo album, a memorial book, or a grave marker. The design, therefore, matters more than it might seem.
+The keepsake function is equally important, though less often discussed. Unlike a [death announcement](/death-announcement/) or [obituary](/obituary/) published in a newspaper, the funeral program is a physical object that attendees take home. For many families, it is the first tangible memorial artefact — the beginning of a collection that might grow to include a photo album, a memorial book, or a grave marker. The design, therefore, matters more than it might seem.
 
 ## Structure: what goes on each panel
 
@@ -84,7 +84,7 @@ The standard bi-fold format gives four panels:
 - For longer services, this panel may carry the eulogy text, a psalm, or lyrics for a second hymn
 
 **Back cover (outside rear):**
-- Acknowledgement from the family
+- Acknowledgement from the family — often echoing the gratitude that mourners send back in a [sympathy card](/sympathy-card/)
 - Short biography summary (if the obituary is not being separately distributed)
 - A closing poem or verse
 - Details of a wake or reception (address, time)

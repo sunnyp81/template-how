@@ -80,7 +80,7 @@ Both UK and US creators use CapCut extensively. The app's content is broadly glo
 
 **Instagram Reels.** CapCut-edited videos are common on Reels, though the audio licencing situation is more complicated (see the FAQ above). For Reels, use CapCut's template structure but replace the audio with a track from CapCut's licensed library before exporting to Instagram.
 
-**YouTube Shorts.** The 9:16 vertical format of CapCut templates maps directly to YouTube Shorts dimensions. Export at 1080 × 1920.
+**YouTube Shorts.** The 9:16 vertical format of CapCut templates maps directly to YouTube Shorts dimensions. Export at 1080 × 1920. Ranked-content formats such as the [tier list](/tier-list/) translate especially well into short vertical edits.
 
 **Event videos and personal content.** Holiday videos, birthday compilations, wedding highlights — templates designed for photo slideshows produce results that would otherwise require design skill that most people do not have. A well-chosen template with good photos is indistinguishable from a professionally edited slideshow to most viewers.
 
@@ -110,7 +110,7 @@ Both UK and US creators use CapCut extensively. The app's content is broadly glo
 
 ## Step-by-step: creating your own template
 
-Creating a template rather than just using one is a different skill set, and a useful one if you want to build a creative identity on the platform.
+Creating a template rather than just using one is a different skill set, and a useful one if you want to build a creative identity on the platform. For original videos rather than template-driven ones, planning the shots first with a [storyboard](/storyboard/) pays off before you ever open the editor.
 
 **Step 1 — Build the edit.** Start a new project in CapCut and create your edit from scratch: select your clips, apply transitions, add text layers, synchronise to audio, add effects. Build it as if it is a finished video, because it effectively will be — you are setting the standard your template will be held to.
 
@@ -150,7 +150,7 @@ He then replaces the preset audio with his own voiceover track ("Five days in Ro
 
 He exports at 1080p, checks the watermark is absent (he has CapCut Pro), and uploads directly to TikTok. Total editing time: twelve minutes.
 
-The video reaches 340,000 views in four days — his highest-performing video to that point. When followers ask how he edits his videos, he links directly to the template in his CapCut profile.
+The video reaches 340,000 views in four days — his highest-performing video to that point. When followers ask how he edits his videos, he links directly to the template in his CapCut profile and points them to his [Discord](/discord-bio/) community for more.
 
 ## CapCut and the UK/US market
 

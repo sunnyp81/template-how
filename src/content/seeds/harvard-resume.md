@@ -117,7 +117,7 @@ The format was developed and refined by the Harvard Office of Career Services an
 
 The core rules: one page for early-career candidates, reverse chronological order, no graphics or photos, consistent formatting throughout, and bullet points that quantify rather than describe. "Led a team" tells a recruiter nothing. "Led a four-person team that delivered a market entry report for a FTSE 250 client, three days ahead of deadline" tells them something.
 
-The Harvard resume format is distinct from the European CV (longer, more comprehensive) and from the designed or creative resume (which uses colour, columns, and visual elements). Neither of those formats is appropriate for competitive professional applications in the US — applicant tracking systems reject PDFs with text boxes and multi-column layouts at a significant rate. The Harvard format, sent as a clean single-column document, does not have this problem.
+The Harvard resume format is distinct from the European CV (longer, more comprehensive) and from the designed or creative resume (which uses colour, columns, and visual elements). Neither of those formats is appropriate for competitive professional applications in the US — [applicant tracking systems](/ats-friendly-resume/) reject PDFs with text boxes and multi-column layouts at a significant rate. The Harvard format, sent as a clean single-column document, does not have this problem.
 
 In the UK, the same document would typically be called a CV, and the one-to-two-page format is the expected standard for most roles. The Harvard template works for UK applications with minor adjustments — British English spelling, UK date format conventions, and the omission of GPA (which UK employers do not typically request or understand).
 
@@ -129,7 +129,7 @@ In the UK, the same document would typically be called a CV, and the one-to-two-
 
 **UK university students targeting competitive graduate schemes.** The big four accounting firms, Teach First, the Civil Service Fast Stream, investment banking graduate intakes — these use the same criteria as their US counterparts. A clean, quantified, reverse-chronological CV in the Harvard style translates directly.
 
-**Career changers with a clear narrative.** If you are moving between industries or roles, the Harvard format's mandatory summary section is where the narrative lives. The format forces you to articulate who you are and why you are a credible candidate for the target role — which is the central challenge in any career change application.
+**Career changers with a clear narrative.** If you are moving between industries or roles, the Harvard format's mandatory summary section is where the narrative lives. The format forces you to articulate who you are and why you are a credible candidate for the target role — which is the central challenge in any career change application, and the place where a strong [cover letter](/cover-letter-google-docs/) does the rest of the work.
 
 **Academic positions where a full CV is premature.** A PhD student applying for a first industry role, or a postdoc moving into consulting, does not need a fifteen-page academic CV. A Harvard-format resume that highlights the transferable elements of academic training — research design, data analysis, project management, writing — is usually more effective.
 
@@ -181,7 +181,7 @@ One thing I have seen consistently across the resumes I review for clients: the 
 
 **Mistake 3: Inconsistent formatting.** Using bold for some company names but not others. Inconsistent date formats (some "September 2023", some "Sept. 2023"). Different bullet styles in different sections. Inconsistent spacing. This signals inattention to detail, which is a fatal signal for roles in finance, law, and consulting where attention to detail is an explicit requirement.
 
-**Mistake 4: Including references.** "References available upon request" is a four-word phrase that adds nothing and costs a full line of your one-page budget. Employers know you will provide references when asked. Leave it off.
+**Mistake 4: Including references.** "References available upon request" is a four-word phrase that adds nothing and costs a full line of your one-page budget. Employers know you will provide a [reference letter](/reference-letter/) or [letter of recommendation](/letter-of-recommendation/) when asked. Leave it off.
 
 **Mistake 5: Using the same resume for every application.** The Harvard format is a structure, not a fixed document. The summary, the ordering of bullet points, and the emphasis in the skills section should change to reflect each specific application. A resume for a data analyst role and a resume for a marketing manager role should read noticeably differently, even if the underlying experience is the same.
 

@@ -84,7 +84,7 @@ When you paint on the template and upload it, Roblox's engine wraps your 2D text
 
 **GIMP (free, desktop).** A capable free desktop image editor. Slightly steeper learning curve than Photopea for beginners, but very full-featured. Supports PNG transparency and layers. Available for Windows, macOS, and Linux.
 
-**Krita (free, desktop).** Designed primarily as a digital painting tool. Excellent brush engine and layer support. Popular among Roblox clothing creators who want more artistic control. Exports to PNG with transparency.
+**Krita (free, desktop).** Designed primarily as a digital painting tool. Excellent brush engine and layer support. Popular among Roblox clothing creators who want more artistic control — many of whom also edit videos in a tool like [CapCut](/capcut/) to promote their designs. Exports to PNG with transparency.
 
 **Adobe Photoshop (paid).** The industry standard. If you already have it, use it. The workflow is identical: open the template PNG, add design layers, hide the template guide, export as PNG with transparency.
 
@@ -133,7 +133,7 @@ When in doubt, test with an original design first to understand the moderation p
 
 Working at 585×559 pixels requires accepting certain visual constraints. This is not a high-resolution canvas — it is approximately the size of a postage stamp on a modern high-DPI screen. Here is what works and what does not:
 
-**What works:** Bold shapes with high contrast. Simple text in large point sizes (18px minimum in the file). Solid colour fills and gradients. Clean pixel art at 1:1 scale. Repeating tile patterns (these look good on sleeves especially).
+**What works:** Bold shapes with high contrast. Simple text in large point sizes (18px minimum in the file). Solid colour fills and gradients. Clean pixel art at 1:1 scale — the same bold, high-contrast instinct that makes a [wanted poster](/wanted-poster/) readable at distance applies here. Repeating tile patterns (these look good on sleeves especially).
 
 **What does not work:** Photographs (too much detail lost). Fine text under 12px. Subtle gradients and colour variations (the compression and 3D wrapping flattens these). Detailed faces or logos at small sizes. Drop shadows and complex blend modes (they look fine in the editor but often compress poorly during upload).
 
@@ -169,4 +169,4 @@ She logs in to Roblox, uploads via create.roblox.com, pays 10 Robux (she bought 
 
 Six hours later: approved. She puts it on her avatar and checks the 3D view — the controller is centred on the chest as intended, and the back text is legible. She lists it on the marketplace for 30 Robux, which gives her 21 Robux after Roblox's 30% cut — meaning she would need to sell roughly 1,000 shirts to recoup a typical DevEx cashout threshold.
 
-For now, she has a shirt she designed herself, an understanding of the upload process, and a plan to make more.
+For now, she has a shirt she designed herself, an understanding of the upload process, and a plan to make more — and like many young gamers, she enjoys ranking her favourite Roblox experiences in a [tier list](/tier-list/) for her friends.

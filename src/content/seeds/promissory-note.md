@@ -118,6 +118,8 @@ builderSchema:
         - { id: signature_date, label: 'Date signed', type: date, required: true }
 ---
 
+> **Not legal or financial advice.** This is general information, not legal, financial, or tax advice. Lending, interest, and tax rules vary by jurisdiction and change over time — verify the current rules for your state or nation and consult a qualified solicitor, attorney, or financial adviser before relying on this document.
+
 ## What a promissory note actually is
 
 A promissory note is the cleanest legal expression of a debt. Stripped to essentials, it is one sentence: "I promise to pay you this much money, on these terms." Everything else — interest, schedule, default, security — elaborates that promise. What makes it a legal instrument rather than a casual note is its unconditional and definite character: a fixed sum, a clear promise, and the borrower's signature.

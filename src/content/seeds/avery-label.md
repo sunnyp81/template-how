@@ -80,7 +80,7 @@ The most important codes:
 **Avery 5160 / L7160 (address labels).**
 - US 5160: 30 labels/sheet (3×10), each 1"×2⅝" (25.4×66.7mm), Letter paper
 - UK L7160: 21 labels/sheet (3×7), each 38.1×63.5mm, A4 paper
-- Use for: mailing addresses, return addresses, file folder labels, name badges (smaller text)
+- Use for: mailing addresses, return addresses, file folder labels, classroom and [lesson plan](/lesson-plan/) organisation, name badges (smaller text)
 
 **Avery 5163 / L7166 (shipping labels).**
 - US 5163: 10 labels/sheet (2×5), each 2"×4" (50.8×101.6mm), Letter
@@ -95,7 +95,7 @@ The most important codes:
 **Avery 5371 / L7413 (business card size).**
 - US 5371: 10 cards/sheet (2×5), each 2"×3.5" — standard US business card
 - UK L7413: 10 cards/sheet (2×5), each 85×54mm — standard UK/ISO business card
-- Use for: prototype business cards, event badges, category labels
+- Use for: prototype business cards, event and [meeting](/meeting-agenda/) name badges, category labels
 
 ## Where to get templates
 

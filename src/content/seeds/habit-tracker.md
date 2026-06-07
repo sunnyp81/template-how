@@ -139,7 +139,7 @@ Make the first habit small enough that you cannot reasonably skip it. "Read one 
 
 **Monthly grid** (habits as rows, days 1–31 as columns): gives the long, satisfying chain and a big-picture view of your consistency. Best for seeing streaks and spotting patterns ("I always miss weekends").
 
-**Daily checklist** (a fresh short list each day, often inside a daily planner): keeps the habits in front of you every morning, next to your tasks.
+**Daily checklist** (a fresh short list each day, often inside a [daily planner](/daily-planner/)): keeps the habits in front of you every morning, next to your tasks.
 
 Many people run both: the monthly grid for the streak and the overview, a daily reminder so nothing is forgotten. Start with whichever you will actually look at every single day — visibility is everything.
 
@@ -169,7 +169,7 @@ Both work; the best is the one you will look at daily. **Paper** (printed, on th
 
 You can fill in the builder above and export it as a **PDF or print** it — which is genuinely the right format here. A printed habit grid on the wall or fridge is the most effective way to use one, precisely because it stays visible and acts as a daily cue, and the physical act of marking it is part of the mechanism.
 
-The one honest limitation: if you want a *live spreadsheet* tracker — automatic streak counts, conditional-formatting colours that fill as you tick — the builder does not yet output an editable `.xlsx` or Google Sheet. For that, adapt the approach in our Google Sheets calendar guide into a tracker grid. For the large majority of people, though, the printable PDF is exactly what a habit tracker should be.
+The one honest limitation: if you want a *live spreadsheet* tracker — automatic streak counts, conditional-formatting colours that fill as you tick — the builder does not yet output an editable `.xlsx` or Google Sheet. For that, adapt the approach in our [Google Sheets calendar](/google-sheets-calendar/) guide into a tracker grid. For the large majority of people, though, the printable PDF is exactly what a habit tracker should be.
 
 ## Worked example
 
@@ -187,7 +187,7 @@ Which habits you track matters as much as the tracking. The behaviours most like
 
 **Small enough to be unskippable.** The first version of a habit should be almost embarrassingly easy: "read one page", "one press-up", "open the textbook". This is sometimes called the "two-minute rule" — make the habit so small that starting it requires no willpower, because the hard part of any habit is starting, not continuing. Once you have shown up, you usually do more, but the tracker only requires the minimum. A habit you cannot fail is a habit that builds a chain.
 
-**Tied to something you care about.** A habit tracked for its own sake fades; a habit you can connect to a goal you genuinely want persists. The builder includes a "why these habits matter to me" field for exactly this reason — writing the connection makes the habit's purpose visible on the days motivation is thin.
+**Tied to something you care about.** A habit tracked for its own sake fades; a habit you can connect to a goal you genuinely want — the kind you might capture on a [vision board](/vision-board/) — persists. The builder includes a "why these habits matter to me" field for exactly this reason — writing the connection makes the habit's purpose visible on the days motivation is thin.
 
 **Within your direct control.** Track behaviours, not outcomes. "Walk 20 minutes" is controllable; "lose a pound" is not — it depends on factors beyond today's effort. Tracking an outcome you cannot directly produce sets you up for demoralising "failures" on days you did everything right. Track the input; the output follows.
 

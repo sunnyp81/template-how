@@ -86,7 +86,7 @@ The gaming origin is still evident — character tier lists for Street Fighter, 
 
 **Sports drafts and analysis.** Ranking players, teams, seasons, or match performances. Particularly popular for American football, basketball, and Premier League football.
 
-**Classroom use.** History, literature, and science teachers use tier lists to make comparative analysis concrete — ranking historical decisions, characters by moral complexity, or scientific discoveries by impact.
+**Classroom use.** History, literature, and science teachers use tier lists to make comparative analysis concrete — ranking historical decisions, characters by moral complexity, or scientific discoveries by impact. For pure two- or three-way comparisons, a [Venn diagram](/venn-diagram/) is the complementary classroom tool.
 
 **Opinion and lifestyle content.** Travel destinations, gym exercises, supermarket chains, public transport systems. The tier list format turns any personal preference into shareable content.
 

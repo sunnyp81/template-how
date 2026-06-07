@@ -122,7 +122,7 @@ In the UK the same document is called a CV, but the structure is identical, and 
 
 **Your recent roles are your strongest.** Because the format puts your most recent experience first, it is ideal when your latest job is the most senior, the most relevant, or the most impressive. The reader sees your best, most current work immediately.
 
-**You are applying through an ATS.** Chronological is the most parseable format. If your application goes through a company careers portal — Workday, Greenhouse, Lever, Taleo — a single-column chronological resume gives the parser exactly the dated structure it expects.
+**You are applying through an ATS.** Chronological is the most parseable format. If your application goes through a company careers portal — Workday, Greenhouse, Lever, Taleo — a single-column chronological resume gives the parser exactly the dated structure it expects. The [ATS-friendly resume](/ats-friendly-resume/) page covers the detailed parsing rules that keep this format readable to the bots.
 
 **You want the safe default.** When in doubt, use chronological. Recruiters expect it, ATS systems prefer it, and it suits the large majority of careers. The alternative formats (functional, combination) solve specific problems — major gaps, dramatic career changes — but carry a cost, because recruiters tend to read them as a sign the candidate is hiding something. Unless you have a specific reason to deviate, chronological is the right call.
 
@@ -196,4 +196,4 @@ This is why the format's failure modes are so costly. A gap in the date column s
 
 This template follows US DOL CareerOneStop resume guidance, Purdue OWL's résumé workshop, and the UK National Careers Service CV guidance (linked in Sources below).
 
-For related formats and tools, see the **simple resume**, **harvard resume**, **ATS-friendly resume**, and **google docs resume** templates. When you reach the reference stage of an application, the **reference letter** and **letter of recommendation** templates cover the documents an employer will request next.
+For related formats and tools, see the [simple resume](/simple-resume/), [harvard resume](/harvard-resume/), **ATS-friendly resume**, and [google docs resume](/google-docs-resume/) templates. When you reach the reference stage of an application, the [reference letter](/reference-letter/) and **letter of recommendation** templates cover the documents an employer will request next.

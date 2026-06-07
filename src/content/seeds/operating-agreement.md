@@ -122,6 +122,8 @@ builderSchema:
         - { id: signature_date, label: 'Date of signing', type: date, required: true }
 ---
 
+> **Not legal or tax advice.** This is general information, not legal or tax advice. LLC and tax rules vary by state and change over time — verify the current rules for your state and consult a qualified business attorney or tax adviser before relying on this document.
+
 ## What an operating agreement actually is
 
 An operating agreement is the rulebook for a US limited liability company. The state creates your LLC when you file the articles of organization, but the state does not tell you how to run it. That is what the operating agreement does: it is the private contract among the members that answers the questions the public filing does not — who owns what, who decides what, how money is shared, and what happens when someone leaves or dies.

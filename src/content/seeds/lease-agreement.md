@@ -149,6 +149,8 @@ builderSchema:
         - { id: sign_date, label: 'Date signed', type: date, required: true }
 ---
 
+> **Not legal advice.** This is general information, not legal advice. Tenancy law varies by jurisdiction and changes over time — verify the current rules for your state or nation and consult a qualified solicitor or attorney before relying on this document.
+
 ## What a lease agreement is
 
 A lease agreement is the legal foundation of a tenancy. It records what has been agreed between a landlord and tenant before the keys are handed over: the rent, the deposit, who is responsible for what, and how the tenancy can be ended. Without one, both parties rely on verbal understandings — which are legally binding in the UK but nearly impossible to prove when something goes wrong.
@@ -250,3 +252,7 @@ If Section 21 is abolished before the periodic phase begins, Helen would need to
 The UK's Housing Act 1988 creates a relatively uniform framework in England and Wales — most landlords are using ASTs whether they know it or not. The main risks are procedural (deposit protection, prescribed documents) rather than contractual.
 
 In the US, there is no equivalent uniformity. A landlord letting in California, Texas, and New York is dealing with three substantially different legal regimes. California requires extensive disclosure obligations, limits rent increases under state rent control, and has a complex eviction process. Texas is more landlord-friendly by comparison. New York has some of the strongest tenant protections in the US under the Housing Stability and Tenant Protection Act 2019. Always check your state's specific landlord-tenant act before relying on any generic template.
+
+## Related categories
+
+A lease agreement is the fixed-term cousin of the [rental agreement](/rental-agreement/) — use the lease for a set term, the rental agreement for month-to-month. When a tenancy must end against the tenant's wishes, the [eviction notice](/eviction-notice/) template covers the notice-and-court process. A landlord and tenant who agree a repayment plan for arrears might document it with a [promissory note](/promissory-note/). A landlord letting through a company holds the property under an [operating agreement](/operating-agreement/), and a sale of furniture or fittings with the property is recorded with a [bill of sale](/bill-of-sale/).

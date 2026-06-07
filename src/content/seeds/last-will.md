@@ -129,6 +129,8 @@ builderSchema:
         - { id: witness2_address, label: 'Witness 2 address', type: textarea, required: true }
 ---
 
+> **Not legal or tax advice.** This is general information, not legal or tax advice. Succession and inheritance-tax rules vary by jurisdiction and change over time — verify the current rules for your state or nation and consult a qualified solicitor or attorney before relying on this document.
+
 ## What a last will and testament is
 
 A will is the only document that lets you control what happens to everything you own after you die. Without one, the law decides — and the law's default is rarely what you would have chosen.
