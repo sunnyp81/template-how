@@ -1,0 +1,158 @@
+---
+/**
+ * Button — the primary action / CTA primitive (zero-JS).
+ *
+ * Renders an <a> when `href` is set, otherwise a <button>. Both share identical
+ * styling and a >=44px (mobile) / sizeable touch target. This is the canonical
+ * way to enter the builder or download — keep CTAs visually consistent.
+ *
+ * Props:
+ *   variant   'primary' (navy fill, top conversion action — default)
+ *             'secondary' (outlined, paper surface)
+ *             'ghost' (text-only, low emphasis)
+ *             'accent' (amber fill — use sparingly, ONE per view max)
+ *   size      'sm' | 'md' (default) | 'lg'
+ *   href      when present -> renders an anchor
+ *   type      button type when not a link (default 'button')
+ *   fullWidth boolean — 100% width
+ *   block     boolean — full-width on mobile, auto from `md` up (CTA pattern)
+ *   download  pass-through for anchors
+ *   disabled  button only
+ *   class     extra classes
+ *   ...rest   spread onto the element (aria-*, rel, target, data-*, id, name…)
+ *
+ * Slots: default (label). Use `icon` / `icon-end` named slots for leading/trailing glyphs.
+ */
+interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'accent';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  fullWidth?: boolean;
+  block?: boolean;
+  download?: boolean | string;
+  disabled?: boolean;
+  class?: string;
+}
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  fullWidth = false,
+  block = false,
+  download,
+  disabled = false,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const classes = [
+  'u-btn',
+  `u-btn--${variant}`,
+  `u-btn--${size}`,
+  fullWidth && 'u-btn--full',
+  block && 'u-btn--block',
+  className
+];
+---
+{href ? (
+  <a
+    href={disabled ? undefined : href}
+    class:list={classes}
+    aria-disabled={disabled ? 'true' : undefined}
+    download={download as any}
+    {...rest}
+  >
+    <slot name="icon" /><span class="u-btn__label"><slot /></span><slot name="icon-end" />
+  </a>
+) : (
+  <button type={type} class:list={classes} disabled={disabled} {...rest}>
+    <slot name="icon" /><span class="u-btn__label"><slot /></span><slot name="icon-end" />
+  </button>
+)}
+
+<style>
+.u-btn {
+  --_btn-h: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: var(--_btn-h);
+  padding-inline: var(--sp-5);
+  border: 1px solid transparent;
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-colors), var(--transition-transform), box-shadow var(--dur-fast) var(--ease-standard);
+}
+.u-btn:active { transform: translateY(1px); }
+.u-btn:focus-visible { outline: var(--ring); outline-offset: 2px; }
+
+/* Sizes */
+.u-btn--sm { --_btn-h: 38px; padding-inline: var(--sp-4); font-size: var(--fs-xs); }
+.u-btn--md { --_btn-h: 44px; }
+.u-btn--lg { --_btn-h: 52px; padding-inline: var(--sp-8); font-size: var(--fs-base); }
+
+/* Width modifiers */
+.u-btn--full { width: 100%; }
+.u-btn--block { width: 100%; }
+@media (min-width: 768px) {
+  .u-btn--block { width: auto; }
+}
+
+/* Primary — navy fill (~13:1 with paper text). Top conversion action. */
+.u-btn--primary {
+  background: var(--brand);
+  color: var(--brand-fg);
+  border-color: var(--brand);
+  box-shadow: var(--shadow-sm);
+}
+.u-btn--primary:hover { background: var(--brand-hover); border-color: var(--brand-hover); color: var(--brand-fg); box-shadow: var(--shadow-md); }
+
+/* Secondary — outlined on surface. */
+.u-btn--secondary {
+  background: var(--bg-elev);
+  color: var(--fg);
+  border-color: var(--border-strong);
+}
+.u-btn--secondary:hover { border-color: var(--accent-bold); color: var(--fg); background: var(--bg-elev); }
+
+/* Ghost — text-only, low emphasis. */
+.u-btn--ghost {
+  background: transparent;
+  color: var(--link);
+  border-color: transparent;
+}
+.u-btn--ghost:hover { background: var(--surface-2); color: var(--link); }
+
+/* Accent — amber fill. Decorative emphasis; ONE per view. Uses --accent-fg
+   (white on amber-600 in light; dark text on amber in dark) per the token
+   contract. Amber is 4.9:1 with white at amber-600 for the large/bold button
+   text here (>=3:1 large-text AA). */
+.u-btn--accent {
+  background: var(--gradient-accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+.u-btn--accent:hover { box-shadow: var(--shadow-md); color: var(--accent-fg); }
+
+/* Disabled (anchor uses aria-disabled; button uses :disabled) */
+.u-btn[aria-disabled='true'],
+.u-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.u-btn__label { display: inline-block; }
+</style>

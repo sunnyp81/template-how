@@ -1,0 +1,70 @@
+---
+/**
+ * Section — vertical-rhythm band with an optional Container inside.
+ *
+ * Wraps page sections with consistent fluid vertical padding (steps up with
+ * viewport so phones aren't burdened with desktop whitespace) and an optional
+ * surface/tone background. By default it renders a <section> and nests a
+ * Container; pass `bare` to skip the inner container (when you need full-bleed
+ * children or your own grid).
+ *
+ * Props:
+ *   tone        'default' | 'surface' | 'sunken' | 'brand' | 'accent'  (background)
+ *   space       'default' | 'sm' | 'none'                              (vertical padding)
+ *   container   'page' | 'content' | 'narrow' | 'wide' | false         (inner width; false = bare)
+ *   as          tag (default 'section')
+ *   id, class   passthrough
+ *   aria-label / aria-labelledby pass through via ...rest
+ */
+import Container from './Container.astro';
+
+interface Props {
+  tone?: 'default' | 'surface' | 'sunken' | 'brand' | 'accent';
+  space?: 'default' | 'sm' | 'none';
+  container?: 'page' | 'content' | 'narrow' | 'wide' | false;
+  as?: string;
+  id?: string;
+  class?: string;
+}
+const {
+  tone = 'default',
+  space = 'default',
+  container = 'page',
+  as = 'section',
+  class: className = '',
+  ...rest
+} = Astro.props;
+const Tag = as as any;
+---
+<Tag
+  class:list={['u-section', `u-section--${tone}`, `u-section--space-${space}`, className]}
+  {...rest}
+>
+  {container ? (
+    <Container size={container}><slot /></Container>
+  ) : (
+    <slot />
+  )}
+</Tag>
+
+<style>
+.u-section { position: relative; }
+.u-section--space-default { padding-block: var(--space-section); }
+.u-section--space-sm { padding-block: var(--space-section-sm); }
+.u-section--space-none { padding-block: 0; }
+
+.u-section--default { background: var(--bg); color: var(--fg); }
+.u-section--surface { background: var(--bg-elev); color: var(--fg); }
+.u-section--sunken { background: var(--surface-2); color: var(--fg); }
+.u-section--brand {
+  background: var(--gradient-brand);
+  color: var(--brand-fg);
+}
+.u-section--brand :global(h1),
+.u-section--brand :global(h2),
+.u-section--brand :global(h3) { color: var(--brand-fg); }
+.u-section--accent {
+  background: var(--accent-tint);
+  color: var(--fg);
+}
+</style>

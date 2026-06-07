@@ -1,0 +1,39 @@
+---
+/**
+ * Container — centered, max-width page gutter wrapper.
+ *
+ * The site already ships a `.container` utility class in global.css; this
+ * component is the prop-driven version for composing inside primitives and for
+ * narrower reading measures.
+ *
+ * Props:
+ *   size   'page' (default, 1200px) | 'content' (72ch prose) | 'narrow' (56ch) | 'wide' (84ch)
+ *   as     element/tag to render (default 'div')
+ *   class  extra classes (merged)
+ */
+interface Props {
+  size?: 'page' | 'content' | 'narrow' | 'wide';
+  as?: string;
+  class?: string;
+}
+const { size = 'page', as = 'div', class: className = '', ...rest } = Astro.props;
+const Tag = as as any;
+---
+<Tag class:list={['u-container', `u-container--${size}`, className]} {...rest}>
+  <slot />
+</Tag>
+
+<style>
+.u-container {
+  margin-inline: auto;
+  width: 100%;
+}
+.u-container--page { max-width: var(--page-max); padding-inline: var(--sp-4); }
+.u-container--wide { max-width: var(--measure-wide); padding-inline: var(--sp-4); }
+.u-container--content { max-width: var(--content-max); padding-inline: var(--sp-4); }
+.u-container--narrow { max-width: var(--measure-narrow); padding-inline: var(--sp-4); }
+
+@media (min-width: 480px) {
+  .u-container--page { padding-inline: var(--sp-6); }
+}
+</style>

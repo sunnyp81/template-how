@@ -1,0 +1,72 @@
+---
+/**
+ * Callout — an aside/note block for tips, warnings, jurisdiction notes, sources.
+ *
+ * Renders an <aside> with a coloured left rail, a tinted surface, an optional
+ * title, and a slot for body content. Tone carries meaning AND is reinforced by
+ * the title text / icon slot, so colour is never the sole signal (a11y).
+ *
+ * Props:
+ *   tone    'note' (default, neutral/navy) | 'tip' (accent amber) | 'success' | 'warning' | 'info'
+ *   title   optional heading text (rendered as a <p class="u-callout__title">)
+ *   as      tag (default 'aside')
+ *   class   extra classes
+ *   ...rest  spread (aria-label override, id…)
+ *
+ * Slots: default (body), `icon` (leading glyph), `title` (rich title override).
+ */
+interface Props {
+  tone?: 'note' | 'tip' | 'success' | 'warning' | 'info';
+  title?: string;
+  as?: string;
+  class?: string;
+}
+const { tone = 'note', title, as = 'aside', class: className = '', ...rest } = Astro.props;
+const Tag = as as any;
+const hasTitleSlot = Astro.slots.has('title');
+---
+<Tag class:list={['u-callout', `u-callout--${tone}`, className]} {...rest}>
+  <div class="u-callout__icon"><slot name="icon" /></div>
+  <div class="u-callout__content">
+    {hasTitleSlot ? (
+      <p class="u-callout__title"><slot name="title" /></p>
+    ) : title ? (
+      <p class="u-callout__title">{title}</p>
+    ) : null}
+    <div class="u-callout__body"><slot /></div>
+  </div>
+</Tag>
+
+<style>
+.u-callout {
+  display: flex;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  margin-block: var(--sp-6);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: var(--r-md);
+  background: var(--bg-elev);
+  color: var(--fg);
+  max-width: var(--content-max);
+}
+.u-callout__icon { flex: none; line-height: var(--lh-tight); color: var(--_accent, var(--accent)); }
+.u-callout__icon:empty { display: none; }
+.u-callout__content { min-width: 0; }
+.u-callout__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-lg);
+  margin: 0 0 var(--sp-1);
+  color: var(--fg);
+}
+.u-callout__body { color: var(--fg-muted); font-size: var(--fs-sm); }
+.u-callout__body :global(:last-child) { margin-bottom: 0; }
+
+/* Tones — left rail + soft tinted surface. */
+.u-callout--note    { --_accent: var(--brand); border-left-color: var(--brand); background: color-mix(in srgb, var(--brand) 5%, var(--bg-elev)); }
+.u-callout--tip     { --_accent: var(--accent); border-left-color: var(--accent-bold); background: color-mix(in srgb, var(--amber-400) 8%, var(--bg-elev)); }
+.u-callout--success { --_accent: var(--success); border-left-color: var(--success); background: var(--success-bg); }
+.u-callout--warning { --_accent: var(--accent-strong); border-left-color: var(--accent-bold); background: color-mix(in srgb, var(--amber-400) 12%, var(--bg-elev)); }
+.u-callout--info    { --_accent: var(--info); border-left-color: var(--info); background: var(--info-bg); }
+</style>

@@ -1,0 +1,55 @@
+---
+/**
+ * Prose — long-form reading wrapper that applies consistent vertical rhythm to
+ * raw markup (the rendered MDX <Content/>, FAQ answers, etc.).
+ *
+ * The base element styles in global.css already polish h2/p/ul/table; Prose adds
+ * the *flow* rhythm (spacing between sibling blocks), the reading measure, and
+ * heading top-margins, scoped so it never leaks into UI chrome. Use it around
+ * any author-written body content.
+ *
+ * Props:
+ *   measure  'content' (72ch — default) | 'narrow' (56ch) | 'wide' (84ch) | 'full'
+ *   as       tag (default 'div')
+ *   class    extra
+ */
+interface Props {
+  measure?: 'content' | 'narrow' | 'wide' | 'full';
+  as?: string;
+  class?: string;
+}
+const { measure = 'content', as = 'div', class: className = '', ...rest } = Astro.props;
+const Tag = as as any;
+---
+<Tag class:list={['u-prose', `u-prose--${measure}`, className]} {...rest}>
+  <slot />
+</Tag>
+
+<style>
+.u-prose { color: var(--fg); font-size: var(--fs-base); line-height: var(--lh-body); }
+.u-prose--content { max-width: var(--content-max); }
+.u-prose--narrow { max-width: var(--measure-narrow); }
+.u-prose--wide { max-width: var(--measure-wide); }
+.u-prose--full { max-width: none; }
+
+/* Flow rhythm: space between consecutive blocks without touching the first. */
+.u-prose > :global(* + *) { margin-top: var(--sp-4); }
+.u-prose :global(h2) { margin-top: var(--sp-12); font-size: var(--fs-2xl); }
+.u-prose :global(h3) { margin-top: var(--sp-8); font-size: var(--fs-xl); }
+.u-prose :global(h2 + *),
+.u-prose :global(h3 + *) { margin-top: var(--sp-3); }
+
+.u-prose :global(p),
+.u-prose :global(li) { font-size: var(--fs-base); }
+.u-prose :global(ul),
+.u-prose :global(ol) { padding-left: var(--sp-6); }
+
+.u-prose :global(a) { font-weight: var(--fw-medium); }
+
+.u-prose :global(table) {
+  display: block;
+  overflow-x: auto;
+  margin-block: var(--sp-6);
+  font-size: var(--fs-sm);
+}
+</style>

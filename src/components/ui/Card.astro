@@ -1,0 +1,92 @@
+---
+/**
+ * Card — elevated content surface (zero-JS).
+ *
+ * For tiles, related links, feature blurbs, stat groupings. When `href` is set
+ * the whole card becomes a link (with a lift-on-hover affordance). Otherwise it
+ * is a plain container that can hold its own interactive children.
+ *
+ * Props:
+ *   href        when present -> whole card is an <a> (transform + accent border on hover)
+ *   variant     'default' (surface + border) | 'raised' (shadow) | 'outline' (border only, transparent) | 'ghost' (no border/bg)
+ *   padding     'sm' | 'md' (default) | 'lg' | 'none'
+ *   interactive boolean — apply hover lift even when not a link (e.g. card wrapping its own <a>)
+ *   as          tag when not a link (default 'div')
+ *   class       extra classes
+ *   ...rest     spread (aria-*, data-*, id…)
+ *
+ * Slots: default (body), `media` (top, full-bleed), `header`, `footer`.
+ */
+interface Props {
+  href?: string;
+  variant?: 'default' | 'raised' | 'outline' | 'ghost';
+  padding?: 'sm' | 'md' | 'lg' | 'none';
+  interactive?: boolean;
+  as?: string;
+  class?: string;
+}
+const {
+  href,
+  variant = 'default',
+  padding = 'md',
+  interactive = false,
+  as = 'div',
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const classes = [
+  'u-card',
+  `u-card--${variant}`,
+  `u-card--pad-${padding}`,
+  (href || interactive) && 'u-card--interactive',
+  className
+];
+const Tag = (href ? 'a' : as) as any;
+---
+<Tag class:list={classes} href={href} {...rest}>
+  <slot name="media" />
+  <div class="u-card__body">
+    <slot name="header" />
+    <slot />
+    <slot name="footer" />
+  </div>
+</Tag>
+
+<style>
+.u-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--r-lg);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  text-decoration: none;
+  overflow: hidden;
+  transition: var(--transition-transform), var(--transition-colors), box-shadow var(--dur-base) var(--ease-standard);
+}
+
+.u-card--default { background: var(--bg-elev); border-color: var(--border); }
+.u-card--raised { background: var(--surface-raised); border-color: var(--border); box-shadow: var(--shadow-md); }
+.u-card--outline { background: transparent; border-color: var(--border); }
+.u-card--ghost { background: transparent; border-color: transparent; }
+
+.u-card--pad-none .u-card__body { padding: 0; }
+.u-card--pad-sm .u-card__body { padding: var(--sp-4); }
+.u-card--pad-md .u-card__body { padding: var(--sp-6); }
+.u-card--pad-lg .u-card__body { padding: var(--sp-8); }
+
+.u-card__body { display: flex; flex-direction: column; gap: var(--sp-3); }
+
+/* Media slot sits flush above the padded body. */
+.u-card :global(img) { width: 100%; display: block; }
+
+/* Interactive (link cards): lift + accent border on hover. */
+.u-card--interactive { cursor: pointer; }
+.u-card--interactive:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-bold);
+  box-shadow: var(--shadow-lg);
+}
+.u-card--interactive:focus-visible { outline: var(--ring); outline-offset: 3px; }
+</style>

@@ -1,0 +1,61 @@
+---
+/**
+ * Stat — a single figure + label, for trust/credibility strips
+ * ("138 templates", "2 jurisdictions", "0 sign-up").
+ *
+ * Use several inside a flex/grid row (e.g. a StatGroup of your own, or a
+ * Section with display:grid). Display serif for the value, muted small-caps-ish
+ * label beneath.
+ *
+ * Props:
+ *   value   the headline figure (string or number) — also accepts default slot
+ *   label   the descriptor beneath
+ *   align   'start' | 'center' (default) | 'end'
+ *   tone    'default' | 'accent' | 'brand'  (value colour)
+ *   as      tag (default 'div')
+ *   class   extra
+ *
+ * Slots: default (value override), `label` (rich label override).
+ */
+interface Props {
+  value?: string | number;
+  label?: string;
+  align?: 'start' | 'center' | 'end';
+  tone?: 'default' | 'accent' | 'brand';
+  as?: string;
+  class?: string;
+}
+const { value, label, align = 'center', tone = 'default', as = 'div', class: className = '', ...rest } = Astro.props;
+const Tag = as as any;
+const hasLabelSlot = Astro.slots.has('label');
+---
+<Tag class:list={['u-stat', `u-stat--${align}`, `u-stat--${tone}`, className]} {...rest}>
+  <span class="u-stat__value"><slot>{value}</slot></span>
+  <span class="u-stat__label">{hasLabelSlot ? <slot name="label" /> : label}</span>
+</Tag>
+
+<style>
+.u-stat { display: flex; flex-direction: column; gap: var(--sp-1); }
+.u-stat--start { align-items: flex-start; text-align: left; }
+.u-stat--center { align-items: center; text-align: center; }
+.u-stat--end { align-items: flex-end; text-align: right; }
+
+.u-stat__value {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}
+.u-stat--accent .u-stat__value { color: var(--accent-strong); }
+.u-stat--brand .u-stat__value { color: var(--brand); }
+
+.u-stat__label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg-subtle);
+}
+</style>

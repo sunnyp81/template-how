@@ -1,0 +1,53 @@
+---
+/**
+ * Grid — responsive auto-fill grid wrapper (zero-JS).
+ *
+ * Encapsulates the `repeat(auto-fill, minmax(min, 1fr))` pattern the site uses
+ * for tiles / related links / category lists, so the surface agents stop
+ * hand-rolling it. Columns wrap fluidly with no breakpoints needed; set `min`
+ * to control the smallest comfortable card width.
+ *
+ * Props:
+ *   min    minimum column width (default '220px')
+ *   gap    'sm' | 'md' (default) | 'lg'  → maps to spacing tokens
+ *   cols   optional FIXED column count from `md` up (e.g. 2,3,4) instead of auto-fill
+ *   as     tag (default 'div'); use 'ul' for link lists (strips list styling)
+ *   class  extra
+ */
+interface Props {
+  min?: string;
+  gap?: 'sm' | 'md' | 'lg';
+  cols?: 2 | 3 | 4;
+  as?: string;
+  class?: string;
+}
+const { min = '220px', gap = 'md', cols, as = 'div', class: className = '', ...rest } = Astro.props;
+const Tag = as as any;
+const style = `--u-grid-min:${min}` + (cols ? `;--u-grid-cols:${cols}` : '');
+---
+<Tag
+  class:list={['u-grid', `u-grid--gap-${gap}`, cols && 'u-grid--fixed', as === 'ul' && 'u-grid--list', className]}
+  style={style}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<style>
+.u-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--u-grid-min, 220px), 100%), 1fr));
+}
+.u-grid--gap-sm { gap: var(--sp-3); }
+.u-grid--gap-md { gap: var(--sp-4); }
+.u-grid--gap-lg { gap: var(--sp-6); }
+
+.u-grid--list { list-style: none; padding: 0; margin: 0; }
+.u-grid--list :global(li) { margin: 0; }
+
+/* Fixed column count from md up; single column below. */
+.u-grid--fixed { grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .u-grid--fixed { grid-template-columns: repeat(var(--u-grid-cols, 3), 1fr); }
+}
+</style>
