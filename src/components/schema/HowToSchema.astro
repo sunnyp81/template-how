@@ -3,7 +3,7 @@ interface Step { name: string; text: string; }
 interface Props { name: string; steps: Step[]; }
 const { name, steps } = Astro.props;
 ---
-<script type="application/ld+json" set:html={JSON.stringify({
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'HowTo',
   name,

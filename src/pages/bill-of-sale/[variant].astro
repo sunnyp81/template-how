@@ -14,6 +14,7 @@ import Button from '@/components/ui/Button.astro';
 import Badge from '@/components/ui/Badge.astro';
 import Eyebrow from '@/components/ui/Eyebrow.astro';
 import Callout from '@/components/ui/Callout.astro';
+import BuilderCTA from '@/components/seed/BuilderCTA.astro';
 import { ALL_JURISDICTIONS, US_STATES, UK_NATIONS, type Jurisdiction } from '@/data/jurisdictions';
 import rules from '@/data/legal/bill-of-sale-state-rules.json';
 
@@ -176,15 +177,18 @@ const faq = [
         {rule.notary_required === true && <Badge tone="accent" variant="soft">Notary required</Badge>}
         {rule.witness_required === true && <Badge tone="accent" variant="soft">Witnesses required</Badge>}
       </div>
-      <div class="bos-hero__cta">
-        <Button href="/bill-of-sale/" variant="primary" size="lg" block>
-          Build your bill of sale
-        </Button>
-        <Button href="/legal-document-templates/" variant="secondary" size="lg" block>
-          Browse legal templates
-        </Button>
-      </div>
     </div>
+    <BuilderCTA
+      noun="bill of sale"
+      target="/bill-of-sale/#builder"
+      audience={[isUS ? 'us' : 'uk']}
+      class="bos-hero__cta" />
+    <p class="bos-hero__browse">
+      <Button href="/legal-document-templates/" variant="ghost" size="sm">
+        Browse all legal templates
+        <span slot="icon-end" aria-hidden="true">→</span>
+      </Button>
+    </p>
   </Section>
 
   {/* ── Requirements at a glance ───────────────────────────────── */}
@@ -270,11 +274,8 @@ const faq = [
   color: var(--fg-muted); max-width: var(--content-max); margin: 0;
 }
 .bos-hero__badges { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-5); }
-.bos-hero__cta {
-  display: flex; flex-direction: column; gap: var(--sp-3);
-  margin-top: var(--sp-6);
-}
-@media (min-width: 480px) { .bos-hero__cta { flex-direction: row; flex-wrap: wrap; } }
+.bos-hero + :global(.builder-cta) { margin-top: var(--sp-6); }
+.bos-hero__browse { margin: var(--sp-4) 0 0; }
 
 .bos-h2, .bos-article h2, .bos-siblings__head h2 {
   font-size: var(--fs-2xl); line-height: var(--lh-tight); text-wrap: balance;
