@@ -1,16 +1,37 @@
 ---
-interface Props { lede: string; }
-const { lede } = Astro.props;
+/**
+ * DefinitionalLede — the one-sentence "what this is" answer that opens every
+ * seed page. Set in the display serif italic at a comfortable reading measure;
+ * a short amber rule above it signals "definition" without relying on colour
+ * alone. Keeps itemprop="abstract" for the page summary microdata.
+ */
+interface Props { lede: string; class?: string; }
+const { lede, class: className = '' } = Astro.props;
 ---
-<p class="seed-lede" itemprop="abstract">{lede}</p>
+<p class:list={['seed-lede', className]} itemprop="abstract">{lede}</p>
 
 <style>
 .seed-lede {
-  font-size: var(--fs-lg);
-  color: var(--fg);
+  position: relative;
   font-family: var(--font-display);
   font-style: italic;
-  max-width: var(--content-max);
-  margin-bottom: var(--sp-6);
+  font-weight: var(--fw-normal);
+  font-size: var(--fs-xl);
+  line-height: var(--lh-snug);
+  color: var(--fg);
+  text-wrap: pretty;
+  max-width: var(--measure-wide);
+  margin: 0;
+  padding-top: var(--sp-4);
+}
+.seed-lede::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 3px;
+  border-radius: var(--r-full);
+  background: var(--accent-bold);
 }
 </style>

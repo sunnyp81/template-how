@@ -1,35 +1,74 @@
 ---
+/**
+ * DownloadBlock — the pre-made / reference download row. On builder pages this
+ * is the secondary path ("in a hurry?"); on static-only pages the SeedLayout
+ * promotes it to the hero action, so this component is styled to read well
+ * either way. Uses the Button primitive (secondary, with a leading file glyph)
+ * so the CTAs stay on-system. All hrefs + download attrs are preserved.
+ */
+import Button from '@/components/ui/Button.astro';
+import Eyebrow from '@/components/ui/Eyebrow.astro';
+
 interface Props {
   pdfUrl?: string;
   docxUrl?: string;
   gdocUrl?: string;
   title: string;
+  /** When true the heading copy reflects "the download IS the deliverable". */
+  standalone?: boolean;
+  class?: string;
 }
-const { pdfUrl, docxUrl, gdocUrl, title } = Astro.props;
+const { pdfUrl, docxUrl, gdocUrl, title, standalone = false, class: className = '' } = Astro.props;
 ---
-<aside class="dl-block" aria-label="Pre-made download">
-  <p class="dl-label">In a hurry? Pre-made template:</p>
+<aside class:list={['dl-block', className]} aria-label="Download the template">
+  <div class="dl-head">
+    <Eyebrow tone="accent">Pre-made template</Eyebrow>
+    <p class="dl-label">
+      {standalone
+        ? 'Grab the ready-made file — no editing required.'
+        : 'In a hurry? Download the ready-made file instead.'}
+    </p>
+  </div>
   <div class="dl-row">
-    {pdfUrl ? <a href={pdfUrl} class="dl-btn" download>{title} (PDF)</a> : null}
-    {docxUrl ? <a href={docxUrl} class="dl-btn" download>{title} (DOCX)</a> : null}
-    {gdocUrl ? <a href={gdocUrl} class="dl-btn" rel="noopener" target="_blank">Open in Google Docs</a> : null}
+    {pdfUrl ? (
+      <Button href={pdfUrl} variant="secondary" download class="dl-btn">
+        <svg slot="icon" class="dl-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3v10m0 0 4-4m-4 4-4-4M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {title} (PDF)
+      </Button>
+    ) : null}
+    {docxUrl ? (
+      <Button href={docxUrl} variant="secondary" download class="dl-btn">
+        <svg slot="icon" class="dl-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3v10m0 0 4-4m-4 4-4-4M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {title} (DOCX)
+      </Button>
+    ) : null}
+    {gdocUrl ? (
+      <Button href={gdocUrl} variant="secondary" rel="noopener" target="_blank" class="dl-btn">
+        Open in Google Docs
+      </Button>
+    ) : null}
   </div>
 </aside>
 
 <style>
 .dl-block {
-  background: var(--paper-200);
-  border-left: 4px solid var(--accent);
-  padding: var(--sp-4) var(--sp-6);
-  margin: var(--sp-6) 0;
-  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-bold);
+  padding: var(--sp-5) var(--sp-6);
+  border-radius: var(--r-lg);
 }
-.dl-label { font-size: var(--fs-sm); color: var(--fg-muted); margin: 0 0 var(--sp-2); }
+.dl-head { margin-bottom: var(--sp-4); }
+.dl-label {
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+  margin: 0;
+  text-wrap: pretty;
+}
 .dl-row { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
-.dl-btn {
-  background: var(--navy-700); color: var(--paper-50);
-  padding: var(--sp-2) var(--sp-4); border-radius: var(--r-sm);
-  text-decoration: none; font-size: var(--fs-sm);
-}
-.dl-btn:hover { background: var(--navy-500); color: var(--paper-50); }
+.dl-ico { flex: none; }
 </style>

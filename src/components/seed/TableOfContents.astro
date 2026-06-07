@@ -1,0 +1,88 @@
+---
+/**
+ * TableOfContents — an on-page anchor list for long seed pages. Built from the
+ * rendered body's depth-2 headings (each already carries a rehype-slug id) plus
+ * the structural sections the layout owns (How-to, FAQ, etc.). Zero-JS; it is a
+ * plain <nav> of in-page links. On desktop the layout renders it as a sticky
+ * rail; on mobile it collapses into a <details> disclosure so it never pushes
+ * the content down.
+ */
+interface Item { slug: string; text: string; }
+interface Props { items: Item[]; class?: string; }
+const { items, class: className = '' } = Astro.props;
+---
+{items.length > 0 && (
+  <nav class:list={['toc', className]} aria-labelledby="toc-h">
+    <details class="toc-details" open>
+      <summary class="toc-summary">
+        <span id="toc-h" class="toc-title">On this page</span>
+        <svg class="toc-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <ol class="toc-list">
+        {items.map((it) => (
+          <li><a href={`#${it.slug}`}>{it.text}</a></li>
+        ))}
+      </ol>
+    </details>
+  </nav>
+)}
+
+<style>
+.toc {
+  font-size: var(--fs-sm);
+}
+.toc-details { border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--bg-elev); }
+.toc-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  list-style: none;
+  cursor: pointer;
+  padding: var(--sp-3) var(--sp-4);
+  min-height: 44px;
+}
+.toc-summary::-webkit-details-marker { display: none; }
+.toc-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg-subtle);
+}
+.toc-chev { color: var(--fg-subtle); transition: var(--transition-transform); }
+.toc-details[open] .toc-chev { transform: rotate(180deg); }
+.toc-summary:focus-visible { outline: var(--ring); outline-offset: -2px; border-radius: var(--r-lg); }
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--sp-3) var(--sp-3);
+  display: flex;
+  flex-direction: column;
+}
+.toc-list a {
+  display: block;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  color: var(--fg-muted);
+  text-decoration: none;
+  line-height: var(--lh-snug);
+  border-left: 2px solid transparent;
+}
+.toc-list a:hover {
+  color: var(--fg);
+  background: var(--surface-2);
+  border-left-color: var(--accent-bold);
+}
+.toc-list a:focus-visible { outline: var(--ring); outline-offset: -2px; }
+
+/* On wide screens the TOC lives in a sticky rail and is always expanded; the
+   disclosure chevron is only meaningful on mobile. */
+@media (min-width: 960px) {
+  .toc-summary { cursor: default; }
+  .toc-chev { display: none; }
+  .toc-details { position: static; }
+}
+</style>

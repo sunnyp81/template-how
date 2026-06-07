@@ -1,25 +1,86 @@
 ---
+/**
+ * AuthorBox — the reviewer credibility block (E-E-A-T) that closes the page.
+ * Renders the PersonSchema JSON-LD and a compact "reviewed by" card with the
+ * author's verified profile links (rel="me"). Heading is an <h2> so the page
+ * heading hierarchy stays flat (H1 → H2 sections).
+ */
 import PersonSchema from '@/components/schema/PersonSchema.astro';
 import { author } from '@/lib/site';
+
+interface Props { class?: string; }
+const { class: className = '' } = Astro.props;
+const initials = author.name.split(' ').map((n) => n[0]).join('').slice(0, 2);
 ---
-<aside class="author-box" aria-label="About the author">
+<aside class:list={['author-box', className]} aria-labelledby="author-h">
   <PersonSchema />
-  <h3 class="ab-name">Reviewed by {author.name}</h3>
-  <p class="ab-bio">SEO consultant and template editor. Every template on this site is reviewed against primary sources before publication.</p>
-  <ul class="ab-links">
-    {author.sameAs.map((href) => (
-      <li><a href={href} rel="noopener me">{new URL(href).hostname}</a></li>
-    ))}
-  </ul>
+  <div class="ab-avatar" aria-hidden="true">{initials}</div>
+  <div class="ab-content">
+    <p class="ab-kicker">Reviewed by</p>
+    <h2 id="author-h" class="ab-name">{author.name}</h2>
+    <p class="ab-bio">
+      {author.jobTitle}. Every template on this site is checked against primary
+      sources before publication.
+    </p>
+    <ul class="ab-links">
+      {author.sameAs.map((href) => (
+        <li><a href={href} rel="noopener me">{new URL(href).hostname.replace(/^www\./, '')}</a></li>
+      ))}
+    </ul>
+  </div>
 </aside>
 
 <style>
 .author-box {
-  border-top: 1px solid var(--border);
-  padding-top: var(--sp-6); margin-top: var(--sp-12);
-  display: grid; gap: var(--sp-2);
+  display: flex;
+  gap: var(--sp-4);
+  align-items: flex-start;
+  margin-top: var(--space-section-sm);
+  padding: var(--sp-6);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  max-width: var(--measure-wide);
 }
-.ab-name { font-size: var(--fs-lg); margin: 0; }
-.ab-bio { font-size: var(--fs-sm); color: var(--fg-muted); margin: 0; }
-.ab-links { list-style: none; padding: 0; margin: 0; display: flex; gap: var(--sp-3); flex-wrap: wrap; font-size: var(--fs-xs); }
+.ab-avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--r-full);
+  background: var(--brand);
+  color: var(--brand-fg);
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-lg);
+  letter-spacing: 0.02em;
+}
+.ab-content { min-width: 0; display: grid; gap: var(--sp-1); }
+.ab-kicker {
+  margin: 0;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg-subtle);
+}
+.ab-name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-lg);
+  margin: 0;
+}
+.ab-bio { font-size: var(--fs-sm); color: var(--fg-muted); margin: var(--sp-1) 0 0; text-wrap: pretty; }
+.ab-links {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-2) 0 0;
+  display: flex;
+  gap: var(--sp-2) var(--sp-4);
+  flex-wrap: wrap;
+  font-size: var(--fs-xs);
+}
+.ab-links a { color: var(--link); }
+.ab-links a:hover { color: var(--link-hover); }
 </style>

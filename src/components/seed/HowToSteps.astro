@@ -1,0 +1,96 @@
+---
+/**
+ * HowToSteps — the visible, numbered companion to HowToSchema. The same
+ * name/steps that feed the JSON-LD are rendered here as an ordered list so the
+ * on-page content matches the structured data (Google requires the markup to be
+ * visible to the user). Numbered medallions, display-serif step titles.
+ */
+interface Step { name: string; text: string; }
+interface Props {
+  name: string;
+  steps: Step[];
+  id?: string;
+  class?: string;
+}
+const { name, steps, id = 'how-to', class: className = '' } = Astro.props;
+const headingId = `${id}-h`;
+---
+<section class:list={['howto', className]} id={id} aria-labelledby={headingId}>
+  <h2 id={headingId} class="howto-h">{name}</h2>
+  <ol class="howto-list">
+    {steps.map((step, i) => (
+      <li class="howto-step">
+        <span class="howto-num" aria-hidden="true">{i + 1}</span>
+        <div class="howto-body">
+          <h3 class="howto-step-title">{step.name}</h3>
+          <p class="howto-step-text">{step.text}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+.howto-h {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-2xl);
+  margin: 0 0 var(--sp-6);
+}
+.howto-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--sp-5);
+  counter-reset: howto;
+}
+.howto-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-4);
+  align-items: start;
+  position: relative;
+}
+/* Connector line down the medallion column. */
+.howto-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: calc(1.75rem / 2 - 1px);
+  top: 1.75rem;
+  bottom: calc(-1 * var(--sp-5));
+  width: 2px;
+  background: var(--border);
+}
+.howto-num {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--r-full);
+  background: var(--brand);
+  color: var(--brand-fg);
+  font-family: var(--font-body);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+.howto-body { min-width: 0; }
+.howto-step-title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-lg);
+  margin: 0 0 var(--sp-1);
+  line-height: var(--lh-snug);
+}
+.howto-step-text {
+  margin: 0;
+  color: var(--fg-muted);
+  line-height: var(--lh-body);
+  max-width: var(--content-max);
+  text-wrap: pretty;
+}
+</style>
