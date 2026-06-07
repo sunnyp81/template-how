@@ -55,10 +55,22 @@ const sp = {
   notarisation: isUS ? 'notarization' : 'notarisation',
   cheque: isUS ? 'check' : 'cheque',
   // Sentence-case variant where the word opens a step name.
-  Notarise: isUS ? 'Notarize' : 'Notarise'
+  Notarise: isUS ? 'Notarize' : 'Notarise',
+  // Sentence-case noun for use as a heading.
+  Notarisation: isUS ? 'Notarization' : 'Notarisation'
 };
 const dmvAuthority = isUS ? 'DMV' : 'DVLA';
 const legalAdvisor = isUS ? 'attorney' : 'solicitor';
+
+// UK transfer authority: DVLA covers GB; Northern Ireland is administered by DVA.
+const transferAuthority = isUS
+  ? `your local ${jurisdiction.region} DMV`
+  : jurisdiction.code === 'uk-nir'
+    ? 'the DVA in Northern Ireland'
+    : 'the DVLA';
+// Generic pointer for the official transfer form/URL, falling back gracefully when
+// no jurisdiction-specific form is recorded in the data.
+const hasForm = Boolean(rule.vehicle_dmv_form);
 
 // Rotating-window siblings: 5 before + 5 after (wrapping), so every US state appears
 // in exactly 10 other US state pages — guarantees ≥3 incoming for all variants.
@@ -244,6 +256,27 @@ const faq = [
       <Callout tone="tip" title="Expert tip">
         <p>Take a photograph of the item, the keys, and both parties at the moment of handover. {jurisdiction.region}'s small claims courts give significant weight to contemporaneous photographic evidence in dispute over the condition of the item at sale. The bill of sale records the transaction; the photograph records the state of the goods.</p>
       </Callout>
+
+      <h2>Title transfer &amp; registration in {jurisdiction.region}</h2>
+      <p>A bill of sale documents the deal, but for a vehicle it is only one step in changing the registered owner. In {jurisdiction.region}, the general process runs in the same order: the seller signs over the {isUS ? 'certificate of title' : 'logbook (V5C)'}, both parties complete and sign the bill of sale{hasForm ? <>{' '}(and {rule.vehicle_dmv_url ? <a href={rule.vehicle_dmv_url} rel="noopener">{rule.vehicle_dmv_form}</a> : rule.vehicle_dmv_form}, where {jurisdiction.region} provides an official form)</> : null}, and then the <strong>buyer</strong> submits the transfer and registers the vehicle.</p>
+      <p>{isUS
+        ? <>The buyer takes the assigned title and bill of sale to {transferAuthority}, applies for a new title in their own name, registers the vehicle, and pays the applicable titling and registration fees plus any tax due. Most states set a statutory window — often around a month — within which the buyer must complete the transfer, so file promptly to avoid late penalties. {rule.vehicle_dmv_url ? <>Confirm the current {jurisdiction.region} fees, deadlines, and form versions on the <a href={rule.vehicle_dmv_url} rel="noopener">official {dmvAuthority} page</a> before you go.</> : <>Confirm the current {jurisdiction.region} fees and deadlines with your local {dmvAuthority} before you go.</>}</>
+        : <>The seller and buyer notify {transferAuthority} of the change of keeper — usually online — using the {hasForm ? <>{rule.vehicle_dmv_url ? <a href={rule.vehicle_dmv_url} rel="noopener">{rule.vehicle_dmv_form}</a> : rule.vehicle_dmv_form} new keeper supplement</> : 'V5C new keeper supplement'}. The buyer keeps the supplement until the updated registration document arrives, taxes the vehicle before driving it, and arranges insurance. {rule.vehicle_dmv_url ? <>Use the <a href={rule.vehicle_dmv_url} rel="noopener">official {jurisdiction.region} guidance</a> to complete the transfer.</> : null}</>}</p>
+
+      <h2>{sp.Notarisation} &amp; witnesses</h2>
+      <p>{rule.notary_required === true
+        ? <>{jurisdiction.region} requires the {rule.witness_required === true ? 'bill of sale or vehicle title' : 'vehicle title or bill of sale'} to be {sp.notarised} for a vehicle transfer. In practice that means the seller signs in front of a notary public, who verifies identity and seals the document. In the US you can usually get a document {sp.notarised} at a bank, credit union, law office, UPS Store, or many public libraries, often for a small fee. Building this step into your handover keeps the transfer valid the first time it is presented to {transferAuthority}.</>
+        : rule.notary_required === false
+          ? <>{jurisdiction.region} does <strong>not</strong> require the bill of sale to be {sp.notarised} for a private {isUS ? 'vehicle' : 'used-vehicle'} sale. {isUS ? <>You can still choose to have it {sp.notarised} at a bank, UPS Store, or law office — it is never wrong, and a notary's seal adds evidentiary weight if the transaction is ever questioned.</> : <>A private sale in {jurisdiction.region} generally needs neither a notary nor witnesses; the parties simply sign and date, and the change of keeper is recorded with {transferAuthority}. Even so, both signing in front of an independent witness adds evidentiary weight if the sale is later disputed.</>}</>
+          : <>Whether {jurisdiction.region} requires {sp.notarisation} can vary by item type and circumstance, so confirm the current requirement with {transferAuthority} or a qualified {legalAdvisor}. A {sp.notarised} signature is never wrong and adds evidentiary weight if the sale is later questioned.</>}{rule.witness_required === true ? <> {jurisdiction.region} additionally requires the document to be signed in front of at least two witnesses, which is unusual — arrange this at the same sitting as the signing.</> : null}</p>
+
+      <h2>Sales &amp; use tax</h2>
+      <p>{isUS
+        ? <>In the US, the buyer — not the seller — normally pays state and local <strong>use tax</strong> when they title and register the vehicle, and it is typically calculated on the purchase price. That is exactly why the price written on the bill of sale matters: {transferAuthority} may use the stated figure (or a fair-market value) to assess what is owed. Record the real, agreed price honestly. {rule.notes && /no (state )?sales tax|no sales tax/i.test(rule.notes) ? <>As reflected in {jurisdiction.region}'s own guidance above, this jurisdiction is among those without a general sales tax on the purchase, but registration and titling fees can still apply.</> : <>Exact rates, exemptions, and any local add-ons vary{rule.vehicle_dmv_url ? <>, so confirm them on the <a href={rule.vehicle_dmv_url} rel="noopener">official {jurisdiction.region} {dmvAuthority} page</a> before registering</> : ' with your local DMV before registering'}.</>}</>
+        : <>For a private used-vehicle sale in {jurisdiction.region}, <strong>VAT generally does not apply</strong> — VAT is a concern for VAT-registered traders, not ordinary private sellers. The buyer's main running cost to budget for is vehicle tax (road tax), which must be set up before the vehicle is driven. Still record the true sale price on the bill of sale: it is your proof of what was paid if the transaction is ever questioned.</>}</p>
+
+      <h2>Keep a copy &amp; dispute evidence</h2>
+      <p>Both the buyer and the seller should keep a signed copy of the bill of sale — ideally each retaining an original, or a clear scan or photograph of the fully signed document. For the seller it proves the date ownership and liability passed; for the buyer it proves what was paid and on what terms. Store it together with any handover photographs and a note of the {isUS ? 'odometer' : 'mileage'} reading at sale. If a dispute arises later, this contemporaneous paperwork is the most persuasive evidence either party can bring to {isUS ? `${jurisdiction.region}'s civil or small claims court` : 'the County Court or Sheriff Court'}.</p>
     </div>
   </Section>
 
