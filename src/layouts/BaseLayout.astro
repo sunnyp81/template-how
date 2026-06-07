@@ -72,6 +72,9 @@ const articleSchema = article
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={ogImageAbs} />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(ogImage, site.url).toString()} />
   {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
   {modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
