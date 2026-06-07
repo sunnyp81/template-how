@@ -1,16 +1,107 @@
 # Template.how
 
-US + UK template resource site. Every legal / tax / compliance template carries per-state United States and per-nation United Kingdom variants with a named governing statute and a last-verified date.
+> Free, source-verified US + UK document templates with fill-in-the-browser builders that export to PDF and DOCX. Legal, tax and compliance templates carry per-US-state and per-UK-nation variants, each citing a named governing statute and a last-verified date. Edited by Sunny Patel, SEO consultant (https://sunnypatel.co.uk).
 
-## Categories
-- /legal-document-templates/ — Legal documents (bill of sale, NDA, lease, will, etc.)
-- /resume-templates/ — Resumes and careers
-- /business-templates/ — Business operations (invoice, P&L, meeting minutes)
-- /life-event-templates/ — Life events (obituary, family tree, birth plan)
-- /planning-templates/ — Planning (lesson plans, itineraries, budgets)
-- /design-templates/ — Design and creative (CapCut, Roblox, posters)
-- /education-templates/ — Education (Cornell notes, Venn diagram)
-- /productivity-templates/ — Productivity (to-do, checklist, planner)
+Every page leads with a plain-language definition, then covers when to use it, what it must include, jurisdiction variants, step-by-step guidance, common mistakes, a worked example, primary sources, and an FAQ.
+
+## Legal documents
+- /legal-document-templates/ — Hub: all legal documents templates.
+- /bill-of-sale/ — Bill of Sale Template: A bill of sale is a legal document that records the transfer of ownership of personal property from a seller to a buyer.
+- /doctors-note/ — Doctor's Note Template: A doctor's note template is a formal letter from a licensed medical practitioner confirming that a patient has been assessed and is either u.
+- /eviction-notice/ — Eviction Notice Template: An eviction notice is a formal written notice from a landlord to a tenant requiring them to vacate a property, remedy a breach of the tenanc.
+- /last-will/ — Last Will and Testament Template: A last will and testament is a legal document that records how a person wishes their estate.
+- /lease-agreement/ — Simple Lease Agreement Template: A lease agreement is a legally binding contract between a landlord and tenant that sets out the terms under which a property is rented, incl.
+- /nda/ — NDA Template: An NDA (non-disclosure agreement) is a legally binding contract that prevents one or both parties from disclosing confidential information s.
+- /offer-letter/ — Job Offer Letter Template: A job offer letter is a written communication from an employer to a successful candidate setting out the role, salary, start date, and key c.
+- /operating-agreement/ — LLC Operating Agreement Template: An operating agreement is the internal governance document of a US limited liability company (LLC) that sets out who the members are, how th.
+- /power-of-attorney/ — Power of Attorney Template: A power of attorney (POA) is a legal document in which one person (the principal or donor) authorises another (the agent or attorney) to mak.
+- /promissory-note/ — Promissory Note Template: A promissory note is a written, signed promise by one party (the borrower or maker) to pay a definite sum of money to another (the lender or.
+- /rental-agreement/ — Rental Agreement Template: A rental agreement is a contract between a landlord and a tenant for the short-term or month-to-month occupation of residential property, se.
+- /resignation-letter/ — Resignation Letter Template: A resignation letter is a short, formal document in which an employee notifies their employer that they are leaving their job, states their.
+
+## Resumes & careers
+- /resume-templates/ — Hub: all resumes & careers templates.
+- /ats-friendly-resume/ — ATS-Friendly Resume Template: An ATS-friendly resume template is a single-column, plain-text-parseable document designed to pass automated applicant tracking systems with.
+- /character-reference-letter/ — Character Reference Letter Template: A character reference letter is a personal statement vouching for someone''s honesty, integrity, and good standing.
+- /chronological-resume/ — Chronological Resume Template: A chronological resume lists your work history in reverse-chronological order.
+- /cover-letter-google-docs/ — Cover Letter Template for Google Docs: A cover letter is a one-page document submitted alongside a CV or resume that explains why you are applying for a specific role and what mak.
+- /google-docs-resume/ — Google Docs Resume Template: A Google Docs resume template is a reverse-chronological resume you build and edit in Google Docs.
+- /harvard-resume/ — Harvard Resume Template: A Harvard resume template is a single-page, reverse-chronological CV format developed by the Harvard Office of Career Services, using consis.
+- /letter-of-recommendation/ — Letter of Recommendation Template: A letter of recommendation is the broad, persuasive endorsement that builds a case for a candidate.
+- /reference-letter/ — Reference Letter Template: A reference letter is a short, factual statement from someone who can verify a person''s employment, character, or tenancy.
+- /simple-resume/ — Simple Resume Template: A simple resume template is a clean, single-column, no-frills layout with standard fonts and no graphics.
+- /thank-you-letter-after-interview/ — Thank You Letter After Interview Template: A thank you letter after an interview is a short, prompt follow-up.
+- /two-weeks-notice/ — Two Weeks Notice Template: A two weeks notice is a short, professional letter or email telling your employer you are resigning and will leave in two weeks.
+
+## Business operations
+- /business-templates/ — Hub: all business operations templates.
+- /balance-sheet/ — Balance Sheet Template: A balance sheet is a financial statement that shows a business''s assets, liabilities, and equity at a specific point in time.
+- /estimate/ — Estimate Template: An estimate (called a quote or quotation in the UK) is a document a seller gives a prospective customer setting out the expected cost of goo.
+- /expense-report/ — Expense Report Template: An expense report is a document an employee or business owner uses to list business costs they have paid personally.
+- /invoice-google-docs/ — Invoice Template for Google Docs: A business invoice is a formal demand for payment issued by a supplier to a client, recording what was supplied, at what price, and when pay.
+- /meeting-minutes/ — Meeting Minutes Template: A meeting minutes template is a structured document that records decisions made, actions assigned, and discussions had during a formal or in.
+- /press-release/ — Press Release Template: A press release is a short, factual announcement written in journalistic style and sent to the media to publicise news.
+- /profit-and-loss-statement/ — Profit and Loss Statement Template: A profit and loss statement template is a structured financial document that records a business''s revenue, costs, and net profit or loss ov.
+- /purchase-order/ — Purchase Order Template: A purchase order (PO) is a commercial document a buyer issues to a seller that lists the goods or services being ordered, the quantities, th.
+
+## Life events
+- /life-event-templates/ — Hub: all life events templates.
+- /birth-announcement/ — Birth Announcement Template: A birth announcement template gives you the wording and layout to share the arrival of a new baby.
+- /death-announcement/ — Death Announcement Template: A death announcement template gives you the wording to notify people that someone has died.
+- /eulogy/ — Eulogy Template: A eulogy template is a structured outline for writing and delivering a funeral or memorial speech.
+- /family-tree/ — Family Tree Template: A family tree template is a structured chart that maps genealogical relationships across generations, from a simple three-generation layout.
+- /funeral-order-of-service/ — Funeral Order of Service Template: A funeral order of service template is the printed booklet handed to mourners at a UK funeral, setting out the running order of the service.
+- /funeral-program/ — Funeral Program Template: A funeral program template is a printed or digital order of service distributed to mourners, listing the service sequence, hymns, readings.
+- /obituary/ — Obituary Template: An obituary template is a structured document for writing a death notice that records a person''s life, family, and service details for publ.
+- /sympathy-card/ — Sympathy Card Template: A sympathy card template gives you the words to write in a condolence card.
+
+## Planning
+- /planning-templates/ — Hub: all planning templates.
+- /household-budget/ — Household Budget Template: A household budget template lays out your monthly income against your fixed costs, variable spending, and savings.
+- /itinerary/ — Itinerary Template: An itinerary template is a time-blocked schedule document that organises the logistics of any multi-day event or trip.
+- /lesson-plan/ — Lesson Plan Template: A lesson plan template is a structured document that guides a teacher through the objectives, content, timing, and assessment for a single l.
+- /meal-planner/ — Meal Planner Template: A meal planner template maps out a week of breakfasts, lunches, dinners, and snacks, then turns those meals into a single shopping list.
+- /monthly-calendar/ — Monthly Calendar Template: A monthly calendar template is a printable month-at-a-glance grid for planning appointments, deadlines, bills, and events.
+- /packing-list/ — Packing List Template: A packing list template is a structured checklist of everything to take on a trip, organised by category and tailored to your trip type and.
+- /road-trip-itinerary/ — Road Trip Itinerary Template: A road trip itinerary template is a day-by-day driving plan covering your route, daily mileage, overnight stops, fuel and rest breaks, and b.
+- /travel-itinerary/ — Travel Itinerary Template: A travel itinerary template is a day-by-day schedule of your trip covering flights, accommodation, transport, activities, and emergency info.
+- /weekly-schedule/ — Weekly Schedule Template: A weekly schedule template is a structured time-grid covering Monday to Sunday that lets you map out recurring commitments, work blocks, per.
+
+## Design & creative
+- /design-templates/ — Hub: all design & creative templates.
+- /capcut/ — CapCut Template: A CapCut template is a pre-built video editing structure.
+- /discord-bio/ — Discord Bio Template: A Discord bio is the "About Me" text on your profile.
+- /email-signature/ — Email Signature Template: An email signature is the standardised block at the foot of an email.
+- /roblox-shirt/ — Roblox Shirt Template: A Roblox shirt template is a 585×559 pixel PNG file with UV-mapped front, back, and sleeve panels that you fill with your design before uplo.
+- /storyboard/ — Storyboard Template: A storyboard is a sequence of panels.
+- /tier-list/ — Tier List Template: A tier list is a ranked visual chart that groups items into labelled tiers.
+- /twitch-banner-size/ — Twitch Banner Size: The Twitch profile banner is 1200 × 480 pixels (a 5:2 ratio), the offline / video-player banner is 1920 × 1080 pixels (16:9), and info panel.
+- /wanted-poster/ — Wanted Poster Template: A wanted poster template is a pre-formatted design document styled in the tradition of 19th-century Old West law enforcement notices.
+- /youtube-banner-size/ — YouTube Banner Size: A YouTube channel banner should be uploaded at 2560 × 1440 pixels (16:9), but all important text and logos must sit inside the central 1546.
+
+## Education
+- /education-templates/ — Hub: all education templates.
+- /avery-label/ — Avery Label Template: An Avery label template is a pre-formatted document that matches the exact dimensions and grid of a specific Avery label product code.
+- /certificate-of-achievement/ — Certificate of Achievement Template: A certificate of achievement is a printable award that formally recognises a person for completing something or reaching a milestone.
+- /cornell-notes/ — Cornell Notes Template: The Cornell Notes template divides a page into three sections.
+- /permission-slip/ — Permission Slip Template: A permission slip is a consent form that a parent or guardian signs to authorise their child to take part in a school trip or activity.
+- /rubric/ — Rubric Template: A rubric is a scoring guide that lays out the criteria for an assignment and describes what each level of performance looks like.
+- /venn-diagram/ — Venn Diagram Template: A Venn diagram template is a pre-drawn set of overlapping circles used to visually compare two or more subjects, showing what is unique to e.
+
+## Productivity
+- /productivity-templates/ — Hub: all productivity templates.
+- /checklist/ — Checklist Template: A checklist is a structured list of items to be completed or verified in sequence, with a tick box beside each.
+- /daily-planner/ — Daily Planner Template: A daily planner is a single-day planning document combining a time-blocked schedule (the hours of the day in slots), a short list of top-pri.
+- /google-sheets-calendar/ — Google Sheets Calendar Template: A Google Sheets calendar template is a month or year grid built inside a Google Sheets spreadsheet, so you can edit dates and events in the.
+- /grocery-list/ — Grocery List Template: A grocery list template organises your weekly shop by supermarket section.
+- /habit-tracker/ — Habit Tracker Template: A habit tracker is a grid that records whether you completed a habit each day, building a visible chain of marks that makes consistency moti.
+- /meeting-agenda/ — Meeting Agenda Template: A meeting agenda is a document circulated before a meeting that lists the topics to be discussed, the order and time allocated to each, who.
+- /one-pager/ — One Pager Template: A one pager template is a single-page document that distils a business, product, proposal, or idea into its most essential elements.
+- /to-do-list/ — To Do List Template: A to do list template is a structured document for recording, prioritising, and tracking tasks.
+- /vision-board/ — Vision Board Template: A vision board is a visual collage of images, words, and goals that represents what you want your life to look like.
+
+## Jurisdiction variants
+- /bill-of-sale/ — Bill of sale with 54 per-jurisdiction variant pages (50 US states + DC + England, Scotland, Wales, Northern Ireland), each with the governing statute, DMV/DVLA transfer form, and notarization/witness requirements. e.g. /bill-of-sale/california/, /bill-of-sale/texas/, /bill-of-sale/scotland/.
 
 ## Authorship
-Edited by Sunny Patel, SEO consultant. https://sunnypatel.co.uk
+- Edited by Sunny Patel, SEO consultant — https://sunnypatel.co.uk
