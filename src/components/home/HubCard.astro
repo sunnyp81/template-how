@@ -1,0 +1,79 @@
+---
+/**
+ * HubCard — a category-hub entry for the homepage grid (home-scoped).
+ *
+ * Composes the UI `Card` primitive (whole-card link) and adds a short
+ * descriptor + a meta row (template count). One per NODE; links into the hub.
+ *
+ * Props:
+ *   href    hub URL (e.g. /legal-document-templates/)
+ *   label   hub name
+ *   blurb   one-line plain-language description
+ *   count   number of templates in the hub (for the meta row)
+ *   icon    short decorative glyph (aria-hidden)
+ */
+import Card from '@/components/ui/Card.astro';
+
+interface Props {
+  href: string;
+  label: string;
+  blurb: string;
+  count: number;
+  icon: string;
+}
+const { href, label, blurb, count, icon } = Astro.props;
+---
+<Card href={href} class="hub-card" aria-label={`${label} templates`}>
+  <span class="hub-icon" aria-hidden="true">{icon}</span>
+  <h3 class="hub-name">{label}</h3>
+  <p class="hub-blurb">{blurb}</p>
+  <span class="hub-meta">
+    {count} templates
+    <span class="hub-arrow" aria-hidden="true">→</span>
+  </span>
+</Card>
+
+<style>
+.hub-card { height: 100%; }
+.hub-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  background: var(--accent-tint);
+  color: var(--accent-strong);
+  font-size: var(--fs-lg);
+  line-height: 1;
+}
+.hub-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-medium);
+  color: var(--fg);
+  line-height: var(--lh-tight);
+}
+.hub-blurb {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+  line-height: var(--lh-snug);
+  flex: 1;
+}
+.hub-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-1);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg-subtle);
+}
+.hub-arrow { transition: var(--transition-transform); }
+:global(.u-card--interactive:hover) .hub-arrow { transform: translateX(3px); }
+:global(.u-card--interactive:hover) .hub-meta { color: var(--accent-strong); }
+</style>

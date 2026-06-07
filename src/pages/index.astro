@@ -1,7 +1,52 @@
 ---
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { NODE_SLUGS, NODE_LABELS } from '@/lib/site';
+import Section from '@/components/ui/Section.astro';
+import Button from '@/components/ui/Button.astro';
+import Card from '@/components/ui/Card.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Stat from '@/components/ui/Stat.astro';
+import Grid from '@/components/ui/Grid.astro';
+import Eyebrow from '@/components/ui/Eyebrow.astro';
+import HubCard from '@/components/home/HubCard.astro';
+import StepCard from '@/components/home/StepCard.astro';
 
+// --- Data ---------------------------------------------------------------
+const nodes = await getCollection('nodes');
+const seeds = await getCollection('seeds');
+const seedCount = seeds.length;
+
+const bySlug = new Map<string, CollectionEntry<'nodes'>>(
+  nodes.map((n: CollectionEntry<'nodes'>) => [n.slug, n])
+);
+
+// Short plain-language descriptors + glyphs per hub (homepage-facing copy).
+const HUB_META: Record<string, { blurb: string; icon: string }> = {
+  'legal-document-templates': { blurb: 'Bills of sale, NDAs, wills — each with its governing statute and a last-verified date.', icon: '§' },
+  'resume-templates': { blurb: 'ATS-friendly resumes, CVs, and cover letters built around how hiring actually works.', icon: '✎' },
+  'business-templates': { blurb: 'Invoices, P&L statements, and minutes with UK and US filing conventions built in.', icon: '₤' },
+  'life-event-templates': { blurb: 'Obituaries, eulogies, and announcements for the moments hardest to write.', icon: '❦' },
+  'planning-templates': { blurb: 'Lesson plans, itineraries, and schedules that turn intentions into structured time.', icon: '◷' },
+  'design-templates': { blurb: 'CapCut, Roblox, and social formats with the platform rules that save you a ban.', icon: '◈' },
+  'education-templates': { blurb: 'Cornell notes, Venn diagrams, and rubrics grounded in real learning science.', icon: '✏' },
+  'productivity-templates': { blurb: 'To-do lists, trackers, and planners built on GTD, Eisenhower, and Pomodoro.', icon: '✓' }
+};
+
+// Hub count = number of seeds in that node's frontmatter.
+const hubs = NODE_SLUGS.map((slug) => {
+  const entry = bySlug.get(slug);
+  return {
+    slug,
+    href: `/${slug}/`,
+    label: NODE_LABELS[slug],
+    count: entry ? entry.data.seeds.length : 0,
+    blurb: HUB_META[slug].blurb,
+    icon: HUB_META[slug].icon
+  };
+});
+
+// One popular seed per hub — keeps a strong, balanced popular row.
 const featured = [
   { slug: 'bill-of-sale', title: 'Bill of sale', node: 'legal-document-templates' },
   { slug: 'harvard-resume', title: 'Harvard resume', node: 'resume-templates' },
@@ -14,77 +59,335 @@ const featured = [
 ];
 ---
 <BaseLayout
-  title="Templates, built to be used and cited"
-  description="A working library of US and UK templates — bills of sale, resumes, invoices, lesson plans, and more — with jurisdiction-specific variants and a stated governing source.">
-  <section class="hero">
-    <div class="container">
-      <h1>Templates you can actually use.</h1>
-      <p class="lede">Documents that cite their sources, name their jurisdiction, and stop pretending the United States and the United Kingdom are the same place.</p>
-    </div>
-  </section>
+  title="Free US + UK templates you can fill in and export"
+  description="A working library of free US and UK templates — bills of sale, resumes, invoices, lesson plans, and more. Fill them in your browser, then export to PDF or DOCX. Source-verified, jurisdiction-aware, no sign-up.">
 
-  <section class="featured">
-    <div class="container">
-      <h2>Popular templates</h2>
-      <ul class="tiles">
-        {featured.map((t) => (
-          <li>
-            <a href={`/${t.slug}/`}>
-              <span class="tile-title">{t.title}</span>
-              <span class="tile-node">{NODE_LABELS[t.node as keyof typeof NODE_LABELS]}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
+  <!-- HERO -->
+  <Section as="header" tone="default" space="sm" container="page" class="hero" aria-labelledby="hero-h">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <Eyebrow>Free · No sign-up · Source-verified</Eyebrow>
+        <h1 id="hero-h">Templates you can actually fill in and use.</h1>
+        <p class="hero-lede">
+          Fill in US and UK document templates right in your browser, then export a clean
+          PDF or DOCX. Every template names its jurisdiction and cites a governing source —
+          no pretending the United States and the United Kingdom are the same place.
+        </p>
+        <div class="hero-cta">
+          <Button href="#hubs" variant="primary" size="lg" block>Browse templates</Button>
+          <Button href="/bill-of-sale/" variant="secondary" size="lg" block>Try the builder</Button>
+        </div>
+        <ul class="hero-trust" aria-label="Why people trust template.how">
+          <li><Badge tone="success" variant="solid">Free</Badge></li>
+          <li><Badge tone="brand">US + UK</Badge></li>
+          <li><Badge tone="neutral">No account needed</Badge></li>
+          <li><Badge tone="accent">Source-verified</Badge></li>
+        </ul>
+      </div>
 
-  <section class="categories">
-    <div class="container">
-      <h2>Browse by category</h2>
-      <ul class="cats">
-        {NODE_SLUGS.map((slug) => (
-          <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
-        ))}
-      </ul>
+      <!-- Decorative document mockup (paper, intentionally not theme-flipped) -->
+      <div class="hero-art" aria-hidden="true">
+        <div class="doc">
+          <div class="doc-band"></div>
+          <div class="doc-line doc-line--title"></div>
+          <div class="doc-line w-80"></div>
+          <div class="doc-line w-60"></div>
+          <div class="doc-row">
+            <div class="doc-field"></div>
+            <div class="doc-field"></div>
+          </div>
+          <div class="doc-line w-90"></div>
+          <div class="doc-line w-70"></div>
+          <div class="doc-stamp">PDF · DOCX</div>
+        </div>
+      </div>
     </div>
-  </section>
+  </Section>
+
+  <!-- TRUST STAT STRIP -->
+  <Section tone="surface" space="sm" container="page" aria-label="Library at a glance">
+    <Grid class="stat-strip" min="150px" gap="md">
+      <Stat value={`${seedCount}+`} label="templates" />
+      <Stat value="US + UK" label="jurisdictions" tone="accent" />
+      <Stat value="8" label="categories" />
+      <Stat value="$0" label="to use" tone="brand" />
+    </Grid>
+  </Section>
+
+  <!-- CATEGORY HUBS -->
+  <Section id="hubs" tone="default" container="page" aria-labelledby="hubs-h">
+    <div class="section-head">
+      <Eyebrow>Browse by category</Eyebrow>
+      <h2 id="hubs-h">Eight libraries, one standard</h2>
+      <p class="section-sub">Pick where you need help. Every category holds jurisdiction-aware templates built to the same source-verified standard.</p>
+    </div>
+    <Grid as="ul" min="260px" gap="lg" class="hub-grid">
+      {hubs.map((h) => (
+        <li>
+          <HubCard href={h.href} label={h.label} blurb={h.blurb} count={h.count} icon={h.icon} />
+        </li>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- POPULAR TEMPLATES -->
+  <Section tone="sunken" container="page" aria-labelledby="popular-h">
+    <div class="section-head">
+      <Eyebrow>Most reached-for</Eyebrow>
+      <h2 id="popular-h">Popular templates</h2>
+      <p class="section-sub">A working starting point in each category — open one and start filling it in.</p>
+    </div>
+    <Grid as="ul" min="220px" gap="md" class="popular-grid">
+      {featured.map((t) => (
+        <li>
+          <Card href={`/${t.slug}/`} variant="raised" class="pop-card" interactive>
+            <span class="pop-cat">{NODE_LABELS[t.node as keyof typeof NODE_LABELS]}</span>
+            <span class="pop-title">{t.title}</span>
+          </Card>
+        </li>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- HOW IT WORKS -->
+  <Section tone="default" container="page" aria-labelledby="how-h">
+    <div class="section-head">
+      <Eyebrow>How it works</Eyebrow>
+      <h2 id="how-h">From blank page to finished document in minutes</h2>
+    </div>
+    <ol class="steps">
+      <StepCard n={1} title="Pick your template">
+        Choose from {seedCount}+ templates across eight categories, then select your
+        jurisdiction — per-state for the US, per-nation for the UK.
+      </StepCard>
+      <StepCard n={2} title="Fill it in your browser">
+        Type your details into a guided form. Nothing to install, no account, and your
+        answers never leave your device.
+      </StepCard>
+      <StepCard n={3} title="Export PDF or DOCX">
+        Download a clean, correctly formatted document — ready to sign, send, print, or
+        keep editing in your word processor.
+      </StepCard>
+    </ol>
+  </Section>
+
+  <!-- TRUST / CREDIBILITY -->
+  <Section tone="surface" container="page" aria-labelledby="trust-h">
+    <div class="section-head">
+      <Eyebrow>Why these templates are different</Eyebrow>
+      <h2 id="trust-h">Built to be read, used, and cited</h2>
+    </div>
+    <Grid min="240px" gap="lg">
+      <Card variant="outline" padding="lg">
+        <h3 class="trust-title">Source-verified</h3>
+        <p class="trust-copy">Each template names the statute, standard, or platform policy it follows, with a last-verified date — so you can check the source, not just trust ours.</p>
+      </Card>
+      <Card variant="outline" padding="lg">
+        <h3 class="trust-title">Jurisdiction-aware</h3>
+        <p class="trust-copy">US and UK requirements diverge. Our templates carry per-state and per-nation variants instead of pretending one document fits everywhere.</p>
+      </Card>
+      <Card variant="outline" padding="lg">
+        <h3 class="trust-title">Free, with no sign-up</h3>
+        <p class="trust-copy">No account, no paywall, no email wall. Fill in and export as many templates as you like. Your inputs stay in your browser.</p>
+      </Card>
+    </Grid>
+  </Section>
+
+  <!-- FINAL CTA -->
+  <Section tone="brand" container="content" aria-labelledby="cta-h" class="final-cta">
+    <Eyebrow tone="muted">Ready when you are</Eyebrow>
+    <h2 id="cta-h">Find the template you need</h2>
+    <p class="cta-sub">Eight categories, {seedCount}+ source-verified templates, zero sign-up. Pick one and start filling it in.</p>
+    <div class="cta-actions">
+      <Button href="#hubs" variant="accent" size="lg" block>Browse all categories</Button>
+      <Button href="/bill-of-sale/" variant="secondary" size="lg" block>Try a builder now</Button>
+    </div>
+  </Section>
 </BaseLayout>
 
 <style>
-.hero { padding: var(--sp-12) 0 var(--sp-8); }
-.hero h1 { max-width: 18ch; font-size: var(--fs-4xl); }
-.lede { font-size: var(--fs-lg); color: var(--fg-muted); max-width: 56ch; }
-@media (min-width: 768px) { .hero { padding: var(--sp-24) 0 var(--sp-16); } }
+/* ---------- Shared section heading ---------- */
+.section-head { max-width: var(--measure-narrow); margin-bottom: var(--sp-8); }
+.section-head h2 {
+  margin: 0;
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+}
+.section-sub {
+  margin: var(--sp-3) 0 0;
+  font-size: var(--fs-lg);
+  color: var(--fg-muted);
+  line-height: var(--lh-snug);
+}
 
-.featured { padding: var(--sp-12) 0; }
-.tiles {
-  list-style: none; padding: 0; margin: var(--sp-6) 0 0;
-  display: grid; gap: var(--sp-4);
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+/* ---------- Hero ---------- */
+.hero-grid { display: grid; gap: var(--sp-10); align-items: center; }
+@media (min-width: 960px) {
+  .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: var(--sp-16); }
 }
-.tiles a {
-  display: block; padding: var(--sp-6);
-  background: var(--bg-elev); border: 1px solid var(--border);
-  border-radius: var(--r-md); text-decoration: none;
-  transition: transform 160ms ease, border-color 160ms ease;
+.hero-copy { display: flex; flex-direction: column; align-items: flex-start; }
+.hero h1 {
+  margin: 0;
+  font-size: var(--fs-5xl);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  max-width: 16ch;
 }
-.tiles a:hover { transform: translateY(-2px); border-color: var(--accent); }
-.tile-title { display: block; font-family: var(--font-display); font-size: var(--fs-xl); color: var(--fg); }
-.tile-node { display: block; margin-top: var(--sp-2); font-size: var(--fs-xs); color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.hero-lede {
+  margin: var(--sp-5) 0 0;
+  font-size: var(--fs-lg);
+  color: var(--fg-muted);
+  line-height: var(--lh-body);
+  max-width: 54ch;
+}
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-top: var(--sp-8);
+  width: 100%;
+}
+@media (min-width: 480px) {
+  .hero-cta { flex-direction: row; flex-wrap: wrap; width: auto; }
+}
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  list-style: none;
+  margin: var(--sp-8) 0 0;
+  padding: 0;
+}
 
-.categories { padding: var(--sp-12) 0 var(--sp-16); }
-.cats {
-  list-style: none; padding: 0; margin: var(--sp-6) 0 0;
-  display: grid; gap: var(--sp-3);
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+/* Hero document mockup — deliberately stays "paper" (it's a document). */
+.hero-art { display: none; }
+@media (min-width: 960px) { .hero-art { display: block; } }
+.doc {
+  position: relative;
+  background: #fffdf8;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--sp-8) var(--sp-8) var(--sp-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  transform: rotate(-1.5deg);
 }
-.cats a {
-  display: flex; align-items: center; min-height: 48px;
-  padding: var(--sp-4) var(--sp-6);
-  border: 1px solid var(--border); border-radius: var(--r-md);
-  text-decoration: none; color: var(--fg);
-  font-family: var(--font-display); font-size: var(--fs-lg);
+.doc-band {
+  height: 8px;
+  width: 64px;
+  border-radius: var(--r-full);
+  background: var(--accent-bold);
+  margin-bottom: var(--sp-2);
 }
-.cats a:hover { background: var(--paper-200); }
+.doc-line { height: 10px; border-radius: var(--r-full); background: #e8e2d4; }
+.doc-line--title { height: 18px; width: 70%; background: #c9c0ac; }
+.w-90 { width: 90%; } .w-80 { width: 80%; } .w-70 { width: 70%; } .w-60 { width: 60%; }
+.doc-row { display: flex; gap: var(--sp-3); margin: var(--sp-2) 0; }
+.doc-field {
+  flex: 1; height: 40px; border-radius: var(--r-sm);
+  background: #f5f1e6; border: 1px dashed #cfc6b1;
+}
+.doc-stamp {
+  position: absolute;
+  bottom: var(--sp-5);
+  right: var(--sp-6);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.06em;
+  color: #1a2740;
+  background: #f1c75e;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  transform: rotate(3deg);
+}
+
+/* ---------- Stat strip ---------- */
+.stat-strip { align-items: stretch; }
+
+/* ---------- Hubs ---------- */
+.hub-grid > li { display: flex; }
+.hub-grid :global(.u-card) { width: 100%; }
+
+/* ---------- Popular ---------- */
+.popular-grid :global(.pop-card) { height: 100%; }
+.pop-cat {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg-subtle);
+}
+.pop-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-medium);
+  color: var(--fg);
+  line-height: var(--lh-tight);
+}
+
+/* ---------- How it works ---------- */
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--sp-8);
+}
+@media (min-width: 768px) {
+  .steps { grid-template-columns: repeat(3, 1fr); gap: var(--sp-8); }
+}
+
+/* ---------- Trust ---------- */
+.trust-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-medium);
+  color: var(--fg);
+}
+.trust-copy { margin: 0; color: var(--fg-muted); line-height: var(--lh-body); }
+
+/* ---------- Final CTA ---------- */
+.final-cta { text-align: center; }
+.final-cta .u-eyebrow { display: block; }
+.final-cta h2 {
+  margin: 0;
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+}
+.cta-sub {
+  margin: var(--sp-3) auto 0;
+  max-width: 48ch;
+  color: var(--brand-fg);
+  opacity: 0.92;
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+}
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-top: var(--sp-8);
+}
+@media (min-width: 480px) {
+  .cta-actions { flex-direction: row; justify-content: center; }
+}
+/* On the navy band, give the outlined secondary button readable contrast. */
+.final-cta :global(.u-btn--secondary) {
+  background: transparent;
+  color: var(--brand-fg);
+  border-color: color-mix(in srgb, var(--brand-fg) 55%, transparent);
+}
+.final-cta :global(.u-btn--secondary:hover) {
+  background: color-mix(in srgb, var(--brand-fg) 12%, transparent);
+  color: var(--brand-fg);
+  border-color: var(--brand-fg);
+}
 </style>

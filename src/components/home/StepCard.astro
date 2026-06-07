@@ -1,0 +1,63 @@
+---
+/**
+ * StepCard — one beat in the homepage "how it works" sequence (home-scoped).
+ * Numbered, with an Eyebrow kicker, heading, and copy. Composes Eyebrow.
+ *
+ * Props:
+ *   n      step number (1-based)
+ *   title  step heading
+ */
+import Eyebrow from '@/components/ui/Eyebrow.astro';
+
+interface Props {
+  n: number;
+  title: string;
+}
+const { n, title } = Astro.props;
+---
+<li class="step">
+  <span class="step-num" aria-hidden="true">{n}</span>
+  <div class="step-body">
+    <Eyebrow tone="muted" as="span">Step {n}</Eyebrow>
+    <h3 class="step-title">{title}</h3>
+    <p class="step-copy"><slot /></p>
+  </div>
+</li>
+
+<style>
+.step {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: flex-start;
+}
+.step-num {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-full);
+  background: var(--brand);
+  color: var(--brand-fg);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  line-height: 1;
+}
+.step-body { display: flex; flex-direction: column; gap: var(--sp-1); }
+.step-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  color: var(--fg);
+  line-height: var(--lh-tight);
+}
+.step-copy {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+  line-height: var(--lh-body);
+}
+</style>
