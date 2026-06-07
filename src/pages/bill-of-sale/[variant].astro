@@ -47,6 +47,19 @@ const isUS = jurisdiction.country === 'us';
 const cur = isUS ? '$' : '£';
 const peer = isUS ? US_STATES : UK_NATIONS;
 
+// Locale-aware display copy: American spelling for US-state variants, British for UK nations.
+// Only display strings vary — never `code`/data values.
+const sp = {
+  neighbouring: isUS ? 'neighboring' : 'neighbouring',
+  notarised: isUS ? 'notarized' : 'notarised',
+  notarisation: isUS ? 'notarization' : 'notarisation',
+  cheque: isUS ? 'check' : 'cheque',
+  // Sentence-case variant where the word opens a step name.
+  Notarise: isUS ? 'Notarize' : 'Notarise'
+};
+const dmvAuthority = isUS ? 'DMV' : 'DVLA';
+const legalAdvisor = isUS ? 'attorney' : 'solicitor';
+
 // Rotating-window siblings: 5 before + 5 after (wrapping), so every US state appears
 // in exactly 10 other US state pages — guarantees ≥3 incoming for all variants.
 // UK nations only have 3 peers — just show all of them.
@@ -74,7 +87,7 @@ if (peer.length <= 5) {
 
 const title = `Bill of Sale Template — ${jurisdiction.region} (${jurisdiction.abbreviation})`;
 const h1 = `${jurisdiction.region} Bill of Sale Template`;
-const lede = `A bill of sale for personal property in ${jurisdiction.region} records the transfer of ownership from seller to buyer. ${jurisdiction.region}'s rules differ from neighbouring jurisdictions in specific, sometimes consequential ways.`;
+const lede = `A bill of sale for personal property in ${jurisdiction.region} records the transfer of ownership from seller to buyer. ${jurisdiction.region}'s rules differ from ${sp.neighbouring} jurisdictions in specific, sometimes consequential ways.`;
 const updated = new Date(rule.last_verified);
 
 const crumbs = [
@@ -94,9 +107,9 @@ const howTo = {
   steps: [
     { name: 'Identify the parties', text: `Write the full legal names and addresses of both seller and buyer in ${jurisdiction.region}.` },
     { name: 'Describe the item', text: `For a vehicle, include ${rule.vehicle_extra_fields.join(', ')}. For other personal property, describe it precisely enough that no other identical item could be substituted.` },
-    { name: 'State the price and payment method', text: `Record the agreed price in ${cur} and how it was paid (cash, bank transfer, cashier's cheque).` },
+    { name: 'State the price and payment method', text: `Record the agreed price in ${cur} and how it was paid (cash, bank transfer, cashier's ${sp.cheque}).` },
     rule.notary_required === true
-      ? { name: 'Notarise the document', text: `${jurisdiction.region} requires the bill of sale to be notarised before it is legally effective for vehicle transfers.` }
+      ? { name: `${sp.Notarise} the document`, text: `${jurisdiction.region} requires the bill of sale to be ${sp.notarised} before it is legally effective for vehicle transfers.` }
       : { name: 'Sign and date', text: `Both parties sign and date. ${jurisdiction.region} does not require a notary for personal property bills of sale.` },
     rule.witness_required === true
       ? { name: 'Sign in front of witnesses', text: `${jurisdiction.region} requires the bill of sale to be signed in the presence of at least two witnesses for vehicle transfers.` }
@@ -108,9 +121,9 @@ const faq = [
   {
     q: `Is a notary required for a ${jurisdiction.region} bill of sale?`,
     a: rule.notary_required === true
-      ? `Yes. ${jurisdiction.region} requires bills of sale for vehicle transfers to be notarised. Find a notary at a bank, library, UPS Store, or law office.`
+      ? `Yes. ${jurisdiction.region} requires bills of sale for vehicle transfers to be ${sp.notarised}. Find a notary at a bank, library, UPS Store, or law office.`
       : rule.notary_required === false
-        ? `No. ${jurisdiction.region} does not require a notary for a bill of sale, although having one notarised does not hurt and may speed up dispute resolution.`
+        ? `No. ${jurisdiction.region} does not require a notary for a bill of sale, although having one ${sp.notarised} does not hurt and may speed up dispute resolution.`
         : `${jurisdiction.region}'s requirements vary by item type. For vehicles, check the local ${isUS ? 'DMV' : 'DVLA / DVA'} guidance.`
   },
   {
@@ -121,7 +134,7 @@ const faq = [
   },
   {
     q: `Can I use a generic bill of sale in ${jurisdiction.region}?`,
-    a: `A generic bill of sale is valid in ${jurisdiction.region} as long as it includes the parties, the item, the price, the date, and signatures. ${rule.notary_required === true ? 'It must also be notarised for vehicle transfers.' : ''} Using the official ${jurisdiction.region}-specific form removes any ambiguity.`
+    a: `A generic bill of sale is valid in ${jurisdiction.region} as long as it includes the parties, the item, the price, the date, and signatures. ${rule.notary_required === true ? `It must also be ${sp.notarised} for vehicle transfers.` : ''} Using the official ${jurisdiction.region}-specific form removes any ambiguity.`
   },
   {
     q: `What is the governing law in ${jurisdiction.region}?`,
@@ -205,6 +218,9 @@ const faq = [
       </dl>
       {rule.notes ? <p class="bos-rule__notes">{rule.notes}</p> : null}
     </Card>
+    <Callout tone="warning" title="This is not legal advice">
+      <p>Templates and jurisdiction notes here are for general information only. Confirm current requirements with the relevant {dmvAuthority} or a qualified {legalAdvisor} before relying on them.</p>
+    </Callout>
   </Section>
 
   {/* ── Article body ───────────────────────────────────────────── */}
@@ -222,7 +238,7 @@ const faq = [
       <p>For a vehicle, also include: {rule.vehicle_extra_fields.map((f) => f.replace(/_/g, ' ')).join(', ')}.</p>
 
       <h2>How {jurisdiction.region} differs</h2>
-      <p>{rule.notes}{rule.notary_required === true ? ` That makes ${jurisdiction.region} stricter than the majority of US states, where notarisation is not required for a private vehicle sale.` : ''}{rule.witness_required === true ? ` ${jurisdiction.region} also requires witnesses, which is unusual.` : ''} For comparison, {isUS ? 'most US states do not require notarisation' : 'other UK nations follow Sale of Goods Act 1979 with no notarisation requirement'}, although having a notary or witness adds evidentiary weight if a dispute later arises.</p>
+      <p>{rule.notes}{rule.notary_required === true ? ` That makes ${jurisdiction.region} stricter than the majority of US states, where ${sp.notarisation} is not required for a private vehicle sale.` : ''}{rule.witness_required === true ? ` ${jurisdiction.region} also requires witnesses, which is unusual.` : ''} For comparison, {isUS ? `most US states do not require ${sp.notarisation}` : `other UK nations follow Sale of Goods Act 1979 with no ${sp.notarisation} requirement`}, although having a notary or witness adds evidentiary weight if a dispute later arises.</p>
 
       <Callout tone="tip" title="Expert tip">
         <p>Take a photograph of the item, the keys, and both parties at the moment of handover. {jurisdiction.region}'s small claims courts give significant weight to contemporaneous photographic evidence in dispute over the condition of the item at sale. The bill of sale records the transaction; the photograph records the state of the goods.</p>
