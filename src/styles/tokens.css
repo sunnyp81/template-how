@@ -1,57 +1,132 @@
 @import './fonts.css';
 
-/* Breakpoints (mobile-first, min-width only — documented; CSS custom media
-   needs a build step so we use raw min-width queries throughout):
+/* =============================================================================
+   template.how — Design tokens (v2 redesign foundation)
+   -----------------------------------------------------------------------------
+   Brand DNA preserved: warm paper, brand navy, accent amber; Fraunces (display)
+   + Inter (body). This pass enriches the palette (more paper/navy/amber shades,
+   tints, gradients), formalises elevation + motion, and keeps a considered,
+   WCAG-AA dark mode.
+
+   ARCHITECTURE
+     1. Raw palette        — fixed hex ramps, never used directly in components.
+     2. Semantic layer     — --bg/--fg/--accent/--surface/... ; THIS is what
+                             components consume, and what flips in dark mode.
+     3. Scales             — type, space, radii, shadow, motion.
+
+   CONTRACT FOR DOWNSTREAM AGENTS
+     * Every token NAME that existed before still exists (values may have moved).
+     * Consume SEMANTIC tokens in components, not raw ramp hexes, so dark mode
+       and future re-tints work for free.
+     * All foreground/background pairings below pass WCAG AA (>=4.5:1 text,
+       >=3:1 large text / UI). See the redesign-language spec for the table.
+
+   BREAKPOINTS (mobile-first, min-width only — no build-time custom media):
      sm  >= 480px   large phones / small tablets portrait
      md  >= 768px   tablet portrait      -> 2-col grids, inline nav
      lg  >= 960px   tablet landscape     -> builder goes side-by-side
      xl  >= 1200px  desktop, page max-width reached
-*/
+   ========================================================================== */
 
 :root {
-  /* Neutrals (paper-warm) */
-  --paper-50: #FEFDFB;
+  /* ---- 1. RAW PALETTE ----------------------------------------------------- */
+
+  /* Neutrals — warm "paper". A fuller ramp than v1 for surfaces + elevation. */
+  --paper-50:  #FEFDFB;
   --paper-100: #FAF7F2;
   --paper-200: #F2EDE4;
   --paper-300: #E6DFD2;
+  --paper-400: #C9C0B1;   /* new — hairlines on elevated surfaces, disabled fg */
   --paper-500: #9A9084;
+  --paper-600: #6E665B;   /* new — muted text that still clears AA on paper */
   --paper-700: #4B463E;
+  --paper-800: #322E28;   /* new */
   --paper-900: #1F1C17;
 
-  /* Brand navy */
+  /* Brand navy — extended with lighter steps for tints/borders/dark surfaces. */
+  --navy-300: #4A5C8C;   /* new — dark-mode borders / decorative */
+  --navy-400: #34467A;   /* new */
   --navy-500: #1C2E5F;
+  --navy-600: #15234C;   /* new — hover for navy fills */
   --navy-700: #0F1B3D;
+  --navy-800: #0A1330;   /* new */
   --navy-900: #060C20;
 
-  /* Accent amber */
+  /* Accent amber — warm, used sparingly. amber-700 is the text-safe step. */
+  --amber-300: #FBBF47;  /* new — large decorative / dark-mode accent text */
   --amber-400: #F59E0B;
   --amber-500: #D97706;
   --amber-600: #B45309;
+  --amber-700: #92400E;  /* new — ~6.5:1 on paper, safest amber text */
 
-  /* Semantic colours */
-  --bg: var(--paper-100);
-  --bg-elev: var(--paper-50);
+  /* Functional hues (new) — kept muted to sit inside the warm palette. */
+  --green-600: #15803D;  /* success text on paper (AA) */
+  --green-50:  #ECF6EE;
+  --red-600:   #B91C1C;  /* danger / error text on paper (AA) */
+  --red-50:    #FBEDED;
+  --blue-600:  #1D4ED8;  /* info text on paper (AA) */
+  --blue-50:   #EAEFFB;
+
+  /* ---- 2. SEMANTIC LAYER (light) ----------------------------------------- */
+
+  /* Surfaces — a 3-tier system: page < surface < raised. */
+  --bg: var(--paper-100);          /* page background */
+  --bg-elev: var(--paper-50);      /* default elevated surface (cards, nav) */
+  --surface: var(--paper-50);      /* alias of bg-elev for primitives */
+  --surface-2: var(--paper-200);   /* sunken / subtle fills (chips, wells) */
+  --surface-raised: #FFFFFF;       /* highest cards / popovers */
+
+  /* Text */
   --fg: var(--navy-900);
-  --fg-muted: var(--paper-700);
+  --fg-muted: var(--paper-700);    /* ~8.9:1 on paper */
+  --fg-subtle: var(--paper-600);   /* new — captions/meta, still AA (~5.9:1) */
+  --fg-on-accent: #FFFFFF;         /* text on amber-600+ / navy fills */
+
+  /* Borders */
   --border: var(--paper-300);
-  /* --accent is amber-600 (#B45309 ~4.9:1 on paper) so accent TEXT passes WCAG AA.
-     --accent-bold is bright amber-500, reserved for borders / focus rings / large
-     decorative accents only (it is ~3:1 on paper — fails AA for small text). */
+  --border-strong: var(--paper-400);   /* new — emphasised dividers */
+
+  /* Accent (amber). Text-safe vs decorative split is preserved:
+       --accent       amber-600 (#B45309 ~4.9:1 on paper) -> ok for accent TEXT.
+       --accent-bold  amber-500 (bright) -> borders / focus rings / large only.
+     New --accent-strong (amber-700) for amber text that needs extra margin. */
   --accent: var(--amber-600);
+  --accent-strong: var(--amber-700);
   --accent-bold: var(--amber-500);
-  --accent-fg: #FFFFFF;
+  --accent-fg: #FFFFFF;                 /* legacy name; on navy fills */
+  --accent-tint: color-mix(in srgb, var(--amber-400) 14%, transparent); /* wash */
+
+  /* Brand fill (navy) — used by primary buttons / strong CTAs. */
+  --brand: var(--navy-700);
+  --brand-hover: var(--navy-600);
+  --brand-fg: var(--paper-50);
+
+  /* Links */
   --link: var(--navy-700);
   --link-hover: var(--amber-600);
 
-  /* Typography */
+  /* Functional semantic pairs */
+  --success: var(--green-600);
+  --success-bg: var(--green-50);
+  --danger: var(--red-600);
+  --danger-bg: var(--red-50);
+  --info: var(--blue-600);
+  --info-bg: var(--blue-50);
+  --focus-ring: var(--accent-bold);
+
+  /* Signature gradients (decorative — never the only carrier of meaning). */
+  --gradient-brand: linear-gradient(135deg, var(--navy-700) 0%, var(--navy-500) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--amber-500) 0%, var(--amber-600) 100%);
+  --gradient-paper: linear-gradient(180deg, var(--paper-50) 0%, var(--paper-100) 100%);
+
+  /* ---- 3. TYPOGRAPHY ----------------------------------------------------- */
   --font-display: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
   --font-body: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
 
-  /* Type scale — fluid at the top (clamp), fixed for UI text.
-     min values keep the homepage h1 (--fs-4xl) at 36px on a 360px phone (no
-     overflow) and the seed h1 (--fs-3xl) at ~31px; all reach today's desktop
-     sizes by ~1200px. */
+  /* Fluid type scale — clamp() at the top, fixed for UI text.
+     min values keep the homepage h1 (--fs-4xl) at 36px on a 360px phone and the
+     seed h1 (--fs-3xl) at ~31px; all reach desktop sizes by ~1200px. */
   --fs-xs: 0.8125rem;     /* 13px */
   --fs-sm: 0.9375rem;     /* 15px */
   --fs-base: 1.0625rem;   /* 17px — reading body */
@@ -60,66 +135,155 @@
   --fs-2xl: clamp(1.6rem,  1.35rem + 1.3vw, 2rem);        /* ~26 -> 32 */
   --fs-3xl: clamp(1.95rem, 1.5rem + 2.2vw, 2.75rem);      /* ~31 -> 44 */
   --fs-4xl: clamp(2.25rem, 1.6rem + 3.2vw, 3.75rem);      /* 36 -> 60 */
+  --fs-5xl: clamp(2.75rem, 1.9rem + 4.2vw, 4.5rem);       /* new — hero display */
+
+  /* Weights (new tokens — formalise the two faces' usable weights). */
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
 
   --lh-tight: 1.15;
   --lh-snug:  1.3;        /* dense UI: nav, builder form, table, crumbs */
   --lh-body:  1.65;
 
-  /* Sticky nav height — consumed by nav, builder toggle, sticky preview so they
-     stay in sync. Raised at lg in the media query below. */
+  --tracking-tight: -0.02em;   /* new */
+  --tracking-normal: -0.01em;  /* new */
+  --tracking-wide: 0.08em;     /* new — eyebrow/uppercase labels */
+
+  /* Sticky nav height — consumed by nav, builder toggle, sticky preview. */
   --nav-h: 56px;
 
-  /* Spacing (4px base) */
+  /* ---- 4. SPACING (4px base) --------------------------------------------- */
+  --sp-0: 0;          /* new */
   --sp-1: 0.25rem;
   --sp-2: 0.5rem;
   --sp-3: 0.75rem;
   --sp-4: 1rem;
+  --sp-5: 1.25rem;    /* new */
   --sp-6: 1.5rem;
   --sp-8: 2rem;
+  --sp-10: 2.5rem;    /* new */
   --sp-12: 3rem;
   --sp-16: 4rem;
+  --sp-20: 5rem;      /* new */
   --sp-24: 6rem;
+  --sp-32: 8rem;      /* new */
 
-  /* Radii */
+  /* Fluid section rhythm (new) — section padding that steps up with viewport,
+     so phones aren't burdened with desktop whitespace. */
+  --space-section: clamp(var(--sp-12), 8vw, var(--sp-24));
+  --space-section-sm: clamp(var(--sp-8), 6vw, var(--sp-16));
+
+  /* ---- 5. RADII ---------------------------------------------------------- */
+  --r-xs: 2px;        /* new */
   --r-sm: 4px;
   --r-md: 8px;
   --r-lg: 12px;
   --r-xl: 20px;
+  --r-2xl: 28px;      /* new — hero panels */
+  --r-full: 9999px;   /* new — pills/avatars */
 
-  /* Elevation */
+  /* ---- 6. ELEVATION ------------------------------------------------------ */
+  /* Navy-tinted shadows so elevation feels part of the brand, not generic grey. */
+  --shadow-xs: 0 1px 2px rgba(15, 27, 61, 0.06);
   --shadow-sm: 0 1px 2px rgba(15, 27, 61, 0.05), 0 1px 3px rgba(15, 27, 61, 0.08);
   --shadow-md: 0 4px 8px rgba(15, 27, 61, 0.06), 0 2px 16px rgba(15, 27, 61, 0.08);
   --shadow-lg: 0 12px 32px rgba(15, 27, 61, 0.12);
+  --shadow-xl: 0 24px 56px rgba(15, 27, 61, 0.18);   /* new — modals/popovers */
+  --shadow-focus: 0 0 0 3px var(--accent-tint);       /* new — soft focus glow */
+  --ring: 2px solid var(--focus-ring);                /* new — canonical focus ring */
 
-  /* Layout */
+  /* ---- 7. MOTION --------------------------------------------------------- */
+  /* All motion is gated by prefers-reduced-motion at the bottom of this file. */
+  --dur-instant: 80ms;
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --dur-slow: 280ms;
+  --dur-slower: 420ms;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);     /* enter/move */
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1.2); /* playful overshoot */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  --transition-colors: color var(--dur-fast) var(--ease-standard),
+                       background-color var(--dur-fast) var(--ease-standard),
+                       border-color var(--dur-fast) var(--ease-standard);
+  --transition-transform: transform var(--dur-base) var(--ease-standard);
+
+  /* ---- 8. LAYOUT --------------------------------------------------------- */
   --content-max: 72ch;
   --page-max: 1200px;
+  --measure-narrow: 56ch;   /* new — ledes, callouts */
+  --measure-wide: 84ch;     /* new — tables/grids */
+  --z-nav: 40;
+  --z-overlay: 60;
+  --z-popover: 70;
 }
 
-/* Raise the nav height (and everything pinned to it) at lg where the nav has
-   inline links and more vertical padding. */
+/* Raise the nav height (and everything pinned to it) at lg. */
 @media (min-width: 960px) {
   :root { --nav-h: 64px; }
 }
 
+/* ---- DARK MODE (considered, AA-verified) --------------------------------- */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: var(--navy-900);
-    --bg-elev: var(--navy-700);
+    --bg-elev: var(--navy-800);
+    --surface: var(--navy-800);
+    --surface-2: var(--navy-700);
+    --surface-raised: var(--navy-700);
+
     --fg: var(--paper-100);
     --fg-muted: var(--paper-300);
-    --border: #2A3A6B;            /* lighter than navy-500 → visible 1px borders on navy-900 */
-    --link: var(--amber-400);
-    --link-hover: var(--amber-500);
-    --accent: var(--amber-400);   /* amber-400 on navy passes AA */
+    --fg-subtle: var(--paper-400);
+    --fg-on-accent: var(--navy-900);   /* dark text on bright amber fills */
+
+    --border: var(--navy-300);          /* visible 1px borders on navy */
+    --border-strong: var(--navy-400);
+
+    /* amber-300/400 on navy pass AA; reserve for accent text + decoration. */
+    --accent: var(--amber-300);
+    --accent-strong: var(--amber-300);
     --accent-bold: var(--amber-400);
+    --accent-fg: var(--navy-900);
+    --accent-tint: color-mix(in srgb, var(--amber-400) 20%, transparent);
+
+    /* On dark, the primary fill becomes amber (high contrast) rather than navy. */
+    --brand: var(--amber-400);
+    --brand-hover: var(--amber-300);
+    --brand-fg: var(--navy-900);
+
+    --link: var(--amber-300);
+    --link-hover: var(--amber-400);
+
+    --success: #4ADE80;
+    --success-bg: rgba(74, 222, 128, 0.12);
+    --danger: #F87171;
+    --danger-bg: rgba(248, 113, 113, 0.12);
+    --info: #93B4FF;
+    --info-bg: rgba(147, 180, 255, 0.12);
+
+    --gradient-brand: linear-gradient(135deg, var(--navy-700) 0%, var(--navy-500) 100%);
+    --gradient-paper: linear-gradient(180deg, var(--navy-800) 0%, var(--navy-900) 100%);
+
+    /* Shadows read poorly on dark; soften and add a subtle lift via opacity. */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.55);
+    --shadow-xl: 0 24px 56px rgba(0, 0, 0, 0.6);
   }
 }
 
+/* ---- REDUCED MOTION (global kill-switch) --------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
   html { scroll-behavior: auto; }
 }
