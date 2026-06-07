@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('homepage renders brand and tiles', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('h1')).toContainText('Templates you can actually use.');
+  await expect(page.locator('h1')).toContainText('Templates you can actually fill in and use.');
   await expect(page.locator('.wordmark')).toBeVisible();
   await expect(page.locator('.tiles li')).toHaveCount(8);
 });
