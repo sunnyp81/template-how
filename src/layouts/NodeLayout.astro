@@ -85,7 +85,7 @@ const updatedLabel = updated.toLocaleDateString('en-GB', {
       </Eyebrow>
       <h1 id="hub-h1">{headline}</h1>
       <p class="hub-hero__lede">{lede}</p>
-      <dl class="hub-hero__stats">
+      <div class="hub-hero__stats">
         <Stat as="div" align="start" value={String(templateCount)} label="templates" />
         <Stat as="div" align="start" value={jurisdictions} label="jurisdictions" tone="accent" />
         <Stat
@@ -94,7 +94,7 @@ const updatedLabel = updated.toLocaleDateString('en-GB', {
           value={builderCount > 0 ? String(builderCount) : 'Free'}
           label={builderCount > 0 ? 'fill-in builders' : 'no sign-up'}
         />
-      </dl>
+      </div>
       <p class="hub-hero__updated">
         Verified <time datetime={updatedISO}>{updatedLabel}</time> · no sign-up, nothing to pay
       </p>
