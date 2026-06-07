@@ -1,9 +1,11 @@
 # template.how robots.txt
 # Allow search, AI input (citations in answer engines), and AI training.
-# Content-Signal overrides Cloudflare's default ai-train=no injection.
+# The Content-Signal (search=yes, ai-input=yes, ai-train=yes) now ships as an
+# HTTP response header (see public/_headers) rather than a robots.txt directive,
+# which Lighthouse flagged as an unknown directive. It still overrides
+# Cloudflare's default ai-train=no injection.
 
 User-agent: *
-Content-Signal: search=yes,ai-input=yes,ai-train=yes
 Allow: /
 
 User-agent: GPTBot
