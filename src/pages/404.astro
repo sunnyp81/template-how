@@ -1,19 +1,80 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/ui/Section.astro';
+import Grid from '@/components/ui/Grid.astro';
+import Card from '@/components/ui/Card.astro';
+import Button from '@/components/ui/Button.astro';
+import Eyebrow from '@/components/ui/Eyebrow.astro';
 import { NODE_SLUGS, NODE_LABELS } from '@/lib/site';
+import { HUB_BLURBS } from '@/components/hub/hubMeta';
+
+const popular = [
+  { href: '/bill-of-sale/', label: 'Bill of sale' },
+  { href: '/harvard-resume/', label: 'Harvard resume' },
+  { href: '/invoice-google-docs/', label: 'Invoice' },
+  { href: '/cover-letter-google-docs/', label: 'Cover letter' }
+];
 ---
-<BaseLayout title="Not found" description="The page you asked for doesn't exist." noindex={true}>
-  <div class="container prose">
-    <h1>Nothing here.</h1>
-    <p>The page you asked for doesn't exist — or we haven't written it yet. Try one of the categories:</p>
-    <ul>
+<BaseLayout title="Page not found" description="The page you asked for doesn't exist. Jump to a category or a popular template to find what you need." noindex={true}>
+  <Section tone="default" space="default" container="content" aria-labelledby="nf-h1">
+    <Eyebrow tone="accent">Error 404</Eyebrow>
+    <h1 id="nf-h1">We couldn't find that page</h1>
+    <p class="nf-lede">The link may be broken, or the page may have moved — or we simply haven't written it yet. Here's how to get back on track.</p>
+
+    <div class="nf-quick">
+      <h2 class="nf-quick__h">Popular templates</h2>
+      <ul class="nf-quick__list">
+        {popular.map((p) => (
+          <li><Button href={p.href} variant="secondary" size="sm">{p.label}</Button></li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  <Section tone="surface" space="default" container="page" aria-labelledby="nf-hubs-h">
+    <header class="nf-hubs__head">
+      <Eyebrow tone="brand">Browse by category</Eyebrow>
+      <h2 id="nf-hubs-h">Eight clusters, hundreds of templates</h2>
+    </header>
+    <Grid as="ul" min="260px" gap="lg">
       {NODE_SLUGS.map((slug) => (
-        <li><a href={`/${slug}/`}>{NODE_LABELS[slug]}</a></li>
+        <li>
+          <Card href={`/${slug}/`} variant="default" padding="md" class="nf-hub">
+            <h3 class="nf-hub__title">{NODE_LABELS[slug]}</h3>
+            <p class="nf-hub__blurb">{HUB_BLURBS[slug]}</p>
+          </Card>
+        </li>
       ))}
-    </ul>
-  </div>
+    </Grid>
+    <p class="nf-foot">
+      Still stuck? Head to the <a href="/">home page</a> or <a href="/contact/">tell us what you were after</a>.
+    </p>
+  </Section>
 </BaseLayout>
 
 <style>
-.prose { max-width: var(--content-max); padding: var(--sp-12) 0 var(--sp-16); }
+h1 {
+  font-size: var(--fs-4xl); line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight); text-wrap: balance; margin: 0 0 var(--sp-4);
+}
+.nf-lede { font-size: var(--fs-lg); color: var(--fg-muted); line-height: var(--lh-body); margin: 0; max-width: var(--content-max); }
+
+.nf-quick { margin-top: var(--sp-8); }
+.nf-quick__h {
+  font-size: var(--fs-xs); font-weight: var(--fw-bold); text-transform: uppercase;
+  letter-spacing: var(--tracking-wide); color: var(--fg-subtle); margin: 0 0 var(--sp-3);
+}
+.nf-quick__list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+
+.nf-hubs__head { margin-bottom: var(--sp-8); }
+.nf-hubs__head h2 { font-size: var(--fs-3xl); line-height: var(--lh-tight); text-wrap: balance; margin: 0; }
+
+.nf-hub { height: 100%; }
+.nf-hub__title {
+  font-family: var(--font-display); font-weight: var(--fw-medium);
+  font-size: var(--fs-lg); line-height: var(--lh-snug); margin: 0; color: var(--fg);
+}
+.nf-hub__blurb { margin: 0; color: var(--fg-muted); font-size: var(--fs-sm); line-height: var(--lh-body); }
+
+.nf-foot { margin: var(--sp-8) 0 0; color: var(--fg-muted); font-size: var(--fs-base); }
 </style>

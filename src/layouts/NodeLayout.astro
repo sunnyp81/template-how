@@ -1,8 +1,16 @@
 ---
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumb from '@/components/ui/Breadcrumb.astro';
 import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema.astro';
-import { NODE_LABELS } from '@/lib/site';
+import Section from '@/components/ui/Section.astro';
+import Container from '@/components/ui/Container.astro';
+import Grid from '@/components/ui/Grid.astro';
+import Eyebrow from '@/components/ui/Eyebrow.astro';
+import Stat from '@/components/ui/Stat.astro';
+import SeedCard from '@/components/hub/SeedCard.astro';
+import HubNav from '@/components/hub/HubNav.astro';
+import { NODE_LABELS, NODE_SLUGS } from '@/lib/site';
 import type { NodeSlug } from '@/lib/site';
 
 interface Props {
@@ -14,56 +22,192 @@ interface Props {
 }
 
 const { slug, headline, lede, seeds, updated } = Astro.props;
+
 const crumbs = [
   { name: 'Home', href: '/' },
   { name: NODE_LABELS[slug], href: `/${slug}/` }
 ];
+
+// Look up the rich card data for each seed in this cluster. Seeds are referenced
+// by slug in the node frontmatter; the seed collection carries the saleable
+// metadata (h1, value lede, jurisdiction, whether it has an in-browser builder).
+const allSeeds = await getCollection('seeds');
+const seedBySlug = new Map<string, CollectionEntry<'seeds'>>(
+  allSeeds.map((s: CollectionEntry<'seeds'>) => [s.slug, s])
+);
+
+const cards = seeds
+  .map((s) => {
+    const entry = seedBySlug.get(s);
+    if (!entry) return null;
+    return {
+      slug: s,
+      href: `/${s}/`,
+      title: entry.data.h1,
+      value: entry.data.definitionalLede,
+      audience: entry.data.audience,
+      builder: entry.data.renderer !== 'static-only'
+    };
+  })
+  .filter((c): c is NonNullable<typeof c> => c !== null);
+
+// Trust strip figures.
+const templateCount = cards.length;
+const hasUS = cards.some((c) => c.audience.includes('us'));
+const hasUK = cards.some((c) => c.audience.includes('uk'));
+const jurisdictions = hasUS && hasUK ? 'US + UK' : hasUS ? 'US' : hasUK ? 'UK' : '—';
+const builderCount = cards.filter((c) => c.builder).length;
+
+const hubPosition = NODE_SLUGS.indexOf(slug) + 1;
+const updatedISO = updated.toISOString();
+const updatedLabel = updated.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+});
 ---
 <BaseLayout
   title={`${NODE_LABELS[slug]} templates`}
   description={lede}
   modifiedTime={updated}>
   <BreadcrumbSchema slot="head" crumbs={crumbs} />
-  <div class="container">
+
+  <Container size="page">
     <Breadcrumb crumbs={crumbs} />
-    <header class="node-hero">
-      <h1>{headline}</h1>
-      <p class="lede">{lede}</p>
+  </Container>
+
+  {/* ── Hub header ─────────────────────────────────────────────── */}
+  <Section tone="default" space="sm" container="page" aria-labelledby="hub-h1">
+    <div class="hub-hero">
+      <Eyebrow tone="accent">
+        Hub {hubPosition} of {NODE_SLUGS.length} · {NODE_LABELS[slug]}
+      </Eyebrow>
+      <h1 id="hub-h1">{headline}</h1>
+      <p class="hub-hero__lede">{lede}</p>
+      <dl class="hub-hero__stats">
+        <Stat as="div" align="start" value={String(templateCount)} label="templates" />
+        <Stat as="div" align="start" value={jurisdictions} label="jurisdictions" tone="accent" />
+        <Stat
+          as="div"
+          align="start"
+          value={builderCount > 0 ? String(builderCount) : 'Free'}
+          label={builderCount > 0 ? 'fill-in builders' : 'no sign-up'}
+        />
+      </dl>
+      <p class="hub-hero__updated">
+        Verified <time datetime={updatedISO}>{updatedLabel}</time> · no sign-up, nothing to pay
+      </p>
+    </div>
+  </Section>
+
+  {/* ── Template grid (the conversion surface) ─────────────────── */}
+  <Section tone="surface" space="default" container="page" aria-labelledby="templates-h">
+    <header class="hub-section__head">
+      <Eyebrow tone="brand">Browse the cluster</Eyebrow>
+      <h2 id="templates-h">Templates in {NODE_LABELS[slug]}</h2>
+      <p class="hub-section__sub">
+        Each one opens to a guide plus a fill-in builder or a ready-to-print download.
+      </p>
     </header>
+    <Grid as="ul" min="260px" gap="lg">
+      {cards.map((c) => (
+        <li>
+          <SeedCard
+            href={c.href}
+            title={c.title}
+            value={c.value}
+            audience={c.audience}
+            builder={c.builder}
+          />
+        </li>
+      ))}
+    </Grid>
+  </Section>
 
-    <section class="seeds">
-      <h2>Templates in this category</h2>
-      <ul class="seed-list">
-        {seeds.map((s) => (
-          <li><a href={`/${s}/`}>{s.replace(/-/g, ' ')}</a></li>
-        ))}
-      </ul>
-      <p class="note">SEED pages land in Plan 3. Every page on this site must link to every other relevant page — no orphans.</p>
-    </section>
+  {/* ── Long-form hub body (author content + internal links) ───── */}
+  <Section tone="default" space="default" container="content" aria-labelledby="about-h">
+    <Eyebrow tone="brand">About this category</Eyebrow>
+    <h2 id="about-h" class="sr-only">About {NODE_LABELS[slug]} templates</h2>
+    <slot />
+  </Section>
 
-    <aside class="siblings">
-      <h2>Other categories</h2>
-      <ul>
-        {Object.entries(NODE_LABELS)
-          .filter(([k]) => k !== slug)
-          .map(([k, v]) => (
-            <li><a href={`/${k}/`}>{v}</a></li>
-          ))}
-      </ul>
-    </aside>
-  </div>
+  {/* ── Cross-hub navigation (sibling links) ───────────────────── */}
+  <Section tone="sunken" space="default" container="page" aria-labelledby="other-hubs-h">
+    <header class="hub-section__head">
+      <Eyebrow tone="accent">The 8-hub library</Eyebrow>
+      <h2 id="other-hubs-h">Explore the other categories</h2>
+      <p class="hub-section__sub">
+        Every template on template.how lives in one of eight clusters. Jump to a sibling hub:
+      </p>
+    </header>
+    <HubNav current={slug} />
+  </Section>
 </BaseLayout>
 
 <style>
-.node-hero { padding: var(--sp-12) 0 var(--sp-8); max-width: var(--content-max); }
-.node-hero h1 { font-size: var(--fs-3xl); }
-.lede { font-size: var(--fs-lg); color: var(--fg-muted); }
-.seeds { padding: var(--sp-4) 0 var(--sp-12); }
-.seed-list { list-style: none; padding: 0; display: grid; gap: var(--sp-2); grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-.seed-list a { display: block; padding: var(--sp-3) var(--sp-4); border: 1px solid var(--border); border-radius: var(--r-sm); text-decoration: none; color: var(--fg); text-transform: capitalize; }
-.seed-list a:hover { border-color: var(--accent); }
-.note { margin-top: var(--sp-6); font-size: var(--fs-sm); color: var(--fg-muted); }
-.siblings { padding: var(--sp-8) 0 var(--sp-12); border-top: 1px solid var(--border); }
-.siblings ul { list-style: none; padding: 0; display: flex; gap: var(--sp-3); flex-wrap: wrap; }
-.siblings a { font-size: var(--fs-sm); }
+/* Header */
+.hub-hero { max-width: var(--measure-wide); }
+.hub-hero h1 {
+  font-size: var(--fs-4xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--sp-4);
+  text-wrap: balance;
+}
+.hub-hero__lede {
+  font-size: var(--fs-lg);
+  line-height: var(--lh-body);
+  color: var(--fg-muted);
+  max-width: var(--content-max);
+  margin: 0;
+}
+.hub-hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-8);
+  margin: var(--sp-8) 0 var(--sp-4);
+}
+.hub-hero__updated {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--fg-subtle);
+}
+
+/* Section heads */
+.hub-section__head { margin-bottom: var(--sp-8); max-width: var(--content-max); }
+.hub-section__head h2 {
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-tight);
+  margin: 0 0 var(--sp-2);
+  text-wrap: balance;
+}
+.hub-section__sub {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: var(--fs-base);
+}
+</style>
+
+<style is:global>
+/* Reading rhythm for the slotted node body. The page wraps <Content/> in
+   .hub-body (see [node]/index.astro). Mirrors the Prose primitive’s flow but is
+   defined here so the long-form author content keeps its internal links and
+   <aside class="tip"> styling under the new layout. */
+.hub-body { color: var(--fg); font-size: var(--fs-base); line-height: var(--lh-body); max-width: var(--content-max); }
+.hub-body > * + * { margin-top: var(--sp-4); }
+.hub-body h2 { margin-top: var(--sp-12); font-size: var(--fs-2xl); line-height: var(--lh-tight); }
+.hub-body h3 { margin-top: var(--sp-8); font-size: var(--fs-xl); }
+.hub-body h2 + *, .hub-body h3 + * { margin-top: var(--sp-3); }
+.hub-body ul, .hub-body ol { padding-left: var(--sp-6); }
+.hub-body li + li { margin-top: var(--sp-2); }
+.hub-body a { font-weight: var(--fw-medium); }
+.hub-body aside.tip {
+  background: color-mix(in srgb, var(--amber-400) 8%, var(--bg-elev));
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-bold);
+  padding: var(--sp-4) var(--sp-5);
+  border-radius: var(--r-md);
+  margin-block: var(--sp-6);
+}
+.hub-body aside.tip > :last-child { margin-bottom: 0; }
 </style>

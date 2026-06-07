@@ -21,11 +21,7 @@ const { Content } = await entry.render();
   lede={entry.data.lede}
   seeds={entry.data.seeds}
   updated={entry.data.updated}>
-  <div class="prose container">
+  <div class="hub-body">
     <Content />
   </div>
 </NodeLayout>
-
-<style>
-.prose { max-width: var(--content-max); padding: var(--sp-4) 0 var(--sp-12); }
-</style>

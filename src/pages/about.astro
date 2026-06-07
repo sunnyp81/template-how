@@ -3,10 +3,36 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumb from '@/components/ui/Breadcrumb.astro';
 import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema.astro';
 import PersonSchema from '@/components/schema/PersonSchema.astro';
+import Section from '@/components/ui/Section.astro';
+import Container from '@/components/ui/Container.astro';
+import Grid from '@/components/ui/Grid.astro';
+import Card from '@/components/ui/Card.astro';
+import Button from '@/components/ui/Button.astro';
+import Eyebrow from '@/components/ui/Eyebrow.astro';
+import Prose from '@/components/ui/Prose.astro';
 
 const crumbs = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about/' }
+];
+
+const principles = [
+  {
+    title: 'A named source on every template',
+    body: 'Legal and tax documents carry the governing statute or rule they are built around — so you can check the law yourself, not just trust us.'
+  },
+  {
+    title: 'A last-verified date',
+    body: 'Every template shows when it was last checked against the current statute. If the law moves, you can see how fresh ours is.'
+  },
+  {
+    title: 'US and UK, side by side',
+    body: 'A Californian bill of sale is not a Texan one, and an English lease is not a Scottish one. We publish per-state and per-nation variants where the rules diverge.'
+  },
+  {
+    title: 'Free, with nothing to sign up for',
+    body: 'Fill a template in your browser and export a clean PDF or DOCX, or grab a pre-made download. No account, no paywall.'
+  }
 ];
 ---
 <BaseLayout
@@ -14,15 +40,69 @@ const crumbs = [
   description="Template.how is edited by Sunny Patel, an SEO consultant. Every template is reviewed before publication and carries a stated source.">
   <BreadcrumbSchema slot="head" crumbs={crumbs} />
   <PersonSchema slot="head" />
-  <div class="container prose">
+
+  <Container size="page">
     <Breadcrumb crumbs={crumbs} />
-    <h1>About Template.how</h1>
-    <p>Template.how is a working library of document templates for the United States and United Kingdom. It is edited by Sunny Patel, an SEO consultant based in England.</p>
-    <p>Every template has two things you won't find on most template sites: a named governing statute or rule (for legal and tax documents), and a last-verified date. If a template is wrong, the source is right there for you to check.</p>
-    <p>Nothing here is legal, tax, or financial advice.</p>
-  </div>
+  </Container>
+
+  <Section tone="default" space="sm" container="content" aria-labelledby="about-h1">
+    <Eyebrow tone="accent">About</Eyebrow>
+    <h1 id="about-h1">A template library you can actually trust</h1>
+    <Prose class="about-intro">
+      <p>Template.how is a working library of document templates for the United States and the United Kingdom. It is edited by Sunny Patel, an SEO consultant based in England.</p>
+      <p>Most template sites hand you a fill-in-the-blank form and hope for the best. The missing detail — the as-is clause, the governing-law line, the witness requirement — is usually the part that matters in a dispute. We build around the statutory minimums for both markets and tell you where we got them.</p>
+    </Prose>
+  </Section>
+
+  <Section tone="surface" space="default" container="page" aria-labelledby="principles-h">
+    <header class="about-section__head">
+      <Eyebrow tone="brand">How we work</Eyebrow>
+      <h2 id="principles-h">What makes a template here different</h2>
+    </header>
+    <Grid as="ul" min="260px" gap="lg">
+      {principles.map((p) => (
+        <li>
+          <Card variant="default" padding="lg" class="about-card">
+            <h3 class="about-card__title">{p.title}</h3>
+            <p class="about-card__body">{p.body}</p>
+          </Card>
+        </li>
+      ))}
+    </Grid>
+  </Section>
+
+  <Section tone="default" space="default" container="content">
+    <Prose>
+      <p><strong>Nothing here is legal, tax, or financial advice.</strong> Templates are appropriate for standard, arm's-length transactions of ordinary value. For anything unusual, high-value, or contested, instruct a solicitor (UK) or an attorney (US).</p>
+    </Prose>
+    <div class="about-cta">
+      <Button href="/legal-document-templates/" variant="primary" size="lg" block>Browse legal documents</Button>
+      <Button href="/contact/" variant="secondary" size="lg" block>Spotted an error? Tell us</Button>
+    </div>
+  </Section>
 </BaseLayout>
 
 <style>
-.prose { max-width: var(--content-max); padding: var(--sp-8) 0 var(--sp-16); }
+h1 {
+  font-size: var(--fs-4xl); line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight); text-wrap: balance;
+  margin: 0 0 var(--sp-5);
+}
+.about-intro { margin-top: 0; }
+.about-intro :global(p:first-child) { font-size: var(--fs-lg); color: var(--fg-muted); }
+
+.about-section__head { margin-bottom: var(--sp-8); }
+.about-section__head h2 { font-size: var(--fs-3xl); line-height: var(--lh-tight); text-wrap: balance; margin: 0; }
+
+.about-card { height: 100%; }
+.about-card__title {
+  font-family: var(--font-display); font-weight: var(--fw-medium);
+  font-size: var(--fs-lg); line-height: var(--lh-snug); margin: 0; color: var(--fg);
+}
+.about-card__body { margin: 0; color: var(--fg-muted); font-size: var(--fs-sm); line-height: var(--lh-body); }
+
+.about-cta {
+  display: flex; flex-direction: column; gap: var(--sp-3); margin-top: var(--sp-8);
+}
+@media (min-width: 480px) { .about-cta { flex-direction: row; flex-wrap: wrap; } }
 </style>

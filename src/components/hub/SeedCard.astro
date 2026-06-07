@@ -1,0 +1,88 @@
+---
+/**
+ * SeedCard — the conversion surface for a hub. One card per template (seed) in a
+ * cluster. The whole card is a link into the seed page; it sells the click with a
+ * title, a one-line value proposition, and badges for jurisdiction (US/UK) and
+ * whether the template is built in-browser or a direct printable download.
+ *
+ * Composes the `Card` primitive (whole-card link, lift on hover) plus `Badge`.
+ *
+ * Props:
+ *   href     destination (the seed page, e.g. "/bill-of-sale/")
+ *   title    template name (the seed h1)
+ *   value    one-line value proposition (definitional lede, trimmed)
+ *   audience array of 'us' | 'uk' — renders jurisdiction badges
+ *   builder  boolean — true => "Builder", false => "Printable"
+ */
+import Card from '@/components/ui/Card.astro';
+import Badge from '@/components/ui/Badge.astro';
+
+interface Props {
+  href: string;
+  title: string;
+  value: string;
+  audience?: Array<'us' | 'uk'>;
+  builder?: boolean;
+}
+const { href, title, value, audience = [], builder = true } = Astro.props;
+
+// Trim the value line to a single scannable sentence (cards stay even height).
+const firstSentence = value.split(/(?<=[.!?])\s/)[0]?.trim() ?? value;
+---
+<Card href={href} variant="default" padding="md" class="seed-card">
+  <div class="seed-card__head">
+    <h3 class="seed-card__title">{title}</h3>
+    <span class="seed-card__arrow" aria-hidden="true">→</span>
+  </div>
+  <p class="seed-card__value">{firstSentence}</p>
+  <div class="seed-card__meta" slot="footer">
+    {audience.includes('us') && <Badge tone="brand" variant="soft">US</Badge>}
+    {audience.includes('uk') && <Badge tone="brand" variant="soft">UK</Badge>}
+    <Badge tone={builder ? 'accent' : 'neutral'} variant={builder ? 'soft' : 'outline'}>
+      {builder ? 'Builder' : 'Printable'}
+    </Badge>
+  </div>
+</Card>
+
+<style>
+.seed-card { height: 100%; }
+
+.seed-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+.seed-card__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+  margin: 0;
+  color: var(--fg);
+  text-wrap: balance;
+}
+.seed-card__arrow {
+  flex: none;
+  color: var(--accent-strong);
+  font-size: var(--fs-lg);
+  transform: translateX(0);
+  transition: var(--transition-transform);
+}
+:global(.u-card--interactive:hover) .seed-card__arrow { transform: translateX(3px); }
+
+.seed-card__value {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+}
+
+.seed-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: auto;
+  padding-top: var(--sp-2);
+}
+</style>

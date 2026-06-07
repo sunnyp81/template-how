@@ -1,0 +1,50 @@
+---
+/**
+ * HubNav — cross-links to the other hubs in the 8-hub system. Strong, scannable
+ * sibling navigation that keeps the link graph dense (every hub links to every
+ * other hub) while orienting the user inside the wider library.
+ *
+ * Renders link cards (Card primitive) in a fluid Grid. Excludes the current hub.
+ *
+ * Props:
+ *   current  the slug of the hub being viewed (excluded from the list)
+ */
+import Grid from '@/components/ui/Grid.astro';
+import Card from '@/components/ui/Card.astro';
+import { NODE_SLUGS, NODE_LABELS, type NodeSlug } from '@/lib/site';
+import { HUB_BLURBS } from '@/components/hub/hubMeta';
+
+interface Props {
+  current: NodeSlug;
+}
+const { current } = Astro.props;
+const others = NODE_SLUGS.filter((s) => s !== current);
+---
+<Grid as="ul" min="240px" gap="md">
+  {others.map((slug) => (
+    <li>
+      <Card href={`/${slug}/`} variant="outline" padding="md" class="hub-nav__card">
+        <h3 class="hub-nav__title">{NODE_LABELS[slug]}</h3>
+        <p class="hub-nav__blurb">{HUB_BLURBS[slug]}</p>
+      </Card>
+    </li>
+  ))}
+</Grid>
+
+<style>
+.hub-nav__card { height: 100%; }
+.hub-nav__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+  margin: 0;
+  color: var(--fg);
+}
+.hub-nav__blurb {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+}
+</style>
