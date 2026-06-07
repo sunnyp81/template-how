@@ -1,0 +1,29 @@
+name: IndexNow
+
+# Pings IndexNow (Bing, Yandex, et al.) with every live URL after each deploy to
+# main, so new and changed pages get crawled quickly. Runs automatically on push
+# to main, and can be triggered manually for the current live site.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Avoid overlapping submissions if several pushes land close together.
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      # Build dist/ so the script can enumerate the live URL list from index.html files.
+      - run: npm run build
+      - name: Submit URLs to IndexNow
+        run: npm run indexnow
