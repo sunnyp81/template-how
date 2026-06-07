@@ -107,6 +107,13 @@ const classes = [
 @media (min-width: 768px) {
   .u-btn--block { width: auto; }
 }
+/* Full-width buttons may carry long labels (e.g. "Build your bill of sale
+   template"). Allow the label to wrap so it never forces horizontal overflow
+   of a narrow container; nowrap is kept for auto-width buttons. */
+.u-btn--full .u-btn__label,
+.u-btn--block .u-btn__label { white-space: normal; }
+.u-btn--full,
+.u-btn--block { min-width: 0; }
 
 /* Primary — navy fill (~13:1 with paper text). Top conversion action. */
 .u-btn--primary {

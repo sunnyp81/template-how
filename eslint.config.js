@@ -27,7 +27,7 @@ export default [
   },
   ...astro.configs['flat/recommended'],
   {
-    files: ['scripts/**/*.ts', 'src/integrations/**/*.ts'],
+    files: ['scripts/**/*.ts', 'scripts/**/*.mjs', 'src/integrations/**/*.ts'],
     languageOptions: {
       globals: { process: 'readonly', console: 'readonly', fetch: 'readonly', Buffer: 'readonly' }
     }

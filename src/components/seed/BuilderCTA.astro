@@ -43,6 +43,7 @@ const jurisdictions =
 <style>
 .builder-cta {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--sp-6);
   padding: var(--sp-6);
   border: 1px solid var(--border);
@@ -52,7 +53,7 @@ const jurisdictions =
     var(--bg-elev);
   box-shadow: var(--shadow-sm);
 }
-.bc-copy { display: grid; gap: var(--sp-2); }
+.bc-copy { display: grid; gap: var(--sp-2); min-width: 0; }
 .bc-headline {
   font-family: var(--font-display);
   font-weight: var(--fw-medium);

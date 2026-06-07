@@ -20,8 +20,11 @@ export const BuilderPreview = ({ tree, complete }: Props) => {
         {complete ? <span className="b-preview-ready">Ready to export</span> : null}
       </div>
       <div className="b-preview-sheet">
-        <article className="b-doc">
-          <h1 className="b-doc-title">{tree.title}</h1>
+        <article className="b-doc" aria-label={`${tree.title} preview`}>
+          {/* Visual document mockup: render the title as a styled paragraph, not a
+              page <h1>. The page already owns its single <h1>; a second one here
+              would break the document outline / one-H1-per-page rule. */}
+          <p className="b-doc-title" aria-hidden="true">{tree.title}</p>
           {!started ? (
             <p className="b-doc-hint">
               Your document updates here as you fill in the form. Start typing on the Edit tab to
