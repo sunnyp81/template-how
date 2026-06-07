@@ -2,21 +2,65 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumb from '@/components/ui/Breadcrumb.astro';
 import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema.astro';
+import Section from '@/components/ui/Section.astro';
+import Container from '@/components/ui/Container.astro';
+import Card from '@/components/ui/Card.astro';
+import Button from '@/components/ui/Button.astro';
+import Eyebrow from '@/components/ui/Eyebrow.astro';
+import Prose from '@/components/ui/Prose.astro';
 
 const crumbs = [
   { name: 'Home', href: '/' },
   { name: 'Contact', href: '/contact/' }
 ];
 ---
-<BaseLayout title="Contact" description="Get in touch with Template.how.">
+<BaseLayout title="Contact" description="Get in touch with Template.how — report an error, suggest a template, or discuss a partnership.">
   <BreadcrumbSchema slot="head" crumbs={crumbs} />
-  <div class="container prose">
+
+  <Container size="page">
     <Breadcrumb crumbs={crumbs} />
-    <h1>Contact</h1>
-    <p>Errors, suggestions, or partnership requests: <a href="mailto:hello@template.how">hello@template.how</a>.</p>
-  </div>
+  </Container>
+
+  <Section tone="default" space="sm" container="content" aria-labelledby="contact-h1">
+    <Eyebrow tone="accent">Contact</Eyebrow>
+    <h1 id="contact-h1">Get in touch</h1>
+    <Prose class="contact-intro">
+      <p>Found an error, want a template we don't have yet, or have a partnership in mind? Email is the fastest way to reach us — we read everything.</p>
+    </Prose>
+
+    <Card variant="raised" padding="lg" class="contact-card">
+      <p class="contact-card__label">Email</p>
+      <p class="contact-card__email"><a href="mailto:hello@template.how">hello@template.how</a></p>
+      <Button href="mailto:hello@template.how" variant="primary" size="lg" block>
+        <span slot="icon" aria-hidden="true">✉</span>
+        Email hello@template.how
+      </Button>
+    </Card>
+  </Section>
+
+  <Section tone="surface" space="default" container="content" aria-labelledby="meanwhile-h">
+    <Eyebrow tone="brand">In the meantime</Eyebrow>
+    <h2 id="meanwhile-h">Looking for a template?</h2>
+    <Prose>
+      <p>You probably don't need to email us to find what you came for. Start in the <a href="/legal-document-templates/">legal documents</a> hub for contracts and forms, or browse <a href="/resume-templates/">resumes &amp; careers</a>, <a href="/business-templates/">business operations</a>, and <a href="/planning-templates/">planning</a>. Curious who's behind the library? See the <a href="/about/">about page</a>.</p>
+    </Prose>
+  </Section>
 </BaseLayout>
 
 <style>
-.prose { max-width: var(--content-max); padding: var(--sp-8) 0 var(--sp-16); }
+h1 {
+  font-size: var(--fs-4xl); line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight); text-wrap: balance; margin: 0 0 var(--sp-4);
+}
+.contact-intro :global(p) { font-size: var(--fs-lg); color: var(--fg-muted); }
+
+.contact-card { margin-top: var(--sp-6); max-width: var(--measure-narrow); }
+.contact-card__label {
+  margin: 0; font-size: var(--fs-xs); font-weight: var(--fw-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--fg-subtle);
+}
+.contact-card__email { margin: 0 0 var(--sp-2); font-family: var(--font-display); font-size: var(--fs-xl); }
+.contact-card__email a { color: var(--link); }
+
+h2 { font-size: var(--fs-2xl); line-height: var(--lh-tight); margin: 0 0 var(--sp-3); }
 </style>
